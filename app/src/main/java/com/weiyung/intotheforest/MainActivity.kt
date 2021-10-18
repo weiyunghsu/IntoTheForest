@@ -2,7 +2,9 @@ package com.weiyung.intotheforest
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -51,11 +53,22 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        viewModel.currentFragmentType.observe(
+            this,
+            Observer {
+                Log.i("Wei","[${viewModel.currentFragmentType.value}]")
+//                Logger.i("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+//                Logger.i("[${viewModel.currentFragmentType.value}]")
+//                Logger.i("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+            }
+        )
+
         val navController = findNavController(R.id.myNavHostFragment)
         val navView: BottomNavigationView = binding.bottomNavView
         NavigationUI.setupWithNavController(navView, navController)
         setupBottomNav()
-//        setupNavController()
+
+        setupNavController()
 
     }
     private fun setupBottomNav() {
@@ -66,16 +79,16 @@ class MainActivity : AppCompatActivity() {
 //        bindingBadge.lifecycleOwner = this
 //        bindingBadge.viewModel = viewModel
     }
-//    private fun setupNavController() {
-//        findNavController(R.id.myNavHostFragment).addOnDestinationChangedListener { navController: NavController, _: NavDestination, _: Bundle? ->
-//            viewModel.currentFragmentType.value = when (navController.currentDestination?.id) {
-//                R.id.homeFragment -> CurrentFragmentType.HOME
-//                R.id.favoriteFragment -> CurrentFragmentType.FAVORITE
-//                R.id.addArticleFragment -> CurrentFragmentType.ADDARTICLE
-//                R.id.mapFragment -> CurrentFragmentType.MAP
-//                R.id.userFragment -> CurrentFragmentType.USER
-//                else -> viewModel.currentFragmentType.value
-//            }
-//        }
-//    }
+    private fun setupNavController() {
+        findNavController(R.id.myNavHostFragment).addOnDestinationChangedListener { navController: NavController, _: NavDestination, _: Bundle? ->
+            viewModel.currentFragmentType.value = when (navController.currentDestination?.id) {
+                R.id.homeFragment -> CurrentFragmentType.HOME
+                R.id.favoriteFragment -> CurrentFragmentType.FAVORITE
+                R.id.addArticleFragment -> CurrentFragmentType.ADDARTICLE
+                R.id.mapFragment -> CurrentFragmentType.MAP
+                R.id.userFragment -> CurrentFragmentType.USER
+                else -> viewModel.currentFragmentType.value
+            }
+        }
+    }
 }
