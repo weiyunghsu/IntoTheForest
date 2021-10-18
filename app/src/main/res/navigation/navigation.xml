@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@+id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.weiyung.intotheforest.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.weiyung.intotheforest.favorite.FavoriteFragment"
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_favorite">
+    </fragment>
+    <fragment
+        android:id="@+id/addArticleFragment"
+        android:name="com.weiyung.intotheforest.addarticle.AddArticleFragment"
+        android:label="AddArticleFragment"
+        tools:layout="@layout/fragment_addarticle">
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.weiyung.intotheforest.map.MapFragment"
+        android:label="MapFragment"
+        tools:layout="@layout/fragment_map">
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.weiyung.intotheforest.user.UserFragment"
+        android:label="UserFragment"
+        tools:layout="@layout/fragment_user">
+    </fragment>
+    <action android:id="@+id/navigate_to_home_fragment" app:destination="@id/homeFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <action android:id="@+id/navigate_to_favorite_fragment" app:destination="@id/favoriteFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <action android:id="@+id/navigate_to_addArticle_fragment" app:destination="@id/addArticleFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <action android:id="@+id/navigate_to_map_fragment" app:destination="@id/mapFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <action android:id="@+id/navigate_to_user_fragment" app:destination="@id/userFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+</navigation>

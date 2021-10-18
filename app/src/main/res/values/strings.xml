@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">IntoTheForest</string>
+    <string name="home">走入山林</string>
+    <string name="favorite">最愛</string>
+    <string name="addarticle">新增文章</string>
+    <string name="map">地圖</string>
+    <string name="user">個人</string>
 </resources>
