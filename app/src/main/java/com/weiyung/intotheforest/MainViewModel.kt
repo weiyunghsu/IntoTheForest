@@ -6,4 +6,5 @@ import com.weiyung.intotheforest.util.CurrentFragmentType
 
 class MainViewModel : ViewModel() {
     val currentFragmentType = MutableLiveData<CurrentFragmentType>()
+
 }
