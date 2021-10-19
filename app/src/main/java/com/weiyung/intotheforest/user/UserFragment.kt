@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.databinding.FragmentMapBinding
 import com.weiyung.intotheforest.databinding.FragmentUserBinding
 import com.weiyung.intotheforest.map.MapViewModel
@@ -24,6 +26,9 @@ class UserFragment : Fragment() {
         val root: View = binding.root
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        binding.btMyFavorites.setOnClickListener {
+            findNavController().navigate(NavigationDirections.navigateToFavoriteFragment())
+        }
         return binding.root
     }
 }

@@ -8,18 +8,170 @@
             name="viewModel"
             type="com.weiyung.intotheforest.user.UserViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="user"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        tools:context="com.weiyung.intotheforest.user.UserFragment">
+
+        <View
+            android:id="@+id/user_view"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:background="#08420B"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/user_photo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/user_photo"
+            app:layout_constraintEnd_toEndOf="@+id/user_view"
+            app:layout_constraintStart_toStartOf="@+id/user_view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icons_36px_profile_normal" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/username"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_photo" />
+
+        <Button
+            android:id="@+id/bt_my_articles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@null"
+            android:backgroundTint="@color/white"
+            android:text="@string/bt_my_articles"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/bt_my_favorites"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_view" />
+
+        <Button
+            android:id="@+id/bt_my_favorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@color/white"
+            android:text="@string/bt_my_favorites"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/bt_my_photos"
+            app:layout_constraintStart_toEndOf="@+id/bt_my_articles"
+            app:layout_constraintTop_toTopOf="@+id/bt_my_articles" />
+
+        <Button
+            android:id="@+id/bt_my_photos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@color/white"
+            android:text="@string/bt_my_photos"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bt_my_favorites"
+            app:layout_constraintTop_toTopOf="@+id/bt_my_articles" />
+
+        <Button
+            android:id="@+id/bt_my_badges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@null"
+            android:backgroundTint="@color/white"
+            android:text="@string/bt_my_badges"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/bt_notifications"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_my_articles" />
+
+        <Button
+            android:id="@+id/bt_edit_person_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@color/white"
+            android:text="@string/bt_edit_person_info"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bt_notifications"
+            app:layout_constraintTop_toTopOf="@+id/bt_my_badges" />
+
+        <Button
+            android:id="@+id/bt_notifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@color/white"
+            android:text="@string/bt_notifications"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/bt_edit_person_info"
+            app:layout_constraintStart_toEndOf="@+id/bt_my_badges"
+            app:layout_constraintTop_toTopOf="@+id/bt_my_badges" />
+
+        <Button
+            android:id="@+id/bt_my_routes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@color/white"
+            android:text="@string/bt_my_routes"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/bt_checklist"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bt_logout"
+            app:layout_constraintTop_toTopOf="@+id/bt_logout" />
+
+        <Button
+            android:id="@+id/bt_checklist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@color/white"
+            android:text="@string/bt_checklist"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bt_my_routes"
+            app:layout_constraintTop_toTopOf="@+id/bt_my_routes" />
+
+        <Button
+            android:id="@+id/bt_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@null"
+            android:backgroundTint="@color/white"
+            android:text="@string/bt_logout"
+            android:textAlignment="center"
+            android:textColor="@color/black_3f3a3a"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/bt_my_routes"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_my_badges" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

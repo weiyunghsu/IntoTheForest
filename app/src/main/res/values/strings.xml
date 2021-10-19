@@ -5,13 +5,26 @@
     <string name="addarticle">新增文章</string>
     <string name="map">地圖</string>
     <string name="user">個人</string>
+
     <string name="floatbutton1">floatButton1</string>
     <string name="police_text">致電警察局 110</string>
     <string name="rescue_text">致電消防局 119</string>
+    <string name="sms_police">台北市警察局簡訊報案 0911-510-914</string>
     <string name="police_icon">police_icon</string>
+    <string name="rescue_icon">rescue_icon</string>
     <string name="rescue_button">rescue_button</string>
     <string name="police_button">police_button</string>
-    <string name="rescue_icon">rescue_icon</string>
-    <string name="sms_police">台北市警察局簡訊報案 0911-510-914</string>
     <string name="sms_to_police">sms_police</string>
+    <string name="username">username</string>
+    <string name="user_status">user_status</string>
+    <string name="bt_my_favorites">我的最愛</string>
+    <string name="bt_my_photos">我的相簿</string>
+    <string name="bt_edit_person_info">編輯個資</string>
+    <string name="bt_notifications">推播記錄</string>
+    <string name="bt_my_badges">我的成就</string>
+    <string name="bt_my_articles">我的日誌</string>
+    <string name="bt_logout">登出</string>
+    <string name="user_photo">user_photo</string>
+    <string name="bt_my_routes">我的軌跡</string>
+    <string name="bt_checklist">裝備檢查</string>
 </resources>
