@@ -5,4 +5,5 @@
     <string name="addarticle">新增文章</string>
     <string name="map">地圖</string>
     <string name="user">個人</string>
+    <string name="floatbutton1">floatButton1</string>
 </resources>
