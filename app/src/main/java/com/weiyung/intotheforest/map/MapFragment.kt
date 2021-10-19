@@ -53,7 +53,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             }
         }
         setupPermission()
-//        mMap.isMyLocationEnabled = true; // 右上角的定位功能
+        mMap.isMyLocationEnabled = true // 右上角的定位功能
         mMap.uiSettings.isZoomControlsEnabled = true;  // 右下角的放大縮小功能
         mMap.uiSettings.isCompassEnabled = true;       // 左上角的指南針，要兩指旋轉才會出現
         mMap.uiSettings.isMapToolbarEnabled = true;    // 右下角的導覽及開啟 Google Map功能
