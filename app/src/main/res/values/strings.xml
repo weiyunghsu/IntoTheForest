@@ -12,4 +12,6 @@
     <string name="rescue_button">rescue_button</string>
     <string name="police_button">police_button</string>
     <string name="rescue_icon">rescue_icon</string>
+    <string name="sms_police">台北市警察局簡訊報案 0911-510-914</string>
+    <string name="sms_to_police">sms_police</string>
 </resources>
