@@ -6,4 +6,10 @@
     <string name="map">地圖</string>
     <string name="user">個人</string>
     <string name="floatbutton1">floatButton1</string>
+    <string name="police_text">致電警察局 110</string>
+    <string name="rescue_text">致電消防局 119</string>
+    <string name="police_icon">police_icon</string>
+    <string name="rescue_button">rescue_button</string>
+    <string name="police_button">police_button</string>
+    <string name="rescue_icon">rescue_icon</string>
 </resources>

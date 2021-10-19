@@ -1,8 +1,10 @@
 package com.weiyung.intotheforest.map
 
 import android.Manifest
+import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +13,15 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentMapBinding
 
@@ -62,6 +67,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(appWorksSchoolPeak).title("AppWorksSchool Peak \n台北市基隆路一段178號"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(appWorksSchoolPeak,18F))
 //        mMap.animateCamera(CameraUpdateFactory.zoomTo(18F))
+        binding.speakButton.setOnClickListener {
+            Log.i(TAG,"Where is my help button?")
+            findNavController().navigate(NavigationDirections.navigateToReportDialog())
+        }
     }
 }
 

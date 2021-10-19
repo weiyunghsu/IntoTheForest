@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.weiyung.intotheforest.reportdialog.ReportViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/police_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/police_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/outline_local_police_black_36" />
+
+        <TextView
+            android:id="@+id/police_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/noto_sans"
+            android:text="@string/police_text"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/police_icon"
+            app:layout_constraintStart_toEndOf="@+id/police_icon"
+            app:layout_constraintTop_toTopOf="@+id/police_icon" />
+
+        <ImageButton
+            android:id="@+id/police_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/police_button"
+            app:layout_constraintBottom_toBottomOf="@+id/police_icon"
+            app:layout_constraintStart_toEndOf="@+id/police_text"
+            app:layout_constraintTop_toTopOf="@+id/police_icon"
+            app:srcCompat="@drawable/outline_call_black_36"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageView
+            android:id="@+id/rescue_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/rescue_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/police_icon"
+            app:srcCompat="@drawable/outline_local_hospital_black_36" />
+
+        <TextView
+            android:id="@+id/rescue_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/noto_sans"
+            android:text="@string/rescue_text"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rescue_icon"
+            app:layout_constraintStart_toEndOf="@+id/rescue_icon"
+            app:layout_constraintTop_toTopOf="@+id/rescue_icon" />
+
+        <ImageButton
+            android:id="@+id/rescue_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/rescue_button"
+            app:layout_constraintBottom_toBottomOf="@+id/rescue_icon"
+            app:layout_constraintStart_toEndOf="@+id/rescue_text"
+            app:layout_constraintTop_toTopOf="@+id/rescue_icon"
+            app:srcCompat="@drawable/outline_call_black_36"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/text_to_police"
+            android:layout_width="146dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="台北市警察局簡訊報案 0911-510-914  "
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton4" />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/rescue_button"
+            app:layout_constraintTop_toBottomOf="@+id/rescue_button"
+            app:srcCompat="@drawable/outline_textsms_black_36" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
