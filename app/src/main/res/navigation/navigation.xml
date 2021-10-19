@@ -29,6 +29,12 @@
         tools:layout="@layout/fragment_map">
     </fragment>
     <fragment
+        android:id="@+id/reportDialog"
+        android:name="com.weiyung.intotheforest.reportdialog.ReportDialog"
+        android:label="ReportDialog"
+        tools:layout="@layout/dialog_report">
+    </fragment>
+    <fragment
         android:id="@+id/userFragment"
         android:name="com.weiyung.intotheforest.user.UserFragment"
         android:label="UserFragment"
@@ -47,6 +53,9 @@
         app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
     <action android:id="@+id/navigate_to_user_fragment" app:destination="@id/userFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <action android:id="@+id/navigate_to_report_dialog" app:destination="@id/reportDialog"
         app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
 </navigation>
