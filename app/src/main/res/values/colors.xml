@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="translucent">#80000000</color>
+    <color name="green">#FF4CAF50</color>
 
     <!-- Black Series -->
     <color name="black_3f3a3a">#3f3a3a</color>

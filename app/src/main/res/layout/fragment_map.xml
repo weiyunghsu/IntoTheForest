@@ -8,6 +8,7 @@
             name="viewModel"
             type="com.weiyung.intotheforest.map.MapViewModel" />
     </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -16,7 +17,38 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_map">
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="120dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/floatbutton1"
+            android:src="@drawable/outline_search_black_36" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/speakButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="120dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/floatbutton1"
+            android:src="@drawable/outline_campaign_black_36" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/recordButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/floatbutton1"
+            android:src="@drawable/outline_play_circle_black_36" />
+    </fragment>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
