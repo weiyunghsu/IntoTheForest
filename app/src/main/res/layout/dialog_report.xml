@@ -47,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:backgroundTint="@color/transparent"
             android:contentDescription="@string/police_button"
             app:layout_constraintBottom_toBottomOf="@+id/police_icon"
             app:layout_constraintStart_toEndOf="@+id/police_text"
@@ -82,6 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:backgroundTint="@color/transparent"
             android:contentDescription="@string/rescue_button"
             app:layout_constraintBottom_toBottomOf="@+id/rescue_icon"
             app:layout_constraintStart_toEndOf="@+id/rescue_text"
@@ -94,18 +96,21 @@
             android:layout_width="146dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="台北市警察局簡訊報案 0911-510-914  "
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton4" />
+            android:text="@string/sms_police"
+            app:layout_constraintBottom_toBottomOf="@+id/sms_police"
+            app:layout_constraintEnd_toStartOf="@+id/sms_police" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/sms_police"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:backgroundTint="@color/transparent"
+            android:contentDescription="@string/sms_to_police"
             app:layout_constraintEnd_toEndOf="@+id/rescue_button"
             app:layout_constraintTop_toBottomOf="@+id/rescue_button"
-            app:srcCompat="@drawable/outline_textsms_black_36" />
+            app:srcCompat="@drawable/outline_textsms_black_36"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

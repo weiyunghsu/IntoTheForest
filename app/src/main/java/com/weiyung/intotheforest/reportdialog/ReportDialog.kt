@@ -1,5 +1,7 @@
 package com.weiyung.intotheforest.reportdialog
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +28,28 @@ class ReportDialog : AppCompatDialogFragment(){
     binding = DialogReportBinding.inflate(inflater, container, false)
     binding.lifecycleOwner = viewLifecycleOwner
     binding.viewModel = viewModel
+
+    binding.policeButton.setOnClickListener{
+        val intent = Intent()
+        intent.action = Intent.ACTION_DIAL
+        intent.data = Uri.parse("tel:110")
+        startActivity(intent)
+    }
+    binding.rescueButton.setOnClickListener{
+        val intent = Intent()
+        intent.action = Intent.ACTION_DIAL
+        intent.data = Uri.parse("tel:119")
+        startActivity(intent)
+    }
+    binding.smsPolice.setOnClickListener{
+        val intent = Intent()
+        intent.action = Intent.ACTION_SENDTO
+        intent.data = Uri.parse("smsto:雙北市警察局")
+        intent.putExtra("sms_body","test SOS!")
+        startActivity(intent)
+    }
+
+
     return binding.root
     }
 
