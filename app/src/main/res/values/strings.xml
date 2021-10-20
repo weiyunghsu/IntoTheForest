@@ -27,4 +27,5 @@
     <string name="user_photo">user_photo</string>
     <string name="bt_my_routes">我的軌跡</string>
     <string name="bt_checklist">裝備檢查</string>
+    <string name="search_here">Search Here!</string>
 </resources>
