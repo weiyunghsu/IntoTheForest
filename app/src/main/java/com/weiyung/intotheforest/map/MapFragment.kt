@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -18,9 +17,12 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.maps.route.extensions.drawMarker
 import com.maps.route.extensions.drawRouteOnMap
 import com.maps.route.extensions.moveCameraOnMap
@@ -33,6 +35,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: FragmentMapBinding
     private lateinit var viewModel: MapViewModel
+    val db = Firebase.firestore
+    val latLng = hashMapOf(
+        "lat" to "25.027389",
+        "lng" to "121.5708249",
+        "time" to 101111
+    )
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -65,9 +74,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
         setupPermission()
         mMap.isMyLocationEnabled = true // 右上角的定位功能
-        mMap.uiSettings.isZoomControlsEnabled = true;  // 右下角的放大縮小功能
-        mMap.uiSettings.isCompassEnabled = true;       // 左上角的指南針，要兩指旋轉才會出現
-        mMap.uiSettings.isMapToolbarEnabled = true;    // 右下角的導覽及開啟 Google Map功能
+        mMap.uiSettings.isZoomControlsEnabled = true  // 右下角的放大縮小功能
+        mMap.uiSettings.isCompassEnabled = true       // 左上角的指南針，要兩指旋轉才會出現
+        mMap.uiSettings.isMapToolbarEnabled = true    // 右下角的導覽及開啟 Google Map功能
         // Add a marker in Sydney and move the camera
         val source = LatLng(25.027389, 121.5708249) //starting point (LatLng)
         val destination = LatLng(25.036462, 121.587468) // ending point (LatLng)
@@ -84,23 +93,32 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
 
         val appWorksSchoolPeak = LatLng(25.042477, 121.564879)
-        mMap.addMarker(MarkerOptions().position(appWorksSchoolPeak).title("AppWorksSchool Peak \n台北市基隆路一段178號"))
+        mMap.addMarker(MarkerOptions().position(appWorksSchoolPeak).title("AppWorksSchool Peak \n台北市基隆路一段178號")
+            .icon(BitmapDescriptorFactory.fromResource(R.drawable.outline_hiking_black_36)))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(appWorksSchoolPeak,10F))
 //        mMap.animateCamera(CameraUpdateFactory.zoomTo(18F))
-//        googleMap.setOnPolylineClickListener(this)
-//        googleMap.setOnPolygonClickListener(this)
+//        mMap.setOnPolylineClickListener(this)
+//        mMap.setOnPolygonClickListener(this)
 
-        googleMap?.run {
+        googleMap.run {
             moveCameraOnMap(latLng = source)
-            drawMarker(location = source, context = requireContext(), title = "go to Google Maps to Navigate!")
-            drawRouteOnMap(
-                getString(R.string.google_maps_key),
-                source = source,
-                destination = destination,
-                context = context!!
-            )
+            drawMarker(location = source, context = requireContext(),resDrawable = R.drawable.outline_hiking_black_36, title = "go to Google Maps to Navigate!")
+            drawMarker(location = destination, context = requireContext(),resDrawable = R.drawable.outline_hiking_black_36, title = "go to Google Maps to Navigate!")
+//            drawRouteOnMap(
+//                getString(R.string.google_maps_key),
+//                source = source,
+//                destination = destination,
+//                context = context!!
+//            )
         }
-
+        db.collection("latLngS")
+            .add(latLng)
+            .addOnSuccessListener { document ->
+                Log.d(TAG, "DocumentSnapshot added with ID: ${document.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }
 //        replaceFragmentSafely(MapRouteFragment())
 
         binding.speakButton.setOnClickListener {
