@@ -67,4 +67,6 @@ dependencies {
     // Google Play for Map
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
     implementation "com.google.android.gms:play-services-location:18.0.0"
+    // Draw Route
+    implementation 'com.github.malikdawar:drawroute:1.5'
 }

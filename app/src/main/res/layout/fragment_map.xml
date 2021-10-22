@@ -21,8 +21,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-<!--        tools:layout="@layout/fragment_map"-->
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".MapFragment"
+        tools:layout="@layout/fragment_map">
 
         <EditText
             android:id="@+id/searchAddress"

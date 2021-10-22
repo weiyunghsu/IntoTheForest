@@ -3,7 +3,9 @@ package com.weiyung.intotheforest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.IdRes
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -14,6 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.weiyung.intotheforest.databinding.ActivityMainBinding
+import com.weiyung.intotheforest.map.MapRouteFragment
 import com.weiyung.intotheforest.util.CurrentFragmentType
 
 class MainActivity : AppCompatActivity() {
@@ -71,6 +74,9 @@ class MainActivity : AppCompatActivity() {
         setupNavController()
 
     }
+
+
+
     private fun setupBottomNav() {
         binding.bottomNavView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         val menuView = binding.bottomNavView.getChildAt(0) as BottomNavigationMenuView
@@ -91,4 +97,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
 }
