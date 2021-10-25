@@ -1,5 +1,6 @@
 package com.weiyung.intotheforest.map
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +13,12 @@ import com.google.android.gms.maps.model.LatLng
 import com.maps.route.extensions.drawMarker
 import com.maps.route.extensions.drawRouteOnMap
 import com.maps.route.extensions.moveCameraOnMap
+import com.maps.route.model.TravelMode
 import com.weiyung.intotheforest.R
 
 class MapRouteFragment : Fragment(), OnMapReadyCallback {
     private var googleMap: GoogleMap? = null
+//    private val mContext: Context? = context
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,17 +41,21 @@ class MapRouteFragment : Fragment(), OnMapReadyCallback {
         p0.uiSettings.isZoomControlsEnabled = true;  // 右下角的放大縮小功能
         p0.uiSettings.isCompassEnabled = true;       // 左上角的指南針，要兩指旋轉才會出現
         p0.uiSettings.isMapToolbarEnabled = true;    // 右下角的導覽及開啟 Google Map功能
-        val source = LatLng(25.02752, 121.57083) //starting point (LatLng)
-        val destination = LatLng(25.02720, 121.57315) // ending point (LatLng)
-
+        val source = LatLng(25.027389, 121.570825) //starting point (LatLng)
+        val destination = LatLng(25.036462, 121.587468) // ending point (LatLng)
         googleMap?.run {
             moveCameraOnMap(latLng = source)
-            drawMarker(location = source, context = requireContext(), title = "test marker")
+            drawMarker(location = source, context = requireContext(), title = "test marker",
+                resDrawable = R.drawable.outline_hiking_black_36)
+            drawMarker(location = destination, context = requireContext(), title = "test marker",
+                resDrawable = R.drawable.outline_hiking_black_36)
             drawRouteOnMap(
                 getString(R.string.google_maps_key),
                 source = source,
                 destination = destination,
-                context = context!!
+                context = context!!,
+                markers = false,
+                travelMode = TravelMode.WALKING
             )
         }
     }
