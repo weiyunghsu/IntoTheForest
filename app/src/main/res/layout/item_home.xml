@@ -18,10 +18,11 @@
         android:layout_height="72dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        app:imageUrl="@{article.image}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/home_title"
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="title"
+        android:text="@{article.title}"
         app:layout_constraintStart_toEndOf="@+id/article_image"
         app:layout_constraintTop_toBottomOf="@+id/startDate" />
 
@@ -39,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="author"
+        android:text="@{article.author}"
         app:layout_constraintStart_toEndOf="@+id/article_image"
         app:layout_constraintTop_toBottomOf="@+id/home_title" />
 
@@ -49,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="2021-10-01"
+        android:text="@{article.start_date}"
         app:layout_constraintStart_toEndOf="@+id/article_image"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="2021-10-10"
+        android:text="@{article.end_date}"
         app:layout_constraintStart_toEndOf="@+id/startDate"
         app:layout_constraintTop_toTopOf="parent" />
 

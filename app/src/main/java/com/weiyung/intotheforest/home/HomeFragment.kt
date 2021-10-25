@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.databinding.FragmentHomeBinding
 
@@ -25,16 +26,28 @@ class HomeFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
         val adapter = HomeAdapter(HomeAdapter.OnClickListener{
             viewModel.displayDetail(it)
         })
         binding.rvHome.adapter = adapter
+        val mockList = viewModel.list
+        adapter.submitList(mockList)
+
+
+
         viewModel.naviToSelectedArticle.observe(viewLifecycleOwner, Observer {
             if (null != it){
                 this.findNavController().navigate(NavigationDirections.navigateToDetailFragment())
                 viewModel.displayDetailAll()
             }
         })
+        val listener = SwipeRefreshLayout.OnRefreshListener {
+            binding.rvHome.adapter = adapter
+            adapter.notifyDataSetChanged()
+            binding.swipe.isRefreshing = false
+        }
+        binding.swipe.setOnRefreshListener(listener)
 
         return binding.root
     }
