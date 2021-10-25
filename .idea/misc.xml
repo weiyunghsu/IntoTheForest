@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/bottom_nav_item_selector.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/drawer_item_selector.xml" value="0.1" />
+        <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/favorite_item_selected.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/ic_nav_addarticle_selector.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/ic_nav_favorite_selector.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/ic_nav_home_selector.xml" value="0.1" />
@@ -12,11 +13,13 @@
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/dialog_report.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_addarticle.xml" value="0.1" />
+        <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_detail.xml" value="0.15081521739130435" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_favorite.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_map.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_map_route.xml" value="0.10739614994934144" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_user.xml" value="0.22" />
+        <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/item_home.xml" value="0.15081521739130435" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17916666666666667" />
       </map>
     </option>

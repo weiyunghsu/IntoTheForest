@@ -11,6 +11,12 @@
         tools:layout="@layout/fragment_home">
     </fragment>
     <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.weiyung.intotheforest.detail.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
+    </fragment>
+    <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.weiyung.intotheforest.favorite.FavoriteFragment"
         android:label="FavoriteFragment"
@@ -41,6 +47,9 @@
         tools:layout="@layout/fragment_user">
     </fragment>
     <action android:id="@+id/navigate_to_home_fragment" app:destination="@id/homeFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <action android:id="@+id/navigate_to_detail_fragment" app:destination="@id/detailFragment"
         app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
     <action android:id="@+id/navigate_to_favorite_fragment" app:destination="@id/favoriteFragment"

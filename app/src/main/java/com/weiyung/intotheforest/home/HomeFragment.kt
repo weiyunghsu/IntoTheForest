@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -19,9 +22,20 @@ class HomeFragment : Fragment() {
         viewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        val adapter = HomeAdapter(HomeAdapter.OnClickListener{
+            viewModel.displayDetail(it)
+        })
+        binding.rvHome.adapter = adapter
+        viewModel.naviToSelectedArticle.observe(viewLifecycleOwner, Observer {
+            if (null != it){
+                this.findNavController().navigate(NavigationDirections.navigateToDetailFragment())
+                viewModel.displayDetailAll()
+            }
+        })
+
         return binding.root
     }
 }
