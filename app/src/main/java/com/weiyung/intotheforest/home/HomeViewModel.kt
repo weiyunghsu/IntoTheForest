@@ -17,25 +17,40 @@ class HomeViewModel : ViewModel(){
         _naviToSelectedArticle.value = null
     }
     var list = mutableListOf(
-        Article(1,"2021.01","2021.10","aaaaa",1,"AA",
-            "https://api.appworks-school.tw/assets/201807202157/main.jpg"),
-        Article(2,"2021.01","2021.10","aaaaa",2,"BB",
-            "https://api.appworks-school.tw/assets/201807202157/main.jpg"),
-        Article(3,"2021.01","2021.10","aaaaa",3,"CC",
-            "https://api.appworks-school.tw/assets/201807202157/main.jpg"),
-        Article(4,"2021.01","2021.10","aaaaa",4,"DD",
-            "https://api.appworks-school.tw/assets/201807202157/main.jpg"),
-        Article(5,"2021.01","2021.10","aaaaa",5,"EE",
-            "https://api.appworks-school.tw/assets/201807202157/main.jpg"),
-        Article(6,"2021.01","2021.10","aaaaa",6,"FF",
-            "https://api.appworks-school.tw/assets/201807202157/main.jpg"),
-        Article(7,"2021.01","2021.10","aaaaa",1,"GG",
-            "https://api.appworks-school.tw/assets/201807202157/main.jpg"),
-        Article(8,"2021.01","2021.10","aaaaa",1,"HH",
-            "https://api.appworks-school.tw/assets/201807202157/main.jpg"),
-        Article(9,"2021.01","2021.10","aaaaa",1,"II",
-            "https://api.appworks-school.tw/assets/201807202157/main.jpg"),
-        Article(10,"2021.01","2021.10","aaaaa",1,"JJ",
-            "https://api.appworks-school.tw/assets/201807202157/main.jpg"),)
+        Article(1,"2021.01.01","2021.01.02","登四獸山",1,"Amy",
+            "https://firebasestorage.googleapis.com/v0/b/intotheforest.appspot.com/o/four_animals.jpg?alt=media&token=df229f40-7148-4ef0-807d-51890f9c3bb8",
+            "臣亮言：先帝創業未半，而中道崩殂。今天下三分，益州疲弊，此誠危急存亡之秋也。\n" +
+                    "然侍衛之臣，不懈於內；忠志之士，忘身於外者，蓋追先帝之殊遇，欲報之於陛下也。\n" +
+                    "誠宜開張聖聽，以光先帝遺德，恢弘志士之氣；不宜妄自菲薄，引喻失義，以塞忠諫之路也。\n" +
+                    "宮中府中，俱為體，陟罰臧否，不宜異同。若有作姦犯科，及為忠善者，宜付有司，論其刑賞，以昭陛下平明之治，不宜篇私，使內外異法也。\n" +
+                    "侍中、侍郎郭攸之、費褘、董允等，此皆良實，志慮忠純，是以先帝簡拔以遺陛下。愚以為宮中之事，事無大小，悉以咨之，然後施行，必能裨補闕漏，有所廣益。\n" +
+                    "將軍向寵，性行淑均，曉暢軍事，試用於昔日，先帝稱之曰「能」，是以眾議舉寵為督。\n" +
+                    "愚以為營中之事，悉以咨之，必能使行陣和睦，優劣得所。親賢臣，遠小人，此先漢所以興隆也；親小人，遠賢臣，此後漢所以傾頹也。\n" +
+                    "先帝在時，每與臣論此事，未嘗不歎息痛恨於桓、靈也。侍中、尚書、長史；參軍，此悉貞良死節之臣也，願陛下親之信之，則漢室之隆，可計日而待也。\n" +
+                    "臣本布衣，躬耕於南陽，苟全性命於亂世，不求聞達於諸侯。先帝不以臣卑鄙，猥自枉屈，三顧臣於草廬之中，諮臣以當世之事，由是感激，遂許先帝以驅馳。\n" +
+                    "後值傾覆，受任於敗軍之際，奉命於危難之間，爾來二十有一年矣！先帝知臣謹慎，故臨崩寄臣以大事也。\n" +
+                    "受命以來，夙夜憂勤，恐託付不效，以傷先帝之明。故五月渡瀘，深入不毛。\n" +
+                    "今南方已定，兵甲已足，當獎率三軍，北定中原，庶竭駑鈍，攘除奸凶，興復漢室，還於舊都；此臣所以報先帝而忠陛下之職分也。\n" +
+                    "至於斟酌損益，進盡忠言，則攸之、褘、允之任也。願陛下託臣以討賊興復之效；不效，則治臣之罪，以告先帝之靈。\n" +
+                    "若無興德之言，則戮允等，以彰其慢。陛下亦宜自課，以諮諏善道，察納雅言，深追先帝遺詔，臣不勝受恩感激。\n" +
+                    "今當遠離，臨表涕零，不知所云。"),
+        Article(2,"2021.02.01","2021.02.02","登七星山",2,"Bob",
+            "https://firebasestorage.googleapis.com/v0/b/intotheforest.appspot.com/o/seven_star.jpg?alt=media&token=f412a800-a902-444f-b3ab-26cde2a4fb7b","222"),
+        Article(3,"2021.03.01","2021.03.02","登三貂嶺",3,"Candy",
+           "https://firebasestorage.googleapis.com/v0/b/intotheforest.appspot.com/o/three_diao.jpg?alt=media&token=3173d9db-03c3-4831-9dce-31c97c3d59ae","333"),
+        Article(4,"2021.04.01","2021.04.02","登劍潭山",4,"Dylan",
+           "https://firebasestorage.googleapis.com/v0/b/intotheforest.appspot.com/o/jian_tan.jpg?alt=media&token=d27dac67-0cb7-4b21-ad65-6bd05f72c805","444"),
+        Article(5,"2021.05.01","2021.05.02","登觀音山",5,"Emily",
+           "https://firebasestorage.googleapis.com/v0/b/intotheforest.appspot.com/o/kuan_in.jpg?alt=media&token=e5c25288-20ad-45bf-89e9-92853e1f6f6e","555"),
+        Article(6,"2021.06.01","2021.06.02","四獸山遊記",6,"Fox",
+            "https://firebasestorage.googleapis.com/v0/b/intotheforest.appspot.com/o/four_animals.jpg?alt=media&token=df229f40-7148-4ef0-807d-51890f9c3bb8","666"),
+        Article(7,"2021.07.01","2021.07.02","七星山遊記",7,"Gary",
+           "https://firebasestorage.googleapis.com/v0/b/intotheforest.appspot.com/o/seven_star.jpg?alt=media&token=f412a800-a902-444f-b3ab-26cde2a4fb7b","777"),
+        Article(8,"2021.08.01","2021.08.02","三貂嶺遊記",8,"Harry",
+           "https://firebasestorage.googleapis.com/v0/b/intotheforest.appspot.com/o/three_diao.jpg?alt=media&token=3173d9db-03c3-4831-9dce-31c97c3d59ae","888"),
+        Article(9,"2021.09.01","2021.09.02","劍潭山遊記",9,"Ian",
+            "https://firebasestorage.googleapis.com/v0/b/intotheforest.appspot.com/o/jian_tan.jpg?alt=media&token=d27dac67-0cb7-4b21-ad65-6bd05f72c805","999"),
+        Article(10,"2021.10.01","2021.10.02","觀音山遊記",10,"Jay",
+            "https://firebasestorage.googleapis.com/v0/b/intotheforest.appspot.com/o/kuan_in.jpg?alt=media&token=e5c25288-20ad-45bf-89e9-92853e1f6f6e","101010"),)
 
 }

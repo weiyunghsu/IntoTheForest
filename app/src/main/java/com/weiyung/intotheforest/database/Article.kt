@@ -9,5 +9,6 @@ data class Article (
     val title : String,
     val author_id : Int,
     val author : String,
-    val image : String
+    val image : String,
+    val story : String
     )

@@ -30,11 +30,10 @@ class HomeFragment : Fragment() {
         val adapter = HomeAdapter(HomeAdapter.OnClickListener{
             viewModel.displayDetail(it)
         })
+
         binding.rvHome.adapter = adapter
         val mockList = viewModel.list
         adapter.submitList(mockList)
-
-
 
         viewModel.naviToSelectedArticle.observe(viewLifecycleOwner, Observer {
             if (null != it){

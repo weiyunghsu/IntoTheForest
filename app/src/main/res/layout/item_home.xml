@@ -14,10 +14,12 @@
 
     <ImageView
         android:id="@+id/article_image"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/article_image"
+        android:scaleType="centerCrop"
         app:imageUrl="@{article.image}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -30,9 +32,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/noto_sans"
         android:text="@{article.title}"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/article_image"
-        app:layout_constraintTop_toBottomOf="@+id/startDate" />
+        app:layout_constraintTop_toBottomOf="@+id/startDate"
+        tools:text="七星山兩日遊" />
 
     <TextView
         android:id="@+id/home_author"
@@ -40,9 +45,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/noto_sans"
         android:text="@{article.author}"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/article_image"
-        app:layout_constraintTop_toBottomOf="@+id/home_title" />
+        app:layout_constraintTop_toBottomOf="@+id/home_title"
+        tools:text="專欄作者" />
 
     <TextView
         android:id="@+id/startDate"
@@ -50,9 +58,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/noto_sans"
         android:text="@{article.start_date}"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/article_image"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2021.10.10" />
 
     <TextView
         android:id="@+id/endDate"
@@ -60,23 +71,27 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/noto_sans"
         android:text="@{article.end_date}"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/startDate"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2021.10.11" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/home_favotite_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:background="@drawable/favorite_item_selected"
         android:backgroundTint="@color/transparent"
+        android:contentDescription="@string/home_favotite_button"
         android:minWidth="48dp"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/outline_favorite_black_36"
+        app:srcCompat="@drawable/ic_nav_favorite_selector"
         tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
