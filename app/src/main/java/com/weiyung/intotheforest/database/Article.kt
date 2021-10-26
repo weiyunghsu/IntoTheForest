@@ -5,11 +5,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Article (
-    val article_id : Int,
-    val start_date : String,
-    val end_date : String,
+    val articleId : Int,
+    val startDate : String,
+    val endDate : String,
     val title : String,
-    val author_id : Int,
+    val authorId : Int,
     val author : String,
     val image : String,
     val story : String

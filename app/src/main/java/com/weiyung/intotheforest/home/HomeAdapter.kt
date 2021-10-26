@@ -23,7 +23,7 @@ class HomeAdapter (private val onClickListener: OnClickListener):
         }
 
         override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
-            return oldItem.article_id == newItem.article_id
+            return oldItem.articleId == newItem.articleId
         }
     }
     override fun onCreateViewHolder(

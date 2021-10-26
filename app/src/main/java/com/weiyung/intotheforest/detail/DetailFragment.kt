@@ -1,16 +1,23 @@
 package com.weiyung.intotheforest.detail
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentDetailBinding
 
-class DetailFragment : Fragment(){
+class DetailFragment : Fragment(), OnMapReadyCallback {
+    private lateinit var mMap: GoogleMap
     private lateinit var viewModel: DetailViewModel
     private lateinit var binding: FragmentDetailBinding
     private lateinit var detailViewModelFactory: DetailViewModelFactory
@@ -33,6 +40,27 @@ class DetailFragment : Fragment(){
         binding.backButton.setOnClickListener { view:View ->
             view.findNavController().navigate(R.id.navigate_to_home_fragment)
         }
+
+//        val mapFragment = childFragmentManager.findFragmentById(R.id.mapView) as SupportMapFragment
+//        mapFragment.getMapAsync(this)
+
         return binding.root
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+        fun setupPermission() {
+            if (ContextCompat.checkSelfPermission(this.binding.root.context, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED){
+                requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 999)
+            } else {
+                mMap.isMyLocationEnabled = true
+            }
+        }
+        setupPermission()
+        mMap.isMyLocationEnabled = true // 右上角的定位功能
+        mMap.uiSettings.isZoomControlsEnabled = true  // 右下角的放大縮小功能
+        mMap.uiSettings.isCompassEnabled = true
+
     }
 }
