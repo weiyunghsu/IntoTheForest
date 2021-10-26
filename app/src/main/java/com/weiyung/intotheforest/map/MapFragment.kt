@@ -36,6 +36,7 @@ import com.weiyung.intotheforest.databinding.FragmentMapBinding
 
 class MapFragment : Fragment(), OnMapReadyCallback {
 //    private val mContext: Context = (activity as MainActivity).applicationContext
+//    val application = requireNotNull(this.activity).application
     private lateinit var mMap: GoogleMap
     private lateinit var binding: FragmentMapBinding
     private lateinit var viewModel: MapViewModel
@@ -60,6 +61,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
         return binding.root
 
     }
