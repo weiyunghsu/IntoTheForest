@@ -19,7 +19,7 @@
             android:id="@+id/user_view"
             android:layout_width="0dp"
             android:layout_height="120dp"
-            android:background="#08420B"
+            android:background="@color/light_green_900"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

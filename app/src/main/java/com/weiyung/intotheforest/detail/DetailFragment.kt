@@ -16,8 +16,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentDetailBinding
 
-class DetailFragment : Fragment(), OnMapReadyCallback {
-    private lateinit var mMap: GoogleMap
+class DetailFragment : Fragment() {
     private lateinit var viewModel: DetailViewModel
     private lateinit var binding: FragmentDetailBinding
     private lateinit var detailViewModelFactory: DetailViewModelFactory
@@ -40,27 +39,12 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
         binding.backButton.setOnClickListener { view:View ->
             view.findNavController().navigate(R.id.navigate_to_home_fragment)
         }
-
-//        val mapFragment = childFragmentManager.findFragmentById(R.id.mapView) as SupportMapFragment
-//        mapFragment.getMapAsync(this)
+        binding.goToMapButton.setOnClickListener { view:View ->
+            view.findNavController().navigate(R.id.navigate_to_map_fragment)
+        }
 
         return binding.root
     }
 
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-        fun setupPermission() {
-            if (ContextCompat.checkSelfPermission(this.binding.root.context, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED){
-                requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 999)
-            } else {
-                mMap.isMyLocationEnabled = true
-            }
-        }
-        setupPermission()
-        mMap.isMyLocationEnabled = true // 右上角的定位功能
-        mMap.uiSettings.isZoomControlsEnabled = true  // 右下角的放大縮小功能
-        mMap.uiSettings.isCompassEnabled = true
 
-    }
 }

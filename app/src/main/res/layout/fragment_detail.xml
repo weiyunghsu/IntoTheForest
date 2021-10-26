@@ -36,9 +36,6 @@
                     android:id="@+id/detail_main_image"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
                     android:contentDescription="@string/detail_main_image"
                     android:scaleType="centerCrop"
                     app:imageUrl="@{article.image}"
@@ -182,24 +179,24 @@
                     android:id="@+id/go_to_map_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="@color/light_green_900"
                     android:text="@string/go_to_map_button"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/detail_reImages" />
-
-                <com.google.android.gms.maps.MapView
-                    android:id="@+id/mapView"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/go_to_map_button"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    app:layout_constraintTop_toBottomOf="@+id/detail_mini_map" />
+
+<!--                <com.google.android.gms.maps.MapView-->
+<!--                    android:id="@+id/mapView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="200dp"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:layout_marginEnd="16dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/go_to_map_button"-->
+<!--                    tools:ignore="SpeakableTextPresentCheck" />-->
 <!--                android:name="com.google.android.gms.maps.mapView"-->
                 <TextView
                     android:id="@+id/detail_weather"
@@ -209,7 +206,7 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/detail_weather"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mapView" />
+                    app:layout_constraintTop_toBottomOf="@+id/go_to_map_button" />
 
                 <androidx.constraintlayout.utils.widget.MockView
                     android:id="@+id/weather_info"
