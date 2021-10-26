@@ -20,10 +20,16 @@ class DetailFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this)
+        detailViewModelFactory = DetailViewModelFactory(DetailFragmentArgs.fromBundle(requireArguments()).article)
+        viewModel = ViewModelProvider(this, detailViewModelFactory)
             .get(DetailViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        val args = DetailFragmentArgs.fromBundle(requireArguments())
+        val article = args.article
+        binding.article = article
+
         binding.backButton.setOnClickListener { view:View ->
             view.findNavController().navigate(R.id.navigate_to_home_fragment)
         }

@@ -1,7 +1,9 @@
 package com.weiyung.intotheforest.database
 
-import android.widget.DatePicker
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Article (
     val article_id : Int,
     val start_date : String,
@@ -11,4 +13,4 @@ data class Article (
     val author : String,
     val image : String,
     val story : String
-    )
+    ): Parcelable

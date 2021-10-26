@@ -18,6 +18,9 @@
         android:name="com.weiyung.intotheforest.detail.DetailFragment"
         android:label="DetailFragment"
         tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="article"
+            app:argType="com.weiyung.intotheforest.database.Article" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.weiyung.intotheforest.database.Article
 import com.weiyung.intotheforest.databinding.ItemHomeBinding
 
-class HomeAdapter (val onClickListener: OnClickListener):
+class HomeAdapter (private val onClickListener: OnClickListener):
     ListAdapter<Article, HomeAdapter.ViewHolder>(DiffCallback){
         class ViewHolder(private var binding: ItemHomeBinding):
                 RecyclerView.ViewHolder(binding.root){

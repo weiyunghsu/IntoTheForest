@@ -30,4 +30,11 @@
     <string name="search_here">Search Here!</string>
     <string name="article_image">article_image</string>
     <string name="home_favotite_button">home_favotite_button</string>
+    <string name="detail_weather">天氣預報</string>
+    <string name="go_to_map_button">觀看詳細地圖</string>
+    <string name="detail_mini_map">軌跡概覽</string>
+    <string name="detail_favorite_button">detail_favorite_button</string>
+    <string name="detail_share_button">detail_share_button</string>
+    <string name="detail_main_image">detail_main_image</string>
+    <string name="back_button">back_button</string>
 </resources>

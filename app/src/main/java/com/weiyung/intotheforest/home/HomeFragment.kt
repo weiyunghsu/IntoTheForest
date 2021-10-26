@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
 
         viewModel.naviToSelectedArticle.observe(viewLifecycleOwner, Observer {
             if (null != it){
-                this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment())
+                this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(it))
                 viewModel.displayDetailAll()
             }
         })

@@ -127,14 +127,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             )
             Log.i(TAG,"context2")
         }
-        db.collection("latLngS")
-            .add(latLng)
-            .addOnSuccessListener { document ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${document.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
-            }
+        // add latLngS data
+//        db.collection("latLngS")
+//            .add(latLng)
+//            .addOnSuccessListener { document ->
+//                Log.d(TAG, "DocumentSnapshot added with ID: ${document.id}")
+//            }
+//            .addOnFailureListener { e ->
+//                Log.w(TAG, "Error adding document", e)
+//            }
 //        replaceFragmentSafely(MapRouteFragment())
 
         binding.speakButton.setOnClickListener {
