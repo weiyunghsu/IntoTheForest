@@ -37,4 +37,11 @@
     <string name="detail_share_button">detail_share_button</string>
     <string name="detail_main_image">detail_main_image</string>
     <string name="back_button">back_button</string>
+    <string name="to">至</string>
+    <string name="detail_review">detail_review</string>
+    <string name="addStartDate">選擇起日</string>
+    <string name="addEndDate">選擇迄日</string>
+    <string name="addTitle">輸入標題</string>
+    <string name="addStory">文章內容</string>
+    <string name="addPhoto">新增相片</string>
 </resources>
