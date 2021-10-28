@@ -17,72 +17,75 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:ignore="SpeakableTextPresentCheck"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/addStartDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="32dp"
                     android:fontFamily="@font/noto_sans"
                     android:text="@string/addStartDate"
                     android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputStartDate"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/inputStartDate" />
 
                 <TextView
                     android:id="@+id/addEndDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="32dp"
                     android:fontFamily="@font/noto_sans"
                     android:text="@string/addEndDate"
                     android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputEndDate"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/addStartDate" />
+                    app:layout_constraintTop_toTopOf="@+id/inputEndDate" />
 
                 <TextView
                     android:id="@+id/addTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="32dp"
                     android:fontFamily="@font/noto_sans"
                     android:text="@string/addTitle"
                     android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputTitle"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/addEndDate" />
+                    app:layout_constraintTop_toTopOf="@+id/inputTitle" />
 
                 <TextView
                     android:id="@+id/addStory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="32dp"
                     android:fontFamily="@font/noto_sans"
                     android:text="@string/addStory"
                     android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputStory"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/addTitle" />
+                    app:layout_constraintTop_toTopOf="@+id/inputStory" />
 
                 <TextView
                     android:id="@+id/addPhoto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/noto_sans"
                     android:text="@string/addPhoto"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/inputPhotoButton"
-                    app:layout_constraintEnd_toStartOf="@+id/inputPhotoButton"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/inputPhotoButton" />
 
                 <EditText
@@ -90,16 +93,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/inputStartDate"
                     android:inputType="date"
                     android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/addStartDate"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/addStartDate"
-                    app:layout_constraintTop_toTopOf="@+id/addStartDate"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="TextContrastCheck" />
 
                 <EditText
@@ -107,16 +109,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/inputEndDate"
                     android:inputType="date"
                     android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/addEndDate"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/addEndDate"
-                    app:layout_constraintTop_toTopOf="@+id/addEndDate"
+                    app:layout_constraintTop_toBottomOf="@+id/inputStartDate"
                     tools:ignore="TextContrastCheck,TextContrastCheck" />
 
                 <EditText
@@ -124,32 +125,33 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:autofillHints=""
                     android:ems="10"
                     android:hint="@string/inputTitle"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/addTitle"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/addTitle"
-                    app:layout_constraintTop_toTopOf="@+id/addTitle" />
+                    app:layout_constraintTop_toBottomOf="@+id/inputEndDate" />
 
                 <EditText
                     android:id="@+id/inputStory"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:autofillHints=""
+                    android:ellipsize="end"
                     android:ems="10"
                     android:hint="@string/inputStory"
-                    android:inputType="textPersonName"
+                    android:inputType="textMultiLine"
                     android:minHeight="48dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/addStory"
+                    android:singleLine="false"
+                    android:textIsSelectable="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/addStory"
-                    app:layout_constraintTop_toTopOf="@+id/addStory" />
+                    app:layout_constraintTop_toBottomOf="@+id/inputTitle" />
 
                 <ImageButton
                     android:id="@+id/inputPhotoButton"
@@ -167,14 +169,14 @@
                     android:id="@+id/addPostButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@color/light_green_900"
                     android:fontFamily="@font/noto_sans"
                     android:text="@string/addPostButton"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toEndOf="@+id/inputPhotoButton"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/inputStory" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

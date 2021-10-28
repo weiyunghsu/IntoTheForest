@@ -5,6 +5,7 @@
     <string name="addarticle">新增文章</string>
     <string name="map">地圖</string>
     <string name="user">個人</string>
+    <string name="detail">詳細資訊</string>
 
     <string name="floatbutton1">floatButton1</string>
     <string name="police_text">致電警察局 110</string>
@@ -50,4 +51,5 @@
     <string name="inputTitle">Title</string>
     <string name="inputStory">Story</string>
     <string name="inputPhotoButton">inputPhotoButton</string>
+    <string name="nothing_happen">nothing happen</string>
 </resources>

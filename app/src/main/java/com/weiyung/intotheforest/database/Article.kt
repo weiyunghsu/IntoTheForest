@@ -5,12 +5,13 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Article (
-    val articleId : Int,
+    var id: String,
+    var createdTime: Long = -1,
     val startDate : String,
     val endDate : String,
+    val user : User? = null,
     val title : String,
-    val authorId : Int,
-    val author : String,
-    val image : String,
-    val story : String
+    val story : String,
+    val mainImage: String,
+    val images : List<String>,
     ): Parcelable
