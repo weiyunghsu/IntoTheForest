@@ -28,9 +28,9 @@ class DetailFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-//        val args = DetailFragmentArgs.fromBundle(requireArguments())
-//        val article = args.articleKey
-//        binding.article = article
+        val args = DetailFragmentArgs.fromBundle(requireArguments())
+        val article = args.articleKey
+        binding.article = article
 
         binding.backButton.setOnClickListener { view:View ->
             view.findNavController().navigate(R.id.navigate_to_home_fragment)
