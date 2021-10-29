@@ -1,6 +1,8 @@
 package com.weiyung.intotheforest.home
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,6 +59,13 @@ class HomeFragment : Fragment() {
             binding.swipe.isRefreshing = false
         }
         binding.swipe.setOnRefreshListener(listener)
+
+        viewModel.liveArticles.observe(viewLifecycleOwner, Observer {
+            Log.d(TAG,"viewModel.liveArticles.observe, it=$it")
+            it?.let {
+                binding.viewModel = viewModel
+            }
+        })
 
         return binding.root
     }

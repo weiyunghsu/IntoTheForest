@@ -23,11 +23,11 @@
         android:layout_marginTop="16dp"
         android:contentDescription="@string/article_image"
         android:scaleType="centerCrop"
+        app:imageUrl="@{article.mainImage}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
-<!--    app:imageUrl="@{article.image}"-->
 
     <TextView
         android:id="@+id/home_title"
@@ -49,7 +49,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/noto_sans"
-        android:text="@{user.name}"
+        android:text="@{article.user.name}"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/article_image"
         app:layout_constraintTop_toBottomOf="@+id/home_title"

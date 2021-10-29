@@ -12,6 +12,6 @@ data class Article(
     var user: User? = null,
     var title: String = "",
     var story: String = "",
-//    val mainImage: String = "",
+    val mainImage: String = "",
 //    val images : List<String>,
     ): Parcelable

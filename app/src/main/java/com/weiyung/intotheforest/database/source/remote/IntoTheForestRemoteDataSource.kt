@@ -19,6 +19,7 @@ import kotlin.coroutines.suspendCoroutine
 object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
     private const val PATH_ARTICLES = "articles"
     private const val KEY_CREATED_TIME = "createdTime"
+    private const val KEY_ID = "id"
 
     override suspend fun login(id: String): Result<User> {
         TODO("Not yet implemented")
@@ -57,7 +58,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
         val liveData = MutableLiveData<List<Article>>()
         FirebaseFirestore.getInstance()
             .collection(PATH_ARTICLES)
-            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+            .orderBy(KEY_ID, Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, exception ->
                 Log.i(TAG,"addSnapshotListener detect")
                 exception?.let {
@@ -108,7 +109,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
 //                    && article.tag.toLowerCase(Locale.TAIWAN) != "test"
 //                    && article.tag.trim().isNotEmpty()
             -> {
-                continuation.resume(Result.Fail("You know nothing!! ${article.user?.name}"))
+                continuation.resume(Result.Fail("nothing happen ${article.user?.name}"))
             }
             else -> {
                 FirebaseFirestore.getInstance()
