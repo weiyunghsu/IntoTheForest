@@ -9,4 +9,5 @@ enum class CurrentFragmentType(val value: String) {
     ADDARTICLE(getString(R.string.addarticle)),
     MAP(getString(R.string.map)),
     USER(getString(R.string.user)),
+    DETAIL(getString(R.string.detail))
 }

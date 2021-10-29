@@ -139,7 +139,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 //        replaceFragmentSafely(MapRouteFragment())
 
         binding.speakButton.setOnClickListener {
-            Log.i(TAG,"Where is my help button?")
+            Log.i(TAG,"Where is my help addPostButton?")
             findNavController().navigate(NavigationDirections.navigateToReportDialog())
         }
     }

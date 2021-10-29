@@ -7,6 +7,9 @@
         <variable
             name="article"
             type="com.weiyung.intotheforest.database.Article" />
+        <variable
+            name="user"
+            type="com.weiyung.intotheforest.database.User" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -17,10 +20,12 @@
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
         android:contentDescription="@string/article_image"
         android:scaleType="centerCrop"
-        app:imageUrl="@{article.image}"
+        app:imageUrl="@{article.mainImage}"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ImageContrastCheck"
@@ -46,7 +51,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/noto_sans"
-        android:text="@{article.author}"
+        android:text="@{article.user.name}"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/article_image"
         app:layout_constraintTop_toBottomOf="@+id/home_title"
@@ -69,30 +74,26 @@
         android:id="@+id/endDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/noto_sans"
         android:text="@{article.endDate}"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/startDate"
+        app:layout_constraintStart_toEndOf="@+id/to"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="2021.10.11" />
 
-    <ImageButton
-        android:id="@+id/home_favotite_button"
+    <TextView
+        android:id="@+id/to"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/favorite_item_selected"
-        android:backgroundTint="@color/transparent"
-        android:contentDescription="@string/home_favotite_button"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_nav_favorite_selector"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/noto_sans"
+        android:text="@string/to"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/startDate"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,9 +3,11 @@ package com.weiyung.intotheforest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.annotation.IdRes
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -16,11 +18,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.weiyung.intotheforest.databinding.ActivityMainBinding
+import com.weiyung.intotheforest.ext.getVmFactory
 import com.weiyung.intotheforest.map.MapRouteFragment
 import com.weiyung.intotheforest.util.CurrentFragmentType
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var viewModel: MainViewModel
+    val viewModel by viewModels<MainViewModel> { getVmFactory() }
+
+//    private lateinit var viewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -34,7 +39,9 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_addarticle -> {
-                findNavController(R.id.myNavHostFragment).navigate(NavigationDirections.navigateToAddArticleFragment())
+                findNavController(R.id.myNavHostFragment).navigate(NavigationDirections.navigateToAddArticleFragment(
+                    viewModel.user.value!!
+                ))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_map -> {
@@ -51,8 +58,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        viewModel =
-            ViewModelProvider(this).get(MainViewModel::class.java)
+//        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 

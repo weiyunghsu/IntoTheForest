@@ -1,26 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <variable
             name="viewModel"
             type="com.weiyung.intotheforest.addarticle.AddArticleViewModel" />
+        <import type="com.weiyung.intotheforest.network.LoadApiStatus"/>
+        <import type="android.view.View"/>
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="addArticle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/addStartDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:text="@string/addStartDate"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputStartDate"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/inputStartDate" />
+
+                <TextView
+                    android:id="@+id/addEndDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:text="@string/addEndDate"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputEndDate"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/inputEndDate" />
+
+                <TextView
+                    android:id="@+id/addTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:text="@string/addTitle"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/inputTitle" />
+
+                <TextView
+                    android:id="@+id/addStory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:text="@string/addStory"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputStory"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/inputStory" />
+
+                <TextView
+                    android:id="@+id/addPhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:text="@string/addPhoto"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputPhotoButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/inputPhotoButton" />
+
+                <EditText
+                    android:id="@+id/inputStartDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:ems="10"
+                    android:hint="@string/inputStartDate"
+                    android:inputType="date"
+                    android:minHeight="48dp"
+                    android:text="@={viewModel.article.startDate}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/addStartDate"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/inputEndDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:ems="10"
+                    android:hint="@string/inputEndDate"
+                    android:inputType="date"
+                    android:minHeight="48dp"
+                    android:text="@={viewModel.article.endDate}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/addEndDate"
+                    app:layout_constraintTop_toBottomOf="@+id/inputStartDate"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/inputTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:ems="10"
+                    android:hint="@string/inputTitle"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:text="@={viewModel.article.title}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/addTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/inputEndDate" />
+
+                <EditText
+                    android:id="@+id/inputStory"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:ellipsize="end"
+                    android:ems="10"
+                    android:hint="@string/inputStory"
+                    android:inputType="textMultiLine"
+                    android:minHeight="48dp"
+                    android:singleLine="false"
+                    android:textIsSelectable="true"
+                    android:text="@={viewModel.article.story}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/addStory"
+                    app:layout_constraintTop_toBottomOf="@+id/inputTitle" />
+
+                <ImageButton
+                    android:id="@+id/inputPhotoButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/transparent"
+                    android:contentDescription="@string/inputPhotoButton"
+                    app:layout_constraintStart_toStartOf="@+id/inputStory"
+                    app:layout_constraintTop_toBottomOf="@+id/inputStory"
+                    app:srcCompat="@drawable/outline_add_photo_alternate_black_36"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <Button
+                    android:id="@+id/addPostButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_round_button"
+                    android:fontFamily="@font/noto_sans"
+                    android:text="@string/addPostButton"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:onClick="@{() -> viewModel.addData(viewModel.article)}"
+                    android:clickable="@{viewModel.status == LoadApiStatus.LOADING ? false : true}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputStory" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

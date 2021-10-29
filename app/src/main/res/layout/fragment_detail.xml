@@ -12,6 +12,9 @@
         <variable
             name="article"
             type="com.weiyung.intotheforest.database.Article" />
+        <variable
+            name="user"
+            type="com.weiyung.intotheforest.database.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,11 +41,12 @@
                     android:layout_height="200dp"
                     android:contentDescription="@string/detail_main_image"
                     android:scaleType="centerCrop"
-                    app:imageUrl="@{article.image}"
+                    app:imageUrl="@{article.mainImage}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
 
                 <ImageButton
                     android:id="@+id/back_button"
@@ -54,7 +58,7 @@
                     android:contentDescription="@string/back_button"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,ImageContrastCheck"
                     tools:srcCompat="@drawable/icons_44px_back01" />
 
                 <TextView
@@ -74,12 +78,12 @@
                     android:id="@+id/detail_end_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/noto_sans"
                     android:text="@{article.endDate}"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toEndOf="@+id/detail_start_date"
+                    app:layout_constraintStart_toEndOf="@+id/to2"
                     app:layout_constraintTop_toBottomOf="@+id/detail_main_image"
                     tools:text="2021.10.02" />
 
@@ -90,7 +94,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/noto_sans"
-                    android:text="@{article.author}"
+                    android:text="@{article.user.name}"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/detail_start_date"
@@ -110,17 +114,28 @@
                     tools:text="這是一篇文章標題" />
 
                 <ImageButton
+                    android:id="@+id/detail_review_button"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/transparent"
+                    android:contentDescription="@string/detail_review"
+                    app:layout_constraintEnd_toStartOf="@+id/detail_favorite_button"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_main_image"
+                    app:srcCompat="@drawable/outline_rate_review_black_36"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <ImageButton
                     android:id="@+id/detail_favorite_button"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
                     android:backgroundTint="@color/transparent"
                     android:contentDescription="@string/detail_favorite_button"
                     app:layout_constraintEnd_toStartOf="@+id/detail_share_button"
                     app:layout_constraintTop_toBottomOf="@+id/detail_main_image"
-                    tools:ignore="SpeakableTextPresentCheck"
-                    app:srcCompat="@drawable/favorite_item_selected" />
+                    app:srcCompat="@drawable/favorite_item_selected"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageButton
                     android:id="@+id/detail_share_button"
@@ -160,7 +175,6 @@
                     android:layout_marginEnd="16dp"
                     android:scrollbars="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/detail_story" />
 
@@ -179,7 +193,10 @@
                     android:id="@+id/go_to_map_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bg_round_button"
                     android:backgroundTint="@color/light_green_900"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="8dp"
                     android:text="@string/go_to_map_button"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -216,9 +233,23 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
+                    android:paddingBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/detail_weather" />
+
+                <TextView
+                    android:id="@+id/to2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:text="@string/to"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/detail_start_date"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_main_image" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
