@@ -6,8 +6,7 @@ import com.weiyung.intotheforest.util.ServiceLocator
 import kotlin.properties.Delegates
 
 class IntoTheForestApplication : Application(){
-
-    val intoTheForestRepository: IntoTheForestRepository
+        val repository: IntoTheForestRepository
         get() = ServiceLocator.provideRepository(this)
 
     companion object {

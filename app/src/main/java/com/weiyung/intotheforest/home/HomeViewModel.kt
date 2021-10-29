@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.weiyung.intotheforest.database.Article
+import com.weiyung.intotheforest.database.source.IntoTheForestRepository
 
-class HomeViewModel : ViewModel(){
+class HomeViewModel (private val repository: IntoTheForestRepository): ViewModel(){
     private val _naviToSelectedArticle = MutableLiveData<Article>()
     val naviToSelectedArticle : LiveData<Article>
         get() = _naviToSelectedArticle

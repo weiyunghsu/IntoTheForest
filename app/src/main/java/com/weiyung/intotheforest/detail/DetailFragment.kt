@@ -1,39 +1,35 @@
 package com.weiyung.intotheforest.detail
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentDetailBinding
+import com.weiyung.intotheforest.ext.getVmFactory
 
 class DetailFragment : Fragment() {
-    private lateinit var viewModel: DetailViewModel
+    private val viewModel by viewModels<DetailViewModel> { getVmFactory(DetailFragmentArgs.fromBundle(requireArguments()).articleKey) }
     private lateinit var binding: FragmentDetailBinding
-    private lateinit var detailViewModelFactory: DetailViewModelFactory
+//    private lateinit var viewModel: DetailViewModel
+//    private lateinit var detailViewModelFactory: DetailViewModelFactory
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
-        detailViewModelFactory = DetailViewModelFactory(DetailFragmentArgs.fromBundle(requireArguments()).article)
-        viewModel = ViewModelProvider(this, detailViewModelFactory)
-            .get(DetailViewModel::class.java)
+//        detailViewModelFactory = DetailViewModelFactory(repository,DetailFragmentArgs.fromBundle(requireArguments()).articleKey)
+//        viewModel = ViewModelProvider(this, detailViewModelFactory)
+//            .get(DetailViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
         val args = DetailFragmentArgs.fromBundle(requireArguments())
-        val article = args.article
+        val article = args.articleKey
         binding.article = article
 
         binding.backButton.setOnClickListener { view:View ->
