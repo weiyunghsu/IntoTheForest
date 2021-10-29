@@ -47,13 +47,6 @@ fun bindDisplayFormatTime(textView: TextView, time: Long?) {
     textView.text = time?.toDisplayFormat()
 }
 
-@BindingAdapter("title")
-fun EditText.bindAnyToString(value: Any?) {
-    value?.let {
-        setText(value.toString())
-    }
-}
-
 @BindingAdapter("setupApiStatus")
 fun bindApiStatus(view: ProgressBar, status: LoadApiStatus?) {
     when (status) {

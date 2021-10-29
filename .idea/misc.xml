@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/bg_round_button.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/bottom_nav_item_selector.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/drawer_item_selector.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/favorite_item_selected.xml" value="0.1" />

@@ -34,22 +34,22 @@ class AddArticleFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        val newID = db.collection("data").document().id
-//        val createTime = DateTimeFormatter.ISO_INSTANT.format(Instant.now()).toLong()
-        val editStartDate = binding.inputStartDate.text.toString()
-        val editEndDate = binding.inputEndDate.text.toString()
-        val editUser = User("3748","Amy","aaa@gmail.com","3939889","xxxUri")
-        val editTitle = binding.inputTitle.text.toString()
-        val editStory = binding.inputStory.text.toString()
-        val editArticle = Article(
-            newID,
-//            createTime,
-            editStartDate,
-            editEndDate,
-            editUser,
-            editTitle,
-            editStory
-        )
+//        val newID = db.collection("data").document().id
+////        val createTime = DateTimeFormatter.ISO_INSTANT.format(Instant.now()).toLong()
+//        val editStartDate = binding.inputStartDate.text.toString()
+//        val editEndDate = binding.inputEndDate.text.toString()
+//        val editUser = User("3748","Amy","aaa@gmail.com","3939889","xxxUri")
+//        val editTitle = binding.inputTitle.text.toString()
+//        val editStory = binding.inputStory.text.toString()
+//        val editArticle = Article(
+//            newID,
+////            createTime,
+//            editStartDate,
+//            editEndDate,
+//            editUser,
+//            editTitle,
+//            editStory
+//        )
         return binding.root
     }
 }
