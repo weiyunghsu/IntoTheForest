@@ -35,7 +35,7 @@ class AddArticleFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val newID = db.collection("data").document().id
-        val createTime = DateTimeFormatter.ISO_INSTANT.format(Instant.now()).toLong()
+//        val createTime = DateTimeFormatter.ISO_INSTANT.format(Instant.now()).toLong()
         val editStartDate = binding.inputStartDate.text.toString()
         val editEndDate = binding.inputEndDate.text.toString()
         val editUser = User("3748","Amy","aaa@gmail.com","3939889","xxxUri")
@@ -43,7 +43,7 @@ class AddArticleFragment : Fragment() {
         val editStory = binding.inputStory.text.toString()
         val editArticle = Article(
             newID,
-            createTime,
+//            createTime,
             editStartDate,
             editEndDate,
             editUser,

@@ -22,15 +22,14 @@ class AddArticleViewModel(
     private val user: User?
     )  : ViewModel(){
 
-    private val _article = MutableLiveData<Article>().apply {
+    val _article = MutableLiveData<Article>().apply {
         value = Article(
             user = user
         )
     }
+
     val article: LiveData<Article>
         get() = _article
-
-
 
     private val _status = MutableLiveData<LoadApiStatus>()
     val status: LiveData<LoadApiStatus>
