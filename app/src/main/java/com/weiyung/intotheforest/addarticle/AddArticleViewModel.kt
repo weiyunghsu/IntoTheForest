@@ -30,6 +30,8 @@ class AddArticleViewModel(
     val article: LiveData<Article>
         get() = _article
 
+
+
     private val _status = MutableLiveData<LoadApiStatus>()
     val status: LiveData<LoadApiStatus>
         get() = _status
@@ -50,7 +52,7 @@ class AddArticleViewModel(
         Log.i(TAG,"[${this::class.simpleName}]${this}")
         Log.i(TAG,"------------------------------------")
     }
-    fun publish(article: Article) {
+    fun addData(article: Article) {
 
         coroutineScope.launch {
 
@@ -70,7 +72,7 @@ class AddArticleViewModel(
                     _status.value = LoadApiStatus.ERROR
                 }
                 else -> {
-                    _error.value = IntoTheForestApplication.instance.getString(R.string.you_know_nothing)
+                    _error.value = IntoTheForestApplication.instance.getString(R.string.nothing_happen)
                     _status.value = LoadApiStatus.ERROR
                 }
             }

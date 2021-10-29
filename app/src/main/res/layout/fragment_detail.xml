@@ -12,6 +12,9 @@
         <variable
             name="article"
             type="com.weiyung.intotheforest.database.Article" />
+        <variable
+            name="user"
+            type="com.weiyung.intotheforest.database.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,11 +41,11 @@
                     android:layout_height="200dp"
                     android:contentDescription="@string/detail_main_image"
                     android:scaleType="centerCrop"
-                    app:imageUrl="@{article.image}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
+<!--                app:imageUrl="@{article.image}"-->
 
                 <ImageButton
                     android:id="@+id/back_button"
@@ -90,7 +93,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/noto_sans"
-                    android:text="@{article.author}"
+                    android:text="@{user.name}"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/detail_start_date"

@@ -80,7 +80,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
         val document = articles.document()
 
         article.id = document.id
-        article.createdTime = Calendar.getInstance().timeInMillis
+//        article.createdTime = Calendar.getInstance().timeInMillis
 
         document
             .set(article)

@@ -20,7 +20,6 @@ import com.weiyung.intotheforest.ext.getVmFactory
 class HomeFragment : Fragment() {
     private val viewModel by viewModels<HomeViewModel> { getVmFactory() }
     private lateinit var binding: FragmentHomeBinding
-
     //    private lateinit var viewModel: HomeViewModel
     override fun onCreateView(
         inflater: LayoutInflater,

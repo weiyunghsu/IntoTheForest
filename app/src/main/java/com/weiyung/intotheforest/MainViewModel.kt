@@ -14,13 +14,17 @@ import kotlinx.coroutines.Job
 
 class MainViewModel(private val repository: IntoTheForestRepository) : ViewModel() {
     val currentFragmentType = MutableLiveData<CurrentFragmentType>()
-    private val _author = MutableLiveData<User>().apply {
+
+    private val _user = MutableLiveData<User>().apply {
         value = User(
             "9527",
             "九五二七",
             "aaa@gmail.com"
         )
     }
+    val user : LiveData<User>
+        get() = _user
+
     private val _refresh = MutableLiveData<Boolean>()
 
     val refresh: LiveData<Boolean>

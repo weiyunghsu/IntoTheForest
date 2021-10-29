@@ -34,7 +34,7 @@
         android:label="AddArticleFragment"
         tools:layout="@layout/fragment_addarticle">
         <argument
-            android:name="user"
+            android:name="userKey"
             app:argType="com.weiyung.intotheforest.database.User" />
     </fragment>
     <fragment
