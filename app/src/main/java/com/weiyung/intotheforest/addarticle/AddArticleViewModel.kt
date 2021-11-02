@@ -24,7 +24,8 @@ class AddArticleViewModel(
 
     val _article = MutableLiveData<Article>().apply {
         value = Article(
-            user = user
+            user = user,
+//            images =
         )
     }
 
