@@ -1,5 +1,6 @@
 package com.weiyung.intotheforest
 
+import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,7 +25,6 @@ import com.weiyung.intotheforest.util.CurrentFragmentType
 
 class MainActivity : AppCompatActivity() {
     val viewModel by viewModels<MainViewModel> { getVmFactory() }
-
 //    private lateinit var viewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
 
@@ -65,10 +65,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.currentFragmentType.observe(
             this,
             Observer {
-                Log.i("Wei","[${viewModel.currentFragmentType.value}]")
-//                Logger.i("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-//                Logger.i("[${viewModel.currentFragmentType.value}]")
-//                Logger.i("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                Log.i(TAG,"[${viewModel.currentFragmentType.value}]")
             }
         )
 
@@ -80,8 +77,6 @@ class MainActivity : AppCompatActivity() {
         setupNavController()
 
     }
-
-
 
     private fun setupBottomNav() {
         binding.bottomNavView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
@@ -103,6 +98,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
 }

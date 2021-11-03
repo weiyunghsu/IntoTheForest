@@ -7,6 +7,9 @@
         <variable
             name="viewModel"
             type="com.weiyung.intotheforest.map.MapViewModel" />
+        <variable
+            name="isLiveDataDesign"
+            type="Boolean" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

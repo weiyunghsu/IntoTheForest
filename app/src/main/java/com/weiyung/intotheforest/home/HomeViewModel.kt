@@ -17,7 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class HomeViewModel (private val repository: IntoTheForestRepository): ViewModel(){
+class HomeViewModel (private val repository: IntoTheForestRepository): ViewModel() {
     private val _user = MutableLiveData<User>()
     val user: LiveData<User>
         get() = _user
@@ -29,15 +29,17 @@ class HomeViewModel (private val repository: IntoTheForestRepository): ViewModel
     var liveArticles = MutableLiveData<List<Article>>()
 
     private val _naviToSelectedArticle = MutableLiveData<Article>()
-    val naviToSelectedArticle : LiveData<Article>
+    val naviToSelectedArticle: LiveData<Article>
         get() = _naviToSelectedArticle
 
-    fun displayDetail(article: Article){
+    fun displayDetail(article: Article) {
         _naviToSelectedArticle.value = article
     }
-    fun displayDetailAll(){
+
+    fun displayDetailAll() {
         _naviToSelectedArticle.value = null
     }
+
     private val _status = MutableLiveData<LoadApiStatus>()
     val status: LiveData<LoadApiStatus>
         get() = _status
@@ -56,10 +58,11 @@ class HomeViewModel (private val repository: IntoTheForestRepository): ViewModel
         super.onCleared()
         viewModelJob.cancel()
     }
+
     init {
-        Log.i(TAG,"------------------------------------")
-        Log.i(TAG,"[${this::class.simpleName}]${this}")
-        Log.i(TAG,"------------------------------------")
+        Log.i(TAG, "------------------------------------")
+        Log.i(TAG, "[${this::class.simpleName}]${this}")
+        Log.i(TAG, "------------------------------------")
 
         if (IntoTheForestApplication.instance.isLiveDataDesign()) {
             getLiveArticlesResult()
@@ -89,7 +92,8 @@ class HomeViewModel (private val repository: IntoTheForestRepository): ViewModel
                     null
                 }
                 else -> {
-                    _error.value = IntoTheForestApplication.instance.getString(R.string.nothing_happen)
+                    _error.value =
+                        IntoTheForestApplication.instance.getString(R.string.nothing_happen)
                     _status.value = LoadApiStatus.ERROR
                     null
                 }
@@ -103,7 +107,7 @@ class HomeViewModel (private val repository: IntoTheForestRepository): ViewModel
         _status.value = LoadApiStatus.DONE
         _refreshStatus.value = false
     }
-
+}
 
 //    var list = mutableListOf(
 //        Article(1,"2021.01.01","2021.01.02","登四獸山",1,"Amy",
@@ -267,4 +271,3 @@ class HomeViewModel (private val repository: IntoTheForestRepository): ViewModel
 //                    "施惠勿念，受恩莫忘。凡事當留餘地，得意不宜再往。人有喜慶，不可生妒忌心；人有禍患，不可生喜幸心。善欲人見，不是真善；惡恐人知，便是大惡。見色而起淫心，報在妻女；匿怨而用暗箭，禍延子孫。\n" +
 //                    "家門和順，雖饔飧不繼，亦有餘歡；國課早完，即囊橐無餘，自得至樂。讀書志在聖賢，非徒科第；為官心存君國，豈計身家？守分安命，順時聽天。為人若此，庶乎近焉。")
 //    )
-}

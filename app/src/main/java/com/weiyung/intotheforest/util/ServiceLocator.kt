@@ -15,7 +15,6 @@ object ServiceLocator {
     fun provideRepository(context: Context): IntoTheForestRepository {
         synchronized(this) {
             return repository
-                ?: repository
                 ?: createIntoTheForestRepository(context)
         }
     }
