@@ -29,6 +29,11 @@ class DefaultIntoTheForestRepository (private val remoteDataSource: IntoTheFores
     override suspend fun delete(article: Article): Result<Boolean> {
         return remoteDataSource.delete(article)
     }
+
+    override suspend fun update(route: Route): Result<Boolean> {
+        return remoteDataSource.update(route)
+    }
+
     override suspend fun getRoutes(): Result<List<Route>> {
         return remoteDataSource.getRoutes()
     }

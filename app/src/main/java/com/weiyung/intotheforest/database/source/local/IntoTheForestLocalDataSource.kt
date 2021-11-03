@@ -41,6 +41,10 @@ class IntoTheForestLocalDataSource(val context: Context) : IntoTheForestDataSour
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override suspend fun update(route: Route): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun getRoutes(): Result<List<Route>> {
         TODO("Not yet implemented")
     }

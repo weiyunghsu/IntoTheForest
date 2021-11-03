@@ -17,6 +17,8 @@ interface IntoTheForestDataSource {
 
     suspend fun delete(article: Article): Result<Boolean>
 
+    suspend fun update(route: Route) : Result<Boolean>
+
     suspend fun getRoutes(): Result<List<Route>>
 
     fun getLiveRoutes(): MutableLiveData<List<Route>>

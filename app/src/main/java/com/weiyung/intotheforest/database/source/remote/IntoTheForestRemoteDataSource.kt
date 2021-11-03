@@ -131,6 +131,11 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
             }
         }
     }
+
+    override suspend fun update(route: Route): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun getRoutes(): Result<List<Route>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
             .collection(PATH_ROUTES)

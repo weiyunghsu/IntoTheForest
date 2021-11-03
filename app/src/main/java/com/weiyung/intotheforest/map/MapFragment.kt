@@ -36,16 +36,16 @@ import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentMapBinding
 import com.weiyung.intotheforest.ext.getVmFactory
+import com.weiyung.intotheforest.factory.MapViewModelFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
 class MapFragment : Fragment(), OnMapReadyCallback {
     private val viewModel by viewModels<MapViewModel> { getVmFactory() }
-    //    private val mContext: Context = (activity as MainActivity).applicationContext
-//    val application = requireNotNull(this.activity).application
     private lateinit var mMap: GoogleMap
     private lateinit var binding: FragmentMapBinding
 //    private lateinit var viewModel: MapViewModel
+    private lateinit var mapViewModelFactory: MapViewModelFactory
     val db = Firebase.firestore
 
     override fun onCreateView(
@@ -56,6 +56,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
 //        viewModel = ViewModelProvider(this).get(MapViewModel::class.java)
         binding = FragmentMapBinding.inflate(inflater, container, false)
+//        mapViewModelFactory = MapViewModelFactory(repository,route)
+//        viewModel = ViewModelProvider(this, mapViewModelFactory)
+//            .get(MapViewModel::class.java)
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
 
@@ -84,7 +87,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             findNavController().navigate(NavigationDirections.navigateToReportDialog())
         }
         return binding.root
-
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

@@ -20,7 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.weiyung.intotheforest.databinding.ActivityMainBinding
 import com.weiyung.intotheforest.ext.getVmFactory
-import com.weiyung.intotheforest.map.MapRouteFragment
 import com.weiyung.intotheforest.util.CurrentFragmentType
 
 class MainActivity : AppCompatActivity() {

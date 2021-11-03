@@ -2,12 +2,15 @@ package com.weiyung.intotheforest.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.weiyung.intotheforest.database.Article
 import com.weiyung.intotheforest.database.Route
 import com.weiyung.intotheforest.database.source.IntoTheForestRepository
+import com.weiyung.intotheforest.detail.DetailViewModel
 import com.weiyung.intotheforest.map.MapViewModel
 
 class MapViewModelFactory(
     private val repository: IntoTheForestRepository,
+    private val route: Route
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MapViewModel::class.java)) {
