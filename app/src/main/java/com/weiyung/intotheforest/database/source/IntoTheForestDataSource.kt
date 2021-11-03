@@ -3,6 +3,7 @@ package com.weiyung.intotheforest.database.source
 import androidx.lifecycle.MutableLiveData
 import com.weiyung.intotheforest.database.Article
 import com.weiyung.intotheforest.database.Result
+import com.weiyung.intotheforest.database.Route
 import com.weiyung.intotheforest.database.User
 
 interface IntoTheForestDataSource {
@@ -15,4 +16,8 @@ interface IntoTheForestDataSource {
     suspend fun publish(article: Article): Result<Boolean>
 
     suspend fun delete(article: Article): Result<Boolean>
+
+    suspend fun getRoutes(): Result<List<Route>>
+
+    fun getLiveRoutes(): MutableLiveData<List<Route>>
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.weiyung.intotheforest.database.Article
 import com.weiyung.intotheforest.database.User
 import com.weiyung.intotheforest.database.Result
+import com.weiyung.intotheforest.database.Route
 import com.weiyung.intotheforest.database.source.IntoTheForestDataSource
 
 class IntoTheForestLocalDataSource(val context: Context) : IntoTheForestDataSource {
@@ -39,4 +40,13 @@ class IntoTheForestLocalDataSource(val context: Context) : IntoTheForestDataSour
     override suspend fun delete(article: Article): Result<Boolean> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+    override suspend fun getRoutes(): Result<List<Route>> {
+        TODO("Not yet implemented")
+    }
+
+    override fun getLiveRoutes(): MutableLiveData<List<Route>> {
+        TODO("Not yet implemented")
+    }
+
 }

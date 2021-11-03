@@ -10,7 +10,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -25,9 +24,12 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.maps.route.callbacks.EstimationsCallBack
 import com.maps.route.extensions.drawMarker
 import com.maps.route.extensions.drawRouteOnMap
+import com.maps.route.extensions.getTravelEstimations
 import com.maps.route.extensions.moveCameraOnMap
+import com.maps.route.model.Legs
 import com.maps.route.model.TravelMode
 import com.weiyung.intotheforest.MainActivity
 import com.weiyung.intotheforest.NavigationDirections
@@ -41,11 +43,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var binding: FragmentMapBinding
     private lateinit var viewModel: MapViewModel
     val db = Firebase.firestore
-    val latLng = hashMapOf(
-        "lat" to "25.027389",
-        "lng" to "121.5708249",
-        "time" to 101111
-    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -107,15 +104,17 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 //        mMap.setOnPolylineClickListener(this)
 //        mMap.setOnPolygonClickListener(this)
 
+        googleMap.run{
+
+        }
         googleMap.run {
             moveCameraOnMap(latLng = source)
-            drawMarker(location = source, context = requireContext(),
+            drawMarker(location = source, context = context!!,
                 resDrawable = R.drawable.outline_hiking_black_36,
                 title = "go to Google Maps to Navigate!")
-            drawMarker(location = destination, context = requireContext(),
+            drawMarker(location = destination, context = context!!,
                 resDrawable = R.drawable.outline_hiking_black_36,
                 title = "go to Google Maps to Navigate!")
-            Log.i(TAG,"context1")
             drawRouteOnMap(
                 getString(R.string.google_maps_key),
                 source = source,
@@ -125,18 +124,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 travelMode = TravelMode.WALKING,
                 polygonWidth = 15
             )
-            Log.i(TAG,"context2")
         }
-        // add latLngS data
-//        db.collection("latLngS")
-//            .add(latLng)
-//            .addOnSuccessListener { document ->
-//                Log.d(TAG, "DocumentSnapshot added with ID: ${document.id}")
-//            }
-//            .addOnFailureListener { e ->
-//                Log.w(TAG, "Error adding document", e)
-//            }
-//        replaceFragmentSafely(MapRouteFragment())
 
         binding.speakButton.setOnClickListener {
             Log.i(TAG,"Where is my help addPostButton?")
@@ -152,5 +140,20 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 //            ?.beginTransaction()
 //            ?.replace(containerViewId, fragment, tag)?.commit()
 //    }
+    val route : List<LatLng>? = null
 }
+
+data class City(
+        val name: String? = null,
+        val state: String? = null,
+        val country: String? = null,
+        @field:JvmField // use this annotation if your Boolean field is prefixed with 'is'
+        val isCapital: Boolean? = null,
+        val population: Long? = null,
+        val regions: List<String>? = null
+)
+
+
+
+
 

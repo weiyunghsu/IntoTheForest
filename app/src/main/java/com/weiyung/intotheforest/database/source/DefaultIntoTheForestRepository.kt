@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.weiyung.intotheforest.database.Article
 import com.weiyung.intotheforest.database.User
 import com.weiyung.intotheforest.database.Result
+import com.weiyung.intotheforest.database.Route
 
 
 class DefaultIntoTheForestRepository (private val remoteDataSource: IntoTheForestDataSource,
@@ -27,5 +28,11 @@ class DefaultIntoTheForestRepository (private val remoteDataSource: IntoTheFores
 
     override suspend fun delete(article: Article): Result<Boolean> {
         return remoteDataSource.delete(article)
+    }
+    override suspend fun getRoutes(): Result<List<Route>> {
+        return remoteDataSource.getRoutes()
+    }
+    override fun getLiveRoutes(): MutableLiveData<List<Route>> {
+        return remoteDataSource.getLiveRoutes()
     }
 }

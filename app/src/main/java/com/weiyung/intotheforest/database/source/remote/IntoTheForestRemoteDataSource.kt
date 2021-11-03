@@ -10,6 +10,7 @@ import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.database.Article
 import com.weiyung.intotheforest.database.Result
+import com.weiyung.intotheforest.database.Route
 import com.weiyung.intotheforest.database.User
 import com.weiyung.intotheforest.database.source.IntoTheForestDataSource
 import java.util.*
@@ -20,6 +21,9 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
     private const val PATH_ARTICLES = "articles"
     private const val KEY_CREATED_TIME = "createdTime"
     private const val KEY_ID = "id"
+    private const val PATH_ROUTES = "routes"
+    private const val KEY_ROUTE_ID = "routeId"
+    private const val KEY_SEG = "seg"
 
     override suspend fun login(id: String): Result<User> {
         TODO("Not yet implemented")
@@ -126,5 +130,55 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                     }
             }
         }
+    }
+    override suspend fun getRoutes(): Result<List<Route>> = suspendCoroutine { continuation ->
+        FirebaseFirestore.getInstance()
+            .collection(PATH_ROUTES)
+            .orderBy(KEY_ROUTE_ID, Query.Direction.ASCENDING)
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val list = mutableListOf<Route>()
+                    for (document in task.result!!) {
+                        Log.d(TAG,document.id + " => " + document.data)
+
+                        val route = document.toObject(Route::class.java)
+                        list.add(route)
+                    }
+                    continuation.resume(Result.Success(list))
+                } else {
+                    task.exception?.let {
+
+                        Log.w(TAG,"[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(
+                        IntoTheForestApplication.instance.getString(
+                            R.string.nothing_happen)))
+                }
+            }
+    }
+
+    override fun getLiveRoutes(): MutableLiveData<List<Route>> {
+        val liveData = MutableLiveData<List<Route>>()
+        FirebaseFirestore.getInstance()
+            .collection(PATH_ROUTES)
+            .orderBy(KEY_ROUTE_ID, Query.Direction.ASCENDING)
+            .addSnapshotListener { snapshot, exception ->
+                Log.i(TAG,"addSnapshotListener detect")
+                exception?.let {
+                    Log.w(TAG,"[${this::class.simpleName}] Error getting documents. ${it.message}")
+                }
+                val list = mutableListOf<Route>()
+                for (document in snapshot!!) {
+                    Log.d(TAG,document.id + " => " + document.data)
+
+                    val route = document.toObject(Route::class.java)
+                    list.add(route)
+                }
+                liveData.value = list
+            }
+        return liveData
     }
 }
