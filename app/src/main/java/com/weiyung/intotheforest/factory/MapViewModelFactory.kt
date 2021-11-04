@@ -2,12 +2,11 @@ package com.weiyung.intotheforest.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.weiyung.intotheforest.database.Article
 import com.weiyung.intotheforest.database.Route
 import com.weiyung.intotheforest.database.source.IntoTheForestRepository
-import com.weiyung.intotheforest.detail.DetailViewModel
 import com.weiyung.intotheforest.map.MapViewModel
 
+@Suppress("UNCHECKED_CAST")
 class MapViewModelFactory(
     private val repository: IntoTheForestRepository,
     private val route: Route

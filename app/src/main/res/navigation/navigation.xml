@@ -42,6 +42,9 @@
         android:name="com.weiyung.intotheforest.map.MapFragment"
         android:label="MapFragment"
         tools:layout="@layout/fragment_map">
+<!--        <argument-->
+<!--            android:name="routeKey"-->
+<!--            app:argType="com.weiyung.intotheforest.database.Route" />-->
     </fragment>
     <fragment
         android:id="@+id/reportDialog"

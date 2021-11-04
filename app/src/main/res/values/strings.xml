@@ -52,4 +52,12 @@
     <string name="inputStory">Story</string>
     <string name="inputPhotoButton">inputPhotoButton</string>
     <string name="nothing_happen">nothing happen</string>
+    <string name="select_route">選擇路線</string>
+    <string name="four_animals">"四獸山"</string>
+    <string name="kuan_in">觀音山</string>
+
+    <string-array name="route_list">
+        <item>@string/four_animals</item>
+        <item>@string/kuan_in</item>
+    </string-array>
 </resources>

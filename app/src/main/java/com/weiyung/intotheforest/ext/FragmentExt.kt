@@ -24,3 +24,8 @@ fun Fragment.getVmFactory(article: Article): DetailViewModelFactory {
     val repository = (requireContext().applicationContext as IntoTheForestApplication).repository
     return DetailViewModelFactory(repository, article)
 }
+
+fun Fragment.getVmFactory(route: Route): MapViewModelFactory {
+    val repository = (requireContext().applicationContext as IntoTheForestApplication).repository
+    return MapViewModelFactory(repository, route)
+}

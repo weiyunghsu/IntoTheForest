@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.R
@@ -15,12 +14,18 @@ import com.weiyung.intotheforest.database.source.IntoTheForestRepository
 import com.weiyung.intotheforest.network.LoadApiStatus
 import kotlinx.coroutines.*
 
-class MapViewModel(private val repository: IntoTheForestRepository,
-                   ): ViewModel(){
+class MapViewModel(
+    private val repository: IntoTheForestRepository,
+//    private val route: Route
+    ): ViewModel(){
 
     var _routes = MutableLiveData<List<Route>>()
     val routes: LiveData<List<Route>>
         get() = _routes
+
+//    init {
+//        _routes.value = listOf(route)
+//    }
 
     var liveRoutes = MutableLiveData<List<Route>>()
 

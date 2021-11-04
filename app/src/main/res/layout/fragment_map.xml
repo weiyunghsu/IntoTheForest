@@ -9,74 +9,95 @@
             type="com.weiyung.intotheforest.map.MapViewModel" />
         <variable
             name="isLiveDataDesign"
-            type="Boolean" />
+            type="Boolean"/>
+        <import type="android.view.View"/>
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+<!--    <FrameLayout-->
+<!--        android:id="@+id/map1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" >-->
+
+<!--    </FrameLayout>-->
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchAddress"
         tools:context=".MapFragment"
-        tools:layout="@layout/fragment_map">
+        tools:layout="@layout/fragment_map"/>
 
-        <EditText
-            android:id="@+id/searchAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:padding="8dp"
-            android:inputType="textPersonName"
-            android:hint="@string/search_here"
-            android:background="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="parent" />
+<!--        <Spinner-->
+<!--            android:id="@+id/spinner_routes"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:minHeight="48dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:spinnerMode="dropdown"-->
+<!--            android:prompt="@string/select_route"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="parent" />-->
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/searchButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|end"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="60dp"
-            android:backgroundTint="@color/white"
-            android:contentDescription="@string/floatbutton1"
-            android:src="@drawable/outline_search_black_36"
-            app:fabSize="mini" />
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/speakButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|start"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="120dp"
-            android:backgroundTint="@color/white"
-            android:contentDescription="@string/floatbutton1"
-            android:src="@drawable/outline_campaign_black_36"
-            app:fabSize="mini" />
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/recordButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/white"
-            android:contentDescription="@string/floatbutton1"
-            android:src="@drawable/outline_play_circle_black_36"
-            app:fabSize="mini" />
-    </fragment>
+    <EditText
+        android:id="@+id/searchAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="@string/search_here"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/outline_search_black_36"
+        app:fabSize="mini"
+        app:layout_constraintStart_toEndOf="@+id/searchAddress"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/speakButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/outline_campaign_black_36"
+        app:fabSize="mini"
+        app:layout_constraintStart_toEndOf="@+id/searchButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/recordButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/outline_play_circle_black_36"
+        app:fabSize="mini"
+        app:layout_constraintStart_toEndOf="@+id/speakButton"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--    </fragment>-->
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

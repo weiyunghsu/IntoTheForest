@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -35,17 +36,22 @@ import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentMapBinding
+import com.weiyung.intotheforest.detail.DetailFragmentArgs
 import com.weiyung.intotheforest.ext.getVmFactory
 import com.weiyung.intotheforest.factory.MapViewModelFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MapFragment : Fragment(), OnMapReadyCallback {
-    private val viewModel by viewModels<MapViewModel> { getVmFactory() }
+    private val viewModel by viewModels<MapViewModel> {
+        getVmFactory()
+//        (MapFragmentArgs.fromBundle(requireArguments()).routeKey)
+    }
     private lateinit var mMap: GoogleMap
+    private lateinit var mapFragment: SupportMapFragment
     private lateinit var binding: FragmentMapBinding
-//    private lateinit var viewModel: MapViewModel
-    private lateinit var mapViewModelFactory: MapViewModelFactory
     val db = Firebase.firestore
 
     override fun onCreateView(
@@ -54,16 +60,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View? {
 
-//        viewModel = ViewModelProvider(this).get(MapViewModel::class.java)
         binding = FragmentMapBinding.inflate(inflater, container, false)
-//        mapViewModelFactory = MapViewModelFactory(repository,route)
-//        viewModel = ViewModelProvider(this, mapViewModelFactory)
-//            .get(MapViewModel::class.java)
 
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
 
         lifecycle.coroutineScope.launchWhenCreated {
-            val googleMap = mapFragment.getMapAsync { onMapReady(it) }
+            val gMap = mapFragment.getMapAsync { onMapReady(it) }
         }
 //        mapFragment.getMapAsync(this)
 
@@ -73,12 +75,30 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.lifecycleOwner = this
 
         viewModel.getRoutesResult()
-        Log.i(TAG,"Where is the Routes??? ${viewModel.routes}")
-        Log.i(TAG,"Where is the _Routes??? ${viewModel._routes}")
+        Log.i(TAG, "Where is the Routes??? ${viewModel.routes}")
+        Log.i(TAG, "Where is the _Routes??? ${viewModel._routes}")
+
+        val source = LatLng(25.027389, 121.570825) //starting point (LatLng)
+        val destination = LatLng(25.036462, 121.587468) // ending point (LatLng)
 
         viewModel._routes.observe(viewLifecycleOwner, Observer {
-            Log.d(TAG,"viewModel._routes.observe, it=$it")
+            Log.d(TAG, "viewModel._routes.observe, it=$it")
             it?.let {
+                mapFragment.getMapAsync {
+                    mMap.run {
+                    Log.i(TAG, "---------Do you draw the Route?------")
+                    drawRouteOnMap(
+                        getString(R.string.google_maps_key),
+                        source = source,
+                        destination = destination,
+                        context = context!!,
+                        markers = false,
+                        travelMode = TravelMode.WALKING,
+                        polygonWidth = 15
+                    )
+                    Log.i(TAG, "---------Do you draw the Route End ?-----")
+                }
+                }
                 binding.viewModel = viewModel
             }
         })
@@ -91,7 +111,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        val theScope = CoroutineScope(Dispatchers.Default)
+
         fun setupPermission() {
             if (ContextCompat.checkSelfPermission(
                     this.binding.root.context,
@@ -109,7 +129,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mMap.uiSettings.isZoomControlsEnabled = true  // 右下角的放大縮小功能
         mMap.uiSettings.isCompassEnabled = true       // 左上角的指南針，要兩指旋轉才會出現
         mMap.uiSettings.isMapToolbarEnabled = true    // 右下角的導覽及開啟 Google Map功能
-        // Add a marker in Sydney and move the camera
+
         val source = LatLng(25.027389, 121.570825) //starting point (LatLng)
         val destination = LatLng(25.036462, 121.587468) // ending point (LatLng)
         val polyline1 = googleMap.addPolyline(
@@ -150,21 +170,23 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             )
         }
 
-        googleMap.run {
-            Log.i(TAG, "---------Do you draw the Route?")
-            drawRouteOnMap(
-                getString(R.string.google_maps_key),
-                source = source,
-                destination = destination,
-                context = context!!,
-                markers = false,
-                travelMode = TravelMode.WALKING,
-                polygonWidth = 15
-            )
-            Log.i(TAG, "---------Do you draw the Route End ?")
+
+            googleMap.run {
+                Log.i(TAG, "---------Do you draw the Route?")
+                drawRouteOnMap(
+                    getString(R.string.google_maps_key),
+                    source = source,
+                    destination = destination,
+                    context = context!!,
+                    markers = false,
+                    travelMode = TravelMode.WALKING,
+                    polygonWidth = 15
+                )
+                Log.i(TAG, "---------Do you draw the Route End ?")
+            }
         }
     }
-}
+
 //    private fun replaceFragmentSafely(
 //        fragment: Fragment,
 //        tag: String = fragment.javaClass.name,

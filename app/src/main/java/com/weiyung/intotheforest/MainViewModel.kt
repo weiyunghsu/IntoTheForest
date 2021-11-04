@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.weiyung.intotheforest.database.Route
 import com.weiyung.intotheforest.database.User
 import com.weiyung.intotheforest.database.source.IntoTheForestRepository
 import com.weiyung.intotheforest.util.CurrentFragmentType
@@ -24,6 +25,10 @@ class MainViewModel(private val repository: IntoTheForestRepository) : ViewModel
     }
     val user : LiveData<User>
         get() = _user
+
+    private val _route = MutableLiveData<Route>()
+    val route : LiveData<Route>
+        get() = _route
 
     private val _refresh = MutableLiveData<Boolean>()
 
