@@ -2,7 +2,6 @@ package com.weiyung.intotheforest.map
 
 import android.Manifest
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
@@ -10,12 +9,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -36,13 +36,7 @@ import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentMapBinding
-import com.weiyung.intotheforest.detail.DetailFragmentArgs
 import com.weiyung.intotheforest.ext.getVmFactory
-import com.weiyung.intotheforest.factory.MapViewModelFactory
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class MapFragment : Fragment(), OnMapReadyCallback {
     private val viewModel by viewModels<MapViewModel> {
@@ -73,6 +67,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        val adapter = ArrayAdapter.createFromResource(this.requireContext(), R.array.route_list, android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerRoutes.adapter = adapter
+        binding.spinnerRoutes.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
+//                Toast.makeText(this@MainActivity, "你選的是" + route_list[pos], Toast.LENGTH_SHORT).show()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
 
         viewModel.getRoutesResult()
         Log.i(TAG, "Where is the Routes??? ${viewModel.routes}")
