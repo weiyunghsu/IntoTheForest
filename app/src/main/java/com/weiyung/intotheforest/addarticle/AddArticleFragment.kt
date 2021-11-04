@@ -2,6 +2,7 @@ package com.weiyung.intotheforest.addarticle
 
 import android.Manifest
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -25,6 +26,7 @@ import com.weiyung.intotheforest.ext.getVmFactory
 import java.io.File
 import java.time.Instant
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 class AddArticleFragment : Fragment() {
     private val viewModel by viewModels<AddArticleViewModel> {
@@ -52,22 +54,6 @@ class AddArticleFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        //        val newID = db.collection("data").document().id
-////        val createTime = DateTimeFormatter.ISO_INSTANT.format(Instant.now()).toLong()
-//        val editStartDate = binding.inputStartDate.text.toString()
-//        val editEndDate = binding.inputEndDate.text.toString()
-//        val editUser = User("3748","Amy","aaa@gmail.com","3939889","xxxUri")
-//        val editTitle = binding.inputTitle.text.toString()
-//        val editStory = binding.inputStory.text.toString()
-//        val editArticle = Article(
-//            newID,
-////            createTime,
-//            editStartDate,
-//            editEndDate,
-//            editUser,
-//            editTitle,
-//            editStory
-//        )
         fun permissionPhoto() {
             ActivityCompat.requestPermissions(
                 requireActivity(), arrayOf(
@@ -79,6 +65,13 @@ class AddArticleFragment : Fragment() {
         }
         permissionPhoto()
 
+        binding.inputStartDate.setOnClickListener {
+            setStartDate()
+        }
+
+        binding.inputEndDate.setOnClickListener {
+            setEndDate()
+        }
         binding.inputPhotoButton.setOnClickListener {
             val gallery =
                 Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
@@ -86,5 +79,34 @@ class AddArticleFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    val c: Calendar = Calendar.getInstance()
+    val year = c.get(Calendar.YEAR)
+    val month = c.get(Calendar.MONTH)
+    val day = c.get(Calendar.DAY_OF_MONTH)
+
+    private fun setStartDate() {
+        context?.let {
+            DatePickerDialog(it, { _, year, month, day ->
+                run {
+                    binding.inputStartDate.setText(setDateFormat(year, month, day))
+                }
+            }, year, month, day).show()
+        }
+    }
+
+    private fun setEndDate() {
+        context?.let {
+            DatePickerDialog(it, { _, year, month, day ->
+                run {
+                    binding.inputEndDate.setText(setDateFormat(year, month, day))
+                }
+            }, year, month, day).show()
+        }
+    }
+
+    private fun setDateFormat(year: Int, month: Int, day: Int): String {
+        return "$year.${month + 1}.$day"
     }
 }
