@@ -12,9 +12,16 @@ import com.weiyung.intotheforest.databinding.FragmentDetailBinding
 import com.weiyung.intotheforest.ext.getVmFactory
 
 class DetailFragment : Fragment() {
-    private val viewModel by viewModels<DetailViewModel> { getVmFactory(DetailFragmentArgs.fromBundle(requireArguments()).articleKey) }
+    private val viewModel by viewModels<DetailViewModel> {
+        getVmFactory(
+            DetailFragmentArgs.fromBundle(
+                requireArguments()
+            ).articleKey
+        )
+    }
     private lateinit var binding: FragmentDetailBinding
-//    private lateinit var viewModel: DetailViewModel
+
+    //    private lateinit var viewModel: DetailViewModel
 //    private lateinit var detailViewModelFactory: DetailViewModelFactory
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,10 +39,15 @@ class DetailFragment : Fragment() {
         val article = args.articleKey
         binding.article = article
 
-        binding.backButton.setOnClickListener { view:View ->
+        val imageAdapter = DetailAdapter()
+//        val imageList = article.images
+//        binding.detailRvImages.adapter = imageAdapter
+//        imageAdapter.submitList(imageList)
+
+        binding.backButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.navigate_to_home_fragment)
         }
-        binding.goToMapButton.setOnClickListener { view:View ->
+        binding.goToMapButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.navigate_to_map_fragment)
         }
 

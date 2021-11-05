@@ -1,7 +1,12 @@
 package com.weiyung.intotheforest.addarticle
 
+import android.Manifest
 import android.content.ContentValues.TAG
+import android.content.pm.PackageManager
 import android.util.Log
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,7 +29,8 @@ class AddArticleViewModel(
 
     val _article = MutableLiveData<Article>().apply {
         value = Article(
-            user = user
+            user = user,
+//            images =
         )
     }
 
@@ -77,4 +83,7 @@ class AddArticleViewModel(
             }
         }
     }
+
+
+
 }
