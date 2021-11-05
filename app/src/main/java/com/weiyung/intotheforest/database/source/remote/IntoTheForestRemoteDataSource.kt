@@ -24,6 +24,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
     private const val PATH_ROUTES = "routes"
     private const val KEY_ROUTE_ID = "routeId"
     private const val KEY_SEG = "seg"
+    private const val KEY_END_DATE = "endDate"
 
     override suspend fun login(id: String): Result<User> {
         TODO("Not yet implemented")
@@ -32,7 +33,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
     override suspend fun getArticles(): Result<List<Article>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
             .collection(PATH_ARTICLES)
-            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+            .orderBy(KEY_END_DATE, Query.Direction.DESCENDING)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -62,7 +63,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
         val liveData = MutableLiveData<List<Article>>()
         FirebaseFirestore.getInstance()
             .collection(PATH_ARTICLES)
-            .orderBy(KEY_ID, Query.Direction.DESCENDING)
+            .orderBy(KEY_END_DATE, Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, exception ->
                 Log.i(TAG,"addSnapshotListener detect")
                 exception?.let {
@@ -139,7 +140,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
     override suspend fun getRoutes(): Result<List<Route>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
             .collection(PATH_ROUTES)
-            .orderBy(KEY_ROUTE_ID, Query.Direction.ASCENDING)
+            .orderBy(KEY_ROUTE_ID, Query.Direction.DESCENDING)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -169,7 +170,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
         val liveData = MutableLiveData<List<Route>>()
         FirebaseFirestore.getInstance()
             .collection(PATH_ROUTES)
-            .orderBy(KEY_ROUTE_ID, Query.Direction.ASCENDING)
+            .orderBy(KEY_ROUTE_ID, Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, exception ->
                 Log.i(TAG,"addSnapshotListener detect")
                 exception?.let {

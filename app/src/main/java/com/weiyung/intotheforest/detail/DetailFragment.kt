@@ -37,13 +37,17 @@ class DetailFragment : Fragment() {
         binding.lifecycleOwner = this
 
         val args = DetailFragmentArgs.fromBundle(requireArguments())
+
         val article = args.articleKey
         binding.article = article
 
         val imageAdapter = DetailAdapter()
-//        val imageList = article.images
-//        binding.detailRvImages.adapter = imageAdapter
-//        imageAdapter.submitList(imageList)
+        val imageList = article.images
+        binding.detailRvImages.adapter = imageAdapter
+        imageList?.let {
+            imageAdapter.submitList(imageList)
+        }
+
 
         binding.backButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.navigate_to_home_fragment)
