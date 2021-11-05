@@ -1,5 +1,6 @@
 package com.weiyung.intotheforest.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -49,6 +50,21 @@ class DetailFragment : Fragment() {
         }
         binding.goToMapButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.navigate_to_map_fragment)
+        }
+        binding.detailShareButton.setOnClickListener {
+            val sendIntent = Intent()
+            sendIntent.action = Intent.ACTION_SEND
+            sendIntent.putExtra(Intent.EXTRA_TEXT,
+                binding.detailTitle.text.toString())
+            val text = sendIntent.getStringExtra(Intent.EXTRA_TEXT)
+            if (text != null) {
+                if(text.isNotEmpty()){
+                    binding.detailTitle.text = "$text"
+                }
+            }
+            sendIntent.type = "text/plain"
+            var shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(Intent.createChooser(sendIntent, "遊記標題"))
         }
 
         return binding.root
