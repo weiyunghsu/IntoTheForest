@@ -38,6 +38,11 @@ import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentMapBinding
 import com.weiyung.intotheforest.ext.getVmFactory
 
+enum class RouteNumber(val positionOnSpinner: Int) {
+    FOUR_ANIMALS(0),
+    KUAN_IN(1)
+}
+
 class MapFragment : Fragment(), OnMapReadyCallback {
     private val viewModel by viewModels<MapViewModel> {
         getVmFactory()
@@ -68,14 +73,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        val adapter = ArrayAdapter.createFromResource(this.requireContext(), R.array.route_list, android.R.layout.simple_spinner_dropdown_item)
-        binding.spinnerRoutes.adapter = adapter
-        binding.spinnerRoutes.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
-//                Toast.makeText(this@MainActivity, "你選的是" + route_list[pos], Toast.LENGTH_SHORT).show()
-            }
-            override fun onNothingSelected(parent: AdapterView<*>) {}
-        }
+
 
         viewModel.getRoutesResult()
         Log.i(TAG, "Where is the Routes??? ${viewModel.routes}")
@@ -132,6 +130,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mMap.uiSettings.isZoomControlsEnabled = true  // 右下角的放大縮小功能
         mMap.uiSettings.isCompassEnabled = true       // 左上角的指南針，要兩指旋轉才會出現
         mMap.uiSettings.isMapToolbarEnabled = true    // 右下角的導覽及開啟 Google Map功能
+
 
         val source1 = LatLng(25.03777004,121.5851248) //starting point (LatLng)
         val destination1 = LatLng(25.02742634,121.5707231) // ending point (LatLng)
@@ -289,29 +288,48 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 //        mMap.animateCamera(CameraUpdateFactory.zoomTo(18F))
 //        mMap.setOnPolylineClickListener(this)
 //        mMap.setOnPolygonClickListener(this)
+        val adapter = ArrayAdapter.createFromResource(this.requireContext(), R.array.route_list, android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerRoutes.adapter = adapter
+        binding.spinnerRoutes.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
+                when (pos) {
+                    0 -> {
+                        googleMap.run {
+                            moveCameraOnMap(latLng = source1)
+                            drawMarker(
+                                location = source1, context = context!!,
+                                resDrawable = R.drawable.outline_hiking_black_36,
+                                title = "go to Google Maps to Navigate!"
+                            )
+                            drawMarker(
+                                location = destination1, context = context!!,
+                                resDrawable = R.drawable.outline_hiking_black_36,
+                                title = "you do it!"
+                            )
+                        }
+                    }
+                    1 -> {
+                        googleMap.run {
+                            moveCameraOnMap(latLng = source2)
+                            drawMarker(
+                                location = source2, context = context!!,
+                                resDrawable = R.drawable.outline_hiking_black_36,
+                                title = "go to Google Maps to Navigate!"
+                            )
+                            drawMarker(
+                                location = destination2, context = context!!,
+                                resDrawable = R.drawable.outline_hiking_black_36,
+                                title = "you do it!"
+                            )
+                        }
+                    }
+                }
 
-        googleMap.run {
-            moveCameraOnMap(latLng = source1)
-            drawMarker(
-                location = source1, context = context!!,
-                resDrawable = R.drawable.outline_hiking_black_36,
-                title = "go to Google Maps to Navigate!"
-            )
-            drawMarker(
-                location = destination1, context = context!!,
-                resDrawable = R.drawable.outline_hiking_black_36,
-                title = "you do it!"
-            )
-            drawMarker(
-                location = source2, context = context!!,
-                resDrawable = R.drawable.outline_hiking_black_36,
-                title = "go to Google Maps to Navigate!"
-            )
-            drawMarker(
-                location = destination2, context = context!!,
-                resDrawable = R.drawable.outline_hiking_black_36,
-                title = "you do it!"
-            )
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
         }
 
             googleMap.run {

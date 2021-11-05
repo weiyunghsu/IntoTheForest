@@ -33,6 +33,8 @@ class MapViewModel(
     val tracks: LiveData<List<LatLng>>
         get() = _tracks
 
+    val selectedRoutePosition = MutableLiveData<Int>()
+
     private val _status = MutableLiveData<LoadApiStatus>()
     val status: LiveData<LoadApiStatus>
         get() = _status

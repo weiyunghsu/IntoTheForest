@@ -47,7 +47,8 @@
             android:spinnerMode="dialog"
             android:prompt="@string/select_route"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:selectedItemPosition="@={viewModel.selectedRoutePosition}"/>
 
 <!--    <EditText-->
 <!--        android:id="@+id/searchAddress"-->
