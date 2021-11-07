@@ -63,10 +63,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
 
-        lifecycle.coroutineScope.launchWhenCreated {
-            val gMap = mapFragment.getMapAsync { onMapReady(it) }
-        }
-//        mapFragment.getMapAsync(this)
+//        lifecycle.coroutineScope.launchWhenCreated {
+//            val gMap = mapFragment.getMapAsync { onMapReady(it) }
+//        }
+        mapFragment.getMapAsync(this)
 
         binding.isLiveDataDesign = IntoTheForestApplication.instance.isLiveDataDesign()
 

@@ -3,15 +3,13 @@ package com.weiyung.intotheforest.database.source.remote
 import android.content.ContentValues.TAG
 import android.icu.util.Calendar
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.R
-import com.weiyung.intotheforest.database.Article
-import com.weiyung.intotheforest.database.Result
-import com.weiyung.intotheforest.database.Route
-import com.weiyung.intotheforest.database.User
+import com.weiyung.intotheforest.database.*
 import com.weiyung.intotheforest.database.source.IntoTheForestDataSource
 import java.util.*
 import kotlin.coroutines.resume
@@ -186,5 +184,9 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                 liveData.value = list
             }
         return liveData
+    }
+
+    override suspend fun getFavorite(): LiveData<List<Favorite>> {
+        TODO("Not yet implemented")
     }
 }

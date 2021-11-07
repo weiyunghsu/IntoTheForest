@@ -1,11 +1,9 @@
 package com.weiyung.intotheforest.database.source.local
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.weiyung.intotheforest.database.Article
-import com.weiyung.intotheforest.database.User
-import com.weiyung.intotheforest.database.Result
-import com.weiyung.intotheforest.database.Route
+import com.weiyung.intotheforest.database.*
 import com.weiyung.intotheforest.database.source.IntoTheForestDataSource
 
 class IntoTheForestLocalDataSource(val context: Context) : IntoTheForestDataSource {
@@ -50,6 +48,10 @@ class IntoTheForestLocalDataSource(val context: Context) : IntoTheForestDataSour
     }
 
     override fun getLiveRoutes(): MutableLiveData<List<Route>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getFavorite(): LiveData<List<Favorite>>{
         TODO("Not yet implemented")
     }
 

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.weiyung.intotheforest.MainViewModel
 import com.weiyung.intotheforest.database.source.IntoTheForestRepository
+import com.weiyung.intotheforest.favorite.FavoriteViewModel
 import com.weiyung.intotheforest.home.HomeViewModel
 import com.weiyung.intotheforest.map.MapViewModel
 
@@ -23,6 +24,9 @@ class ViewModelFactory constructor(
 
                 isAssignableFrom(MapViewModel::class.java) ->
                     MapViewModel(repository)
+
+                isAssignableFrom(MapViewModel::class.java) ->
+                    FavoriteViewModel(repository)
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

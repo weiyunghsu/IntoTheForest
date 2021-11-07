@@ -1,10 +1,8 @@
 package com.weiyung.intotheforest.database.source
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.weiyung.intotheforest.database.Article
-import com.weiyung.intotheforest.database.User
-import com.weiyung.intotheforest.database.Result
-import com.weiyung.intotheforest.database.Route
+import com.weiyung.intotheforest.database.*
 
 
 class DefaultIntoTheForestRepository (private val remoteDataSource: IntoTheForestDataSource,
@@ -39,5 +37,9 @@ class DefaultIntoTheForestRepository (private val remoteDataSource: IntoTheFores
     }
     override fun getLiveRoutes(): MutableLiveData<List<Route>> {
         return remoteDataSource.getLiveRoutes()
+    }
+
+    override suspend fun getFavorite(): LiveData<List<Favorite>> {
+        TODO("Not yet implemented")
     }
 }
