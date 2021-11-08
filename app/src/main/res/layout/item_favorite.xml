@@ -12,6 +12,9 @@
         <variable
             name="user"
             type="com.weiyung.intotheforest.database.User" />
+        <variable
+            name="viewModel"
+            type="com.weiyung.intotheforest.favorite.FavoriteViewModel" />
 
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -106,13 +109,26 @@
             android:id="@+id/detail_favorite_button"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/transparent"
             android:contentDescription="@string/detail_favorite_button"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/favorite_item_selected"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/toDetailButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_favorite_button"
+            app:srcCompat="@drawable/outline_info_black_36"
             tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

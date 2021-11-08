@@ -72,11 +72,11 @@ class AddArticleFragment : Fragment() {
         binding.inputEndDate.setOnClickListener {
             setEndDate()
         }
-        binding.inputPhotoButton.setOnClickListener {
-            val gallery =
-                Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            startActivityForResult(gallery, PICTUREFROMGALLERY)
-        }
+//        binding.inputPhotoButton.setOnClickListener {
+//            val gallery =
+//                Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+//            startActivityForResult(gallery, PICTUREFROMGALLERY)
+//        }
 
         return binding.root
     }

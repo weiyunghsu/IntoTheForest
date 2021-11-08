@@ -14,8 +14,8 @@ class FavoriteAdapter(val viewModel: FavoriteViewModel) : ListAdapter<Article, F
 
         fun bind(article: Article, viewModel: FavoriteViewModel) {
             binding.article = article
-//            binding.viewModel = viewModel
-//            binding.favoriteToDetailButton.setOnClickListener { viewModel.toDetail(article) }
+            binding.viewModel = viewModel
+            binding.toDetailButton.setOnClickListener { viewModel.toDetail(article) }
             binding.executePendingBindings()
         }
     }

@@ -25,7 +25,7 @@ class ViewModelFactory constructor(
                 isAssignableFrom(MapViewModel::class.java) ->
                     MapViewModel(repository)
 
-                isAssignableFrom(MapViewModel::class.java) ->
+                isAssignableFrom(FavoriteViewModel::class.java) ->
                     FavoriteViewModel(repository)
 
                 else ->

@@ -40,6 +40,6 @@ class DefaultIntoTheForestRepository (private val remoteDataSource: IntoTheFores
     }
 
     override suspend fun getFavorite(): LiveData<List<Favorite>> {
-        TODO("Not yet implemented")
+        return remoteDataSource.getFavorite()
     }
 }

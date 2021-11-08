@@ -14,17 +14,18 @@ import com.weiyung.intotheforest.databinding.FragmentFavoriteBinding
 import com.weiyung.intotheforest.ext.getVmFactory
 
 class FavoriteFragment : Fragment() {
+    private val viewModel by viewModels<FavoriteViewModel> { getVmFactory() }
     private lateinit var binding: FragmentFavoriteBinding
-    private lateinit var viewModel: FavoriteViewModel
-//    private val viewModel by viewModels<FavoriteViewModel> { getVmFactory() }
+//    private lateinit var viewModel: FavoriteViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
+//        viewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
         binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         binding.recyclerFavorite.adapter = FavoriteAdapter(viewModel)
@@ -43,10 +44,10 @@ class FavoriteFragment : Fragment() {
             }
         )
 
-//        viewModel.favorite.observe(viewLifecycleOwner, Observer {
-//            Log.i("i-observe","$it")
-//            viewModel.transform()
-//        })
+        viewModel.favorite.observe(viewLifecycleOwner, Observer {
+            Log.i("i-observe","$it")
+            viewModel.transform()
+        })
 
         return binding.root
     }
