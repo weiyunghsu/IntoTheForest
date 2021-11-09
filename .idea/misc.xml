@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/bg_round_button.xml" value="0.1" />
+        <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/bg_round_image.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/bottom_nav_item_selector.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/drawer_item_selector.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/favorite_item_selected.xml" value="0.1" />
+        <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/ic_launcher_logo_foreground.xml" value="0.13240740740740742" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/ic_nav_addarticle_selector.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/ic_nav_favorite_selector.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/drawable/ic_nav_home_selector.xml" value="0.1" />
@@ -17,13 +19,17 @@
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_detail.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_favorite.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_home.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_map.xml" value="0.1" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_map_route.xml" value="0.10739614994934144" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/fragment_user.xml" value="0.22" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/item_detail_gallery.xml" value="0.10739614994934144" />
+        <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/item_favorite.xml" value="0.14492753623188406" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/item_home.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/layout/item_route_spinner.xml" value="0.10739614994934144" />
         <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/mipmap-anydpi-v26/ic_launcher_logo_round.xml" value="0.13240740740740742" />
+        <entry key="..\:/Users/Wei-Yung/AndroidStudioProjects/IntoTheForest/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.13240740740740742" />
       </map>
     </option>
   </component>

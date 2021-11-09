@@ -58,6 +58,11 @@
         android:label="UserFragment"
         tools:layout="@layout/fragment_user">
     </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.weiyung.intotheforest.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login"/>
     <action android:id="@+id/navigate_to_home_fragment" app:destination="@id/homeFragment"
         app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />

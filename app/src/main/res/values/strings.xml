@@ -55,6 +55,8 @@
     <string name="select_route">選擇路線</string>
     <string name="four_animals">"四獸山"</string>
     <string name="kuan_in">觀音山</string>
+    <string name="enter_forest">進入山林囉！</string>
+    <string name="login">登入</string>
 
     <string-array name="route_list">
         <item>@string/four_animals</item>
