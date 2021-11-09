@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentLoginBinding
@@ -64,7 +65,6 @@ class LoginFragment : Fragment(){
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
 //                firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e)
             }
         }

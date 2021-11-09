@@ -10,5 +10,5 @@ enum class CurrentFragmentType(val value: String) {
     MAP(getString(R.string.map)),
     USER(getString(R.string.user)),
     DETAIL(getString(R.string.detail)),
-    LOGIN(getString(R.string.login))
+    LOGIN("")
 }
