@@ -22,4 +22,8 @@ interface IntoTheForestDataSource {
     suspend fun getRoutes(): Result<List<Route>>
 
     fun getLiveRoutes(): MutableLiveData<List<Route>>
+
+    suspend fun getUser(userId: User?): Result<User?>
+
+    suspend fun signUpUser(user: User): Result<Boolean>
 }

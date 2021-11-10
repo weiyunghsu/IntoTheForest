@@ -57,6 +57,8 @@
     <string name="kuan_in">觀音山</string>
     <string name="enter_forest">進入山林囉！</string>
     <string name="login">登入</string>
+    <string name="login_success">login success</string>
+    <string name="login_fail">login fail</string>
 
     <string-array name="route_list">
         <item>@string/four_animals</item>

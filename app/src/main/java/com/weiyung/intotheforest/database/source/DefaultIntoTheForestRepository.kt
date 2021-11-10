@@ -40,4 +40,12 @@ class DefaultIntoTheForestRepository (private val remoteDataSource: IntoTheFores
     override fun getLiveRoutes(): MutableLiveData<List<Route>> {
         return remoteDataSource.getLiveRoutes()
     }
+
+    override suspend fun getUser(userId: User?): Result<User?> {
+        return remoteDataSource.getUser(userId)
+    }
+
+    override suspend fun signUpUser(user: User): Result<Boolean> {
+        return remoteDataSource.signUpUser(user)
+    }
 }

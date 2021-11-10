@@ -7,6 +7,9 @@
         <variable
             name="viewModel"
             type="com.weiyung.intotheforest.user.UserViewModel" />
+        <variable
+            name="user"
+            type="com.weiyung.intotheforest.database.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,23 +34,25 @@
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
             android:contentDescription="@string/user_photo"
+            app:imageUrl="@{user.picture}"
             app:layout_constraintEnd_toEndOf="@+id/user_view"
             app:layout_constraintStart_toStartOf="@+id/user_view"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icons_36px_profile_normal" />
+            tools:srcCompat="@drawable/icons_36px_profile_normal" />
 
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/username"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:text="@{user.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_photo" />
+            app:layout_constraintTop_toBottomOf="@+id/user_photo"
+            tools:text="王小明"/>
 
         <Button
             android:id="@+id/bt_my_articles"

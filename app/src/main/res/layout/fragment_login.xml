@@ -13,73 +13,67 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/icon_logo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="200dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/hiking_logo3" />
+        android:layout_height="match_parent"
+        android:background="@drawable/login_background">
 
         <TextView
             android:id="@+id/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/noto_sans"
             android:text="走入山林"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/icon_logo" />
+            app:layout_constraintTop_toBottomOf="@+id/signInButton" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/signInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="450dp"
             android:gravity="center"
             android:textAlignment="center"
             android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="@+id/app_name"
-            app:layout_constraintStart_toStartOf="@+id/app_name"
-            app:layout_constraintTop_toBottomOf="@+id/app_name"
+            android:background="@drawable/bg_round_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
+
+        <!--        android:visibility="@{viewModel.status == LoadApiStatus.LOADING || viewModel.firebaseUser == null ? View.GONE : View.VISIBLE}"-->
 
         <TextView
             android:id="@+id/getInButton"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/noto_sans"
             android:gravity="center"
-            android:letterSpacing="0.15"
+            android:letterSpacing="0.1"
             android:padding="8dp"
             android:text="@string/enter_forest"
             android:textColor="@color/white"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/signInButton"
-            app:layout_constraintStart_toStartOf="@+id/signInButton"
-            app:layout_constraintTop_toBottomOf="@+id/signInButton"
-            tools:visibility="visible" />
-<!--        android:visibility="@{viewModel.status == LoadApiStatus.LOADING || viewModel.firebaseUser == null ? View.GONE : View.VISIBLE}"-->
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_name" />
 
         <ProgressBar
             android:id="@+id/progress_login"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:visibility="@{viewModel.status == LoadApiStatus.LOADING ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/getInButton" />
 

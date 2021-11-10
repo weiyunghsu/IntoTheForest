@@ -3,12 +3,16 @@ package com.weiyung.intotheforest.login
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.os.UserManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -16,11 +20,14 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.R
+import com.weiyung.intotheforest.database.User
 import com.weiyung.intotheforest.databinding.FragmentLoginBinding
 import com.weiyung.intotheforest.ext.getVmFactory
+import com.weiyung.intotheforest.util.UserManager.isLoggedIn
 
-class LoginFragment : Fragment(){
+class LoginFragment : Fragment() {
     private val viewModel by viewModels<LoginViewModel> { getVmFactory() }
     private lateinit var binding: FragmentLoginBinding
     private lateinit var auth: FirebaseAuth
@@ -29,6 +36,7 @@ class LoginFragment : Fragment(){
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,8 +47,31 @@ class LoginFragment : Fragment(){
         binding.signInButton.setOnClickListener {
             signIn()
         }
+
+        viewModel.user.observe(viewLifecycleOwner, Observer {
+            Log.i(TAG,"Here2!!!!")
+            Log.i(TAG,"$isLoggedIn")
+            it?.let {
+                when {
+                    isLoggedIn ->{
+                        Log.i(TAG,"Here!!!!")
+                        findNavController().navigate(
+                            NavigationDirections.navigateToHomeFragment()
+                        )
+                    }
+                }
+                viewModel.navigateComplete()
+            }
+        })
+
         return binding.root
     }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+    }
+
     private fun signIn() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -58,29 +89,65 @@ class LoginFragment : Fragment(){
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == SIGN_IN){
+        if (requestCode == SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)!!
-                Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
-//                firebaseAuthWithGoogle(account.idToken!!)
+                val email = account?.email
+                firebaseAuthWithGoogle(account.idToken!!)
+
+                Log.d(TAG, "firebaseAuthWithGoogle:" + account.id + "email:$email")
+                Toast.makeText(
+                    requireActivity(),
+                    getString(R.string.login_success),
+                    Toast.LENGTH_SHORT
+                ).show()
+
             } catch (e: ApiException) {
                 Log.w(TAG, "Google sign in failed", e)
+                Toast.makeText(
+                    requireActivity(),
+                    getString(R.string.login_fail),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
-//    private fun firebaseAuthWithGoogle(idToken: String) {
-//        val credential = GoogleAuthProvider.getCredential(idToken, null)
-//        auth.signInWithCredential(credential)
-//            .addOnCompleteListener(this) { task ->
-//                if (task.isSuccessful) {
-//                    Log.d(TAG, "signInWithCredential:success")
-//                    val user = auth.currentUser
-//                    updateUI(user)
-//                } else {
-//                    Log.w(TAG, "signInWithCredential:failure", task.exception)
-//                    updateUI(null)
-//                }
-//            }
-//    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    val currentUser = auth.currentUser
+                    when {
+                        currentUser != null -> {
+                            val user = currentUser.displayName?.let {
+                                currentUser.email?.let { it1 ->
+                                    User(
+                                        id = currentUser.uid,
+                                        name = it,
+                                        email = it1,
+                                        picture = currentUser.photoUrl.toString()
+                                    )
+                                }
+                            }
+                            viewModel.getUser(user)
+                            viewModel.addUser(user)
+                        }
+//                        isLoggedIn -> {
+//                            findNavController().navigate(
+//                                NavigationDirections.navigateToHomeFragment()
+//                            )
+//                        }
+                    }
+                    Log.d(TAG, "signInWithCredential:success")
+
+                } else {
+                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+
+                }
+            }
+    }
+
 }

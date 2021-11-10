@@ -7,4 +7,10 @@
         <item name="colorPrimaryDark">@color/light_green_900</item>
         <item name="colorAccent">@color/light_green_500</item>
     </style>
+
+    <style name="LoginTheme" parent="FirebaseUI">
+        <item name="android:windowBackground">@drawable/login_background</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>

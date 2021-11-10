@@ -53,4 +53,12 @@ class IntoTheForestLocalDataSource(val context: Context) : IntoTheForestDataSour
         TODO("Not yet implemented")
     }
 
+    override suspend fun getUser(userId: User?): Result<User?> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun signUpUser(user: User): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
 }

@@ -84,4 +84,5 @@
     <action android:id="@+id/navigate_to_report_dialog" app:destination="@id/reportDialog"
         app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
+    <action android:id="@+id/navigate_to_login_fragment" app:destination="@id/loginFragment"/>
 </navigation>

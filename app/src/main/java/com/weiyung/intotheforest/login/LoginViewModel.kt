@@ -1,16 +1,19 @@
 package com.weiyung.intotheforest.login
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bumptech.glide.load.engine.Engine
 import com.google.firebase.auth.FirebaseUser
 import com.weiyung.intotheforest.database.User
 import com.weiyung.intotheforest.database.source.IntoTheForestRepository
 import com.weiyung.intotheforest.network.LoadApiStatus
+import com.weiyung.intotheforest.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: IntoTheForestRepository) : ViewModel(){
 
@@ -36,6 +39,35 @@ class LoginViewModel(private val repository: IntoTheForestRepository) : ViewMode
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+    fun navigateComplete() {
+        _user.value = null
+    }
+
+    fun getUser(userId: User?) {
+        coroutineScope.launch {
+            _status.value = LoadApiStatus.LOADING
+            val result = repository.getUser(userId)
+            _user.value = result.handleResultWith(_error, _status)
+        }
+    }
+
+    fun addUser(user: User?) {
+        coroutineScope.launch {
+            _status.value = LoadApiStatus.LOADING
+
+            val signedIn = user?.let { repository.signUpUser(it).handleResultWith(_error, _status) }
+            Log.i(TAG,"$signedIn")
+            if (signedIn == true){
+                UserManager.userID = user.id
+                UserManager.userEmail = user.email
+                _user.value = user!!
+            } else {
+                _user.value = null
+            }
+//            _user.value = if (signedIn == true) user else null
+
+        }
     }
 
 }
