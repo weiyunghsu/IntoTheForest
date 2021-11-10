@@ -29,6 +29,8 @@ class UserFragment : Fragment() {
         binding.btMyFavorites.setOnClickListener {
             findNavController().navigate(NavigationDirections.navigateToFavoriteFragment())
         }
+        binding.lottieMountainBirds.repeatCount = -1
+        binding.lottieMountainBirds.playAnimation()
         return binding.root
     }
 }

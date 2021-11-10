@@ -63,7 +63,8 @@ class LoginFragment : Fragment() {
                 viewModel.navigateComplete()
             }
         })
-
+        binding.lottieBirds.repeatCount = -1
+        binding.lottieBirds.playAnimation()
         return binding.root
     }
 

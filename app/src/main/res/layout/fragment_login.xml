@@ -77,5 +77,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/getInButton" />
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieBirds"
+            android:layout_width="0dp"
+            android:layout_height="400dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_rawRes="@raw/birds_fly"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

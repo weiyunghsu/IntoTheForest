@@ -58,7 +58,7 @@
             android:id="@+id/bt_my_articles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:background="@null"
             android:backgroundTint="@color/white"
             android:text="@string/bt_my_articles"
@@ -98,7 +98,7 @@
             android:id="@+id/bt_my_badges"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:background="@null"
             android:backgroundTint="@color/white"
             android:text="@string/bt_my_badges"
@@ -166,7 +166,7 @@
             android:id="@+id/bt_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:background="@null"
             android:backgroundTint="@color/white"
             android:text="@string/bt_logout"
@@ -177,6 +177,16 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bt_my_badges" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieMountainBirds"
+            android:layout_width="0dp"
+            android:layout_height="400dp"
+            android:layout_marginBottom="-100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:lottie_rawRes="@raw/mountain_birds_fly"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
