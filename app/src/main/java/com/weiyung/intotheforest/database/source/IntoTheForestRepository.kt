@@ -1,10 +1,8 @@
 package com.weiyung.intotheforest.database.source
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.weiyung.intotheforest.database.Article
-import com.weiyung.intotheforest.database.Result
-import com.weiyung.intotheforest.database.Route
-import com.weiyung.intotheforest.database.User
+import com.weiyung.intotheforest.database.*
 
 interface IntoTheForestRepository {
     suspend fun loginMockData(id: String): Result<User>
@@ -22,6 +20,8 @@ interface IntoTheForestRepository {
     suspend fun getRoutes(): Result<List<Route>>
 
     fun getLiveRoutes(): MutableLiveData<List<Route>>
+
+    suspend fun getFavorite(): LiveData<List<Favorite>>
 
     suspend fun getUser(userId: User?): Result<User?>
 

@@ -186,6 +186,51 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/inputStory" />
 
+                <ImageView
+                    android:id="@+id/pickImg1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="@+id/inputPhotoButton"
+                    app:layout_constraintTop_toBottomOf="@+id/inputPhotoButton"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                <ImageView
+                    android:id="@+id/pickImg2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toEndOf="@+id/pickImg1"
+                    app:layout_constraintTop_toTopOf="@+id/pickImg1"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                <ImageView
+                    android:id="@+id/pickImg3"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toEndOf="@+id/pickImg2"
+                    app:layout_constraintTop_toTopOf="@+id/pickImg1"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toEndOf="@+id/inputPhotoButton"
+                    app:layout_constraintTop_toBottomOf="@+id/inputStory" />
+
+                <TextView
+                    android:id="@+id/articleImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@+id/pickImg1"
+                    app:layout_constraintTop_toTopOf="@+id/pickImg1"
+                    android:text="@{viewModel.article.mainImage}"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

@@ -1,15 +1,12 @@
 package com.weiyung.intotheforest.addarticle
 
-import android.Manifest
 import android.content.ContentValues.TAG
-import android.content.pm.PackageManager
 import android.util.Log
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityCompat.requestPermissions
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.firebase.storage.FirebaseStorage
 import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.database.Article
@@ -24,18 +21,19 @@ import kotlinx.coroutines.launch
 
 class AddArticleViewModel(
     private val repository:IntoTheForestRepository,
-    private val user: User?
+    val user: User?
     )  : ViewModel(){
 
     val _article = MutableLiveData<Article>().apply {
         value = Article(
             user = user,
-//            images =
         )
     }
 
+
     val article: LiveData<Article>
         get() = _article
+
 
     private val _status = MutableLiveData<LoadApiStatus>()
     val status: LiveData<LoadApiStatus>
@@ -83,7 +81,5 @@ class AddArticleViewModel(
             }
         }
     }
-
-
 
 }

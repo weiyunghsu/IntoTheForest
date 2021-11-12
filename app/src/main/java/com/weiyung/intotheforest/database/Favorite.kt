@@ -2,10 +2,9 @@ package com.weiyung.intotheforest.database
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
 
 @Parcelize
-data class Article(
+data class Favorite(
     var id: String = "",
 //    var createdTime: Long = -1,
     var startDate: String = "",
@@ -15,13 +14,4 @@ data class Article(
     var story: String = "",
     var mainImage: String = "",
     var images: List<String>? = null
-): Parcelable
-
-@Parcelize
-data class Image(
-    var image1 : String = "",
-    var image2 : String = "",
-    var image3 : String = "",
-    var image4 : String = "",
-    var image5 : String = "",
 ): Parcelable

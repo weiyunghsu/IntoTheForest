@@ -2,6 +2,7 @@ package com.weiyung.intotheforest.database.source.remote
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
@@ -10,10 +11,7 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.R
-import com.weiyung.intotheforest.database.Article
-import com.weiyung.intotheforest.database.Result
-import com.weiyung.intotheforest.database.Route
-import com.weiyung.intotheforest.database.User
+import com.weiyung.intotheforest.database.*
 import com.weiyung.intotheforest.database.source.IntoTheForestDataSource
 import com.weiyung.intotheforest.util.Util
 import java.util.*
@@ -28,6 +26,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
     private const val KEY_ROUTE_ID = "routeId"
     private const val KEY_SEG = "seg"
     private const val PATH_USER = "user"
+    private const val KEY_END_DATE = "endDate"
 
     override suspend fun login(id: String): Result<User> {
         TODO("Not yet implemented")
@@ -36,7 +35,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
     override suspend fun getArticles(): Result<List<Article>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
             .collection(PATH_ARTICLES)
-            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+            .orderBy(KEY_END_DATE, Query.Direction.DESCENDING)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -66,7 +65,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
         val liveData = MutableLiveData<List<Article>>()
         FirebaseFirestore.getInstance()
             .collection(PATH_ARTICLES)
-            .orderBy(KEY_ID, Query.Direction.DESCENDING)
+            .orderBy(KEY_END_DATE, Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, exception ->
                 Log.i(TAG,"addSnapshotListener detect")
                 exception?.let {
@@ -143,7 +142,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
     override suspend fun getRoutes(): Result<List<Route>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
             .collection(PATH_ROUTES)
-            .orderBy(KEY_ROUTE_ID, Query.Direction.ASCENDING)
+            .orderBy(KEY_ROUTE_ID, Query.Direction.DESCENDING)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -173,7 +172,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
         val liveData = MutableLiveData<List<Route>>()
         FirebaseFirestore.getInstance()
             .collection(PATH_ROUTES)
-            .orderBy(KEY_ROUTE_ID, Query.Direction.ASCENDING)
+            .orderBy(KEY_ROUTE_ID, Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, exception ->
                 Log.i(TAG,"addSnapshotListener detect")
                 exception?.let {
@@ -189,6 +188,10 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                 liveData.value = list
             }
         return liveData
+    }
+
+    override suspend fun getFavorite(): LiveData<List<Favorite>> {
+        TODO("Not yet implemented")
     }
 
     override suspend fun getUser(userId: User?): Result<User?> {

@@ -59,6 +59,10 @@
     <string name="login">登入</string>
     <string name="login_success">login success</string>
     <string name="login_fail">login fail</string>
+    <string name="load_img_fail">載入圖片失敗</string>
+    <string name="upload_success">上傳成功</string>
+    <string name="post_success">發布成功</string>
+    <string name="load_img_fail1">上傳失敗</string>
 
     <string-array name="route_list">
         <item>@string/four_animals</item>

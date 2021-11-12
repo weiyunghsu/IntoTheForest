@@ -1,17 +1,21 @@
 package com.weiyung.intotheforest.detail
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.weiyung.intotheforest.database.Image
 import com.weiyung.intotheforest.databinding.ItemDetailGalleryBinding
 
 class DetailAdapter : ListAdapter<String, DetailAdapter.ImageViewHolder>
     (DetailAdapter) {
     private lateinit var context: Context
-    private var images: List<String>? = null
+    private var images: Image? = null
+
     class ImageViewHolder(private val binding: ItemDetailGalleryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(images: String) {
@@ -44,5 +48,10 @@ class DetailAdapter : ListAdapter<String, DetailAdapter.ImageViewHolder>
         override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
             return oldItem == newItem
         }
+    }
+
+    override fun getItemCount(): Int {
+        Log.d(TAG,"getItemCount():${super.getItemCount()}")
+        return super.getItemCount()
     }
 }
