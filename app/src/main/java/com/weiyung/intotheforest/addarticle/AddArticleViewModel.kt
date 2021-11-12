@@ -5,6 +5,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.firebase.storage.FirebaseStorage
 import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.database.Article
@@ -22,10 +24,16 @@ class AddArticleViewModel(
     private val user: User?
     )  : ViewModel(){
 
-    val _article = MutableLiveData<Article>()
+    val _article = MutableLiveData<Article>().apply {
+        value = Article(
+            user = user,
+//            images =
+        )
+    }
 
     val article: LiveData<Article>
         get() = _article
+
 
     private val _status = MutableLiveData<LoadApiStatus>()
     val status: LiveData<LoadApiStatus>
@@ -73,7 +81,5 @@ class AddArticleViewModel(
             }
         }
     }
-
-
 
 }

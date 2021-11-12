@@ -44,10 +44,10 @@ class FavoriteFragment : Fragment() {
             }
         )
 
-        viewModel.favorite.observe(viewLifecycleOwner, Observer {
-            Log.i("i-observe","$it")
-            viewModel.transform()
-        })
+//        viewModel.favorite.observe(viewLifecycleOwner, Observer {
+//            Log.i("i-observe","$it")
+//            viewModel.transform()
+//        })
 
         return binding.root
     }

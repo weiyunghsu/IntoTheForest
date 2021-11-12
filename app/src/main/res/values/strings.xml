@@ -55,6 +55,10 @@
     <string name="select_route">選擇路線</string>
     <string name="four_animals">"四獸山"</string>
     <string name="kuan_in">觀音山</string>
+    <string name="load_img_fail">載入圖片失敗</string>
+    <string name="upload_success">上傳成功</string>
+    <string name="post_success">發布成功</string>
+    <string name="load_img_fail1">上傳失敗</string>
 
     <string-array name="route_list">
         <item>@string/four_animals</item>

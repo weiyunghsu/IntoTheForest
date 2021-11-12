@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.weiyung.intotheforest.database.Article
 import com.weiyung.intotheforest.databinding.ItemFavoriteBinding
 
-class FavoriteAdapter(val viewModel: FavoriteViewModel) : ListAdapter<Article, FavoriteAdapter.ArticleViewHolder>(DiffCallback) {
+class FavoriteAdapter(val viewModel: FavoriteViewModel) :
+    ListAdapter<Article, FavoriteAdapter.ArticleViewHolder>(DiffCallback) {
 
-    class ArticleViewHolder(private var binding: ItemFavoriteBinding) : RecyclerView.ViewHolder(binding.root) {
-
+    class ArticleViewHolder(private var binding: ItemFavoriteBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article, viewModel: FavoriteViewModel) {
             binding.article = article
             binding.viewModel = viewModel
@@ -28,6 +29,7 @@ class FavoriteAdapter(val viewModel: FavoriteViewModel) : ListAdapter<Article, F
         override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem == newItem
         }
+        private const val ITEM_VIEW_TYPE_ARTICLE = 0x00
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
