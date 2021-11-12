@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 
 class AddArticleViewModel(
     private val repository:IntoTheForestRepository,
-    private val user: User?
+    val user: User?
     )  : ViewModel(){
 
     val _article = MutableLiveData<Article>().apply {

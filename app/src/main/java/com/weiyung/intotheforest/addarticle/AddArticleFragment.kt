@@ -35,6 +35,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.io.File
+import java.lang.Math.random
 import java.util.*
 
 class AddArticleFragment : Fragment() {
@@ -211,7 +212,8 @@ class AddArticleFragment : Fragment() {
 //                  .setContentType("image/png")
 //                  .setContentType("image/jpeg")
                 .build()
-            val routesRef = mStorageRef.child("$FIREBASE_PATH_ROUTE/${viewModel.article.value?.user}+img.jpg")
+            var randomNumber = (0..999).random()
+            val routesRef = mStorageRef.child("$FIREBASE_PATH_ROUTE/${viewModel.user?.id}_$randomNumber.jpg")
 //                  val uploadTask = routesRef.putFile(file, metadata)
             val uploadTask = routesRef.putFile(uri)
             uploadTask.addOnFailureListener {
