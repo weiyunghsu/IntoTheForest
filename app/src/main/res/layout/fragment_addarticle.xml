@@ -223,6 +223,14 @@
                     app:layout_constraintStart_toEndOf="@+id/inputPhotoButton"
                     app:layout_constraintTop_toBottomOf="@+id/inputStory" />
 
+                <TextView
+                    android:id="@+id/articleImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@+id/pickImg1"
+                    app:layout_constraintTop_toTopOf="@+id/pickImg1"
+                    android:text="@{viewModel.article.mainImage}"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

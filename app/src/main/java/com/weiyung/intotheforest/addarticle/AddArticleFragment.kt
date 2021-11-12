@@ -49,6 +49,8 @@ class AddArticleFragment : Fragment() {
         const val PICTUREFROMGALLERY = 1001
         const val PICTUREFROMCAMERA = 1002
         const val REQUEST_EXTERNAL_STORAGE = 1003
+        const val FIREBASE_PATH_ROUTE = "routeImg"
+        const val FIREBASE_PATH_AVATAR = "avatar"
     }
 
     val db = Firebase.firestore
@@ -75,8 +77,7 @@ class AddArticleFragment : Fragment() {
             setEndDate()
         }
         binding.inputPhotoButton.setOnClickListener {
-            val gallery =
-                Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, PICTUREFROMGALLERY)
         }
         binding.addPostButton.setOnClickListener {
@@ -134,7 +135,6 @@ class AddArticleFragment : Fragment() {
                     Toast.makeText(requireContext(), imagePath, Toast.LENGTH_SHORT).show()
                     Glide.with(requireContext()).load(imagePath).into(binding.pickImg1)
                     getLocalImg()
-                    //                    Log.i(TAG,  "getLocalImg: ")
 
                     firebaseUpload(uri)
                     Log.i(TAG, "firebaseUpload: ")
@@ -152,25 +152,25 @@ class AddArticleFragment : Fragment() {
         }
     }
 
-    private val startForProfileImageResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-            val resultCode = result.resultCode
-            val data = result.data
-
-            if (resultCode == Activity.RESULT_OK) {
-                //Image Uri will not be null for RESULT_OK
-                val fileUri = data?.data!!
-                Log.i(TAG, "fileUri : $fileUri")
-                val mProfileUri = fileUri
-                binding.pickImg2.setImageURI(fileUri)
-                Log.i(TAG, "startForProfileImageResult ")
-            } else if (resultCode == ImagePicker.RESULT_ERROR) {
-                Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                Toast.makeText(requireContext(), "Task Cancelled", Toast.LENGTH_SHORT).show()
-            }
-        }
+//    private val startForProfileImageResult =
+//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+//            val resultCode = result.resultCode
+//            val data = result.data
+//
+//            if (resultCode == Activity.RESULT_OK) {
+//                //Image Uri will not be null for RESULT_OK
+//                val fileUri = data?.data!!
+//                Log.i(TAG, "fileUri : $fileUri")
+//                val mProfileUri = fileUri
+//                binding.pickImg2.setImageURI(fileUri)
+//                Log.i(TAG, "startForProfileImageResult ")
+//            } else if (resultCode == ImagePicker.RESULT_ERROR) {
+//                Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
+//                    .show()
+//            } else {
+//                Toast.makeText(requireContext(), "Task Cancelled", Toast.LENGTH_SHORT).show()
+//            }
+//        }
 
     private fun getPathFromUri(uri: Uri): String {
         val projection = arrayOf(MediaStore.MediaColumns.DATA)
@@ -195,13 +195,14 @@ class AddArticleFragment : Fragment() {
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.IO)
+
     fun firebaseUpload(uri: Uri) {
         coroutineScope.launch {
 
             val mStorageRef = FirebaseStorage.getInstance().reference
                   val storageRef = storage.reference
-                  val imagesRef: StorageReference = storageRef.child("routeImg")
-                  val routeImageRef = storageRef.child("routeImg/image.jpg")
+                  val imagesRef: StorageReference = storageRef.child(FIREBASE_PATH_ROUTE)
+//                  val routeImageRef = storageRef.child("routeImg/image.jpg")
                   val path = imagesRef.path
 //            val file = Uri.fromFile(File())
             val metadata = StorageMetadata.Builder()
@@ -210,9 +211,7 @@ class AddArticleFragment : Fragment() {
 //                  .setContentType("image/png")
 //                  .setContentType("image/jpeg")
                 .build()
-            val routesRef = mStorageRef.child("routeImg/image.jpg")
-//                  val stream: InputStream = FileInputStream(file)
-//                  val uploadTask: UploadTask = routeImageRef.putStream(stream)
+            val routesRef = mStorageRef.child("$FIREBASE_PATH_ROUTE/${viewModel.article.value?.user}+img.jpg")
 //                  val uploadTask = routesRef.putFile(file, metadata)
             val uploadTask = routesRef.putFile(uri)
             uploadTask.addOnFailureListener {
@@ -223,11 +222,13 @@ class AddArticleFragment : Fragment() {
                 ).show()
 //                  upload_info_text.text = exception.message
                 Log.i(TAG, "addOnFailureListener: $it")
-            }.addOnCompleteListener {
+            }.addOnCompleteListener { it ->
                 if (it.isSuccessful) {
                     it.result.storage.downloadUrl.addOnCompleteListener {
-                        val articleImg = it.result.toString()
-                        Log.i(TAG,"$articleImg")
+
+                        val articleImage = it.result.toString()
+                        viewModel.article.value?.mainImage = articleImage
+                        Log.i(TAG,"the photoUri on firebasr storage is : $articleImage")
                     }
                 }
                 Toast.makeText(
