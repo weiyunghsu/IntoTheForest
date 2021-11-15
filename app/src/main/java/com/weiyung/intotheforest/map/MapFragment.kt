@@ -57,7 +57,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentMapBinding.inflate(inflater, container, false)
 
@@ -111,26 +111,22 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-
         fun setupPermission() {
-            if (ContextCompat.checkSelfPermission(
-                    this.binding.root.context,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                )
-                != PackageManager.PERMISSION_GRANTED
-            ) {
-                requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 999)
-            } else {
+            mMap = googleMap
+            if (!::mMap.isInitialized) return
+            if (ContextCompat.checkSelfPermission(this.binding.root.context,
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
                 mMap.isMyLocationEnabled = true
+            } else {
+                requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 999)
             }
         }
         setupPermission()
-        mMap.isMyLocationEnabled = true // 右上角的定位功能
-        mMap.uiSettings.isZoomControlsEnabled = true  // 右下角的放大縮小功能
-        mMap.uiSettings.isCompassEnabled = true       // 左上角的指南針，要兩指旋轉才會出現
-        mMap.uiSettings.isMapToolbarEnabled = true    // 右下角的導覽及開啟 Google Map功能
-
+        mMap.isMyLocationEnabled = true
+        mMap.uiSettings.isZoomControlsEnabled = true
+        mMap.uiSettings.isCompassEnabled = true
+        mMap.uiSettings.isMapToolbarEnabled = true
 
         val source1 = LatLng(25.03777004,121.5851248) //starting point (LatLng)
         val destination1 = LatLng(25.02742634,121.5707231) // ending point (LatLng)
