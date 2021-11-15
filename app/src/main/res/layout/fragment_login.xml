@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/login_background">
+        android:background="@drawable/login_background_new">
 
         <TextView
             android:id="@+id/app_name"
@@ -37,10 +37,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="450dp"
+            android:background="@drawable/bg_round_button"
             android:gravity="center"
             android:textAlignment="center"
             android:visibility="visible"
-            android:background="@drawable/bg_round_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -84,7 +84,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:lottie_rawRes="@raw/birds_fly"/>
+            app:lottie_rawRes="@raw/birds_fly" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
