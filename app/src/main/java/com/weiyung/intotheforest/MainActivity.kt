@@ -4,6 +4,8 @@ import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.ViewGroup
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -98,6 +100,7 @@ class MainActivity : AppCompatActivity() {
         setupBottomNav()
 
         setupNavController()
+
     }
 
     private fun setupBottomNav() {
@@ -134,4 +137,6 @@ class MainActivity : AppCompatActivity() {
         private const val BOTTOM_HOME_POS = 0
         private const val BOTTOM_USER_POS = 4
     }
+
+
 }
