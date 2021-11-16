@@ -40,6 +40,7 @@ class LoginViewModel(private val repository: IntoTheForestRepository) : ViewMode
         super.onCleared()
         viewModelJob.cancel()
     }
+
     fun navigateComplete() {
         _user.value = null
     }
@@ -49,6 +50,7 @@ class LoginViewModel(private val repository: IntoTheForestRepository) : ViewMode
             _status.value = LoadApiStatus.LOADING
             val result = repository.getUser(userId)
             _user.value = result.handleResultWith(_error, _status)
+            Log.i(TAG,"_user.value in getUser: ${_user.value}")
         }
     }
 
@@ -60,8 +62,11 @@ class LoginViewModel(private val repository: IntoTheForestRepository) : ViewMode
             Log.i(TAG,"$signedIn")
             if (signedIn == true){
                 UserManager.userID = user.id
+                UserManager.userName = user.name
                 UserManager.userEmail = user.email
+                UserManager.userPicture = user.picture
                 _user.value = user!!
+                Log.i(TAG,"_user.value in addUser?????: ${UserManager.userPicture}")
             } else {
                 _user.value = null
             }

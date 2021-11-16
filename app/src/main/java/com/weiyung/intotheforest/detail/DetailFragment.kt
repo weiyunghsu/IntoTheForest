@@ -48,7 +48,6 @@ class DetailFragment : Fragment() {
             imageAdapter.submitList(imageList)
         }
 
-
         binding.backButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.navigate_to_home_fragment)
         }

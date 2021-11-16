@@ -49,12 +49,12 @@ class LoginFragment : Fragment() {
         }
 
         viewModel.user.observe(viewLifecycleOwner, Observer {
-            Log.i(TAG,"Here2!!!!")
+            Log.i(TAG,"check enter : viewModel.user.observe")
             Log.i(TAG,"$isLoggedIn")
             it?.let {
                 when {
                     isLoggedIn ->{
-                        Log.i(TAG,"Here!!!!")
+                        Log.i(TAG,"check enter : isLoggedIn")
                         findNavController().navigate(
                             NavigationDirections.navigateToHomeFragment()
                         )
@@ -94,7 +94,7 @@ class LoginFragment : Fragment() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)!!
-                val email = account?.email
+                val email = account.email
                 firebaseAuthWithGoogle(account.idToken!!)
 
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.id + "email:$email")
@@ -133,8 +133,11 @@ class LoginFragment : Fragment() {
                                     )
                                 }
                             }
+                            Log.i(TAG,"user: $user , currentUser: $currentUser")
                             viewModel.getUser(user)
+                            Log.i(TAG,"getUser: ${viewModel.user}")
                             viewModel.addUser(user)
+                            Log.i(TAG,"addUser: ${viewModel.user}")
                         }
 //                        isLoggedIn -> {
 //                            findNavController().navigate(

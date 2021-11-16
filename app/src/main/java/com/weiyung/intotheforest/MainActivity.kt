@@ -43,9 +43,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.navigation_addarticle -> {
                     findNavController(R.id.myNavHostFragment).navigate(
-                        NavigationDirections.navigateToAddArticleFragment(
-                            viewModel.user.value!!
-                        )
+                        NavigationDirections.navigateToAddArticleFragment()
                     )
                     return@OnNavigationItemSelectedListener true
                 }

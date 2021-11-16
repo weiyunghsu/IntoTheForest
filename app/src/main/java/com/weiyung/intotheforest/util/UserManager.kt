@@ -11,6 +11,8 @@ object UserManager {
     private const val USER_TOKEN = "user_token"
     private const val USER_ID = "user_id"
     private const val USER_EMAIL = "user_email"
+    private const val USER_NAME = "user_name"
+    private const val USER_PICTURE = "user_picture"
 
     private val _user = MutableLiveData<User?>()
     val user: LiveData<User?>
@@ -77,6 +79,50 @@ object UserManager {
                     IntoTheForestApplication.instance
                         .getSharedPreferences(USER_DATA, Context.MODE_PRIVATE).edit()
                         .putString(USER_EMAIL, value)
+                        .apply()
+                    value
+                }
+            }
+        }
+    var userName: String? = null
+        get() = IntoTheForestApplication.instance
+            .getSharedPreferences(USER_DATA, Context.MODE_PRIVATE)
+            .getString(USER_NAME, null)
+        set(value) {
+            field = when (value) {
+                null -> {
+                    IntoTheForestApplication.instance
+                        .getSharedPreferences(USER_DATA, Context.MODE_PRIVATE).edit()
+                        .remove(USER_NAME)
+                        .apply()
+                    null
+                }
+                else -> {
+                    IntoTheForestApplication.instance
+                        .getSharedPreferences(USER_DATA, Context.MODE_PRIVATE).edit()
+                        .putString(USER_NAME, value)
+                        .apply()
+                    value
+                }
+            }
+        }
+    var userPicture: String? = null
+        get() = IntoTheForestApplication.instance
+            .getSharedPreferences(USER_DATA, Context.MODE_PRIVATE)
+            .getString(USER_PICTURE, null)
+        set(value) {
+            field = when (value) {
+                null -> {
+                    IntoTheForestApplication.instance
+                        .getSharedPreferences(USER_DATA, Context.MODE_PRIVATE).edit()
+                        .remove(USER_PICTURE)
+                        .apply()
+                    null
+                }
+                else -> {
+                    IntoTheForestApplication.instance
+                        .getSharedPreferences(USER_DATA, Context.MODE_PRIVATE).edit()
+                        .putString(USER_PICTURE, value)
                         .apply()
                     value
                 }

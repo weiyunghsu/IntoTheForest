@@ -89,7 +89,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
 
         article.id = document.id
 //        article.createdTime = Calendar.getInstance().timeInMillis
-
+        Log.i(TAG,"here is fun publish")
         document
             .set(article)
             .addOnCompleteListener { task ->

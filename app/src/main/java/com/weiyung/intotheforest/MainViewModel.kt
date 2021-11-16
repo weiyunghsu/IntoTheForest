@@ -9,6 +9,7 @@ import com.weiyung.intotheforest.database.Route
 import com.weiyung.intotheforest.database.User
 import com.weiyung.intotheforest.database.source.IntoTheForestRepository
 import com.weiyung.intotheforest.util.CurrentFragmentType
+import com.weiyung.intotheforest.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -17,11 +18,7 @@ class MainViewModel(private val repository: IntoTheForestRepository) : ViewModel
     val currentFragmentType = MutableLiveData<CurrentFragmentType>()
 
     private val _user = MutableLiveData<User>().apply {
-        value = User(
-            "9527",
-            "九五二七",
-            "aaa@gmail.com"
-        )
+        value = UserManager.user.value
     }
     val user : LiveData<User>
         get() = _user

@@ -5,6 +5,7 @@ import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
+import android.os.UserManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.coroutineScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -26,6 +28,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
+import com.google.firebase.firestore.core.OrderBy
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.maps.route.extensions.drawMarker
@@ -73,8 +76,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-
-
         viewModel.getRoutesResult()
         Log.i(TAG, "Where is the Routes??? ${viewModel.routes}")
         Log.i(TAG, "Where is the _Routes??? ${viewModel._routes}")
@@ -109,15 +110,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.speakButton.setOnClickListener {
             findNavController().navigate(NavigationDirections.navigateToReportDialog())
         }
-//        binding.mapToAddPostButton.setOnClickListener {
-//            findNavController().navigate(NavigationDirections.navigateToAddArticleFragment())
+//        binding.mapToAddPostButton.setOnClickListener { view: View ->
+//            view.findNavController().navigate(R.id.navigate_to_addArticle_fragment)
 //        }
         return binding.root
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
         fun setupPermission() {
-            mMap = googleMap
             if (!::mMap.isInitialized) return
             if (ContextCompat.checkSelfPermission(this.binding.root.context,
                     Manifest.permission.ACCESS_FINE_LOCATION)

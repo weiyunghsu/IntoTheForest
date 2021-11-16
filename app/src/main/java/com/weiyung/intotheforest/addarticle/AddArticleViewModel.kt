@@ -14,26 +14,19 @@ import com.weiyung.intotheforest.database.User
 import com.weiyung.intotheforest.database.Result
 import com.weiyung.intotheforest.database.source.IntoTheForestRepository
 import com.weiyung.intotheforest.network.LoadApiStatus
+import com.weiyung.intotheforest.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class AddArticleViewModel(
-    private val repository:IntoTheForestRepository,
-    val user: User?
+    private val repository:IntoTheForestRepository
     )  : ViewModel(){
 
-    val _article = MutableLiveData<Article>().apply {
-        value = Article(
-            user = user,
-        )
-    }
-
-
+    private val _article = MutableLiveData<Article>()
     val article: LiveData<Article>
         get() = _article
-
 
     private val _status = MutableLiveData<LoadApiStatus>()
     val status: LiveData<LoadApiStatus>
@@ -55,13 +48,16 @@ class AddArticleViewModel(
         Log.i(TAG,"[${this::class.simpleName}]${this}")
         Log.i(TAG,"------------------------------------")
     }
-    fun addData(article: Article) {
 
+    fun addData(article: Article) {
         coroutineScope.launch {
 
+        Log.i(TAG,"ViewModel fun addData : $article")
+            article?.user = UserManager.user.value
+            article?.user = UserManager.user.value
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = repository.publish(article)) {
+            when (val result = repository.publish(article?: Article())) {
                 is Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE

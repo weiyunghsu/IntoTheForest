@@ -33,9 +33,9 @@
         android:name="com.weiyung.intotheforest.addarticle.AddArticleFragment"
         android:label="AddArticleFragment"
         tools:layout="@layout/fragment_addarticle">
-        <argument
-            android:name="userKey"
-            app:argType="com.weiyung.intotheforest.database.User" />
+<!--        <argument-->
+<!--            android:name="userKey"-->
+<!--            app:argType="com.weiyung.intotheforest.database.User" />-->
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
@@ -45,6 +45,9 @@
 <!--        <argument-->
 <!--            android:name="routeKey"-->
 <!--            app:argType="com.weiyung.intotheforest.database.Route" />-->
+        <action
+            android:id="@+id/action_mapFragment_to_addArticleFragment"
+            app:destination="@id/addArticleFragment" />
     </fragment>
     <fragment
         android:id="@+id/reportDialog"

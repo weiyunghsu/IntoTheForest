@@ -7,13 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.weiyung.intotheforest.databinding.DialogReportBinding
+import com.weiyung.intotheforest.ext.getVmFactory
+import com.weiyung.intotheforest.login.LoginViewModel
 import com.weiyung.intotheforest.map.MapViewModel
 
 class ReportDialog : AppCompatDialogFragment(){
+    private val viewModel by viewModels<ReportViewModel> { getVmFactory() }
     private lateinit var binding: DialogReportBinding
-    private lateinit var viewModel: ReportViewModel
+//    private lateinit var viewModel: ReportViewModel
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
 //        setStyle(DialogFragment.STYLE_NO_FRAME, R.style.Add2CartDialog)
@@ -23,8 +27,8 @@ class ReportDialog : AppCompatDialogFragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-    viewModel =
-        ViewModelProvider(this).get(ReportViewModel::class.java)
+//    viewModel =
+//        ViewModelProvider(this).get(ReportViewModel::class.java)
     binding = DialogReportBinding.inflate(inflater, container, false)
     binding.lifecycleOwner = viewLifecycleOwner
     binding.viewModel = viewModel

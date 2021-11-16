@@ -29,7 +29,9 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentAddarticleBinding
+import com.weiyung.intotheforest.ext.addData
 import com.weiyung.intotheforest.ext.getVmFactory
+import com.weiyung.intotheforest.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -40,9 +42,7 @@ import java.util.*
 
 class AddArticleFragment : Fragment() {
     private val viewModel by viewModels<AddArticleViewModel> {
-        getVmFactory(
-            AddArticleFragmentArgs.fromBundle(requireArguments()).userKey
-        )
+        getVmFactory()
     }
     private lateinit var binding: FragmentAddarticleBinding
 
@@ -70,6 +70,10 @@ class AddArticleFragment : Fragment() {
 
         permissionWritePhoto()
 
+        viewModel.article.observe(viewLifecycleOwner){
+            Log.i(TAG,"viewModel.article.observe : $it")
+        }
+
         binding.inputStartDate.setOnClickListener {
             setStartDate()
         }
@@ -77,12 +81,16 @@ class AddArticleFragment : Fragment() {
         binding.inputEndDate.setOnClickListener {
             setEndDate()
         }
+
         binding.inputPhotoButton.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, PICTUREFROMGALLERY)
         }
+
         binding.addPostButton.setOnClickListener {
-            Toast.makeText(requireContext(), R.string.post_success, Toast.LENGTH_SHORT).show()
+            addData()
+            Log.i(TAG,"addFragment fun addData")
+            Toast.makeText(requireActivity(), R.string.post_success, Toast.LENGTH_SHORT).show()
         }
 
         return binding.root
@@ -133,14 +141,14 @@ class AddArticleFragment : Fragment() {
 //                val filePath: String = ImagePicker.getFilePath(data) ?: ""
                 if (imagePath.isNotEmpty()) {
                     Log.i(TAG, "onActivityResult if imagePath.isNotEmpty()")
-                    Toast.makeText(requireContext(), imagePath, Toast.LENGTH_SHORT).show()
-                    Glide.with(requireContext()).load(imagePath).into(binding.pickImg1)
+                    Toast.makeText(requireActivity(), imagePath, Toast.LENGTH_SHORT).show()
+                    Glide.with(requireActivity()).load(imagePath).into(binding.pickImg1)
                     getLocalImg()
 
                     firebaseUpload(uri)
                     Log.i(TAG, "firebaseUpload: ")
                 } else {
-                    Toast.makeText(requireContext(), R.string.load_img_fail1, Toast.LENGTH_SHORT)
+                    Toast.makeText(requireActivity(), R.string.load_img_fail1, Toast.LENGTH_SHORT)
                         .show()
                 }
             }
@@ -149,7 +157,7 @@ class AddArticleFragment : Fragment() {
                 ImagePicker.getError(data),
                 Toast.LENGTH_SHORT
             ).show()
-            else -> Toast.makeText(requireContext(), "Task Cancelled", Toast.LENGTH_SHORT).show()
+            else -> Toast.makeText(requireActivity(), "Task Cancelled", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -199,12 +207,11 @@ class AddArticleFragment : Fragment() {
 
     fun firebaseUpload(uri: Uri) {
         coroutineScope.launch {
-
             val mStorageRef = FirebaseStorage.getInstance().reference
-                  val storageRef = storage.reference
-                  val imagesRef: StorageReference = storageRef.child(FIREBASE_PATH_ROUTE)
+            val storageRef = storage.reference
+            val imagesRef: StorageReference = storageRef.child(FIREBASE_PATH_ROUTE)
 //                  val routeImageRef = storageRef.child("routeImg/image.jpg")
-                  val path = imagesRef.path
+            val path = imagesRef.path
 //            val file = Uri.fromFile(File())
             val metadata = StorageMetadata.Builder()
                 .setContentDisposition("universe")
@@ -212,8 +219,9 @@ class AddArticleFragment : Fragment() {
 //                  .setContentType("image/png")
 //                  .setContentType("image/jpeg")
                 .build()
-            var randomNumber = (0..999).random()
-            val routesRef = mStorageRef.child("$FIREBASE_PATH_ROUTE/${viewModel.user?.id}_$randomNumber.jpg")
+            val randomNumber = (0..999).random()
+            val routesRef =
+                mStorageRef.child("$FIREBASE_PATH_ROUTE/${UserManager.userID}_$randomNumber.jpg")
 //                  val uploadTask = routesRef.putFile(file, metadata)
             val uploadTask = routesRef.putFile(uri)
             uploadTask.addOnFailureListener {
@@ -230,7 +238,7 @@ class AddArticleFragment : Fragment() {
 
                         val articleImage = it.result.toString()
                         viewModel.article.value?.mainImage = articleImage
-                        Log.i(TAG,"the photoUri on firebasr storage is : $articleImage")
+                        Log.i(TAG, "the photoUri on firebasr storage is : $articleImage")
                     }
                 }
                 Toast.makeText(
