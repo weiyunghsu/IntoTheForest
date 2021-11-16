@@ -66,11 +66,11 @@
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/searchButton"
+        android:id="@+id/weatherButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
-        android:src="@drawable/outline_search_black_36"
+        android:src="@drawable/outline_wb_sunny_black_36"
         app:fabSize="mini"
         app:layout_constraintStart_toEndOf="@+id/spinner_routes"
         app:layout_constraintTop_toTopOf="parent" />
@@ -82,7 +82,7 @@
         android:backgroundTint="@color/white"
         android:src="@drawable/outline_campaign_black_36"
         app:fabSize="mini"
-        app:layout_constraintStart_toEndOf="@+id/searchButton"
+        app:layout_constraintStart_toEndOf="@+id/weatherButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -93,6 +93,15 @@
         android:src="@drawable/outline_play_circle_black_36"
         app:fabSize="mini"
         app:layout_constraintStart_toEndOf="@+id/speakButton"
+        app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mapToAddPostButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/outline_post_add_black_36"
+        app:fabSize="mini"
+        app:layout_constraintStart_toEndOf="@+id/recordButton"
         app:layout_constraintTop_toTopOf="parent" />
     <!--    </fragment>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

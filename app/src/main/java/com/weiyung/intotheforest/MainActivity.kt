@@ -128,6 +128,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.loginFragment -> CurrentFragmentType.LOGIN
                 R.id.detailFragment -> CurrentFragmentType.DETAIL
+                R.id.weatherFragment -> CurrentFragmentType.WEATHER
                 else -> viewModel.currentFragmentType.value
             }
         }

@@ -63,6 +63,8 @@
     <string name="upload_success">上傳成功</string>
     <string name="post_success">發布成功</string>
     <string name="load_img_fail1">上傳失敗</string>
+    <string name="weather">天氣</string>
+    <string name="go_to_weather_button">前往天氣預報</string>
 
     <string-array name="route_list">
         <item>@string/four_animals</item>

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.weiyung.intotheforest.database.Article
+import com.weiyung.intotheforest.database.Favorite
 import com.weiyung.intotheforest.database.source.IntoTheForestRepository
 
 class DetailViewModel(
@@ -16,4 +17,5 @@ class DetailViewModel(
     init {
         _selectedArticle.value = article
     }
+
 }

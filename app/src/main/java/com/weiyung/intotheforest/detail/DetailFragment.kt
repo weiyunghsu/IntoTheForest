@@ -55,6 +55,9 @@ class DetailFragment : Fragment() {
         binding.goToMapButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.navigate_to_map_fragment)
         }
+        binding.goToWeatherButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.navigate_to_weather_fragment)
+        }
         binding.detailShareButton.setOnClickListener {
             val sendIntent = Intent()
             sendIntent.action = Intent.ACTION_SEND

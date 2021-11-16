@@ -103,10 +103,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 binding.viewModel = viewModel
             }
         })
-
+        binding.weatherButton.setOnClickListener {
+            findNavController().navigate(NavigationDirections.navigateToWeatherFragment())
+        }
         binding.speakButton.setOnClickListener {
             findNavController().navigate(NavigationDirections.navigateToReportDialog())
         }
+//        binding.mapToAddPostButton.setOnClickListener {
+//            findNavController().navigate(NavigationDirections.navigateToAddArticleFragment())
+//        }
         return binding.root
     }
 

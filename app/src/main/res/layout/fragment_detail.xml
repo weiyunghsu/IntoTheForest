@@ -26,8 +26,10 @@
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
             tools:ignore="SpeakableTextPresentCheck">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -147,8 +149,8 @@
                     android:contentDescription="@string/detail_share_button"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/detail_main_image"
-                    tools:ignore="SpeakableTextPresentCheck"
-                    app:srcCompat="@drawable/outline_share_black_36" />
+                    app:srcCompat="@drawable/outline_share_black_36"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
                     android:id="@+id/detail_story"
@@ -178,6 +180,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/detail_story"
+                    tools:ignore="SpeakableTextPresentCheck"
                     tools:listitem="@layout/item_detail_gallery" />
 
                 <TextView
@@ -197,26 +200,43 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_round_button"
                     android:backgroundTint="@color/light_green_900"
-                    android:paddingEnd="8dp"
                     android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     android:text="@string/go_to_map_button"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/detail_mini_map" />
 
-<!--                <com.google.android.gms.maps.MapView-->
-<!--                    android:id="@+id/mapView"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="200dp"-->
-<!--                    android:layout_marginStart="16dp"-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:layout_marginEnd="16dp"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/go_to_map_button"-->
-<!--                    tools:ignore="SpeakableTextPresentCheck" />-->
-<!--                android:name="com.google.android.gms.maps.mapView"-->
+                <!--                <com.google.android.gms.maps.MapView-->
+                <!--                    android:id="@+id/mapView"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="200dp"-->
+                <!--                    android:layout_marginStart="16dp"-->
+                <!--                    android:layout_marginTop="16dp"-->
+                <!--                    android:layout_marginEnd="16dp"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/go_to_map_button"-->
+                <!--                    tools:ignore="SpeakableTextPresentCheck" />-->
+                <!--                android:name="com.google.android.gms.maps.mapView"-->
+
+                <Button
+                    android:id="@+id/go_to_weather_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_round_button"
+                    android:backgroundTint="@color/light_green_900"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="@string/go_to_weather_button"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_weather" />
+
                 <TextView
                     android:id="@+id/detail_weather"
                     android:layout_width="wrap_content"
@@ -227,19 +247,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/go_to_map_button" />
 
-<!--                <androidx.constraintlayout.utils.widget.MockView-->
-<!--                    android:id="@+id/weather_info"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="200dp"-->
-<!--                    android:layout_marginStart="16dp"-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:layout_marginEnd="16dp"-->
-<!--                    android:layout_marginBottom="16dp"-->
-<!--                    android:paddingBottom="16dp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/detail_weather" />-->
+                <!--                <androidx.constraintlayout.utils.widget.MockView-->
+                <!--                    android:id="@+id/weather_info"-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="200dp"-->
+                <!--                    android:layout_marginStart="16dp"-->
+                <!--                    android:layout_marginTop="16dp"-->
+                <!--                    android:layout_marginEnd="16dp"-->
+                <!--                    android:layout_marginBottom="16dp"-->
+                <!--                    android:paddingBottom="16dp"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/detail_weather" />-->
 
                 <TextView
                     android:id="@+id/to2"

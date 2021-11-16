@@ -63,6 +63,12 @@
         android:name="com.weiyung.intotheforest.login.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login"/>
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.weiyung.intotheforest.weather.WeatherFragment"
+        android:label="WeatherFragment"
+        tools:layout="@layout/fragment_weather">
+    </fragment>
     <action android:id="@+id/navigate_to_home_fragment" app:destination="@id/homeFragment"
         app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
@@ -85,4 +91,7 @@
         app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
     <action android:id="@+id/navigate_to_login_fragment" app:destination="@id/loginFragment"/>
+    <action android:id="@+id/navigate_to_weather_fragment" app:destination="@id/weatherFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
 </navigation>
