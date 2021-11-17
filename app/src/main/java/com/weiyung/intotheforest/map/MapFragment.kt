@@ -110,9 +110,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.speakButton.setOnClickListener {
             findNavController().navigate(NavigationDirections.navigateToReportDialog())
         }
-//        binding.mapToAddPostButton.setOnClickListener { view: View ->
-//            view.findNavController().navigate(R.id.navigate_to_addArticle_fragment)
-//        }
+        binding.mapToAddPostButton.setOnClickListener {
+            findNavController().navigate(NavigationDirections.navigateToAddArticleFragment())
+        }
         return binding.root
     }
 

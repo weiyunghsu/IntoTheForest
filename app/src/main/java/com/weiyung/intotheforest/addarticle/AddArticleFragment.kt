@@ -85,8 +85,9 @@ class AddArticleFragment : Fragment() {
 
         binding.addPostButton.setOnClickListener {
             Log.i(TAG,"addFragment fun addData")
+            viewModel.article.value?.let { it1 -> viewModel.addData(it1) }
             Toast.makeText(this.requireContext(), R.string.post_success, Toast.LENGTH_LONG).show()
-            this.findNavController().navigate(AddArticleFragmentDirections.actionAddArticleFragmentToPostSuccessFragment())
+//            this.findNavController().navigate(AddArticleFragmentDirections.actionAddArticleFragmentToPostSuccessFragment())
         }
 
         return binding.root
