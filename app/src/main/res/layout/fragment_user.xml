@@ -33,12 +33,12 @@
 
         <ImageView
             android:id="@+id/user_photo"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
             android:contentDescription="@string/user_photo"
             app:imageUrl="@{user.picture}"
-            app:layout_constraintEnd_toEndOf="@+id/user_view"
+            app:layout_constraintBottom_toBottomOf="@+id/user_view"
             app:layout_constraintStart_toStartOf="@+id/user_view"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/icons_36px_profile_normal" />
@@ -47,15 +47,15 @@
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="24dp"
+            android:text="@{userManager.addUserInfo().name}"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:text="@{user.name}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_photo"
-            tools:text="王小明"/>
+            app:layout_constraintBottom_toBottomOf="@+id/user_photo"
+            app:layout_constraintStart_toEndOf="@+id/user_photo"
+            app:layout_constraintTop_toTopOf="@+id/user_photo"
+            tools:text="王小明" />
 
         <Button
             android:id="@+id/bt_my_articles"

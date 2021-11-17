@@ -214,7 +214,7 @@ class AddArticleFragment : Fragment() {
                 .build()
             val randomNumber = (0..999).random()
             val routesRef =
-                mStorageRef.child("$FIREBASE_PATH_ROUTE/xxxx_$randomNumber.jpg")
+                mStorageRef.child("$FIREBASE_PATH_ROUTE/${UserManager.addUserInfo().id}_$randomNumber.jpg")
 //                  val uploadTask = routesRef.putFile(file, metadata)
             val uploadTask = routesRef.putFile(uri)
             uploadTask.addOnFailureListener {

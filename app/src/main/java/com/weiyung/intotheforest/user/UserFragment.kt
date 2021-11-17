@@ -1,6 +1,8 @@
 package com.weiyung.intotheforest.user
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +32,9 @@ class UserFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        Log.i(TAG, "UserManager.addUserInfo().name is : ${UserManager.addUserInfo().name}")
+        Log.i(TAG, "UserManager.addUserInfo().picture is : ${UserManager.addUserInfo().picture}")
 
         binding.btMyFavorites.setOnClickListener {
             findNavController().navigate(NavigationDirections.navigateToFavoriteFragment())
