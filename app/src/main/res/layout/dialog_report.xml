@@ -13,8 +13,8 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +51,7 @@
             android:backgroundTint="@color/transparent"
             android:contentDescription="@string/police_button"
             app:layout_constraintBottom_toBottomOf="@+id/police_icon"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/police_text"
             app:layout_constraintTop_toTopOf="@+id/police_icon"
             app:srcCompat="@drawable/outline_call_black_36"
@@ -87,6 +88,7 @@
             android:backgroundTint="@color/transparent"
             android:contentDescription="@string/rescue_button"
             app:layout_constraintBottom_toBottomOf="@+id/rescue_icon"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/rescue_text"
             app:layout_constraintTop_toTopOf="@+id/rescue_icon"
             app:srcCompat="@drawable/outline_call_black_36"
@@ -96,10 +98,9 @@
             android:id="@+id/text_to_police"
             android:layout_width="146dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
             android:text="@string/sms_police"
-            app:layout_constraintBottom_toBottomOf="@+id/sms_police"
-            app:layout_constraintEnd_toStartOf="@+id/sms_police" />
+            app:layout_constraintStart_toStartOf="@+id/rescue_text"
+            app:layout_constraintTop_toTopOf="@+id/sms_police" />
 
         <ImageButton
             android:id="@+id/sms_police"
@@ -118,23 +119,69 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
             android:backgroundTint="@color/transparent"
-            app:layout_constraintEnd_toStartOf="@+id/myLocationButton"
-            app:layout_constraintTop_toBottomOf="@+id/text_to_police"
-            app:srcCompat="@drawable/outline_add_photo_alternate_black_36"
+            app:layout_constraintEnd_toEndOf="@+id/myLocationButton"
+            app:layout_constraintTop_toBottomOf="@+id/myLocationButton"
+            app:srcCompat="@drawable/outline_send_black_36"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/myLocationButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:backgroundTint="@color/transparent"
-            app:layout_constraintEnd_toEndOf="@+id/sms_police"
-            app:layout_constraintTop_toBottomOf="@+id/sms_police"
+            app:layout_constraintStart_toStartOf="@+id/sms_police"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
             app:srcCompat="@drawable/outline_my_location_black_36"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:ems="10"
+            android:hint="輸入求救訊息"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/reportPhotoButton"
+            app:layout_constraintStart_toStartOf="@+id/rescue_icon"
+            app:layout_constraintTop_toBottomOf="@+id/showLocation" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sans"
+            android:text="所在位置"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+            app:layout_constraintTop_toTopOf="@+id/myLocationButton" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="409dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toTopOf="@+id/myLocationButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sms_police" />
+
+        <TextView
+            android:id="@+id/showLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sans"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+            app:layout_constraintTop_toBottomOf="@+id/location"
+            tools:text="25.111111, 121,222222" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

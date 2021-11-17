@@ -36,6 +36,15 @@
 <!--        <argument-->
 <!--            android:name="userKey"-->
 <!--            app:argType="com.weiyung.intotheforest.database.User" />-->
+        <action
+            android:id="@+id/action_addArticleFragment_to_postSuccessFragment"
+            app:destination="@id/postSuccessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postSuccessFragment"
+        android:name="com.weiyung.intotheforest.addarticle.PostSuccessFragment"
+        android:label="PostSuccessFragment"
+        tools:layout="@layout/fragment_postsuccess">
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
@@ -72,6 +81,7 @@
         android:label="WeatherFragment"
         tools:layout="@layout/fragment_weather">
     </fragment>
+
     <action android:id="@+id/navigate_to_home_fragment" app:destination="@id/homeFragment"
         app:popUpToInclusive="true" />
     <action android:id="@+id/navigate_to_detail_fragment" app:destination="@id/detailFragment"
@@ -88,5 +98,7 @@
         app:popUpToInclusive="true" />
     <action android:id="@+id/navigate_to_login_fragment" app:destination="@id/loginFragment"/>
     <action android:id="@+id/navigate_to_weather_fragment" app:destination="@id/weatherFragment"
+        app:popUpToInclusive="true" />
+    <action android:id="@+id/navigate_to_postsuccess_fragment" app:destination="@id/postSuccessFragment"
         app:popUpToInclusive="true" />
 </navigation>

@@ -19,6 +19,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.firestore.ktx.firestore
@@ -27,6 +28,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageMetadata
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
+import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentAddarticleBinding
 import com.weiyung.intotheforest.ext.addData
@@ -84,6 +86,7 @@ class AddArticleFragment : Fragment() {
         binding.addPostButton.setOnClickListener {
             Log.i(TAG,"addFragment fun addData")
             Toast.makeText(this.requireContext(), R.string.post_success, Toast.LENGTH_LONG).show()
+            this.findNavController().navigate(AddArticleFragmentDirections.actionAddArticleFragmentToPostSuccessFragment())
         }
 
         return binding.root
