@@ -66,6 +66,7 @@
     <string name="weather">天氣</string>
     <string name="go_to_weather_button">前往天氣預報</string>
     <string name="success_text">發布成功</string>
+    <string name="report">緊急求救</string>
 
     <string-array name="route_list">
         <item>@string/four_animals</item>

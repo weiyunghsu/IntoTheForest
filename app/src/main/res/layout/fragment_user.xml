@@ -48,7 +48,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="@{userManager.addUserInfo().name}"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -56,6 +55,7 @@
             app:layout_constraintStart_toEndOf="@+id/user_photo"
             app:layout_constraintTop_toTopOf="@+id/user_photo"
             tools:text="王小明" />
+<!--        android:text="@{userManager.addUserInfo().name}"-->
 
         <Button
             android:id="@+id/bt_my_articles"

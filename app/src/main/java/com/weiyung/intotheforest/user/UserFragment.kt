@@ -33,8 +33,11 @@ class UserFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
+        binding.user = UserManager.addUserInfo()
         Log.i(TAG, "UserManager.addUserInfo().name is : ${UserManager.addUserInfo().name}")
         Log.i(TAG, "UserManager.addUserInfo().picture is : ${UserManager.addUserInfo().picture}")
+        binding.username.text = UserManager.addUserInfo().name
+//        binding.userPhoto.
 
         binding.btMyFavorites.setOnClickListener {
             findNavController().navigate(NavigationDirections.navigateToFavoriteFragment())

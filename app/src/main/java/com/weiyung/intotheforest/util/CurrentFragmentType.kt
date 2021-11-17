@@ -11,5 +11,6 @@ enum class CurrentFragmentType(val value: String) {
     USER(getString(R.string.user)),
     DETAIL(getString(R.string.detail)),
     LOGIN(""),
-    WEATHER(getString(R.string.weather))
+    WEATHER(getString(R.string.weather)),
+    REPORT(getString(R.string.report))
 }

@@ -18,6 +18,7 @@ import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.databinding.FragmentHomeBinding
 import com.weiyung.intotheforest.ext.getVmFactory
+import com.weiyung.intotheforest.util.UserManager
 
 class HomeFragment : Fragment() {
     private val viewModel by viewModels<HomeViewModel> { getVmFactory() }

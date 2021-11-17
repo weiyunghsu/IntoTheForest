@@ -127,6 +127,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.loginFragment -> CurrentFragmentType.LOGIN
                 R.id.detailFragment -> CurrentFragmentType.DETAIL
                 R.id.weatherFragment -> CurrentFragmentType.WEATHER
+                R.id.reportDialog -> CurrentFragmentType.REPORT
                 else -> viewModel.currentFragmentType.value
             }
         }

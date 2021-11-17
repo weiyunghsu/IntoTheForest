@@ -24,8 +24,8 @@ fun imageUrl(imgView: ImageView, imageUrl: String?) {
             .load(imageUri)
             .apply(
                 RequestOptions()
-                    .placeholder(R.drawable.ic_launcher_background)
-                    .error(R.drawable.ic_launcher_background)
+                    .placeholder(R.drawable.bg_round_image)
+                    .error(R.drawable.bg_round_image)
             )
             .into(imgView)
     }
