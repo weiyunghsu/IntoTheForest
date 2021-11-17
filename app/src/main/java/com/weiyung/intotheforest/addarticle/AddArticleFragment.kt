@@ -54,7 +54,6 @@ class AddArticleFragment : Fragment() {
         const val FIREBASE_PATH_AVATAR = "avatar"
     }
 
-    val db = Firebase.firestore
     val storage = Firebase.storage
 
     //    private lateinit var viewModel: AddArticleViewModel
@@ -68,12 +67,6 @@ class AddArticleFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        permissionWritePhoto()
-
-        viewModel.article.observe(viewLifecycleOwner){
-            Log.i(TAG,"viewModel.article.observe : $it")
-        }
-
         binding.inputStartDate.setOnClickListener {
             setStartDate()
         }
@@ -83,20 +76,20 @@ class AddArticleFragment : Fragment() {
         }
 
         binding.inputPhotoButton.setOnClickListener {
+            permissionWritePhoto()
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, PICTUREFROMGALLERY)
         }
 
         binding.addPostButton.setOnClickListener {
-            addData()
             Log.i(TAG,"addFragment fun addData")
-            Toast.makeText(requireActivity(), R.string.post_success, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.requireContext(), R.string.post_success, Toast.LENGTH_LONG).show()
         }
 
         return binding.root
     }
 
-    fun permissionWritePhoto() {
+    private fun permissionWritePhoto() {
         if (ContextCompat.checkSelfPermission(
                 this.binding.root.context,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -221,7 +214,7 @@ class AddArticleFragment : Fragment() {
                 .build()
             val randomNumber = (0..999).random()
             val routesRef =
-                mStorageRef.child("$FIREBASE_PATH_ROUTE/${UserManager.userID}_$randomNumber.jpg")
+                mStorageRef.child("$FIREBASE_PATH_ROUTE/xxxx_$randomNumber.jpg")
 //                  val uploadTask = routesRef.putFile(file, metadata)
             val uploadTask = routesRef.putFile(uri)
             uploadTask.addOnFailureListener {

@@ -7,13 +7,16 @@ import com.google.firebase.auth.FirebaseUser
 import com.weiyung.intotheforest.database.User
 import com.weiyung.intotheforest.database.source.IntoTheForestRepository
 import com.weiyung.intotheforest.network.LoadApiStatus
+import com.weiyung.intotheforest.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class UserViewModel (private val repository: IntoTheForestRepository) : ViewModel(){
-    private val _user = MutableLiveData<User>()
+    private val _user = MutableLiveData<User>().apply {
+        value = UserManager.addUserInfo()
+    }
     val user: LiveData<User>
         get() = _user
 

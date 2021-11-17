@@ -3,7 +3,6 @@ package com.weiyung.intotheforest.login
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
-import android.os.UserManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,9 +22,12 @@ import com.google.firebase.auth.ktx.auth
 import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.database.User
+import com.weiyung.intotheforest.database.source.remote.IntoTheForestRemoteDataSource.getUser
 import com.weiyung.intotheforest.databinding.FragmentLoginBinding
 import com.weiyung.intotheforest.ext.getVmFactory
+import com.weiyung.intotheforest.util.UserManager
 import com.weiyung.intotheforest.util.UserManager.isLoggedIn
+
 
 class LoginFragment : Fragment() {
     private val viewModel by viewModels<LoginViewModel> { getVmFactory() }
@@ -53,7 +55,7 @@ class LoginFragment : Fragment() {
             Log.i(TAG,"$isLoggedIn")
             it?.let {
                 when {
-                    isLoggedIn ->{
+                    isLoggedIn -> {
                         Log.i(TAG,"check enter : isLoggedIn")
                         findNavController().navigate(
                             NavigationDirections.navigateToHomeFragment()
@@ -134,10 +136,10 @@ class LoginFragment : Fragment() {
                                 }
                             }
                             Log.i(TAG,"user: $user , currentUser: $currentUser")
-                            viewModel.getUser(user)
-                            Log.i(TAG,"getUser: ${viewModel.user}")
                             viewModel.addUser(user)
-                            Log.i(TAG,"addUser: ${viewModel.user}")
+                            Log.i(TAG,"loginFragment addUser: ${viewModel.user.value}")
+                            viewModel.getUser(user)
+                            Log.i(TAG,"loginFragment getUser: ${viewModel.user.value}")
                         }
 //                        isLoggedIn -> {
 //                            findNavController().navigate(

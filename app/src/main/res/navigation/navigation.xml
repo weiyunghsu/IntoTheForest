@@ -73,28 +73,20 @@
         tools:layout="@layout/fragment_weather">
     </fragment>
     <action android:id="@+id/navigate_to_home_fragment" app:destination="@id/homeFragment"
-        app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
     <action android:id="@+id/navigate_to_detail_fragment" app:destination="@id/detailFragment"
-        app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
     <action android:id="@+id/navigate_to_favorite_fragment" app:destination="@id/favoriteFragment"
-        app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
     <action android:id="@+id/navigate_to_addArticle_fragment" app:destination="@id/addArticleFragment"
-        app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
     <action android:id="@+id/navigate_to_map_fragment" app:destination="@id/mapFragment"
-        app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
     <action android:id="@+id/navigate_to_user_fragment" app:destination="@id/userFragment"
-        app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
     <action android:id="@+id/navigate_to_report_dialog" app:destination="@id/reportDialog"
-        app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
     <action android:id="@+id/navigate_to_login_fragment" app:destination="@id/loginFragment"/>
     <action android:id="@+id/navigate_to_weather_fragment" app:destination="@id/weatherFragment"
-        app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
 </navigation>

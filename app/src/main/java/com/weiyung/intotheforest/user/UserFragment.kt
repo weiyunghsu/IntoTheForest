@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.weiyung.intotheforest.NavigationDirections
-import com.weiyung.intotheforest.databinding.FragmentMapBinding
 import com.weiyung.intotheforest.databinding.FragmentUserBinding
 import com.weiyung.intotheforest.ext.getVmFactory
 import com.weiyung.intotheforest.home.HomeViewModel

@@ -24,7 +24,9 @@ class AddArticleViewModel(
     private val repository:IntoTheForestRepository
     )  : ViewModel(){
 
-    private val _article = MutableLiveData<Article>()
+    val _article = MutableLiveData<Article>().apply {
+        value = Article(user = UserManager.addUserInfo())
+    }
     val article: LiveData<Article>
         get() = _article
 
@@ -53,11 +55,11 @@ class AddArticleViewModel(
         coroutineScope.launch {
 
         Log.i(TAG,"ViewModel fun addData : $article")
-            article?.user = UserManager.user.value
-            article?.user = UserManager.user.value
+//            article?.user = UserManager.user.value
+//            article?.user = UserManager.user.value
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = repository.publish(article?: Article())) {
+            when (val result = repository.publish(article)) {
                 is Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE

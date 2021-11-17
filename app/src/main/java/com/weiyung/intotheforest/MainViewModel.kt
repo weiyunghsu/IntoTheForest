@@ -18,7 +18,7 @@ class MainViewModel(private val repository: IntoTheForestRepository) : ViewModel
     val currentFragmentType = MutableLiveData<CurrentFragmentType>()
 
     private val _user = MutableLiveData<User>().apply {
-        value = UserManager.user.value
+        value = UserManager.addUserInfo()
     }
     val user : LiveData<User>
         get() = _user

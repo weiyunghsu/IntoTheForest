@@ -10,6 +10,9 @@
         <variable
             name="user"
             type="com.weiyung.intotheforest.database.User" />
+        <variable
+            name="userManager"
+            type="com.weiyung.intotheforest.util.UserManager" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

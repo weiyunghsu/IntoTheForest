@@ -45,15 +45,6 @@ class LoginViewModel(private val repository: IntoTheForestRepository) : ViewMode
         _user.value = null
     }
 
-    fun getUser(userId: User?) {
-        coroutineScope.launch {
-            _status.value = LoadApiStatus.LOADING
-            val result = repository.getUser(userId)
-            _user.value = result.handleResultWith(_error, _status)
-            Log.i(TAG,"_user.value in getUser: ${_user.value}")
-        }
-    }
-
     fun addUser(user: User?) {
         coroutineScope.launch {
             _status.value = LoadApiStatus.LOADING
@@ -61,17 +52,23 @@ class LoginViewModel(private val repository: IntoTheForestRepository) : ViewMode
             val signedIn = user?.let { repository.signUpUser(it).handleResultWith(_error, _status) }
             Log.i(TAG,"$signedIn")
             if (signedIn == true){
-                UserManager.userID = user.id
-                UserManager.userName = user.name
-                UserManager.userEmail = user.email
-                UserManager.userPicture = user.picture
                 _user.value = user!!
-                Log.i(TAG,"_user.value in addUser?????: ${UserManager.userPicture}")
+                UserManager.getUserInfo(user)
+
+                Log.i(TAG,"UserManager.user.value in addUser: ${UserManager.addUserInfo()}")
             } else {
                 _user.value = null
             }
 //            _user.value = if (signedIn == true) user else null
+        }
+    }
 
+    fun getUser(userId: User?) {
+        coroutineScope.launch {
+            _status.value = LoadApiStatus.LOADING
+            val result = repository.getUser(userId)
+            _user.value = result.handleResultWith(_error, _status)
+            Log.i(TAG,"_user.value in getUser: ${_user.value}")
         }
     }
 
