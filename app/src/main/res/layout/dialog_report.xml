@@ -49,11 +49,10 @@
             android:id="@+id/police_button"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:backgroundTint="@color/transparent"
+            android:background="@drawable/click_button"
             android:contentDescription="@string/police_button"
             app:layout_constraintBottom_toBottomOf="@+id/police_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/police_text"
             app:layout_constraintTop_toTopOf="@+id/police_icon"
             app:srcCompat="@drawable/outline_call_black_36"
@@ -79,17 +78,17 @@
             android:text="@string/rescue_text"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/rescue_icon"
-            app:layout_constraintEnd_toStartOf="@+id/rescue_button"
+            app:layout_constraintEnd_toStartOf="@+id/ambulance_button"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/rescue_icon"
             app:layout_constraintTop_toTopOf="@+id/rescue_icon" />
 
         <ImageButton
-            android:id="@+id/rescue_button"
+            android:id="@+id/ambulance_button"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:backgroundTint="@color/transparent"
             android:contentDescription="@string/rescue_button"
+            android:background="@drawable/click_button"
             app:layout_constraintBottom_toBottomOf="@+id/rescue_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -111,19 +110,19 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/transparent"
+            android:background="@drawable/click_button"
             android:contentDescription="@string/sms_to_police"
-            app:layout_constraintEnd_toEndOf="@+id/rescue_button"
-            app:layout_constraintTop_toBottomOf="@+id/rescue_button"
+            app:layout_constraintEnd_toEndOf="@+id/ambulance_button"
+            app:layout_constraintTop_toBottomOf="@+id/ambulance_button"
             app:srcCompat="@drawable/outline_textsms_black_36"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
-            android:id="@+id/reportPhotoButton"
+            android:id="@+id/sendSOSButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/transparent"
+            android:background="@drawable/click_button"
             app:layout_constraintEnd_toEndOf="@+id/myLocationButton"
             app:layout_constraintTop_toBottomOf="@+id/myLocationButton"
             app:srcCompat="@drawable/outline_send_black_36"
@@ -134,14 +133,14 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="@color/transparent"
+            android:background="@drawable/click_button"
             app:layout_constraintStart_toStartOf="@+id/sms_police"
             app:layout_constraintTop_toBottomOf="@+id/divider"
             app:srcCompat="@drawable/outline_my_location_black_36"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/inputSOSInfo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -149,7 +148,7 @@
             android:hint="輸入求救訊息"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toStartOf="@+id/reportPhotoButton"
+            app:layout_constraintEnd_toStartOf="@+id/sendSOSButton"
             app:layout_constraintStart_toStartOf="@+id/rescue_icon"
             app:layout_constraintTop_toBottomOf="@+id/showLocation" />
 
@@ -160,7 +159,7 @@
             android:fontFamily="@font/noto_sans"
             android:text="按定位紐顯示所在位置"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+            app:layout_constraintStart_toStartOf="@+id/inputSOSInfo"
             app:layout_constraintTop_toTopOf="@+id/myLocationButton" />
 
         <View
@@ -181,7 +180,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+            app:layout_constraintStart_toStartOf="@+id/inputSOSInfo"
             app:layout_constraintTop_toBottomOf="@+id/location"
             tools:text="25.111111, 121,222222" />
 

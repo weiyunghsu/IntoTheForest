@@ -37,7 +37,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:contentDescription="@string/user_photo"
-            app:imageUrl="@{user.picture}"
+            app:avatarUrl="@{user.picture}"
             app:layout_constraintBottom_toBottomOf="@+id/user_view"
             app:layout_constraintStart_toStartOf="@+id/user_view"
             app:layout_constraintTop_toTopOf="parent"

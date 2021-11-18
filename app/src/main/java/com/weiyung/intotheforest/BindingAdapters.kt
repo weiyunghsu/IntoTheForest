@@ -10,12 +10,15 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseMethod
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.weiyung.intotheforest.database.Article
 import com.weiyung.intotheforest.ext.toDisplayFormat
 import com.weiyung.intotheforest.home.HomeAdapter
 import com.weiyung.intotheforest.network.LoadApiStatus
-
 @BindingAdapter("imageUrl")
 fun imageUrl(imgView: ImageView, imageUrl: String?) {
     imageUrl?.let {
@@ -30,7 +33,36 @@ fun imageUrl(imgView: ImageView, imageUrl: String?) {
             .into(imgView)
     }
 }
-
+@BindingAdapter("roundedCorners")
+fun roundedCorners(imgView: ImageView, imageUrl: String?) {
+    imageUrl?.let {
+        val imageUri = imageUrl.toUri().buildUpon().scheme("https").build()
+        Glide.with(imgView.context)
+            .load(imageUri)
+            .apply(
+                RequestOptions()
+                    .transform(MultiTransformation(CenterCrop(), RoundedCorners(30)))
+                    .placeholder(R.drawable.bg_round_image)
+                    .error(R.drawable.bg_round_image)
+            )
+            .into(imgView)
+    }
+}
+@BindingAdapter("avatarUrl")
+fun avatarUrl(imgView: ImageView, imageUrl: String?) {
+    imageUrl?.let {
+        val imageUri = imageUrl.toUri().buildUpon().scheme("https").build()
+        Glide.with(imgView.context)
+            .load(imageUri)
+            .apply(
+                RequestOptions()
+                    .transform(MultiTransformation(CenterCrop(), CircleCrop()))
+                    .placeholder(R.drawable.bg_round_image)
+                    .error(R.drawable.bg_round_image)
+            )
+            .into(imgView)
+    }
+}
 @BindingAdapter("articles")
 fun bindRecyclerView(recyclerView: RecyclerView, homeItems: List<Article>?) {
     homeItems?.let {

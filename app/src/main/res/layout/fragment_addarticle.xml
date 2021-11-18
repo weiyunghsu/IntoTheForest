@@ -163,7 +163,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="16dp"
-                    android:backgroundTint="@color/transparent"
+                    android:background="@drawable/click_button"
                     android:contentDescription="@string/inputPhotoButton"
                     app:layout_constraintStart_toStartOf="@+id/inputStory"
                     app:layout_constraintTop_toBottomOf="@+id/inputStory"

@@ -17,7 +17,7 @@
         android:layout_width="@dimen/width_detail_gallery"
         android:layout_height="@dimen/height_detail_gallery"
         android:scaleType="centerCrop"
-        app:imageUrl="@{imageUrl}"
+        app:roundedCorners="@{imageUrl}"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
