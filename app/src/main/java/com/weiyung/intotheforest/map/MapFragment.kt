@@ -193,6 +193,27 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                                 resDrawable = R.drawable.outline_sports_score_black_36,
                                 title = "You do it!"
                             )
+                            for (i in viewModel.view1) {
+                                drawMarker(
+                                    location = i, context = context!!,
+                                    resDrawable = R.drawable.outline_photo_camera_black_36,
+                                    title = "Great View!"
+                                )
+                            }
+                            for (i in viewModel.wc1) {
+                                drawMarker(
+                                    location = i, context = context!!,
+                                    resDrawable = R.drawable.outline_wc_black_36,
+                                    title = "Toilet!"
+                                )
+                            }
+                            for (i in viewModel.eat1) {
+                                drawMarker(
+                                    location = i, context = context!!,
+                                    resDrawable = R.drawable.outline_restaurant_black_36,
+                                    title = "Have something to eat!"
+                                )
+                            }
                         }
                         fun drawLine() {
                             coroutineScope.launch {
@@ -226,6 +247,27 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                                 resDrawable = R.drawable.outline_sports_score_black_36,
                                 title = "You do it!"
                             )
+                            for (i in viewModel.view2) {
+                                drawMarker(
+                                    location = i, context = context!!,
+                                    resDrawable = R.drawable.outline_photo_camera_black_36,
+                                    title = "Great View!"
+                                )
+                            }
+//                            for (i in viewModel.wc2) {
+//                                drawMarker(
+//                                    location = i, context = context!!,
+//                                    resDrawable = R.drawable.outline_wc_black_36,
+//                                    title = "Toilet!"
+//                                )
+//                            }
+                            for (i in viewModel.eat2) {
+                                drawMarker(
+                                    location = i, context = context!!,
+                                    resDrawable = R.drawable.outline_restaurant_black_36,
+                                    title = "Have something to eat!"
+                                )
+                            }
                         }
                         fun drawLine() {
                             coroutineScope.launch {
