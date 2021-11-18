@@ -37,9 +37,9 @@
                     android:fontFamily="@font/noto_sans"
                     android:text="@string/addStartDate"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/inputStartDate"
+                    app:layout_constraintBottom_toBottomOf="@+id/chooseStartButton"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/inputStartDate" />
+                    app:layout_constraintTop_toTopOf="@+id/chooseStartButton" />
 
                 <TextView
                     android:id="@+id/addEndDate"
@@ -49,9 +49,9 @@
                     android:fontFamily="@font/noto_sans"
                     android:text="@string/addEndDate"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/inputEndDate"
+                    app:layout_constraintBottom_toBottomOf="@+id/chooseEndDateButton"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/inputEndDate" />
+                    app:layout_constraintTop_toTopOf="@+id/chooseEndDateButton" />
 
                 <TextView
                     android:id="@+id/addTitle"
@@ -83,44 +83,60 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/noto_sans"
-                    android:text="@string/addPhoto"
                     android:textSize="16sp"
+                    android:text="@string/addPhoto"
                     app:layout_constraintBottom_toBottomOf="@+id/inputPhotoButton"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/inputPhotoButton" />
 
-                <EditText
-                    android:id="@+id/inputStartDate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                <ImageButton
+                    android:id="@+id/chooseStartButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:ems="10"
-                    android:hint="@string/inputStartDate"
-                    android:inputType="date"
-                    android:minHeight="48dp"
-                    android:text="@={viewModel.article.startDate}"
+                    android:background="@drawable/click_button"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/addStartDate"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/outline_today_black_36"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <ImageButton
+                    android:id="@+id/chooseEndDateButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/click_button"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chooseStartButton"
+                    app:srcCompat="@drawable/outline_event_black_36"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/showStartDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:textSize="16sp"
+                    android:text="@={viewModel.article.startDate}"
+                    app:layout_constraintBottom_toBottomOf="@+id/chooseStartButton"
+                    app:layout_constraintStart_toEndOf="@+id/addStartDate"
+                    app:layout_constraintTop_toTopOf="@+id/chooseStartButton"
                     tools:ignore="TextContrastCheck" />
 
-                <EditText
-                    android:id="@+id/inputEndDate"
+                <TextView
+                    android:id="@+id/showEndDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:ems="10"
-                    android:hint="@string/inputEndDate"
-                    android:inputType="date"
-                    android:minHeight="48dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:textSize="16sp"
                     android:text="@={viewModel.article.endDate}"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/chooseEndDateButton"
                     app:layout_constraintStart_toEndOf="@+id/addEndDate"
-                    app:layout_constraintTop_toBottomOf="@+id/inputStartDate"
+                    app:layout_constraintTop_toTopOf="@+id/chooseEndDateButton"
                     tools:ignore="TextContrastCheck,TextContrastCheck" />
 
                 <EditText
@@ -128,7 +144,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:ems="10"
                     android:hint="@string/inputTitle"
@@ -137,14 +153,14 @@
                     android:text="@={viewModel.article.title}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/addTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/inputEndDate" />
+                    app:layout_constraintTop_toBottomOf="@+id/chooseEndDateButton" />
 
                 <EditText
                     android:id="@+id/inputStory"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:ems="10"
@@ -152,8 +168,8 @@
                     android:inputType="textMultiLine"
                     android:minHeight="48dp"
                     android:singleLine="false"
-                    android:textIsSelectable="true"
                     android:text="@={viewModel.article.story}"
+                    android:textIsSelectable="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/addStory"
                     app:layout_constraintTop_toBottomOf="@+id/inputTitle" />

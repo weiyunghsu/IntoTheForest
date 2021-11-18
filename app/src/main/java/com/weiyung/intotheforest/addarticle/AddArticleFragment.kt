@@ -69,11 +69,11 @@ class AddArticleFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.inputStartDate.setOnClickListener {
+        binding.chooseStartButton.setOnClickListener {
             setStartDate()
         }
 
-        binding.inputEndDate.setOnClickListener {
+        binding.chooseEndDateButton.setOnClickListener {
             setEndDate()
         }
 
@@ -266,7 +266,7 @@ class AddArticleFragment : Fragment() {
         context?.let {
             DatePickerDialog(it, { _, year, month, day ->
                 run {
-                    binding.inputStartDate.setText(setDateFormat(year, month, day))
+                    binding.showStartDate.setText(setDateFormat(year, month, day))
                 }
             }, year, month, day).show()
         }
@@ -276,7 +276,7 @@ class AddArticleFragment : Fragment() {
         context?.let {
             DatePickerDialog(it, { _, year, month, day ->
                 run {
-                    binding.inputEndDate.setText(setDateFormat(year, month, day))
+                    binding.showEndDate.setText(setDateFormat(year, month, day))
                 }
             }, year, month, day).show()
         }

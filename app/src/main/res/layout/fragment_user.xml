@@ -18,7 +18,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:background="#C6E6C1"
         tools:context="com.weiyung.intotheforest.user.UserFragment">
 
         <View
@@ -35,11 +35,10 @@
             android:id="@+id/user_photo"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="32dp"
             android:contentDescription="@string/user_photo"
             app:avatarUrl="@{user.picture}"
             app:layout_constraintBottom_toBottomOf="@+id/user_view"
-            app:layout_constraintStart_toStartOf="@+id/user_view"
+            app:layout_constraintStart_toStartOf="@+id/bt_my_articles"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/icons_36px_profile_normal" />
 
@@ -47,23 +46,21 @@
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/user_photo"
-            app:layout_constraintStart_toEndOf="@+id/user_photo"
+            app:layout_constraintStart_toStartOf="@+id/bt_my_favorites"
             app:layout_constraintTop_toTopOf="@+id/user_photo"
             tools:text="王小明" />
-<!--        android:text="@{userManager.addUserInfo().name}"-->
+        <!--        android:text="@{userManager.addUserInfo().name}"-->
 
         <Button
             android:id="@+id/bt_my_articles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@null"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/bg_round_user_button"
             android:text="@string/bt_my_articles"
             android:textAlignment="center"
             android:textSize="16sp"
@@ -75,8 +72,7 @@
             android:id="@+id/bt_my_favorites"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/bg_round_user_button"
             android:text="@string/bt_my_favorites"
             android:textAlignment="center"
             android:textSize="16sp"
@@ -88,8 +84,7 @@
             android:id="@+id/bt_my_photos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/bg_round_user_button"
             android:text="@string/bt_my_photos"
             android:textAlignment="center"
             android:textSize="16sp"
@@ -102,8 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@null"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/bg_round_user_button"
             android:text="@string/bt_my_badges"
             android:textAlignment="center"
             android:textSize="16sp"
@@ -115,8 +109,7 @@
             android:id="@+id/bt_edit_person_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/bg_round_user_button"
             android:text="@string/bt_edit_person_info"
             android:textAlignment="center"
             android:textSize="16sp"
@@ -128,8 +121,7 @@
             android:id="@+id/bt_notifications"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/bg_round_user_button"
             android:text="@string/bt_notifications"
             android:textAlignment="center"
             android:textSize="16sp"
@@ -141,8 +133,7 @@
             android:id="@+id/bt_my_routes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/bg_round_user_button"
             android:text="@string/bt_my_routes"
             android:textAlignment="center"
             android:textSize="16sp"
@@ -155,8 +146,7 @@
             android:id="@+id/bt_checklist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/bg_round_user_button"
             android:text="@string/bt_checklist"
             android:textAlignment="center"
             android:textSize="16sp"
@@ -170,8 +160,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@null"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/bg_round_user_button"
             android:text="@string/bt_logout"
             android:textAlignment="center"
             android:textColor="@color/black_3f3a3a"
@@ -185,11 +174,11 @@
             android:id="@+id/lottieMountainBirds"
             android:layout_width="0dp"
             android:layout_height="400dp"
-            android:layout_marginBottom="-100dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:lottie_rawRes="@raw/mountain_birds_fly"/>
+            app:layout_constraintTop_toBottomOf="@+id/bt_my_routes"
+            app:lottie_rawRes="@raw/mountain_birds_fly" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

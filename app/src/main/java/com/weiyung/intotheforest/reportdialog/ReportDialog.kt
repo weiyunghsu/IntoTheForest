@@ -102,6 +102,7 @@ fun getLocation() {
                         val latitude = locationResult.locations[index].latitude
                         val longitude = locationResult.locations[index].longitude
                         binding.showLocation.text = "$latitude, $longitude"
+                        Toast.makeText(requireContext(),"你的座標：$latitude, $longitude",Toast.LENGTH_SHORT).show()
                         Log.i("DATA", "latitude: $latitude, longitude: $longitude")
                     }
                 }

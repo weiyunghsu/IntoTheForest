@@ -68,6 +68,7 @@
     <string name="success_text">發布成功</string>
     <string name="report">緊急求救</string>
     <string name="sos_success">已收到您的求救訊息，火速處理中！</string>
+    <string name="choose_route">請選擇路線：</string>
 
     <string-array name="route_list">
         <item>@string/four_animals</item>

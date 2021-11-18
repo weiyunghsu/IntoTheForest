@@ -14,6 +14,7 @@
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/mapContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <!--    <FrameLayout-->
@@ -39,14 +40,30 @@
         tools:context=".MapFragment"
         tools:layout="@layout/fragment_map"/>
 
+        <TextView
+            android:id="@+id/mapChooseRoute"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/noto_sans"
+            android:text="@string/choose_route"
+            android:textSize="16sp"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/map"
+            tools:text="請選擇路線：" />
+
         <Spinner
             android:id="@+id/spinner_routes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
             android:spinnerMode="dialog"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:prompt="@string/select_route"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/mapChooseRoute"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:selectedItemPosition="@={viewModel.selectedRoutePosition}"/>
 
@@ -71,9 +88,11 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:src="@drawable/outline_wb_sunny_black_36"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
         app:fabSize="mini"
-        app:layout_constraintStart_toEndOf="@+id/spinner_routes"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/speakButton" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/speakButton"
@@ -81,28 +100,24 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:src="@drawable/outline_campaign_black_36"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
         app:fabSize="mini"
-        app:layout_constraintStart_toEndOf="@+id/weatherButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/mapToAddPostButton" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/recordButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:src="@drawable/outline_play_circle_black_36"
-        app:fabSize="mini"
-        app:layout_constraintStart_toEndOf="@+id/speakButton"
-        app:layout_constraintTop_toTopOf="parent" />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/mapToAddPostButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
+        android:layout_gravity="start|bottom"
         android:src="@drawable/outline_post_add_black_36"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="40dp"
         app:fabSize="mini"
-        app:layout_constraintStart_toEndOf="@+id/recordButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
     <!--    </fragment>-->
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
