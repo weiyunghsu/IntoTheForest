@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans"
             android:text="@string/police_text"
+            android:textColor="@color/black_3f3a3a"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/police_icon"
             app:layout_constraintEnd_toStartOf="@+id/police_button"
@@ -76,6 +77,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans"
             android:text="@string/rescue_text"
+            android:textColor="@color/black_3f3a3a"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/rescue_icon"
             app:layout_constraintEnd_toStartOf="@+id/ambulance_button"
@@ -102,6 +104,7 @@
             android:layout_width="146dp"
             android:layout_height="wrap_content"
             android:text="@string/sms_police"
+            android:textColor="@color/black_3f3a3a"
             app:layout_constraintStart_toStartOf="@+id/rescue_text"
             app:layout_constraintTop_toTopOf="@+id/sms_police" />
 
@@ -158,6 +161,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans"
             android:text="按定位紐顯示所在位置"
+            android:textColor="@color/black_3f3a3a"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/inputSOSInfo"
             app:layout_constraintTop_toTopOf="@+id/myLocationButton" />
@@ -179,6 +183,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans"
+            android:textColor="@color/black_3f3a3a"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/inputSOSInfo"
             app:layout_constraintTop_toBottomOf="@+id/location"

@@ -10,7 +10,7 @@
         android:id="@+id/success_text"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:background="@color/light_green_700"
+        android:background="@color/lottie_green_300"
         android:fontFamily="@font/noto_sans"
         android:gravity="bottom|center"
         android:paddingBottom="16dp"

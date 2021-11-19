@@ -46,6 +46,7 @@
             android:fontFamily="@font/noto_sans"
             android:text="七星山兩日遊"
             android:textSize="16sp"
+            android:textColor="@color/black_3f3a3a"
             app:layout_constraintStart_toEndOf="@+id/article_image"
             app:layout_constraintTop_toBottomOf="@+id/startDate"
             tools:text="七星山兩日遊" />
@@ -60,6 +61,7 @@
             android:fontFamily="@font/noto_sans"
             android:text="王小明"
             android:textSize="16sp"
+            android:textColor="@color/black_3f3a3a"
             app:layout_constraintStart_toEndOf="@+id/article_image"
             app:layout_constraintTop_toBottomOf="@+id/home_title"
             tools:text="專欄作者" />
@@ -73,6 +75,7 @@
             android:fontFamily="@font/noto_sans"
             android:text="2021.10.10"
             android:textSize="16sp"
+            android:textColor="@color/black_3f3a3a"
             app:layout_constraintStart_toEndOf="@+id/article_image"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="2021.10.10" />
@@ -87,6 +90,7 @@
             android:fontFamily="@font/noto_sans"
             android:text="2021.10.11"
             android:textSize="16sp"
+            android:textColor="@color/black_3f3a3a"
             app:layout_constraintStart_toEndOf="@+id/to"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="2021.10.11" />
@@ -101,6 +105,7 @@
             android:fontFamily="@font/noto_sans"
             android:text="@string/to"
             android:textSize="16sp"
+            android:textColor="@color/black_3f3a3a"
             app:layout_constraintStart_toEndOf="@+id/startDate"
             app:layout_constraintTop_toTopOf="parent" />
 

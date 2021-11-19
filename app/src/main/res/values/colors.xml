@@ -21,6 +21,11 @@
     <color name="light_green_500">#8BC34A</color>
     <color name="light_green_700">#689F38</color>
     <color name="light_green_900">#33691E</color>
+    <!-- Lottie Green Series -->
+    <color name="lottie_green_100">#C6E6C1</color>
+    <color name="lottie_green_200">#65B9A9</color>
+    <color name="lottie_green_300">#108B89</color>
+    <color name="lottie_green_400">#005A70</color>
     <!-- Voyage Respect Series -->
     <color name="purple_voyage">#7830b8</color>
     <!-- Bottom Navigation -->
@@ -29,4 +34,7 @@
     <!-- Favorite -->
     <color name="favorite_item_normal">@color/gray_999999</color>
     <color name="favorite_item_selected">#E91E63</color>
+
+
+
 </resources>

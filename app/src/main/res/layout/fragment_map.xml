@@ -47,6 +47,7 @@
             android:fontFamily="@font/noto_sans"
             android:text="@string/choose_route"
             android:textSize="16sp"
+            android:textColor="@color/black_3f3a3a"
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

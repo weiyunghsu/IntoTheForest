@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/login_background_new">
+        android:background="@drawable/login_background_lottie_green">
 
         <TextView
             android:id="@+id/app_name"
