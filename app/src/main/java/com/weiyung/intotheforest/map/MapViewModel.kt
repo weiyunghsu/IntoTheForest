@@ -46,6 +46,8 @@ class MapViewModel(
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
+    var isMapReady : Boolean = false
+
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 

@@ -141,16 +141,21 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 )
                 == PackageManager.PERMISSION_GRANTED
             ) {
+                viewModel.isMapReady = true
                 mMap.isMyLocationEnabled = true
+
             } else {
                 requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 999)
             }
         }
         setupPermission()
-        mMap.isMyLocationEnabled = true
-        mMap.uiSettings.isZoomControlsEnabled = true
-        mMap.uiSettings.isCompassEnabled = true
-        mMap.uiSettings.isMapToolbarEnabled = true
+        if (viewModel.isMapReady){
+            mMap.isMyLocationEnabled = true
+            mMap.uiSettings.isZoomControlsEnabled = true
+            mMap.uiSettings.isCompassEnabled = true
+            mMap.uiSettings.isMapToolbarEnabled = true
+        }
+
 
         val polyline1 = googleMap.addPolyline(
             PolylineOptions().clickable(true).color(Color.RED).addAll(viewModel.routeLine1)
