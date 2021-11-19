@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -14,35 +15,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageMetadata
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
-import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentAddarticleBinding
-import com.weiyung.intotheforest.ext.addData
 import com.weiyung.intotheforest.ext.getVmFactory
 import com.weiyung.intotheforest.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.io.File
-import java.lang.Math.random
 import java.util.*
 
 class AddArticleFragment : Fragment() {
+   // lateinit var fragment: AddArticleFragment
+
     private val viewModel by viewModels<AddArticleViewModel> {
         getVmFactory()
     }
@@ -76,16 +71,27 @@ class AddArticleFragment : Fragment() {
         binding.chooseEndDateButton.setOnClickListener {
             setEndDate()
         }
+     //   fragment = this
+
 
         binding.inputPhotoButton.setOnClickListener {
-            permissionWritePhoto()
-            if (viewModel.canUploadImage && viewModel.isUploadSuccess) {
-                binding.inputPhotoButton.isClickable = false
-//                    findNavController().navigate(NavigationDirections.navigateToPostsuccessFragment())
-            } else if (viewModel.canUploadImage && !viewModel.isUploadSuccess) {
-                val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-                startActivityForResult(gallery, PICTUREFROMGALLERY)
-            }
+            getLocalImg()
+//            ImagePicker.with(this)
+//                .crop()                    //Crop image(Optional), Check Customization for more option
+//                .compress(1024)            //Final image size will be less than 1 MB(Optional)
+//                .maxResultSize(
+//                    1080,
+//                    1080
+//                )    //Final image resolution will be less than 1080 x 1080(Optional)
+//                .start()
+        //            permissionWritePhoto()
+//            if (viewModel.canUploadImage && viewModel.isUploadSuccess) {
+//                binding.inputPhotoButton.isClickable = false
+////                    findNavController().navigate(NavigationDirections.navigateToPostsuccessFragment())
+//            } else if (viewModel.canUploadImage && !viewModel.isUploadSuccess) {
+//                val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+//                startActivityForResult(gallery, PICTUREFROMGALLERY)
+//            }
         }
 
         binding.addPostButton.setOnClickListener {
@@ -133,20 +139,34 @@ class AddArticleFragment : Fragment() {
         Log.i(TAG, "onActivityResult,resultCode : $resultCode")
         when (resultCode) {
             Activity.RESULT_OK -> {
-                val uri: Uri = data?.data!!
-                binding.pickImg1.setImageURI(uri)
-                Log.i(TAG, "uri : $uri")
-                val imagePath = getPathFromUri(uri)
-//                val filePath: String = ImagePicker.getFilePath(data) ?: ""
-                if (imagePath.isNotEmpty()) {
-                    Log.i(TAG, "onActivityResult if imagePath.isNotEmpty()")
-                    Toast.makeText(requireActivity(), imagePath, Toast.LENGTH_SHORT).show()
-//                    Glide.with(requireActivity()).load(imagePath).into(binding.pickImg1)
-//                    getLocalImg()
-                    firebaseUpload(uri)
-                } else {
-                    Toast.makeText(requireActivity(), R.string.load_img_fail1, Toast.LENGTH_SHORT).show()
+
+                data?.let {
+                    val fileUri = data.data
+                    Toast.makeText(requireActivity(), "setImageURI= $fileUri", Toast.LENGTH_SHORT).show()
+                    binding.pickImg1.setImageURI(fileUri)
+                    if (fileUri != null) {
+                        firebaseUpload(fileUri)
+                    }
                 }
+
+//                val uri: Uri = data?.data!!
+//                binding.pickImg1.setImageURI(uri)
+//                Toast.makeText(requireActivity(), "setImageURI= $uri", Toast.LENGTH_SHORT).show()
+//                firebaseUpload(uri)
+//                Log.i(TAG, "uri : $uri")
+//                val imagePath = getPathFromUri(uri)
+////                val filePath: String = ImagePicker.getFilePath(data) ?: ""
+//                if (imagePath.isNotEmpty()) {
+//                    Log.i(TAG, "onActivityResult if imagePath.isNotEmpty()")
+//                    Toast.makeText(requireActivity(), imagePath, Toast.LENGTH_SHORT).show()
+//
+              //     getLocalImg()
+//                    Glide.with(requireActivity()).load(imagePath).into(binding.pickImg1)
+//
+//                    firebaseUpload(uri)
+//                } else {
+//                    Toast.makeText(requireActivity(), R.string.load_img_fail1, Toast.LENGTH_SHORT).show()
+//                }
             }
             ImagePicker.RESULT_ERROR -> Toast.makeText(
                 requireContext(),
@@ -168,14 +188,15 @@ class AddArticleFragment : Fragment() {
     }
 
     fun getLocalImg() {
-        ImagePicker.with(requireActivity())
-            .crop()                    //Crop image(Optional), Check Customization for more option
-            .compress(1024)            //Final image size will be less than 1 MB(Optional)
-            .maxResultSize(
-                1080,
-                1080
-            )    //Final image resolution will be less than 1080 x 1080(Optional)
-            .start()
+             ImagePicker.with(this)
+                .crop()                    //Crop image(Optional), Check Customization for more option
+                .compress(1024)            //Final image size will be less than 1 MB(Optional)
+                .maxResultSize(
+                    1080,
+                    1080
+                )    //Final image resolution will be less than 1080 x 1080(Optional)
+                .start()
+
     }
 
     private var viewModelJob = Job()
