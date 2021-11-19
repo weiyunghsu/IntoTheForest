@@ -1,13 +1,11 @@
 package com.weiyung.intotheforest
 
 import android.view.View
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
-import androidx.databinding.InverseMethod
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
@@ -19,6 +17,7 @@ import com.weiyung.intotheforest.database.Article
 import com.weiyung.intotheforest.ext.toDisplayFormat
 import com.weiyung.intotheforest.home.HomeAdapter
 import com.weiyung.intotheforest.network.LoadApiStatus
+
 @BindingAdapter("imageUrl")
 fun imageUrl(imgView: ImageView, imageUrl: String?) {
     imageUrl?.let {
@@ -33,6 +32,7 @@ fun imageUrl(imgView: ImageView, imageUrl: String?) {
             .into(imgView)
     }
 }
+
 @BindingAdapter("roundedCorners")
 fun roundedCorners(imgView: ImageView, imageUrl: String?) {
     imageUrl?.let {
@@ -48,6 +48,7 @@ fun roundedCorners(imgView: ImageView, imageUrl: String?) {
             .into(imgView)
     }
 }
+
 @BindingAdapter("avatarUrl")
 fun avatarUrl(imgView: ImageView, imageUrl: String?) {
     imageUrl?.let {
@@ -63,6 +64,7 @@ fun avatarUrl(imgView: ImageView, imageUrl: String?) {
             .into(imgView)
     }
 }
+
 @BindingAdapter("articles")
 fun bindRecyclerView(recyclerView: RecyclerView, homeItems: List<Article>?) {
     homeItems?.let {

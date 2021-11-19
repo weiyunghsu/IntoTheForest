@@ -79,17 +79,19 @@ class AddArticleFragment : Fragment() {
 
         binding.inputPhotoButton.setOnClickListener {
             permissionWritePhoto()
-            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            startActivityForResult(gallery, PICTUREFROMGALLERY)
+            if (viewModel.canUploadImage && viewModel.isUploadSuccess) {
+                binding.inputPhotoButton.isClickable = false
+//                    findNavController().navigate(NavigationDirections.navigateToPostsuccessFragment())
+            } else if (viewModel.canUploadImage && !viewModel.isUploadSuccess) {
+                val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+                startActivityForResult(gallery, PICTUREFROMGALLERY)
+            }
         }
 
         binding.addPostButton.setOnClickListener {
-            Log.i(TAG,"addFragment fun addData")
             viewModel.article.value?.let { it1 -> viewModel.addData(it1) }
             Toast.makeText(this.requireContext(), R.string.post_success, Toast.LENGTH_LONG).show()
-//            this.findNavController().navigate(AddArticleFragmentDirections.actionAddArticleFragmentToPostSuccessFragment())
         }
-
         return binding.root
     }
 
@@ -105,26 +107,26 @@ class AddArticleFragment : Fragment() {
                 REQUEST_EXTERNAL_STORAGE
             )
         } else {
-            getLocalImg()
+            viewModel.canUploadImage = true
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            REQUEST_EXTERNAL_STORAGE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    getLocalImg()
-                } else {
-                    Toast.makeText(requireActivity(), R.string.nothing_happen, Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
-        }
-    }
+//    override fun onRequestPermissionsResult(
+//        requestCode: Int,
+//        permissions: Array<String>,
+//        grantResults: IntArray
+//    ) {
+//        when (requestCode) {
+//            REQUEST_EXTERNAL_STORAGE -> {
+//                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    viewModel.canUploadImage = true
+//                } else {
+//                    Toast.makeText(requireActivity(), R.string.nothing_happen, Toast.LENGTH_SHORT)
+//                        .show()
+//                }
+//            }
+//        }
+//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -139,14 +141,11 @@ class AddArticleFragment : Fragment() {
                 if (imagePath.isNotEmpty()) {
                     Log.i(TAG, "onActivityResult if imagePath.isNotEmpty()")
                     Toast.makeText(requireActivity(), imagePath, Toast.LENGTH_SHORT).show()
-                    Glide.with(requireActivity()).load(imagePath).into(binding.pickImg1)
-                    getLocalImg()
-
+//                    Glide.with(requireActivity()).load(imagePath).into(binding.pickImg1)
+//                    getLocalImg()
                     firebaseUpload(uri)
-                    Log.i(TAG, "firebaseUpload: ")
                 } else {
-                    Toast.makeText(requireActivity(), R.string.load_img_fail1, Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(requireActivity(), R.string.load_img_fail1, Toast.LENGTH_SHORT).show()
                 }
             }
             ImagePicker.RESULT_ERROR -> Toast.makeText(
@@ -157,26 +156,6 @@ class AddArticleFragment : Fragment() {
             else -> Toast.makeText(requireActivity(), "Task Cancelled", Toast.LENGTH_SHORT).show()
         }
     }
-
-//    private val startForProfileImageResult =
-//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-//            val resultCode = result.resultCode
-//            val data = result.data
-//
-//            if (resultCode == Activity.RESULT_OK) {
-//                //Image Uri will not be null for RESULT_OK
-//                val fileUri = data?.data!!
-//                Log.i(TAG, "fileUri : $fileUri")
-//                val mProfileUri = fileUri
-//                binding.pickImg2.setImageURI(fileUri)
-//                Log.i(TAG, "startForProfileImageResult ")
-//            } else if (resultCode == ImagePicker.RESULT_ERROR) {
-//                Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
-//                    .show()
-//            } else {
-//                Toast.makeText(requireContext(), "Task Cancelled", Toast.LENGTH_SHORT).show()
-//            }
-//        }
 
     private fun getPathFromUri(uri: Uri): String {
         val projection = arrayOf(MediaStore.MediaColumns.DATA)
@@ -207,19 +186,14 @@ class AddArticleFragment : Fragment() {
             val mStorageRef = FirebaseStorage.getInstance().reference
             val storageRef = storage.reference
             val imagesRef: StorageReference = storageRef.child(FIREBASE_PATH_ROUTE)
-//                  val routeImageRef = storageRef.child("routeImg/image.jpg")
             val path = imagesRef.path
-//            val file = Uri.fromFile(File())
             val metadata = StorageMetadata.Builder()
                 .setContentDisposition("universe")
                 .setContentType("image/jpg")
-//                  .setContentType("image/png")
-//                  .setContentType("image/jpeg")
                 .build()
             val randomNumber = (0..999).random()
             val routesRef =
                 mStorageRef.child("$FIREBASE_PATH_ROUTE/${UserManager.addUserInfo().id}_$randomNumber.jpg")
-//                  val uploadTask = routesRef.putFile(file, metadata)
             val uploadTask = routesRef.putFile(uri)
             uploadTask.addOnFailureListener {
                 Toast.makeText(
@@ -227,15 +201,13 @@ class AddArticleFragment : Fragment() {
                     R.string.load_img_fail,
                     Toast.LENGTH_SHORT
                 ).show()
-//                  upload_info_text.text = exception.message
                 Log.i(TAG, "addOnFailureListener: $it")
             }.addOnCompleteListener { it ->
                 if (it.isSuccessful) {
                     it.result.storage.downloadUrl.addOnCompleteListener {
-
                         val articleImage = it.result.toString()
                         viewModel.article.value?.mainImage = articleImage
-                        Log.i(TAG, "the photoUri on firebasr storage is : $articleImage")
+                        Log.i(TAG, "the photoUri on firebase storage is : $articleImage")
                     }
                 }
                 Toast.makeText(
@@ -243,17 +215,17 @@ class AddArticleFragment : Fragment() {
                     R.string.upload_success,
                     Toast.LENGTH_SHORT
                 ).show()
-//                  upload_info_text.setText(R.string.upload_success)
+                viewModel.isUploadSuccess = true
                 Log.i(TAG, "addOnSuccessListener: $it")
             }
-                .addOnProgressListener { taskSnapshot ->
-                    val progress =
-                        (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount).toInt()
-                    binding.progressBar2.progress = progress
-                    if (progress >= 100) {
-                        binding.progressBar2.visibility = View.GONE
-                    }
-                }
+//                .addOnProgressListener { taskSnapshot ->
+//                    val progress =
+//                        (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount).toInt()
+//                    binding.progressBar2.progress = progress
+//                    if (progress >= 100) {
+//                        binding.progressBar2.visibility = View.GONE
+//                    }
+//                }
         }
     }
 

@@ -18,24 +18,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!--    android:background="@drawable/bg_round_image"-->
+
+
     <ImageView
         android:id="@+id/article_image"
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/transparent"
         android:contentDescription="@string/article_image"
         android:scaleType="centerCrop"
-        app:roundedCorners="@{article.mainImage}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:roundedCorners="@{article.mainImage}"
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
-<!--    android:background="@drawable/bg_round_image"-->
-
 
     <TextView
         android:id="@+id/home_title"
@@ -56,11 +58,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/noto_sans"
         android:text="@{article.user.name}"
         android:textColor="@color/black_3f3a3a"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/article_image"
         app:layout_constraintTop_toBottomOf="@+id/home_title"
         tools:text="專欄作者" />
@@ -108,8 +112,8 @@
 
     <ImageView
         android:id="@+id/homeAvatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginStart="8dp"
         app:avatarUrl="@{article.user.picture}"
         app:layout_constraintBottom_toBottomOf="@+id/home_author"

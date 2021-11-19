@@ -38,6 +38,9 @@ class AddArticleViewModel(
     val error: LiveData<String>
         get() = _error
 
+    var canUploadImage : Boolean = false
+    var isUploadSuccess : Boolean = false
+
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
