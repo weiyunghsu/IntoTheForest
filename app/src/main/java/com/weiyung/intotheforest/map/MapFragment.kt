@@ -196,7 +196,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                             for (i in viewModel.view1) {
                                 drawMarker(
                                     location = i, context = context!!,
-                                    resDrawable = R.drawable.outline_photo_camera_black_36,
+                                    resDrawable = R.drawable.round_photo_camera_black_36,
                                     title = "Great View!"
                                 )
                             }
@@ -250,7 +250,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                             for (i in viewModel.view2) {
                                 drawMarker(
                                     location = i, context = context!!,
-                                    resDrawable = R.drawable.outline_photo_camera_black_36,
+                                    resDrawable = R.drawable.round_photo_camera_black_36,
                                     title = "Great View!"
                                 )
                             }

@@ -117,7 +117,7 @@ class MapViewModel(
         LatLng(25.029347, 121.582627),
         LatLng(25.026738, 121.580566),
         LatLng(25.026827, 121.574412),)
-    val eat1 = arrayListOf(LatLng(25.027289, 121.570337))
+    val eat1 = arrayListOf(LatLng(25.026853, 121.568260))
 
     val source2 = LatLng(25.128404, 121.4243393) //starting point (LatLng)
     val destination2 = LatLng(25.136002, 121.426657) // ending point (LatLng)
