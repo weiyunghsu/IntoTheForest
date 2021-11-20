@@ -13,6 +13,7 @@ import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.database.*
 import com.weiyung.intotheforest.database.source.IntoTheForestDataSource
+import com.weiyung.intotheforest.util.UserManager
 import com.weiyung.intotheforest.util.Util
 import java.util.*
 import kotlin.coroutines.resume
@@ -27,6 +28,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
     private const val KEY_SEG = "seg"
     private const val PATH_USER = "user"
     private const val KEY_END_DATE = "endDate"
+    private const val PATH_FAVORITES = "favorites"
 
     override suspend fun login(id: String): Result<User> {
         TODO("Not yet implemented")
@@ -89,7 +91,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
 
         article.id = document.id
 //        article.createdTime = Calendar.getInstance().timeInMillis
-        Log.i(TAG,"here is fun publish")
+        Log.i(TAG,"here is fun publish article")
         document
             .set(article)
             .addOnCompleteListener { task ->
@@ -190,10 +192,6 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
         return liveData
     }
 
-    override suspend fun getFavorite(): LiveData<List<Favorite>> {
-        TODO("Not yet implemented")
-    }
-
     override suspend fun getUser(userId: User?): Result<User?> {
         return User().getResultFrom(
             FirebaseFirestore.getInstance()
@@ -205,6 +203,10 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
         return FirebaseFirestore.getInstance()
             .collection(PATH_USER).document(requireNotNull(user.id)).set(user)
             .missionSuccessReturn(true)
+    }
+
+    override suspend fun publishFavorite(article: Article): Result<Boolean> {
+        TODO("Not yet implemented")
     }
 
     suspend fun <T : Any> T.getResultFrom(source: Task<*>): Result<T?> =
@@ -256,4 +258,53 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                 }
             }
         }
+//    override suspend fun publishFavorite(article: Article): Result<Boolean>  = suspendCoroutine { continuation ->
+//        val favorites = FirebaseFirestore.getInstance().collection(PATH_FAVORITES)
+//        val document = favorites.document()
+//
+//        favorite.id = document.id
+////        article.createdTime = Calendar.getInstance().timeInMillis
+//        Log.i(TAG,"here is fun publish favorite")
+//        document
+//            .set(favorite)
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    Log.i(TAG,"Publish: $favorite")
+//
+//                    continuation.resume(Result.Success(true))
+//                } else {
+//                    task.exception?.let {
+//
+//                        Log.w(TAG,"[${this::class.simpleName}] Error getting documents. ${it.message}")
+//                        continuation.resume(Result.Error(it))
+//                        return@addOnCompleteListener
+//                    }
+//                    continuation.resume(Result.Fail(IntoTheForestApplication.instance.getString(R.string.nothing_happen)))
+//                }
+//            }
+//    }
+
+    override fun getFavorites(userId: String): MutableLiveData<List<Article>> {
+        val liveData = MutableLiveData<List<Article>>()
+        FirebaseFirestore.getInstance()
+            .collection(PATH_ARTICLES)
+            .orderBy(KEY_END_DATE, Query.Direction.DESCENDING)
+            .whereArrayContainsAny("followers",listOf(userId))
+            .addSnapshotListener { snapshot, exception ->
+                Log.i(TAG,"addSnapshotListener detect")
+                exception?.let {
+                    Log.w(TAG,"[${this::class.simpleName}] Error getting documents. ${it.message}")
+                }
+                val list = mutableListOf<Article>()
+                for (document in snapshot!!) {
+                    Log.d(TAG,document.id + " => " + document.data)
+
+                    val article = document.toObject(Article::class.java)
+                    list.add(article)
+                }
+                liveData.value = list
+            }
+        return liveData
+    }
+
 }

@@ -9,9 +9,9 @@ import com.weiyung.intotheforest.database.Article
 import com.weiyung.intotheforest.databinding.ItemFavoriteBinding
 
 class FavoriteAdapter(val viewModel: FavoriteViewModel) :
-    ListAdapter<Article, FavoriteAdapter.ArticleViewHolder>(DiffCallback) {
+    ListAdapter<Article, FavoriteAdapter.FavoriteViewHolder>(DiffCallback) {
 
-    class ArticleViewHolder(private var binding: ItemFavoriteBinding) :
+    class FavoriteViewHolder(private var binding: ItemFavoriteBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article, viewModel: FavoriteViewModel) {
             binding.article = article
@@ -29,14 +29,14 @@ class FavoriteAdapter(val viewModel: FavoriteViewModel) :
         override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem == newItem
         }
-        private const val ITEM_VIEW_TYPE_ARTICLE = 0x00
+//        private const val ITEM_VIEW_TYPE_ARTICLE = 0x00
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        return ArticleViewHolder(ItemFavoriteBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
+        return FavoriteViewHolder(ItemFavoriteBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
         holder.bind(getItem(position), viewModel)
     }
 }

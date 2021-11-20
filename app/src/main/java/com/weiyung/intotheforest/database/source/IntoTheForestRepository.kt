@@ -21,9 +21,12 @@ interface IntoTheForestRepository {
 
     fun getLiveRoutes(): MutableLiveData<List<Route>>
 
-    suspend fun getFavorite(): LiveData<List<Favorite>>
-
     suspend fun getUser(userId: User?): Result<User?>
 
     suspend fun signUpUser(user: User): Result<Boolean>
+
+    fun getFavorites(userId: String): MutableLiveData<List<Article>>
+
+    suspend fun publishFavorite(article: Article): Result<Boolean>
+
 }

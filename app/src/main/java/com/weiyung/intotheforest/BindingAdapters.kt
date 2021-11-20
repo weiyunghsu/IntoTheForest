@@ -1,5 +1,6 @@
 package com.weiyung.intotheforest
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -15,6 +16,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.weiyung.intotheforest.database.Article
 import com.weiyung.intotheforest.ext.toDisplayFormat
+import com.weiyung.intotheforest.favorite.FavoriteAdapter
 import com.weiyung.intotheforest.home.HomeAdapter
 import com.weiyung.intotheforest.network.LoadApiStatus
 
@@ -67,10 +69,20 @@ fun avatarUrl(imgView: ImageView, imageUrl: String?) {
 
 @BindingAdapter("articles")
 fun bindRecyclerView(recyclerView: RecyclerView, homeItems: List<Article>?) {
+    Log.i("BindingAdapter", "recyclerView.adapter:${recyclerView.adapter}")
+    Log.i("BindingAdapter", "homeItems.size:${homeItems?.isEmpty()}")
+
     homeItems?.let {
+        Log.i("BindingAdapter", "recyclerView.adapter:${recyclerView.adapter}")
+
         recyclerView.adapter?.apply {
             when (this) {
                 is HomeAdapter -> submitList(it)
+                is FavoriteAdapter -> {
+                    Log.i("BindingAdapter", "lsit:${homeItems}")
+
+                    submitList(it)
+                }
             }
         }
     }

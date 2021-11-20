@@ -30,12 +30,12 @@
             android:layout_marginBottom="12dp"
             android:contentDescription="@string/article_image"
             android:scaleType="centerCrop"
+            app:roundedCorners="@{article.mainImage}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ImageContrastCheck"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
-<!--        app:imageUrl="@{article.mainImage}"-->
 
         <TextView
             android:id="@+id/home_title"
@@ -44,13 +44,12 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/noto_sans"
-            android:text="七星山兩日遊"
+            android:text="@{article.title}"
             android:textSize="16sp"
             android:textColor="@color/black_3f3a3a"
             app:layout_constraintStart_toEndOf="@+id/article_image"
             app:layout_constraintTop_toBottomOf="@+id/startDate"
             tools:text="七星山兩日遊" />
-<!--        android:text="@{article.title}"-->
 
         <TextView
             android:id="@+id/home_author"
@@ -59,13 +58,13 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/noto_sans"
-            android:text="王小明"
+            android:text="@{article.user.name}"
             android:textSize="16sp"
             android:textColor="@color/black_3f3a3a"
             app:layout_constraintStart_toEndOf="@+id/article_image"
             app:layout_constraintTop_toBottomOf="@+id/home_title"
             tools:text="專欄作者" />
-<!--        android:text="@{article.user.name}"-->
+
         <TextView
             android:id="@+id/startDate"
             android:layout_width="wrap_content"
@@ -73,13 +72,12 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/noto_sans"
-            android:text="2021.10.10"
+            android:text="@{article.startDate}"
             android:textSize="16sp"
             android:textColor="@color/black_3f3a3a"
             app:layout_constraintStart_toEndOf="@+id/article_image"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="2021.10.10" />
-<!--        android:text="@{article.startDate}"-->
 
         <TextView
             android:id="@+id/endDate"
@@ -88,13 +86,12 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/noto_sans"
-            android:text="2021.10.11"
+            android:text="@{article.endDate}"
             android:textSize="16sp"
             android:textColor="@color/black_3f3a3a"
             app:layout_constraintStart_toEndOf="@+id/to"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="2021.10.11" />
-<!--        android:text="@{article.endDate}"-->
 
         <TextView
             android:id="@+id/to"
@@ -110,7 +107,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/detail_favorite_button"
+            android:id="@+id/with_favorite_button"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
@@ -119,7 +116,7 @@
             android:contentDescription="@string/detail_favorite_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/favorite_item_selected"
+            app:srcCompat="@drawable/favorite_item_selector"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
@@ -129,9 +126,10 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:backgroundTint="@color/transparent"
+            android:onClick="@{() -> viewModel.onDetailNavigated()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detail_favorite_button"
+            app:layout_constraintTop_toBottomOf="@+id/with_favorite_button"
             app:srcCompat="@drawable/outline_info_black_36"
             tools:ignore="SpeakableTextPresentCheck" />
 

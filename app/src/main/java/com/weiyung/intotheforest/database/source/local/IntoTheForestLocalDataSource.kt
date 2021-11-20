@@ -47,10 +47,6 @@ class IntoTheForestLocalDataSource(val context: Context) : IntoTheForestDataSour
         TODO("Not yet implemented")
     }
 
-    override suspend fun getFavorite(): LiveData<List<Favorite>>{
-        TODO("Not yet implemented")
-    }
-
     override suspend fun getUser(userId: User?): Result<User?> {
         TODO("Not yet implemented")
     }
@@ -59,4 +55,11 @@ class IntoTheForestLocalDataSource(val context: Context) : IntoTheForestDataSour
         TODO("Not yet implemented")
     }
 
+    override suspend fun publishFavorite(article: Article): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override fun getFavorites(userId: String): MutableLiveData<List<Article>> {
+        TODO("Not yet implemented")
+    }
 }

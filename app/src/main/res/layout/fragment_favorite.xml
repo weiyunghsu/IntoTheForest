@@ -9,8 +9,11 @@
             name="viewModel"
             type="com.weiyung.intotheforest.favorite.FavoriteViewModel" />
         <variable
-            name="isLiveDataDesign"
-            type="Boolean" />
+            name="user"
+            type="com.weiyung.intotheforest.database.User" />
+        <variable
+            name="article"
+            type="com.weiyung.intotheforest.database.Article" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,8 +38,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:articles="@{viewModel.articleList}"
                 tools:listitem="@layout/item_favorite" />
-<!--            app:articles="@{isLiveDataDesign ? viewModel.liveArticles : viewModel.articles}"-->
+
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

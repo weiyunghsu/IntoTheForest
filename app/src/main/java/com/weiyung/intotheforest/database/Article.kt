@@ -14,7 +14,8 @@ data class Article(
     var title: String = "",
     var story: String = "",
     var mainImage: String = "",
-    var images: List<String>? = null
+    var images: List<String>? = null,
+    var followers: List<String>? = null,
 ): Parcelable
 
 @Parcelize
