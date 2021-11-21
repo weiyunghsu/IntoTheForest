@@ -29,4 +29,8 @@ interface IntoTheForestDataSource {
 
     fun getFavorites(userId: String): MutableLiveData<List<Article>>
 
+    suspend fun addUserToFollowers(userId: String, article: Article): Result<Boolean>
+
+    suspend fun removeUserFromFollowers(userId: String, article: Article): Result<Boolean>
+
 }

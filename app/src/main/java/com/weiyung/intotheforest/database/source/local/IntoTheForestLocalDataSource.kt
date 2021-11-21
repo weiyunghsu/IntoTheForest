@@ -62,4 +62,12 @@ class IntoTheForestLocalDataSource(val context: Context) : IntoTheForestDataSour
     override fun getFavorites(userId: String): MutableLiveData<List<Article>> {
         TODO("Not yet implemented")
     }
+
+    override suspend fun addUserToFollowers(userId: String, article: Article): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun removeUserFromFollowers(userId: String,article: Article): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
 }

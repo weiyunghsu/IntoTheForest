@@ -50,16 +50,6 @@ class DetailFragment : Fragment() {
             imageAdapter.submitList(imageList)
         }
 
-//        viewModel.favorite.observe(viewLifecycleOwner, Observer { it ->
-//            val idList = it.map { it.id }
-//            if (idList.contains(viewModel.favorite.value?.id)) {
-//                viewModel.hasFavoriteData()
-//                Toast.makeText(this.context, "成功加入我的最愛！", Toast.LENGTH_SHORT).show()
-//            } else {
-//                viewModel.noFavoriteData()
-//            }
-//        })
-
         binding.backButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.navigate_to_home_fragment)
         }
@@ -84,6 +74,11 @@ class DetailFragment : Fragment() {
             var shareIntent = Intent.createChooser(sendIntent, null)
             startActivity(Intent.createChooser(sendIntent, "遊記標題"))
         }
+        viewModel.favoriteAdded.observe(viewLifecycleOwner, Observer{
+            it?.let{added->
+                binding.detailFavoriteButton.isSelected = added
+            }
+        })
 
         return binding.root
     }

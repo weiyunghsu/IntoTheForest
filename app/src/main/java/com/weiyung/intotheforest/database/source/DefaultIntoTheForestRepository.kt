@@ -35,6 +35,15 @@ class DefaultIntoTheForestRepository (private val remoteDataSource: IntoTheFores
     override suspend fun publishFavorite(article: Article): Result<Boolean> {
         return remoteDataSource.publishFavorite(article)
     }
+
+    override suspend fun addUserToFollowers(userId: String, article: Article): Result<Boolean> {
+        return remoteDataSource.addUserToFollowers(userId, article)
+    }
+
+    override suspend fun removeUserFromFollowers(userId: String,article: Article): Result<Boolean> {
+        return remoteDataSource.removeUserFromFollowers(userId, article)
+    }
+
     override fun getFavorites(userId: String): MutableLiveData<List<Article>> {
         return remoteDataSource.getFavorites(userId)
     }

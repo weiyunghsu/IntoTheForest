@@ -29,4 +29,8 @@ interface IntoTheForestRepository {
 
     suspend fun publishFavorite(article: Article): Result<Boolean>
 
+    suspend fun addUserToFollowers(userId: String, article: Article): Result<Boolean>
+
+    suspend fun removeUserFromFollowers(userId: String, article: Article): Result<Boolean>
+
 }

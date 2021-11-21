@@ -113,6 +113,13 @@ fun bindApiErrorMessage(view: TextView, message: String?) {
         }
     }
 }
+@BindingAdapter("switch")
+fun switchDrawable(imageView: ImageView, added: Boolean) {
+    when (added) {
+        true -> imageView.setImageResource(R.drawable.outline_favorite_black_24)
+        false -> imageView.setImageResource(R.drawable.outline_favorite_border_black_24)
+    }
+}
 
 
 

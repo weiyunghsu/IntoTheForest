@@ -29,6 +29,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
     private const val PATH_USER = "user"
     private const val KEY_END_DATE = "endDate"
     private const val PATH_FAVORITES = "favorites"
+    private const val FOLLOWERS = "followers"
 
     override suspend fun login(id: String): Result<User> {
         TODO("Not yet implemented")
@@ -307,4 +308,19 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
         return liveData
     }
 
+    override suspend fun addUserToFollowers(userId: String, article: Article): Result<Boolean> {
+        val list = article.followers as MutableList<String>
+        list.add(userId)
+        return FirebaseFirestore.getInstance()
+            .collection(PATH_ARTICLES).document(article.id).update(FOLLOWERS, list)
+            .missionSuccessReturn(true)
+    }
+
+    override suspend fun removeUserFromFollowers(userId: String,article: Article): Result<Boolean> {
+        val list = article.followers as MutableList<String>
+        list.remove(userId)
+        return FirebaseFirestore.getInstance()
+            .collection(PATH_ARTICLES).document(article.id).update(FOLLOWERS, list)
+            .missionSuccessReturn(true)
+    }
 }
