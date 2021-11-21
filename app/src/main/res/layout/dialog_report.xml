@@ -93,7 +93,6 @@
             android:contentDescription="@string/rescue_button"
             app:layout_constraintBottom_toBottomOf="@+id/rescue_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/rescue_text"
             app:layout_constraintTop_toTopOf="@+id/rescue_icon"
             app:srcCompat="@drawable/outline_call_black_24"
@@ -112,7 +111,7 @@
             android:id="@+id/sms_police"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/click_button"
             android:contentDescription="@string/sms_to_police"
             app:layout_constraintEnd_toEndOf="@+id/ambulance_button"
@@ -124,10 +123,9 @@
             android:id="@+id/sendSOSButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="16dp"
             android:background="@drawable/click_button"
             app:layout_constraintEnd_toEndOf="@+id/myLocationButton"
-            app:layout_constraintTop_toBottomOf="@+id/myLocationButton"
+            app:layout_constraintTop_toTopOf="@+id/inputSOSInfo"
             app:srcCompat="@drawable/outline_send_black_24"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -135,7 +133,7 @@
             android:id="@+id/myLocationButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/click_button"
             app:layout_constraintStart_toStartOf="@+id/sms_police"
             app:layout_constraintTop_toBottomOf="@+id/divider"
@@ -182,12 +180,25 @@
             android:id="@+id/showLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/noto_sans"
             android:textColor="@color/black_3f3a3a"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/inputSOSInfo"
             app:layout_constraintTop_toBottomOf="@+id/location"
             tools:text="25.111111, 121,222222" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/helicopterLottie"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputSOSInfo"
+            app:lottie_rawRes="@raw/helicopter" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

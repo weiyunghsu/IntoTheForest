@@ -190,32 +190,32 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                             moveCameraOnMap(latLng = viewModel.source1)
                             drawMarker(
                                 location = viewModel.source1, context = context!!,
-                                resDrawable = R.drawable.outline_hiking_black_36,
+                                resDrawable = R.drawable.outline_hiking_black_24,
                                 title = "Go to Google Maps!"
                             )
                             drawMarker(
                                 location = viewModel.destination1, context = context!!,
-                                resDrawable = R.drawable.outline_sports_score_black_36,
+                                resDrawable = R.drawable.outline_sports_score_black_24,
                                 title = "You do it!"
                             )
                             for (i in viewModel.view1) {
                                 drawMarker(
                                     location = i, context = context!!,
-                                    resDrawable = R.drawable.round_photo_camera_black_36,
+                                    resDrawable = R.drawable.round_photo_camera_black_24,
                                     title = "Great View!"
                                 )
                             }
                             for (i in viewModel.wc1) {
                                 drawMarker(
                                     location = i, context = context!!,
-                                    resDrawable = R.drawable.outline_wc_black_36,
+                                    resDrawable = R.drawable.outline_wc_black_24,
                                     title = "Toilet!"
                                 )
                             }
                             for (i in viewModel.eat1) {
                                 drawMarker(
                                     location = i, context = context!!,
-                                    resDrawable = R.drawable.outline_restaurant_black_36,
+                                    resDrawable = R.drawable.outline_restaurant_black_24,
                                     title = "Have something to eat!"
                                 )
                             }
@@ -244,32 +244,32 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                             moveCameraOnMap(latLng = viewModel.source2)
                             drawMarker(
                                 location = viewModel.source2, context = context!!,
-                                resDrawable = R.drawable.outline_hiking_black_36,
+                                resDrawable = R.drawable.outline_hiking_black_24,
                                 title = "Go to Google Maps!"
                             )
                             drawMarker(
                                 location = viewModel.destination2, context = context!!,
-                                resDrawable = R.drawable.outline_sports_score_black_36,
+                                resDrawable = R.drawable.outline_sports_score_black_24,
                                 title = "You do it!"
                             )
                             for (i in viewModel.view2) {
                                 drawMarker(
                                     location = i, context = context!!,
-                                    resDrawable = R.drawable.round_photo_camera_black_36,
+                                    resDrawable = R.drawable.round_photo_camera_black_24,
                                     title = "Great View!"
                                 )
                             }
 //                            for (i in viewModel.wc2) {
 //                                drawMarker(
 //                                    location = i, context = context!!,
-//                                    resDrawable = R.drawable.outline_wc_black_36,
+//                                    resDrawable = R.drawable.outline_wc_black_24,
 //                                    title = "Toilet!"
 //                                )
 //                            }
                             for (i in viewModel.eat2) {
                                 drawMarker(
                                     location = i, context = context!!,
-                                    resDrawable = R.drawable.outline_restaurant_black_36,
+                                    resDrawable = R.drawable.outline_restaurant_black_24,
                                     title = "Have something to eat!"
                                 )
                             }

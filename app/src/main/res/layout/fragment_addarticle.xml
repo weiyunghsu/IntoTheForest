@@ -20,10 +20,10 @@
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_bias="1.0"
             tools:ignore="SpeakableTextPresentCheck">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +35,7 @@
                     android:id="@+id/addStartDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/noto_sans"
                     android:text="@string/addStartDate"
                     android:textColor="@color/black_3f3a3a"
@@ -48,7 +48,7 @@
                     android:id="@+id/addEndDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/noto_sans"
                     android:text="@string/addEndDate"
                     android:textColor="@color/black_3f3a3a"
@@ -57,53 +57,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/chooseEndDateButton" />
 
-                <TextView
-                    android:id="@+id/addTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/addTitle"
-                    android:textColor="@color/black_3f3a3a"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/inputTitle"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/inputTitle" />
-
-                <TextView
-                    android:id="@+id/addStory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/addStory"
-                    android:textColor="@color/black_3f3a3a"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/inputStory"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/inputStory" />
-
-                <TextView
-                    android:id="@+id/addPhoto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="32dp"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/addPhoto"
-                    android:textColor="@color/black_3f3a3a"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/inputStory" />
-
                 <ImageButton
                     android:id="@+id/chooseStartButton"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="24dp"
-                    android:layout_marginEnd="24dp"
                     android:background="@drawable/click_button"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/addStartDate"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/outline_today_black_24"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -113,9 +73,8 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
                     android:background="@drawable/click_button"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/addEndDate"
                     app:layout_constraintTop_toBottomOf="@+id/chooseStartButton"
                     app:srcCompat="@drawable/outline_event_black_24"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -130,10 +89,10 @@
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/chooseStartButton"
-                    app:layout_constraintEnd_toStartOf="@+id/chooseStartButton"
-                    app:layout_constraintStart_toEndOf="@+id/addStartDate"
+                    app:layout_constraintStart_toEndOf="@+id/chooseStartButton"
                     app:layout_constraintTop_toTopOf="@+id/chooseStartButton"
-                    tools:ignore="TextContrastCheck" />
+                    tools:ignore="TextContrastCheck"
+                    tools:text="2021.12.12" />
 
                 <TextView
                     android:id="@+id/showEndDate"
@@ -145,34 +104,34 @@
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/chooseEndDateButton"
-                    app:layout_constraintEnd_toStartOf="@+id/chooseEndDateButton"
-                    app:layout_constraintStart_toEndOf="@+id/addEndDate"
+                    app:layout_constraintStart_toEndOf="@+id/chooseEndDateButton"
                     app:layout_constraintTop_toTopOf="@+id/chooseEndDateButton"
-                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+                    tools:ignore="TextContrastCheck,TextContrastCheck"
+                    tools:text="2021.12.13" />
 
                 <EditText
                     android:id="@+id/inputTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_marginEnd="16dp"
                     android:ems="10"
                     android:hint="@string/inputTitle"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:text="@={viewModel.article.title}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/addTitle"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/chooseEndDateButton" />
 
                 <EditText
                     android:id="@+id/inputStory"
                     android:layout_width="0dp"
-                    android:layout_height="180dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:ems="10"
                     android:hint="@string/inputStory"
@@ -182,28 +141,29 @@
                     android:text="@={viewModel.article.story}"
                     android:textIsSelectable="true"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/addStory"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/inputTitle" />
 
                 <ImageButton
                     android:id="@+id/inputPhotoButton"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="32dp"
                     android:background="@drawable/click_button"
                     android:contentDescription="@string/inputPhotoButton"
-                    app:layout_constraintEnd_toEndOf="@+id/addPhoto"
-                    app:layout_constraintStart_toStartOf="@+id/addPhoto"
-                    app:layout_constraintTop_toBottomOf="@+id/addPhoto"
+                    app:layout_constraintStart_toEndOf="@+id/articleImg"
+                    app:layout_constraintTop_toBottomOf="@+id/inputStory"
                     app:srcCompat="@drawable/outline_add_photo_alternate_black_24"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <Button
                     android:id="@+id/addPostButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="100dp"
-                    android:layout_marginBottom="24dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="12dp"
                     android:background="@drawable/bg_round_button"
                     android:fontFamily="@font/noto_sans"
                     android:text="@string/addPostButton"
@@ -211,8 +171,9 @@
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/pickImg1" />
+                    app:layout_constraintTop_toBottomOf="@+id/writePostLottie" />
                 <!--                android:onClick="@{() -> viewModel.addData(viewModel.article)}"-->
                 <!--                android:clickable="@{viewModel.status == LoadApiStatus.LOADING ? false : true}"-->
 
@@ -220,26 +181,26 @@
                     android:id="@+id/pickImg1"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
-                    app:layout_constraintStart_toStartOf="@+id/inputStory"
-                    app:layout_constraintTop_toTopOf="@+id/pickImg3"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toEndOf="@+id/inputPhotoButton"
+                    app:layout_constraintTop_toBottomOf="@+id/inputStory"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                 <ImageView
                     android:id="@+id/pickImg2"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
-                    app:layout_constraintEnd_toStartOf="@+id/pickImg3"
                     app:layout_constraintStart_toEndOf="@+id/pickImg1"
-                    app:layout_constraintTop_toTopOf="@+id/pickImg3"
+                    app:layout_constraintTop_toTopOf="@+id/pickImg1"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                 <ImageView
                     android:id="@+id/pickImg3"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="@+id/inputStory"
-                    app:layout_constraintTop_toBottomOf="@+id/inputStory"
+                    app:layout_constraintStart_toEndOf="@+id/pickImg2"
+                    app:layout_constraintTop_toTopOf="@+id/pickImg1"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                 <ProgressBar
@@ -257,10 +218,26 @@
                     android:id="@+id/articleImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.article.mainImage}"
-                    app:layout_constraintEnd_toStartOf="@+id/pickImg1"
-                    app:layout_constraintTop_toTopOf="@+id/pickImg1" />
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:text="@string/article_img"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputPhotoButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/inputPhotoButton" />
 
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/writePostLottie"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pickImg1"
+                    app:lottie_rawRes="@raw/write_post" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

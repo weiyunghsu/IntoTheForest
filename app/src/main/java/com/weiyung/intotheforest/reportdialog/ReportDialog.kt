@@ -115,6 +115,8 @@ fun getLocation() {
     binding.sendSOSButton.setOnClickListener{
         Toast.makeText(requireContext(),R.string.sos_success,Toast.LENGTH_LONG).show()
     }
+    binding.helicopterLottie.repeatCount = -1
+    binding.helicopterLottie.playAnimation()
     return binding.root
     }
 

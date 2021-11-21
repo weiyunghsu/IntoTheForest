@@ -98,6 +98,8 @@ class AddArticleFragment : Fragment() {
             viewModel.article.value?.let { it1 -> viewModel.addData(it1) }
             Toast.makeText(this.requireContext(), R.string.post_success, Toast.LENGTH_LONG).show()
         }
+        binding.writePostLottie.repeatCount = -1
+        binding.writePostLottie.playAnimation()
         return binding.root
     }
 
@@ -142,7 +144,7 @@ class AddArticleFragment : Fragment() {
 
                 data?.let {
                     val fileUri = data.data
-                    Toast.makeText(requireActivity(), "setImageURI= $fileUri", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(), "已選取照片上傳中", Toast.LENGTH_SHORT).show()
                     binding.pickImg1.setImageURI(fileUri)
                     if (fileUri != null) {
                         firebaseUpload(fileUri)
