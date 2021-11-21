@@ -30,7 +30,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/outline_local_police_black_36" />
+            app:srcCompat="@drawable/outline_local_police_black_24" />
 
         <TextView
             android:id="@+id/police_text"
@@ -56,7 +56,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/police_text"
             app:layout_constraintTop_toTopOf="@+id/police_icon"
-            app:srcCompat="@drawable/outline_call_black_36"
+            app:srcCompat="@drawable/outline_call_black_24"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageView
@@ -69,7 +69,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/police_icon"
-            app:srcCompat="@drawable/outline_local_hospital_black_36" />
+            app:srcCompat="@drawable/outline_local_hospital_black_24" />
 
         <TextView
             android:id="@+id/rescue_text"
@@ -89,14 +89,14 @@
             android:id="@+id/ambulance_button"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:contentDescription="@string/rescue_button"
             android:background="@drawable/click_button"
+            android:contentDescription="@string/rescue_button"
             app:layout_constraintBottom_toBottomOf="@+id/rescue_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/rescue_text"
             app:layout_constraintTop_toTopOf="@+id/rescue_icon"
-            app:srcCompat="@drawable/outline_call_black_36"
+            app:srcCompat="@drawable/outline_call_black_24"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
@@ -117,7 +117,7 @@
             android:contentDescription="@string/sms_to_police"
             app:layout_constraintEnd_toEndOf="@+id/ambulance_button"
             app:layout_constraintTop_toBottomOf="@+id/ambulance_button"
-            app:srcCompat="@drawable/outline_textsms_black_36"
+            app:srcCompat="@drawable/outline_textsms_black_24"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
@@ -128,7 +128,7 @@
             android:background="@drawable/click_button"
             app:layout_constraintEnd_toEndOf="@+id/myLocationButton"
             app:layout_constraintTop_toBottomOf="@+id/myLocationButton"
-            app:srcCompat="@drawable/outline_send_black_36"
+            app:srcCompat="@drawable/outline_send_black_24"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
@@ -139,7 +139,7 @@
             android:background="@drawable/click_button"
             app:layout_constraintStart_toStartOf="@+id/sms_police"
             app:layout_constraintTop_toBottomOf="@+id/divider"
-            app:srcCompat="@drawable/outline_my_location_black_36"
+            app:srcCompat="@drawable/outline_my_location_black_24"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText

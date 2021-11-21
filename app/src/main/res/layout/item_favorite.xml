@@ -126,11 +126,11 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:backgroundTint="@color/transparent"
-            android:onClick="@{() -> viewModel.onDetailNavigated()}"
+            android:onClick="@{() -> viewModel.toDetail(article)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/with_favorite_button"
-            app:srcCompat="@drawable/outline_info_black_36"
+            app:srcCompat="@drawable/outline_info_black_24"
             tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
