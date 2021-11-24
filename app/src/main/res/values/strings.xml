@@ -7,10 +7,9 @@
     <string name="user">個人</string>
     <string name="detail">詳細資訊</string>
 
-    <string name="floatbutton1">floatButton1</string>
     <string name="police_text">致電警察局 110</string>
     <string name="rescue_text">致電消防局 119</string>
-    <string name="sms_police">台北市警察局簡訊報案 0911-510-914</string>
+    <string name="sms_police">台北市警察局簡訊報案 0911–510–914</string>
     <string name="police_icon">police_icon</string>
     <string name="rescue_icon">rescue_icon</string>
     <string name="rescue_button">rescue_button</string>
@@ -70,6 +69,10 @@
     <string name="sos_success">已收到您的求救訊息，火速處理中！</string>
     <string name="choose_route">請選擇路線：</string>
     <string name="article_img">照片：</string>
+    <string name="location">按定位紐顯示所在位置</string>
+    <string name="inputsosinfo">inputSOSInfo</string>
+    <string name="inputSOSInfo">輸入求救訊息</string>
+    <string name="mylocationbutton">myLocationButton</string>
 
     <string-array name="route_list">
         <item>@string/four_animals</item>

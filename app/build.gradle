@@ -44,31 +44,26 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
-    implementation 'com.google.android.gms:play-services-cast-framework:20.0.0'
-    //Firebase
-    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'
-    implementation 'com.google.firebase:firebase-storage-ktx:20.0.0'
-    implementation 'com.firebaseui:firebase-ui-storage:8.0.0'
-    implementation 'com.google.firebase:firebase-core:20.0.0'
-    implementation 'com.google.firebase:firebase-auth:21.0.1'
-    implementation 'com.google.firebase:firebase-auth-ktx'
-    implementation 'com.firebaseui:firebase-ui-auth:4.2.1'
-    implementation "com.google.firebase:firebase-storage-ktx:20.0.0"
-    // Firebase.crashlytics
-    implementation 'com.google.firebase:firebase-crashlytics-ktx'
-    implementation 'com.google.firebase:firebase-analytics-ktx'
-//    implementation 'com.google.firebase:firebase-crashlytics:18.2.4'
-    implementation platform('com.google.firebase:firebase-bom:28.4.2')
-    //Firestore
-    implementation 'com.google.android.gms:play-services-auth:19.2.0'
-    implementation 'com.google.android.libraries.places:places:2.5.0'
-
+    // Test
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    // Firebase
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
+    implementation 'com.google.firebase:firebase-core:20.0.0'
+    implementation platform ('com.google.firebase:firebase-bom:29.0.0')
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'
+    implementation 'com.firebaseui:firebase-ui-auth:4.2.1'
+    implementation 'com.firebaseui:firebase-ui-storage:8.0.0'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.0.0'
+    // Firebase.crashlytics
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version_kotlin"
+    // Fragment
+    implementation "androidx.fragment:fragment-ktx:$version_fragment"
     // Constraint Layout
     implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
     // ViewModel and LiveData
@@ -78,14 +73,18 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"
     // Feature module Support
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$version_navigation"
-    // Core with Ktx
-    implementation "androidx.core:core-ktx:$version_core"
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
     // Paging
     implementation "androidx.paging:paging-runtime-ktx:$version_paging"
-    // Fragment
-    implementation "androidx.fragment:fragment-ktx:$version_fragment"
+    // Swipe Refresh Layout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    // Google Service
+    implementation 'com.google.android.gms:play-services-auth:19.2.0'
+    implementation 'com.google.android.gms:play-services-cast-framework:20.1.0'
+    implementation 'com.google.android.libraries.places:places:2.5.0'
     // Google Play for Map
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
     implementation "com.google.android.gms:play-services-location:18.0.0"
@@ -93,24 +92,10 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
     // Draw Route
     implementation 'com.github.malikdawar:drawroute:1.5'
-//    implementation "com.github.rozkminiacz:GoogleMapsPolyline:1.0"
-//    implementation 'com.google.maps.android:android-maps-utils:2.3.0'
-    // Firebase
-    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'
-    implementation 'com.google.firebase:firebase-storage-ktx:20.0.0'
-    implementation 'com.firebaseui:firebase-ui-storage:8.0.0'
-    // Swipe Refresh Layout
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     // Glide
     implementation "com.github.bumptech.glide:glide:4.12.0"
-
-    implementation 'com.firebaseui:firebase-ui-storage:8.0.0'
-    // image picker
+    // Image picker
     implementation 'com.github.dhaval2404:imagepicker:2.1'
-    // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
-
-
     // Lottie
     implementation 'com.airbnb.android:lottie:3.6.1'
 
