@@ -35,13 +35,4 @@ class WeatherFragment : Fragment() {
 
         return binding.root
     }
-//    fun onBackPressed() {
-//        if (webView != null) {
-//            if (webView.isFocused && webView.canGoBack()) {
-//                webView.goBack()
-//            } else {
-//                super.onBackPressed()
-//            }
-//        }
-//    }
 }

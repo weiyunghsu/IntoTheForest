@@ -6,20 +6,16 @@ import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
-import android.os.UserManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.coroutineScope
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.firebase.ui.auth.AuthUI.getApplicationContext
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -27,11 +23,9 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.libraries.places.api.Places
-import com.google.firebase.firestore.core.OrderBy
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.maps.route.extensions.drawMarker
@@ -41,7 +35,6 @@ import com.maps.route.model.TravelMode
 import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.R
-import com.weiyung.intotheforest.database.Track
 import com.weiyung.intotheforest.databinding.FragmentMapBinding
 import com.weiyung.intotheforest.ext.getVmFactory
 import kotlinx.coroutines.CoroutineScope
@@ -53,11 +46,9 @@ enum class RouteNumber(val positionOnSpinner: Int) {
     FOUR_ANIMALS(0),
     KUAN_IN(1)
 }
-
 class MapFragment : Fragment(), OnMapReadyCallback {
     private val viewModel by viewModels<MapViewModel> {
         getVmFactory()
-//        (MapFragmentArgs.fromBundle(requireArguments()).routeKey)
     }
     private lateinit var mMap: GoogleMap
     private lateinit var mapFragment: SupportMapFragment
@@ -301,14 +292,4 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 }
-
-//    private fun replaceFragmentSafely(
-//        fragment: Fragment,
-//        tag: String = fragment.javaClass.name,
-//        @IdRes containerViewId: Int = R.id.map
-//    ) {
-//        fragmentManager
-//            ?.beginTransaction()
-//            ?.replace(containerViewId, fragment, tag)?.commit()
-//    }
 

@@ -2,7 +2,6 @@ package com.weiyung.intotheforest.database.source.remote
 
 import android.content.ContentValues.TAG
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
@@ -13,7 +12,6 @@ import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.database.*
 import com.weiyung.intotheforest.database.source.IntoTheForestDataSource
-import com.weiyung.intotheforest.util.UserManager
 import com.weiyung.intotheforest.util.Util
 import java.util.*
 import kotlin.coroutines.resume

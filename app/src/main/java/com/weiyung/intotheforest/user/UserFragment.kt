@@ -20,14 +20,11 @@ import com.weiyung.intotheforest.util.UserManager
 class UserFragment : Fragment() {
     private val viewModel by viewModels<UserViewModel> { getVmFactory() }
     private lateinit var binding: FragmentUserBinding
-//    private lateinit var viewModel: UserViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        viewModel =
-//            ViewModelProvider(this).get(UserViewModel::class.java)
         binding = FragmentUserBinding.inflate(inflater, container, false)
 
         binding.viewModel = viewModel
@@ -37,7 +34,6 @@ class UserFragment : Fragment() {
         Log.i(TAG, "UserManager.addUserInfo().name is : ${UserManager.addUserInfo().name}")
         Log.i(TAG, "UserManager.addUserInfo().picture is : ${UserManager.addUserInfo().picture}")
         binding.username.text = UserManager.addUserInfo().name
-//        binding.userPhoto.
 
         binding.btMyFavorites.setOnClickListener {
             findNavController().navigate(NavigationDirections.navigateToFavoriteFragment())

@@ -3,7 +3,6 @@ package com.weiyung.intotheforest.ext
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import com.google.firebase.firestore.FirebaseFirestore
-import com.weiyung.intotheforest.database.User
 import java.util.*
 
 fun Long.toDisplayFormat(): String {

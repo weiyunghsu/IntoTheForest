@@ -8,7 +8,6 @@ import androidx.lifecycle.MutableLiveData
 import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.database.User
 
-
 object UserManager {
     private const val USER_DATA = "user_data"
     private const val USER_TOKEN = "user_token"
@@ -40,5 +39,4 @@ object UserManager {
 
     val isLoggedIn: Boolean
         get() = sharedPreferences.getString("id",null) != null
-
 }

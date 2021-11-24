@@ -23,14 +23,13 @@ import com.weiyung.intotheforest.util.UserManager
 class HomeFragment : Fragment() {
     private val viewModel by viewModels<HomeViewModel> { getVmFactory() }
     private lateinit var binding: FragmentHomeBinding
-    //    private lateinit var viewModel: HomeViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-//        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -44,8 +43,6 @@ class HomeFragment : Fragment() {
         })
 
         binding.rvHome.adapter = adapter
-//        val mockList = viewModel.list
-//        adapter.submitList(mockList)
 
         viewModel.naviToSelectedArticle.observe(viewLifecycleOwner, Observer {
             if (null != it) {

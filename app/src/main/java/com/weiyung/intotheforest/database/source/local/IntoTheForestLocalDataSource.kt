@@ -1,20 +1,14 @@
 package com.weiyung.intotheforest.database.source.local
 
 import android.content.Context
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.weiyung.intotheforest.database.*
 import com.weiyung.intotheforest.database.source.IntoTheForestDataSource
-import com.weiyung.intotheforest.util.UserManager
 
 class IntoTheForestLocalDataSource(val context: Context) : IntoTheForestDataSource {
     override suspend fun login(id: String): Result<User> {
         return when (id) {
             id -> Result.Success((User(
-//                UserManager.userID.toString(),
-//                UserManager.userName.toString(),
-//                UserManager.userEmail.toString(),
-//                UserManager.userPicture.toString()
             )))
             else -> Result.Fail("You have to add $id info in local data source")
         }

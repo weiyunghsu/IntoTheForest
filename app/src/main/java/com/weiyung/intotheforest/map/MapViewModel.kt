@@ -16,16 +16,11 @@ import kotlinx.coroutines.*
 
 class MapViewModel(
     private val repository: IntoTheForestRepository,
-//    private val route: Route
     ): ViewModel(){
 
     var _routes = MutableLiveData<List<Route>>()
     val routes: LiveData<List<Route>>
         get() = _routes
-
-//    init {
-//        _routes.value = listOf(route)
-//    }
 
     var liveRoutes = MutableLiveData<List<Route>>()
 

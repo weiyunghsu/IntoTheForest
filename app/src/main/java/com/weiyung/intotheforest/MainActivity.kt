@@ -27,7 +27,6 @@ import io.grpc.InternalChannelz.id
 class MainActivity : AppCompatActivity() {
     val viewModel by viewModels<MainViewModel> { getVmFactory() }
 
-    //    private lateinit var viewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
 
     private val onNavigationItemSelectedListener =
@@ -76,16 +75,6 @@ class MainActivity : AppCompatActivity() {
                             Log.i(TAG, "[1 ${viewModel.currentFragmentType.value}]")
                             findNavController(R.id.myNavHostFragment).navigate(NavigationDirections.navigateToLoginFragment())
                         }
-//                        (isLoggedIn)
-//                        -> {
-//                            Log.i(TAG, "[2 ${viewModel.currentFragmentType.value}]")
-//                            findNavController(R.id.myNavHostFragment).navigate(NavigationDirections.navigateToHomeFragment())
-//                        }
-//                        else
-//                        -> {
-//                            Log.i(TAG, "[2 ${viewModel.currentFragmentType.value}]")
-//                            findNavController(R.id.myNavHostFragment).navigate(NavigationDirections.navigateToHomeFragment())
-//                        }
                     }
                 }
                 Log.i(TAG, "[3 ${viewModel.currentFragmentType.value}]")
@@ -105,9 +94,6 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         val menuView = binding.bottomNavView.getChildAt(0) as BottomNavigationMenuView
         val itemView = menuView.getChildAt(2) as BottomNavigationItemView
-//        val bindingBadge = BadgeBottomBinding.inflate(LayoutInflater.from(this), itemView, true)
-//        bindingBadge.lifecycleOwner = this
-//        bindingBadge.viewModel = viewModel
     }
 
     private fun setupNavController() {
@@ -137,6 +123,4 @@ class MainActivity : AppCompatActivity() {
         private const val BOTTOM_HOME_POS = 0
         private const val BOTTOM_USER_POS = 4
     }
-
-
 }

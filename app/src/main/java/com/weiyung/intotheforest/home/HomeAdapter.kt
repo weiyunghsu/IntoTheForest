@@ -47,7 +47,6 @@ class HomeAdapter(private val onClickListener: OnClickListener) :
                 )
             )
             else -> throw ClassCastException("Unknown viewType $viewType")
-//            ViewHolder(ItemHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false))
         }
     }
 
@@ -62,6 +61,4 @@ class HomeAdapter(private val onClickListener: OnClickListener) :
     override fun getItemViewType(position: Int): Int {
         return ITEM_VIEW_TYPE_ARTICLE
     }
-
-
 }

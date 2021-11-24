@@ -1,7 +1,6 @@
 package com.weiyung.intotheforest.database
 
 import androidx.lifecycle.MutableLiveData
-import com.bumptech.glide.load.engine.Engine
 import com.weiyung.intotheforest.network.LoadApiStatus
 import com.weiyung.intotheforest.util.Util
 

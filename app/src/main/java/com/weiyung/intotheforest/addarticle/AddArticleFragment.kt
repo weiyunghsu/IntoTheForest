@@ -4,7 +4,6 @@ import android.Manifest
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -18,7 +17,6 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -36,11 +34,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class AddArticleFragment : Fragment() {
-   // lateinit var fragment: AddArticleFragment
-
-    private val viewModel by viewModels<AddArticleViewModel> {
-        getVmFactory()
-    }
+    private val viewModel by viewModels<AddArticleViewModel> { getVmFactory() }
     private lateinit var binding: FragmentAddarticleBinding
 
     companion object {
@@ -53,14 +47,12 @@ class AddArticleFragment : Fragment() {
 
     val storage = Firebase.storage
 
-    //    private lateinit var viewModel: AddArticleViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddarticleBinding.inflate(inflater, container, false)
-//        viewModel = ViewModelProvider(this).get(AddArticleViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
@@ -71,8 +63,6 @@ class AddArticleFragment : Fragment() {
         binding.chooseEndDateButton.setOnClickListener {
             setEndDate()
         }
-     //   fragment = this
-
 
         binding.inputPhotoButton.setOnClickListener {
             getLocalImg()

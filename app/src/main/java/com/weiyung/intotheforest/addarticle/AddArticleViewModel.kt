@@ -5,12 +5,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.github.dhaval2404.imagepicker.ImagePicker
-import com.google.firebase.storage.FirebaseStorage
 import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.database.Article
-import com.weiyung.intotheforest.database.User
 import com.weiyung.intotheforest.database.Result
 import com.weiyung.intotheforest.database.source.IntoTheForestRepository
 import com.weiyung.intotheforest.network.LoadApiStatus

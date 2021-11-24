@@ -32,7 +32,6 @@ import com.weiyung.intotheforest.ext.getVmFactory
 class ReportDialog : AppCompatDialogFragment(){
     private val viewModel by viewModels<ReportViewModel> { getVmFactory() }
     private lateinit var binding: DialogReportBinding
-//    private lateinit var viewModel: ReportViewModel
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
 //        setStyle(DialogFragment.STYLE_NO_FRAME, R.style.Add2CartDialog)
@@ -42,7 +41,6 @@ class ReportDialog : AppCompatDialogFragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//    viewModel = ViewModelProvider(this).get(ReportViewModel::class.java)
     binding = DialogReportBinding.inflate(inflater, container, false)
     binding.lifecycleOwner = viewLifecycleOwner
     binding.viewModel = viewModel
@@ -66,19 +64,6 @@ class ReportDialog : AppCompatDialogFragment(){
         intent.putExtra("sms_body","test SOS!")
         startActivity(intent)
     }
-
-//    val REQUSET_GPS = 444
-//
-//    val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-//    val gps = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-//    val network = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-//
-//    if (gps || network) {
-//        getLocation()
-//    } else {
-//        val intent = Intent(GoogleApi.Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-//        startActivityForResult(intent, REQUSET_GPS)
-//    }
 
 fun getLocation() {
     val request = LocationRequest.create()

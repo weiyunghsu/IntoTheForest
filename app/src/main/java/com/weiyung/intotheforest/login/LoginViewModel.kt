@@ -59,7 +59,6 @@ class LoginViewModel(private val repository: IntoTheForestRepository) : ViewMode
             } else {
                 _user.value = null
             }
-//            _user.value = if (signedIn == true) user else null
         }
     }
 

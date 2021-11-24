@@ -22,10 +22,8 @@ import com.google.firebase.auth.ktx.auth
 import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.database.User
-import com.weiyung.intotheforest.database.source.remote.IntoTheForestRemoteDataSource.getUser
 import com.weiyung.intotheforest.databinding.FragmentLoginBinding
 import com.weiyung.intotheforest.ext.getVmFactory
-import com.weiyung.intotheforest.util.UserManager
 import com.weiyung.intotheforest.util.UserManager.isLoggedIn
 
 
@@ -141,14 +139,8 @@ class LoginFragment : Fragment() {
                             viewModel.getUser(user)
                             Log.i(TAG,"loginFragment getUser: ${viewModel.user.value}")
                         }
-//                        isLoggedIn -> {
-//                            findNavController().navigate(
-//                                NavigationDirections.navigateToHomeFragment()
-//                            )
-//                        }
                     }
                     Log.d(TAG, "signInWithCredential:success")
-
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
 

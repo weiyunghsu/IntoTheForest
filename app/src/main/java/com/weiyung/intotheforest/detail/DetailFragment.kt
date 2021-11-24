@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -24,17 +23,12 @@ class DetailFragment : Fragment() {
     }
     private lateinit var binding: FragmentDetailBinding
 
-    //    private lateinit var viewModel: DetailViewModel
-//    private lateinit var detailViewModelFactory: DetailViewModelFactory
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
-//        detailViewModelFactory = DetailViewModelFactory(repository,DetailFragmentArgs.fromBundle(requireArguments()).articleKey)
-//        viewModel = ViewModelProvider(this, detailViewModelFactory)
-//            .get(DetailViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 

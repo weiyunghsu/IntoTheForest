@@ -2,7 +2,6 @@ package com.weiyung.intotheforest.database
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class Article(
