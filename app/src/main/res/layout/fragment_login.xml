@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/noto_sans"
-            android:text="走入山林"
+            android:text="@string/appNameText"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -57,7 +57,7 @@
             android:gravity="center"
             android:letterSpacing="0.1"
             android:padding="8dp"
-            android:text="@string/enter_forest"
+            android:text="@string/enterForest"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:visibility="gone"
@@ -84,7 +84,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:lottie_rawRes="@raw/birds_fly" />
+            app:lottie_rawRes="@raw/birds_fly"
+            tools:ignore="ImageContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

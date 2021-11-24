@@ -6,7 +6,7 @@ import com.weiyung.intotheforest.util.Util.getString
 enum class CurrentFragmentType(val value: String) {
     HOME(getString(R.string.home)),
     FAVORITE(getString(R.string.favorite)),
-    ADDARTICLE(getString(R.string.addarticle)),
+    ADDARTICLE(getString(R.string.addArticle)),
     MAP(getString(R.string.map)),
     USER(getString(R.string.user)),
     DETAIL(getString(R.string.detail)),

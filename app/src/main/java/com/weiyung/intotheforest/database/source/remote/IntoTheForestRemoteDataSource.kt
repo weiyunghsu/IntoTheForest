@@ -57,7 +57,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                     }
                     continuation.resume(Result.Fail(
                         IntoTheForestApplication.instance.getString(
-                        R.string.nothing_happen)))
+                        R.string.nothingHappen)))
                 }
             }
     }
@@ -105,7 +105,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                         continuation.resume(Result.Error(it))
                         return@addOnCompleteListener
                     }
-                    continuation.resume(Result.Fail(IntoTheForestApplication.instance.getString(R.string.nothing_happen)))
+                    continuation.resume(Result.Fail(IntoTheForestApplication.instance.getString(R.string.nothingHappen)))
                 }
             }
     }
@@ -164,7 +164,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                     }
                     continuation.resume(Result.Fail(
                         IntoTheForestApplication.instance.getString(
-                            R.string.nothing_happen)))
+                            R.string.nothingHappen)))
                 }
             }
     }
@@ -231,7 +231,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                 } else {
                     when (val exception = task.exception) {
                         null -> continuation.resume(
-                            Result.Fail(Util.getString(R.string.nothing_happen))
+                            Result.Fail(Util.getString(R.string.nothingHappen))
                         )
                         else -> {
                             Log.d(TAG,"[${this::class.simpleName}] Error getting documents. ${exception.message}")
@@ -248,7 +248,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                     continuation.resume(Result.Success(ifSuccess))
                 } else {
                     when (val exception = task.exception) {
-                        null -> continuation.resume(Result.Fail(Util.getString(R.string.nothing_happen)))
+                        null -> continuation.resume(Result.Fail(Util.getString(R.string.nothingHappen)))
                         else -> {
                             Log.d(TAG,"[${this::class.simpleName}] Error getting documents. ${exception.message}")
                             continuation.resume(Result.Error(exception))
@@ -278,7 +278,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
 //                        continuation.resume(Result.Error(it))
 //                        return@addOnCompleteListener
 //                    }
-//                    continuation.resume(Result.Fail(IntoTheForestApplication.instance.getString(R.string.nothing_happen)))
+//                    continuation.resume(Result.Fail(IntoTheForestApplication.instance.getString(R.string.nothingHappen)))
 //                }
 //            }
 //    }

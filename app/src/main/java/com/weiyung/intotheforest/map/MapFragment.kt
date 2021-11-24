@@ -167,7 +167,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 //        mMap.setOnPolygonClickListener(this)
         val adapter = ArrayAdapter.createFromResource(
             this.requireContext(),
-            R.array.route_list,
+            R.array.routeList,
             android.R.layout.simple_spinner_dropdown_item
         )
         binding.spinnerRoutes.adapter = adapter

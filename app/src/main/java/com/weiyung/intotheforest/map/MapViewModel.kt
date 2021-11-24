@@ -83,7 +83,7 @@ class MapViewModel(
                 }
                 else -> {
                     _error.value =
-                        IntoTheForestApplication.instance.getString(R.string.nothing_happen)
+                        IntoTheForestApplication.instance.getString(R.string.nothingHappen)
                     _status.value = LoadApiStatus.ERROR
                     null
                 }

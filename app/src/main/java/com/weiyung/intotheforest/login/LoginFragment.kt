@@ -100,7 +100,7 @@ class LoginFragment : Fragment() {
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.id + "email:$email")
                 Toast.makeText(
                     requireActivity(),
-                    getString(R.string.login_success),
+                    getString(R.string.loginSuccess),
                     Toast.LENGTH_SHORT
                 ).show()
 
@@ -108,7 +108,7 @@ class LoginFragment : Fragment() {
                 Log.w(TAG, "Google sign in failed", e)
                 Toast.makeText(
                     requireActivity(),
-                    getString(R.string.login_fail),
+                    getString(R.string.loginFail),
                     Toast.LENGTH_SHORT
                 ).show()
             }

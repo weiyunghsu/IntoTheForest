@@ -1,30 +1,23 @@
 package com.weiyung.intotheforest.reportdialog
 
 import android.Manifest
-import android.content.Context.LOCATION_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
-import android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialogFragment
-import androidx.constraintlayout.motion.widget.Debug.getLocation
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
-import com.google.android.gms.common.api.GoogleApi
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
-import com.google.api.Context
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.DialogReportBinding
 import com.weiyung.intotheforest.ext.getVmFactory
@@ -98,7 +91,7 @@ fun getLocation() {
         getLocation()
     }
     binding.sendSOSButton.setOnClickListener{
-        Toast.makeText(requireContext(),R.string.sos_success,Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(),R.string.sosSuccess,Toast.LENGTH_LONG).show()
     }
     binding.helicopterLottie.repeatCount = -1
     binding.helicopterLottie.playAnimation()

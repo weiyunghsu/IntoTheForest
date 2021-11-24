@@ -86,7 +86,7 @@ class AddArticleFragment : Fragment() {
 
         binding.addPostButton.setOnClickListener {
             viewModel.article.value?.let { it1 -> viewModel.addData(it1) }
-            Toast.makeText(this.requireContext(), R.string.post_success, Toast.LENGTH_LONG).show()
+            Toast.makeText(this.requireContext(), R.string.postSuccess, Toast.LENGTH_LONG).show()
         }
         binding.writePostLottie.repeatCount = -1
         binding.writePostLottie.playAnimation()
@@ -119,7 +119,7 @@ class AddArticleFragment : Fragment() {
 //                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 //                    viewModel.canUploadImage = true
 //                } else {
-//                    Toast.makeText(requireActivity(), R.string.nothing_happen, Toast.LENGTH_SHORT)
+//                    Toast.makeText(requireActivity(), R.string.nothingHappen, Toast.LENGTH_SHORT)
 //                        .show()
 //                }
 //            }
@@ -157,7 +157,7 @@ class AddArticleFragment : Fragment() {
 //
 //                    firebaseUpload(uri)
 //                } else {
-//                    Toast.makeText(requireActivity(), R.string.load_img_fail1, Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireActivity(), R.string.loadImgFail1, Toast.LENGTH_SHORT).show()
 //                }
             }
             ImagePicker.RESULT_ERROR -> Toast.makeText(
@@ -211,7 +211,7 @@ class AddArticleFragment : Fragment() {
             uploadTask.addOnFailureListener {
                 Toast.makeText(
                     requireContext(),
-                    R.string.load_img_fail,
+                    R.string.loadImgFail,
                     Toast.LENGTH_SHORT
                 ).show()
                 Log.i(TAG, "addOnFailureListener: $it")
@@ -225,7 +225,7 @@ class AddArticleFragment : Fragment() {
                 }
                 Toast.makeText(
                     requireContext(),
-                    R.string.upload_success,
+                    R.string.uploadSuccess,
                     Toast.LENGTH_SHORT
                 ).show()
                 viewModel.isUploadSuccess = true

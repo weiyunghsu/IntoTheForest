@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:fontFamily="@font/noto_sans"
-            android:text="@string/choose_route"
+            android:text="@string/chooseRoute"
             android:textSize="16sp"
             android:textColor="@color/black_3f3a3a"
             android:layout_margin="16dp"
@@ -62,7 +62,7 @@
             android:spinnerMode="dialog"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:prompt="@string/select_route"
+            android:prompt="@string/selectRoute"
             app:layout_constraintStart_toEndOf="@+id/mapChooseRoute"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -91,6 +91,7 @@
         android:src="@drawable/outline_wb_sunny_black_36"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
+        android:contentDescription="@string/weatherButton"
         app:fabSize="mini"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/speakButton" />
@@ -103,6 +104,7 @@
         android:src="@drawable/outline_campaign_black_36"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
+        android:contentDescription="@string/speakButton"
         app:fabSize="mini"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/mapToAddPostButton" />
@@ -116,6 +118,7 @@
         android:src="@drawable/outline_post_add_black_36"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="40dp"
+        android:contentDescription="@string/mapToAddPostButton"
         app:fabSize="mini"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />

@@ -1,81 +1,95 @@
 <resources>
-    <string name="app_name">IntoTheForest</string>
+    <!--    Fragment Name-->
+    <string name="appName">IntoTheForest</string>
     <string name="home">走入山林</string>
     <string name="favorite">最愛</string>
-    <string name="addarticle">新增文章</string>
+    <string name="addArticle">新增文章</string>
     <string name="map">地圖</string>
     <string name="user">個人</string>
     <string name="detail">詳細資訊</string>
-
-    <string name="police_text">致電警察局 110</string>
-    <string name="rescue_text">致電消防局 119</string>
-    <string name="sms_police">台北市警察局簡訊報案 0911–510–914</string>
-    <string name="police_icon">police_icon</string>
-    <string name="rescue_icon">rescue_icon</string>
-    <string name="rescue_button">rescue_button</string>
-    <string name="police_button">police_button</string>
-    <string name="sms_to_police">sms_police</string>
-    <string name="username">username</string>
-    <string name="user_status">user_status</string>
-    <string name="bt_my_favorites">我的最愛</string>
-    <string name="bt_my_photos">我的相簿</string>
-    <string name="bt_edit_person_info">編輯個資</string>
-    <string name="bt_notifications">推播記錄</string>
-    <string name="bt_my_badges">我的成就</string>
-    <string name="bt_my_articles">我的日誌</string>
-    <string name="bt_logout">登出</string>
-    <string name="user_photo">user_photo</string>
-    <string name="bt_my_routes">我的軌跡</string>
-    <string name="bt_checklist">裝備檢查</string>
-    <string name="search_here">Search Here!</string>
-    <string name="article_image">article_image</string>
-    <string name="home_favotite_button">home_favotite_button</string>
-    <string name="detail_weather">天氣預報</string>
-    <string name="go_to_map_button">前往詳細地圖</string>
-    <string name="detail_mini_map">檢視地圖</string>
-    <string name="detail_favorite_button">detail_favorite_button</string>
-    <string name="detail_share_button">detail_share_button</string>
-    <string name="detail_main_image">detail_main_image</string>
-    <string name="back_button">back_button</string>
+    <string name="weather">天氣</string>
+    <!--     General-->
+    <string name="nothingHappen">nothing happen</string>
+    <!--     Login-->
+    <string name="enterForest">進入山林囉！</string>
+    <string name="login">登入</string>
+    <string name="loginSuccess">Login success</string>
+    <string name="loginFail">Login fail</string>
+    <string name="appNameText">走入山林</string>
+    <!--    Home and favorite Page-->
     <string name="to">至</string>
-    <string name="detail_review">detail_review</string>
+    <string name="articleImage">article image</string>
+    <string name="homeAvatar">homeAvatar</string>
+    <string name="toDetailButton">toDetailButton</string>
+    <!--    Detail Page-->
+    <string name="backButton">back button</string>
+    <string name="detailFavoriteButton">detail favorite button</string>
+    <string name="detailShareButton">detail share button</string>
+    <string name="detailMainImage">detail main image</string>
+    <string name="goToWeatherButton">前往天氣預報</string>
+    <string name="goToMapButton">前往詳細地圖</string>
+    <string name="detailWeather">天氣預報</string>
+    <!--     Route-->
+    <string name="selectRoute">選擇路線</string>
+    <string name="fourAnimals">"四獸山"</string>
+    <string name="kuanIn">觀音山</string>
+    <string name="chooseRoute">請選擇路線：</string>
+    <string-array name="routeList">
+        <item>@string/fourAnimals</item>
+        <item>@string/kuanIn</item>
+    </string-array>
+    <string name="weatherButton">weatherButton</string>
+    <string name="speakButton">speakButton</string>
+    <string name="mapToAddPostButton">mapToAddPostButton</string>
+    <!--     Add Article-->
     <string name="addStartDate">起日：</string>
     <string name="addEndDate">迄日：</string>
+    <string name="chooseStartButton">選擇起日按鈕</string>
+    <string name="chooseEndDateButton">選擇迄日按鈕</string>
     <string name="addTitle">輸入標題</string>
     <string name="addStory">文章內容</string>
     <string name="addPhoto">新增相片</string>
+    <string name="article_img">照片：</string>
     <string name="addPostButton">發布文章</string>
     <string name="inputStartDate">2021.01.01</string>
     <string name="inputEndDate">2021.01.02</string>
     <string name="inputTitle">請輸入文章標題</string>
     <string name="inputStory">請輸入遊記內容</string>
     <string name="inputPhotoButton">inputPhotoButton</string>
-    <string name="nothing_happen">nothing happen</string>
-    <string name="select_route">選擇路線</string>
-    <string name="four_animals">"四獸山"</string>
-    <string name="kuan_in">觀音山</string>
-    <string name="enter_forest">進入山林囉！</string>
-    <string name="login">登入</string>
-    <string name="login_success">login success</string>
-    <string name="login_fail">login fail</string>
-    <string name="load_img_fail">載入圖片失敗</string>
-    <string name="upload_success">上傳圖片成功</string>
-    <string name="post_success">發布成功</string>
-    <string name="load_img_fail1">上傳失敗</string>
-    <string name="weather">天氣</string>
-    <string name="go_to_weather_button">前往天氣預報</string>
-    <string name="success_text">發布成功</string>
+    <string name="pickImg1">pick Img 1</string>
+    <string name="pickImg2">pick Img 2</string>
+    <string name="pickImg3">pick Img 3</string>
+    <string name="loadImgFail">載入圖片失敗</string>
+    <string name="loadImgFail1">上傳失敗</string>
+    <string name="uploadSuccess">上傳圖片成功</string>
+    <string name="successText">發布成功</string>
+    <string name="postSuccess">發布成功</string>
+    <string name="addSuccessIcon">add success icon</string>
+    <!--    User Page-->
+    <string name="userName">user name</string>
+    <string name="userPhoto">user photo</string>
+    <string name="myFavoritesButton">我的最愛</string>
+    <string name="myPhotosButton">我的相簿</string>
+    <string name="editPersonInfo">編輯個資</string>
+    <string name="NotificationsButton">推播記錄</string>
+    <string name="myBadgesButton">我的成就</string>
+    <string name="myArticlesButton">我的日誌</string>
+    <string name="logoutButton">登出</string>
+    <string name="myRoutesButton">我的軌跡</string>
+    <string name="checklistButton">裝備檢查</string>
+    <!--    Call for help Page-->
+    <string name="callPoliceText">致電警察局 110</string>
+    <string name="callForHelpText">致電消防局 119</string>
+    <string name="smsPolice">台北市警察局簡訊報案 0911–510–914</string>
+    <string name="policeIcon">police icon</string>
+    <string name="rescueIcon">rescue icon</string>
+    <string name="rescueButton">rescue button</string>
+    <string name="policeButton">police button</string>
+    <string name="smsToPolice">sms police</string>
     <string name="report">緊急求救</string>
-    <string name="sos_success">已收到您的求救訊息，火速處理中！</string>
-    <string name="choose_route">請選擇路線：</string>
-    <string name="article_img">照片：</string>
+    <string name="sosSuccess">已收到您的求救訊息，火速處理中！</string>
     <string name="location">按定位紐顯示所在位置</string>
-    <string name="inputsosinfo">inputSOSInfo</string>
+    <string name="sendSOSButton">sendSOSButton</string>
     <string name="inputSOSInfo">輸入求救訊息</string>
-    <string name="mylocationbutton">myLocationButton</string>
-
-    <string-array name="route_list">
-        <item>@string/four_animals</item>
-        <item>@string/kuan_in</item>
-    </string-array>
+    <string name="myLocationButton">myLocationButton</string>
 </resources>

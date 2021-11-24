@@ -37,7 +37,7 @@ sealed class Result<out R> {
                 null
             }
             else ->{
-                error.value = Util.getString(com.weiyung.intotheforest.R.string.nothing_happen)
+                error.value = Util.getString(com.weiyung.intotheforest.R.string.nothingHappen)
                 status.value = LoadApiStatus.ERROR
                 null
             }

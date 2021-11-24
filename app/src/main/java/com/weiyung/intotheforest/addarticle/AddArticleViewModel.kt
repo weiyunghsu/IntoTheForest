@@ -75,7 +75,7 @@ class AddArticleViewModel(
                     _status.value = LoadApiStatus.ERROR
                 }
                 else -> {
-                    _error.value = IntoTheForestApplication.instance.getString(R.string.nothing_happen)
+                    _error.value = IntoTheForestApplication.instance.getString(R.string.nothingHappen)
                     _status.value = LoadApiStatus.ERROR
                 }
             }
