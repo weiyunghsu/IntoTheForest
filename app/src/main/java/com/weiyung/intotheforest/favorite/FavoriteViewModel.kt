@@ -13,7 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
-class FavoriteViewModel(val repository: IntoTheForestRepository) : ViewModel(){
+class FavoriteViewModel(val repository: IntoTheForestRepository) : ViewModel() {
 
     private var _articleAllList = MutableLiveData<List<Article>>()
     val articleAllList: LiveData<List<Article>>
@@ -61,12 +61,9 @@ class FavoriteViewModel(val repository: IntoTheForestRepository) : ViewModel(){
     }
 
     private fun getFavorites(userId: String) {
-            _articleList = repository.getFavorites(userId)
-            _status.value = LoadApiStatus.DONE
-            Log.i(TAG,"articleAllList: ${articleAllList.value}")
-            Log.i(TAG,"articleList: ${articleList.value}")
+        _articleList = repository.getFavorites(userId)
+        _status.value = LoadApiStatus.DONE
+        Log.i(TAG, "articleAllList: ${articleAllList.value}")
+        Log.i(TAG, "articleList: ${articleList.value}")
     }
 }
-
-
-

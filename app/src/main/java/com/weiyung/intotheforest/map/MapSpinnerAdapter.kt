@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.weiyung.intotheforest.databinding.ItemRouteSpinnerBinding
 
-class MapSpinnerAdapter (private val strings: Array<String>) : BaseAdapter() {
+class MapSpinnerAdapter(private val strings: Array<String>) : BaseAdapter() {
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val binding = ItemRouteSpinnerBinding.inflate(LayoutInflater.from(parent?.context), parent, false)

@@ -56,11 +56,13 @@ class DetailFragment : Fragment() {
         binding.detailShareButton.setOnClickListener {
             val sendIntent = Intent()
             sendIntent.action = Intent.ACTION_SEND
-            sendIntent.putExtra(Intent.EXTRA_TEXT,
-                binding.detailTitle.text.toString())
+            sendIntent.putExtra(
+                Intent.EXTRA_TEXT,
+                binding.detailTitle.text.toString()
+            )
             val text = sendIntent.getStringExtra(Intent.EXTRA_TEXT)
             if (text != null) {
-                if(text.isNotEmpty()){
+                if (text.isNotEmpty()) {
                     binding.detailTitle.text = "$text"
                 }
             }
@@ -68,14 +70,15 @@ class DetailFragment : Fragment() {
             var shareIntent = Intent.createChooser(sendIntent, null)
             startActivity(Intent.createChooser(sendIntent, "遊記標題"))
         }
-        viewModel.favoriteAdded.observe(viewLifecycleOwner, Observer{
-            it?.let{added->
-                binding.detailFavoriteButton.isSelected = added
+        viewModel.favoriteAdded.observe(
+            viewLifecycleOwner,
+            Observer {
+                it?.let { added ->
+                    binding.detailFavoriteButton.isSelected = added
+                }
             }
-        })
+        )
 
         return binding.root
     }
-
-
 }

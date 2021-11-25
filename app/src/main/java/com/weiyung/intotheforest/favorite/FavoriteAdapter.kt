@@ -33,7 +33,10 @@ class FavoriteAdapter(val viewModel: FavoriteViewModel) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
-        return FavoriteViewHolder(ItemFavoriteBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return FavoriteViewHolder(
+            ItemFavoriteBinding
+                .inflate(LayoutInflater.from(parent.context), parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {

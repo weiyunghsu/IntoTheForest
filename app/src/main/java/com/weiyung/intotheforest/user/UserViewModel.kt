@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class UserViewModel (private val repository: IntoTheForestRepository) : ViewModel(){
+class UserViewModel(private val repository: IntoTheForestRepository) : ViewModel() {
     private val _user = MutableLiveData<User>().apply {
         value = UserManager.addUserInfo()
     }

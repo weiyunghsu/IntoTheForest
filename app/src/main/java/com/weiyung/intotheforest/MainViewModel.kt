@@ -20,11 +20,11 @@ class MainViewModel(private val repository: IntoTheForestRepository) : ViewModel
     private val _user = MutableLiveData<User>().apply {
         value = UserManager.addUserInfo()
     }
-    val user : LiveData<User>
+    val user: LiveData<User>
         get() = _user
 
     private val _route = MutableLiveData<Route>()
-    val route : LiveData<Route>
+    val route: LiveData<Route>
         get() = _route
 
     private val _refresh = MutableLiveData<Boolean>()
@@ -40,9 +40,9 @@ class MainViewModel(private val repository: IntoTheForestRepository) : ViewModel
         viewModelJob.cancel()
     }
     init {
-        Log.i(TAG,"------------------------------------")
-        Log.i(TAG,"[${this::class.simpleName}]${this}")
-        Log.i(TAG,"------------------------------------")
+        Log.i(TAG, "------------------------------------")
+        Log.i(TAG, "[${this::class.simpleName}]$this")
+        Log.i(TAG, "------------------------------------")
     }
 
     fun refresh() {
@@ -56,5 +56,4 @@ class MainViewModel(private val repository: IntoTheForestRepository) : ViewModel
             _refresh.value = null
         }
     }
-
 }

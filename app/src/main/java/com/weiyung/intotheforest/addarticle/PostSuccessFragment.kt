@@ -9,7 +9,8 @@ import com.weiyung.intotheforest.R
 
 class PostSuccessFragment : DialogFragment() {
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.fragment_postsuccess, container, false)

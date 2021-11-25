@@ -7,17 +7,16 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Route(
-    var routeId : Int =0,
+    var routeId: Int = 0,
     var seg: Int = 0,
     var ele: Double? = null,
     var geopoint: LatLng? = null,
     var time: Timestamp? = null,
-): Parcelable
+) : Parcelable
 
 @Parcelize
 data class Track(
-    var routeId : Int =0,
+    var routeId: Int = 0,
     var seg: Int = 0,
     var points: List<LatLng>? = null
-): Parcelable
-
+) : Parcelable

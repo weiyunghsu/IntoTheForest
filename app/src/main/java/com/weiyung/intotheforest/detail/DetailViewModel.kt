@@ -15,14 +15,14 @@ import kotlinx.coroutines.launch
 class DetailViewModel(
     private val repository: IntoTheForestRepository,
     private val article: Article
-) : ViewModel(){
+) : ViewModel() {
     private val _selectedArticle = MutableLiveData<Article>()
     val selectedArticle: LiveData<Article>
         get() = _selectedArticle
     init {
         _selectedArticle.value = article
     }
-    private val _favoriteAdded = MutableLiveData<Boolean>().apply{
+    private val _favoriteAdded = MutableLiveData<Boolean>().apply {
         value = article.followers?.contains(requireNotNull(UserManager.addUserInfo().id))
     }
     val favoriteAdded: LiveData<Boolean>
@@ -58,21 +58,21 @@ class DetailViewModel(
 //        _isInserted.value = false
 //    }
 
-    fun switchState(){
-        when(favoriteAdded.value){
+    fun switchState() {
+        when (favoriteAdded.value) {
             true -> removeUserFromFollowers(requireNotNull(UserManager.addUserInfo().id), article)
             else -> addUserToFollowers(requireNotNull(UserManager.addUserInfo().id), article)
         }
     }
 
-    private fun addUserToFollowers(userId: String, article: Article){
+    private fun addUserToFollowers(userId: String, article: Article) {
         coroutineScope.launch {
             _favStatus.value = LoadApiStatus.LOADING
-            val result = repository.addUserToFollowers(userId,article)
+            val result = repository.addUserToFollowers(userId, article)
             _favoriteAdded.value = result.handleResultWith(_error, _favStatus)
         }
     }
-    private fun removeUserFromFollowers(userId: String, article: Article){
+    private fun removeUserFromFollowers(userId: String, article: Article) {
         coroutineScope.launch {
             _favStatus.value = LoadApiStatus.LOADING
             val result = repository.removeUserFromFollowers(userId, article)

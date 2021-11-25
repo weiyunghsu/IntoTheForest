@@ -17,7 +17,7 @@ class HomeAdapter(private val onClickListener: OnClickListener) :
     class ViewHolder(private var binding: ItemHomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(article: Article,onClickListener: OnClickListener) {
+        fun bind(article: Article, onClickListener: OnClickListener) {
             binding.article = article
             binding.root.setOnClickListener { onClickListener.onClick(article) }
             binding.executePendingBindings()
@@ -55,7 +55,7 @@ class HomeAdapter(private val onClickListener: OnClickListener) :
         holder.itemView.setOnClickListener {
             onClickListener.onClick(article)
         }
-        holder.bind(article,onClickListener)
+        holder.bind(article, onClickListener)
     }
 
     override fun getItemViewType(position: Int): Int {

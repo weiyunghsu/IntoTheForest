@@ -14,7 +14,7 @@ interface IntoTheForestDataSource {
 
     suspend fun delete(article: Article): Result<Boolean>
 
-    suspend fun update(route: Route) : Result<Boolean>
+    suspend fun update(route: Route): Result<Boolean>
 
     suspend fun getRoutes(): Result<List<Route>>
 
@@ -31,5 +31,4 @@ interface IntoTheForestDataSource {
     suspend fun addUserToFollowers(userId: String, article: Article): Result<Boolean>
 
     suspend fun removeUserFromFollowers(userId: String, article: Article): Result<Boolean>
-
 }

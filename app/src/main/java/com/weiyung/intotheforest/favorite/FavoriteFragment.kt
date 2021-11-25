@@ -31,7 +31,11 @@ class FavoriteFragment : Fragment() {
 
         binding.recyclerFavorite.adapter = FavoriteAdapter(viewModel)
         binding.recyclerFavorite.layoutManager = LinearLayoutManager(context)
-        binding.recyclerFavorite.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        binding.recyclerFavorite.addItemDecoration(
+            DividerItemDecoration(
+                context, LinearLayoutManager.VERTICAL
+            )
+        )
 
         binding.layoutSwipeRefreshFavorite.setOnRefreshListener {
             binding.recyclerFavorite.adapter?.notifyDataSetChanged()
@@ -42,7 +46,8 @@ class FavoriteFragment : Fragment() {
             viewLifecycleOwner,
             Observer {
                 it?.let {
-                    findNavController().navigate(FavoriteFragmentDirections.navigateToDetailFragment(it))
+                    findNavController()
+                        .navigate(FavoriteFragmentDirections.navigateToDetailFragment(it))
                     viewModel.onDetailNavigated()
                 }
             }

@@ -18,12 +18,13 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class AddArticleViewModel(
-    private val repository:IntoTheForestRepository
-    )  : ViewModel(){
+    private val repository: IntoTheForestRepository
+) : ViewModel() {
 
     val _article = MutableLiveData<Article>().apply {
-        value = Article(user = UserManager.addUserInfo(),
-        followers = listOf<String>()
+        value = Article(
+            user = UserManager.addUserInfo(),
+            followers = listOf<String>()
         )
     }
     val article: LiveData<Article>
@@ -37,8 +38,8 @@ class AddArticleViewModel(
     val error: LiveData<String>
         get() = _error
 
-    var canUploadImage : Boolean = false
-    var isUploadSuccess : Boolean = false
+    var canUploadImage: Boolean = false
+    var isUploadSuccess: Boolean = false
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -48,15 +49,15 @@ class AddArticleViewModel(
         viewModelJob.cancel()
     }
     init {
-        Log.i(TAG,"------------------------------------")
-        Log.i(TAG,"[${this::class.simpleName}]${this}")
-        Log.i(TAG,"------------------------------------")
+        Log.i(TAG, "------------------------------------")
+        Log.i(TAG, "[${this::class.simpleName}]$this")
+        Log.i(TAG, "------------------------------------")
     }
 
     fun addData(article: Article) {
         coroutineScope.launch {
 
-        Log.i(TAG,"ViewModel fun addData : $article")
+            Log.i(TAG, "ViewModel fun addData : $article")
             _status.value = LoadApiStatus.LOADING
 
             when (val result = repository.publish(article)) {
@@ -73,11 +74,11 @@ class AddArticleViewModel(
                     _status.value = LoadApiStatus.ERROR
                 }
                 else -> {
-                    _error.value = IntoTheForestApplication.instance.getString(R.string.nothingHappen)
+                    _error.value = IntoTheForestApplication
+                        .instance.getString(R.string.nothingHappen)
                     _status.value = LoadApiStatus.ERROR
                 }
             }
         }
     }
-
 }

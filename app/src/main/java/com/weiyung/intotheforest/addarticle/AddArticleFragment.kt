@@ -27,11 +27,11 @@ import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentAddarticleBinding
 import com.weiyung.intotheforest.ext.getVmFactory
 import com.weiyung.intotheforest.util.UserManager
+import java.util.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.util.*
 
 class AddArticleFragment : Fragment() {
     private val viewModel by viewModels<AddArticleViewModel> { getVmFactory() }
@@ -128,15 +128,14 @@ class AddArticleFragment : Fragment() {
     }
 
     fun getLocalImg() {
-             ImagePicker.with(this)
-                .crop()                    //Crop image(Optional), Check Customization for more option
-                .compress(1024)            //Final image size will be less than 1 MB(Optional)
-                .maxResultSize(
-                    1080,
-                    1080
-                )    //Final image resolution will be less than 1080 x 1080(Optional)
-                .start()
-
+        ImagePicker.with(this)
+            .crop() // Crop image(Optional), Check Customization for more option
+            .compress(1024) // Final image size will be less than 1 MB(Optional)
+            .maxResultSize(
+                1080,
+                1080
+            ) // Final image resolution will be less than 1080 x 1080(Optional)
+            .start()
     }
 
     private var viewModelJob = Job()
@@ -154,7 +153,9 @@ class AddArticleFragment : Fragment() {
                 .build()
             val randomNumber = (0..999).random()
             val routesRef =
-                mStorageRef.child("$FIREBASE_PATH_ROUTE/${UserManager.addUserInfo().id}_$randomNumber.jpg")
+                mStorageRef.child(
+                    "$FIREBASE_PATH_ROUTE/${UserManager.addUserInfo().id}_$randomNumber.jpg"
+                )
             val uploadTask = routesRef.putFile(uri)
             uploadTask.addOnFailureListener {
                 Toast.makeText(
@@ -194,20 +195,21 @@ class AddArticleFragment : Fragment() {
                     binding.showStartDate.setText(setDateFormat(year, month, day))
                 }
             }, year, month, day).show()
+            }
         }
-    }
 
-    private fun setEndDate() {
-        context?.let {
-            DatePickerDialog(it, { _, year, month, day ->
-                run {
-                    binding.showEndDate.setText(setDateFormat(year, month, day))
+        private fun setEndDate() {
+            context?.let {
+                DatePickerDialog(it, { _, year, month, day ->
+                    run {
+                        binding.showEndDate.setText(setDateFormat(year, month, day))
+                    }
+                }, year, month, day).show()
                 }
-            }, year, month, day).show()
-        }
-    }
+            }
 
-    private fun setDateFormat(year: Int, month: Int, day: Int): String {
-        return "$year.${month + 1}.$day"
-    }
-}
+            private fun setDateFormat(year: Int, month: Int, day: Int): String {
+                return "$year.${month + 1}.$day"
+            }
+        }
+        

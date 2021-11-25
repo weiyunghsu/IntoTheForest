@@ -26,8 +26,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.libraries.places.api.Places
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.maps.route.extensions.drawMarker
 import com.maps.route.extensions.drawRouteOnMap
 import com.maps.route.extensions.moveCameraOnMap
@@ -79,33 +77,39 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         val viewModelJob = Job()
         val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.IO)
 
-        viewModel._routes.observe(viewLifecycleOwner, Observer {
-            Log.d(TAG, "viewModel._routes.observe, it=$it")
-            it?.let {
-                mapFragment.getMapAsync {
-                    mMap.run {
-                        Places.initialize(getApplicationContext(), R.string.google_maps_key.toString())
-                        fun drawLine() {
-                            coroutineScope.launch {
-                                Log.i(TAG, "---------Do you draw the Route0?------")
-                                drawRouteOnMap(
-                                    getString(R.string.google_maps_key),
-                                    source = viewModel.source,
-                                    destination = viewModel.destination,
-                                    context = context!!,
-                                    markers = false,
-                                    travelMode = TravelMode.WALKING,
-                                    polygonWidth = 15
-                                )
+        viewModel._routes.observe(
+            viewLifecycleOwner,
+            Observer {
+                Log.d(TAG, "viewModel._routes.observe, it=$it")
+                it?.let {
+                    mapFragment.getMapAsync {
+                        mMap.run {
+                            Places.initialize(
+                                getApplicationContext(),
+                                R.string.google_maps_key.toString()
+                            )
+                            fun drawLine() {
+                                coroutineScope.launch {
+                                    Log.i(TAG, "---------Do you draw the Route0?------")
+                                    drawRouteOnMap(
+                                        getString(R.string.google_maps_key),
+                                        source = viewModel.source,
+                                        destination = viewModel.destination,
+                                        context = context!!,
+                                        markers = false,
+                                        travelMode = TravelMode.WALKING,
+                                        polygonWidth = 15
+                                    )
+                                }
                             }
+                            drawLine()
+                            Log.i(TAG, "---------Do you draw the Route0 End ?-----")
                         }
-                        drawLine()
-                        Log.i(TAG, "---------Do you draw the Route0 End ?-----")
                     }
+                    binding.viewModel = viewModel
                 }
-                binding.viewModel = viewModel
             }
-        })
+        )
         binding.weatherButton.setOnClickListener {
             findNavController().navigate(NavigationDirections.navigateToWeatherFragment())
         }
@@ -130,19 +134,17 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             ) {
                 viewModel.isMapReady = true
                 mMap.isMyLocationEnabled = true
-
             } else {
                 requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 999)
             }
         }
         setupPermission()
-        if (viewModel.isMapReady){
+        if (viewModel.isMapReady) {
             mMap.isMyLocationEnabled = true
             mMap.uiSettings.isZoomControlsEnabled = true
             mMap.uiSettings.isCompassEnabled = true
             mMap.uiSettings.isMapToolbarEnabled = true
         }
-
 
         val polyline1 = googleMap.addPolyline(
             PolylineOptions().clickable(true).color(Color.RED).addAll(viewModel.routeLine1)
@@ -286,4 +288,3 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 }
-

@@ -12,11 +12,13 @@ buildscript {
         version_recyclerview = '1.2.1'
         version_fragment = '1.4.0'
         version_paging = '3.1.0'
+        version_ktlint = '10.2.0'
     }
     repositories {
         google()
         mavenCentral()
         maven { url "https://jitpack.io" }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.3"
@@ -25,6 +27,7 @@ buildscript {
         classpath 'com.google.gms:google-services:4.3.10'
         classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.0"
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.8.0'
+        classpath("org.jlleitschuh.gradle:ktlint-gradle:$version_ktlint")
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

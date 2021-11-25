@@ -16,7 +16,7 @@ import kotlinx.coroutines.*
 
 class MapViewModel(
     private val repository: IntoTheForestRepository,
-    ): ViewModel(){
+) : ViewModel() {
 
     var _routes = MutableLiveData<List<Route>>()
     val routes: LiveData<List<Route>>
@@ -41,7 +41,7 @@ class MapViewModel(
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
-    var isMapReady : Boolean = false
+    var isMapReady: Boolean = false
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -52,7 +52,7 @@ class MapViewModel(
     }
     init {
         Log.i(TAG, "------------------------------------")
-        Log.i(TAG, "[${this::class.simpleName}]${this}")
+        Log.i(TAG, "[${this::class.simpleName}]$this")
         Log.i(TAG, "------------------------------------")
 
         if (IntoTheForestApplication.instance.isLiveDataDesign()) {
@@ -99,24 +99,28 @@ class MapViewModel(
     }
 
     val appWorksSchoolPeak = LatLng(25.042477, 121.564879)
-    val source = LatLng(25.027389, 121.570825) //starting point (LatLng)
+    val source = LatLng(25.027389, 121.570825) // starting point (LatLng)
     val destination = LatLng(25.036462, 121.587468) // ending point (LatLng)
 
-    val source1 = LatLng(25.037770, 121.585125) //starting point (LatLng)
+    val source1 = LatLng(25.037770, 121.585125) // starting point (LatLng)
     val destination1 = LatLng(25.027426, 121.570723) // ending point (LatLng)
 
-    val wc1 = arrayListOf(LatLng(25.036452, 121.584763),
+    val wc1 = arrayListOf(
+        LatLng(25.036452, 121.584763),
         LatLng(25.032223, 121.591132),
         LatLng(25.027529, 121.579818),
-        LatLng(25.026820, 121.575029),)
+        LatLng(25.026820, 121.575029),
+    )
 
-    val view1 = arrayListOf(LatLng(25.031359, 121.583593),
+    val view1 = arrayListOf(
+        LatLng(25.031359, 121.583593),
         LatLng(25.029347, 121.582627),
         LatLng(25.026738, 121.580566),
-        LatLng(25.026827, 121.574412),)
+        LatLng(25.026827, 121.574412),
+    )
     val eat1 = arrayListOf(LatLng(25.026853, 121.568260))
 
-    val source2 = LatLng(25.128404, 121.4243393) //starting point (LatLng)
+    val source2 = LatLng(25.128404, 121.4243393) // starting point (LatLng)
     val destination2 = LatLng(25.136002, 121.426657) // ending point (LatLng)
     val view2 = arrayListOf(LatLng(25.131885, 121.423775))
     val eat2 = arrayListOf(LatLng(25.131865, 121.420749))
@@ -218,39 +222,41 @@ class MapViewModel(
         LatLng(25.0271783, 121.5723045),
         LatLng(25.0272838, 121.572011),
         LatLng(25.0276358, 121.5712428),
-        LatLng(25.02742634, 121.5707231),)
+        LatLng(25.02742634, 121.5707231),
+    )
 
     val routeLine2 = arrayListOf(
         LatLng(25.12840413, 121.4243393),
-            LatLng(25.12865257, 121.4245413),
-            LatLng(25.12860906, 121.4247674),
-            LatLng(25.1287974, 121.4247676),
-            LatLng(25.12883275, 121.4250032),
-            LatLng(25.13016919, 121.4243243),
-            LatLng(25.13032353, 121.4240143),
-            LatLng(25.13026883, 121.4238402),
-            LatLng(25.13052125, 121.4238118),
-            LatLng(25.13065222, 121.4238955),
-            LatLng(25.13074858, 121.4237415),
-            LatLng(25.13120103, 121.4238109),
-            LatLng(25.13121045, 121.4237361),
-            LatLng(25.13114471, 121.4237062),
-            LatLng(25.13123592, 121.4234883),
-            LatLng(25.13187724, 121.4237279),
-            LatLng(25.13191249, 121.4236797),
-            LatLng(25.13196211, 121.4242289),
-            LatLng(25.13220745, 121.4242195),
-            LatLng(25.13241931, 121.4242586),
-            LatLng(25.13259649, 121.4244102),
-            LatLng(25.13280678, 121.4244331),
-            LatLng(25.13340377, 121.4239637),
-            LatLng(25.13410705, 121.4236791),
-            LatLng(25.13448562, 121.4237402),
-            LatLng(25.13533946, 121.4236584),
-            LatLng(25.13564681, 121.4241001),
-            LatLng(25.13607155, 121.425274),
-            LatLng(25.13606423, 121.4260138),
-            LatLng(25.13600372, 121.4266437),
-            LatLng(25.13600172, 121.4266574),
-            LatLng(25.13600172, 121.4266574),)
+        LatLng(25.12865257, 121.4245413),
+        LatLng(25.12860906, 121.4247674),
+        LatLng(25.1287974, 121.4247676),
+        LatLng(25.12883275, 121.4250032),
+        LatLng(25.13016919, 121.4243243),
+        LatLng(25.13032353, 121.4240143),
+        LatLng(25.13026883, 121.4238402),
+        LatLng(25.13052125, 121.4238118),
+        LatLng(25.13065222, 121.4238955),
+        LatLng(25.13074858, 121.4237415),
+        LatLng(25.13120103, 121.4238109),
+        LatLng(25.13121045, 121.4237361),
+        LatLng(25.13114471, 121.4237062),
+        LatLng(25.13123592, 121.4234883),
+        LatLng(25.13187724, 121.4237279),
+        LatLng(25.13191249, 121.4236797),
+        LatLng(25.13196211, 121.4242289),
+        LatLng(25.13220745, 121.4242195),
+        LatLng(25.13241931, 121.4242586),
+        LatLng(25.13259649, 121.4244102),
+        LatLng(25.13280678, 121.4244331),
+        LatLng(25.13340377, 121.4239637),
+        LatLng(25.13410705, 121.4236791),
+        LatLng(25.13448562, 121.4237402),
+        LatLng(25.13533946, 121.4236584),
+        LatLng(25.13564681, 121.4241001),
+        LatLng(25.13607155, 121.425274),
+        LatLng(25.13606423, 121.4260138),
+        LatLng(25.13600372, 121.4266437),
+        LatLng(25.13600172, 121.4266574),
+        LatLng(25.13600172, 121.4266574),
+    )
 }
