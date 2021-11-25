@@ -1,20 +1,11 @@
 package com.weiyung.intotheforest.util
 
-import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.database.User
 
 object UserManager {
-    private const val USER_DATA = "user_data"
-    private const val USER_TOKEN = "user_token"
-    private const val USER_ID = "user_id"
-    private const val USER_EMAIL = "user_email"
-    private const val USER_NAME = "user_name"
-    private const val USER_PICTURE = "user_picture"
 
     var sharedPreferences: SharedPreferences =
         IntoTheForestApplication.instance.applicationContext.getSharedPreferences(

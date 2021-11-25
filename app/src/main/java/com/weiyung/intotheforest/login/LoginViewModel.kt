@@ -1,5 +1,6 @@
 package com.weiyung.intotheforest.login
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -40,8 +41,7 @@ class LoginViewModel(private val repository: IntoTheForestRepository) : ViewMode
         super.onCleared()
         viewModelJob.cancel()
     }
-
-    fun navigateComplete() {
+        fun navigateComplete() {
         _user.value = null
     }
 
@@ -52,7 +52,7 @@ class LoginViewModel(private val repository: IntoTheForestRepository) : ViewMode
             val signedIn = user?.let { repository.signUpUser(it).handleResultWith(_error, _status) }
             Log.i(TAG,"$signedIn")
             if (signedIn == true){
-                _user.value = user!!
+                _user.value = user
                 UserManager.getUserInfo(user)
 
                 Log.i(TAG,"UserManager.user.value in addUser: ${UserManager.addUserInfo()}")

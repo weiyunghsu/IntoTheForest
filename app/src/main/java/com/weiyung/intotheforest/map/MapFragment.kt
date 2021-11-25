@@ -53,7 +53,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var binding: FragmentMapBinding
-    val db = Firebase.firestore
 
     @SuppressLint("RestrictedApi")
     override fun onCreateView(
@@ -66,9 +65,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
 
-//        lifecycle.coroutineScope.launchWhenCreated {
-//            val gMap = mapFragment.getMapAsync { onMapReady(it) }
-//        }
         mapFragment.getMapAsync(this)
 
         binding.isLiveDataDesign = IntoTheForestApplication.instance.isLiveDataDesign()
@@ -162,9 +158,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         )
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(viewModel.appWorksSchoolPeak, 10F))
-//        mMap.animateCamera(CameraUpdateFactory.zoomTo(18F))
-//        mMap.setOnPolylineClickListener(this)
-//        mMap.setOnPolygonClickListener(this)
+
         val adapter = ArrayAdapter.createFromResource(
             this.requireContext(),
             R.array.routeList,

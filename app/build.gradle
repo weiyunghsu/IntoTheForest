@@ -38,10 +38,9 @@ android {
         viewBinding false
         dataBinding = true
     }
-    android {
-        lintOptions {
-            abortOnError false
-        }
+    lintOptions {
+        abortOnError false
+        disable 'NullSafeMutableLiveData'
     }
 }
 

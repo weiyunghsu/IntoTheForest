@@ -26,15 +26,12 @@ import com.weiyung.intotheforest.ext.getVmFactory
 class ReportDialog : AppCompatDialogFragment(){
     private val viewModel by viewModels<ReportViewModel> { getVmFactory() }
     private lateinit var binding: DialogReportBinding
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setStyle(DialogFragment.STYLE_NO_FRAME, R.style.Add2CartDialog)
-//    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
     binding = DialogReportBinding.inflate(inflater, container, false)
     binding.lifecycleOwner = viewLifecycleOwner
     binding.viewModel = viewModel

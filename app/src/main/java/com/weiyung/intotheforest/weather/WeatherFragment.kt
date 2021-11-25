@@ -20,7 +20,7 @@ class WeatherFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
         binding = FragmentWeatherBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel

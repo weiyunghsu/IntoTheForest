@@ -57,8 +57,6 @@ class AddArticleViewModel(
         coroutineScope.launch {
 
         Log.i(TAG,"ViewModel fun addData : $article")
-//            article?.user = UserManager.user.value
-//            article?.user = UserManager.user.value
             _status.value = LoadApiStatus.LOADING
 
             when (val result = repository.publish(article)) {

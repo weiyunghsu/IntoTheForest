@@ -51,7 +51,7 @@ class AddArticleFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddarticleBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -66,22 +66,6 @@ class AddArticleFragment : Fragment() {
 
         binding.inputPhotoButton.setOnClickListener {
             getLocalImg()
-//            ImagePicker.with(this)
-//                .crop()                    //Crop image(Optional), Check Customization for more option
-//                .compress(1024)            //Final image size will be less than 1 MB(Optional)
-//                .maxResultSize(
-//                    1080,
-//                    1080
-//                )    //Final image resolution will be less than 1080 x 1080(Optional)
-//                .start()
-        //            permissionWritePhoto()
-//            if (viewModel.canUploadImage && viewModel.isUploadSuccess) {
-//                binding.inputPhotoButton.isClickable = false
-////                    findNavController().navigate(NavigationDirections.navigateToPostsuccessFragment())
-//            } else if (viewModel.canUploadImage && !viewModel.isUploadSuccess) {
-//                val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-//                startActivityForResult(gallery, PICTUREFROMGALLERY)
-//            }
         }
 
         binding.addPostButton.setOnClickListener {
@@ -109,23 +93,6 @@ class AddArticleFragment : Fragment() {
         }
     }
 
-//    override fun onRequestPermissionsResult(
-//        requestCode: Int,
-//        permissions: Array<String>,
-//        grantResults: IntArray
-//    ) {
-//        when (requestCode) {
-//            REQUEST_EXTERNAL_STORAGE -> {
-//                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    viewModel.canUploadImage = true
-//                } else {
-//                    Toast.makeText(requireActivity(), R.string.nothingHappen, Toast.LENGTH_SHORT)
-//                        .show()
-//                }
-//            }
-//        }
-//    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         Log.i(TAG, "onActivityResult,resultCode : $resultCode")
@@ -140,25 +107,6 @@ class AddArticleFragment : Fragment() {
                         firebaseUpload(fileUri)
                     }
                 }
-
-//                val uri: Uri = data?.data!!
-//                binding.pickImg1.setImageURI(uri)
-//                Toast.makeText(requireActivity(), "setImageURI= $uri", Toast.LENGTH_SHORT).show()
-//                firebaseUpload(uri)
-//                Log.i(TAG, "uri : $uri")
-//                val imagePath = getPathFromUri(uri)
-////                val filePath: String = ImagePicker.getFilePath(data) ?: ""
-//                if (imagePath.isNotEmpty()) {
-//                    Log.i(TAG, "onActivityResult if imagePath.isNotEmpty()")
-//                    Toast.makeText(requireActivity(), imagePath, Toast.LENGTH_SHORT).show()
-//
-              //     getLocalImg()
-//                    Glide.with(requireActivity()).load(imagePath).into(binding.pickImg1)
-//
-//                    firebaseUpload(uri)
-//                } else {
-//                    Toast.makeText(requireActivity(), R.string.loadImgFail1, Toast.LENGTH_SHORT).show()
-//                }
             }
             ImagePicker.RESULT_ERROR -> Toast.makeText(
                 requireContext(),
@@ -231,14 +179,6 @@ class AddArticleFragment : Fragment() {
                 viewModel.isUploadSuccess = true
                 Log.i(TAG, "addOnSuccessListener: $it")
             }
-//                .addOnProgressListener { taskSnapshot ->
-//                    val progress =
-//                        (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount).toInt()
-//                    binding.progressBar2.progress = progress
-//                    if (progress >= 100) {
-//                        binding.progressBar2.visibility = View.GONE
-//                    }
-//                }
         }
     }
 
