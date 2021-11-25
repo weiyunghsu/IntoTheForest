@@ -92,4 +92,5 @@
     <string name="sendSOSButton">sendSOSButton</string>
     <string name="inputSOSInfo">輸入求救訊息</string>
     <string name="myLocationButton">myLocationButton</string>
+    <string name="image_detail_gallery">image detail gallery</string>
 </resources>

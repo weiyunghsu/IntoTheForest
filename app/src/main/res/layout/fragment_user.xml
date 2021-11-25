@@ -40,7 +40,7 @@
             app:layout_constraintStart_toStartOf="@+id/bt_my_articles"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ImageContrastCheck"
-            tools:srcCompat="@drawable/icons_36px_profile_normal" />
+            tools:srcCompat="@drawable/outline_account_circle_black_36" />
 
         <TextView
             android:id="@+id/username"

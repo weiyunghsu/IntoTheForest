@@ -34,7 +34,4 @@
     <!-- Favorite -->
     <color name="favorite_item_normal">@color/gray_999999</color>
     <color name="favorite_item_selected">#E91E63</color>
-
-
-
 </resources>

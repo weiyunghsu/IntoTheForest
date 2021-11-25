@@ -1,6 +1,7 @@
 package com.weiyung.intotheforest.reportdialog
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -71,6 +72,7 @@ fun getLocation() {
     } else {
         LocationServices.getFusedLocationProviderClient(requireActivity())
             .requestLocationUpdates(request, object : LocationCallback() {
+                @SuppressLint("SetTextI18n")
                 override fun onLocationResult(locationResult: LocationResult?) {
                     LocationServices.getFusedLocationProviderClient(requireActivity())
                         .removeLocationUpdates(this)

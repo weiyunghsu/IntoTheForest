@@ -121,7 +121,7 @@
         app:layout_constraintStart_toEndOf="@+id/home_author"
         app:layout_constraintTop_toTopOf="@+id/home_author"
         tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@drawable/icons_36px_profile_normal" />
+        tools:srcCompat="@drawable/outline_account_circle_black_36" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

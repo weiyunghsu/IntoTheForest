@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="article"
@@ -17,8 +16,9 @@
         android:layout_width="@dimen/width_detail_gallery"
         android:layout_height="@dimen/height_detail_gallery"
         android:scaleType="centerCrop"
-        app:roundedCorners="@{imageUrl}"
         android:padding="8dp"
+        android:contentDescription="@string/image_detail_gallery"
+        app:roundedCorners="@{imageUrl}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
