@@ -115,11 +115,8 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource {
     }
 
     override suspend fun delete(article: Article): Result<Boolean> = suspendCoroutine { continuation ->
-
         when {
             article.user?.id == "9527"
-//                    && article.tag.toLowerCase(Locale.TAIWAN) != "test"
-//                    && article.tag.trim().isNotEmpty()
             -> {
                 continuation.resume(Result.Fail("nothing happen ${article.user?.name}"))
             }
@@ -220,7 +217,6 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource {
         suspendCoroutine { continuation ->
             source.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-
                     when (val result = task.result) {
                         is QuerySnapshot -> {
                             if (result.isEmpty) {
@@ -264,31 +260,6 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource {
                 }
             }
         }
-//    override suspend fun publishFavorite(article: Article): Result<Boolean>  = suspendCoroutine { continuation ->
-//        val favorites = FirebaseFirestore.getInstance().collection(PATH_FAVORITES)
-//        val document = favorites.document()
-//
-//        favorite.id = document.id
-// //        article.createdTime = Calendar.getInstance().timeInMillis
-//        Log.i(TAG,"here is fun publish favorite")
-//        document
-//            .set(favorite)
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    Log.i(TAG,"Publish: $favorite")
-//
-//                    continuation.resume(Result.Success(true))
-//                } else {
-//                    task.exception?.let {
-//
-//                        Log.w(TAG,"[${this::class.simpleName}] Error getting documents. ${it.message}")
-//                        continuation.resume(Result.Error(it))
-//                        return@addOnCompleteListener
-//                    }
-//                    continuation.resume(Result.Fail(IntoTheForestApplication.instance.getString(R.string.nothingHappen)))
-//                }
-//            }
-//    }
 
     override fun getFavorites(userId: String): MutableLiveData<List<Article>> {
         val liveData = MutableLiveData<List<Article>>()

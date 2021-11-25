@@ -13,10 +13,3 @@ data class Route(
     var geopoint: LatLng? = null,
     var time: Timestamp? = null,
 ) : Parcelable
-
-@Parcelize
-data class Track(
-    var routeId: Int = 0,
-    var seg: Int = 0,
-    var points: List<LatLng>? = null
-) : Parcelable

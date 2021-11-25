@@ -138,9 +138,6 @@
                     app:switch="@{viewModel.favoriteAdded}"
                     app:tint="@color/favorite_item_selected"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-                <!--                    app:srcCompat="@drawable/favorite_item_selected"-->
-                <!--                android:onClick="@{() -> viewModel.insertToFavorite()}"-->
-                <!--                android:background="@drawable/favorite_item_selector"-->
 
                 <ImageButton
                     android:id="@+id/detail_share_button"
@@ -188,33 +185,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/go_to_map_button"
                     tools:ignore="SpeakableTextPresentCheck"
                     tools:listitem="@layout/item_detail_gallery" />
-
-                <!--                <com.google.android.gms.maps.MapView-->
-                <!--                    android:id="@+id/mapView"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="200dp"-->
-                <!--                    android:layout_marginStart="16dp"-->
-                <!--                    android:layout_marginTop="16dp"-->
-                <!--                    android:layout_marginEnd="16dp"-->
-                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                    app:layout_constraintStart_toStartOf="parent"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@+id/goToMapButton"-->
-                <!--                    tools:ignore="SpeakableTextPresentCheck" />-->
-                <!--                android:name="com.google.android.gms.maps.mapView"-->
-
-                <!--                <androidx.constraintlayout.utils.widget.MockView-->
-                <!--                    android:id="@+id/weather_info"-->
-                <!--                    android:layout_width="0dp"-->
-                <!--                    android:layout_height="200dp"-->
-                <!--                    android:layout_marginStart="16dp"-->
-                <!--                    android:layout_marginTop="16dp"-->
-                <!--                    android:layout_marginEnd="16dp"-->
-                <!--                    android:layout_marginBottom="16dp"-->
-                <!--                    android:paddingBottom="16dp"-->
-                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                    app:layout_constraintStart_toStartOf="parent"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@+id/detailWeather" />-->
 
                 <Button
                     android:id="@+id/go_to_map_button"

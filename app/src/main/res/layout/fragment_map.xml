@@ -17,15 +17,6 @@
     android:id="@+id/mapContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<!--    <FrameLayout-->
-<!--        android:id="@+id/map1"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" >-->
-
-<!--    </FrameLayout>-->
 
     <fragment
         android:id="@+id/map"
@@ -68,21 +59,6 @@
             app:layout_constraintTop_toTopOf="parent"
             android:selectedItemPosition="@={viewModel.selectedRoutePosition}"/>
 
-<!--    <EditText-->
-<!--        android:id="@+id/searchAddress"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="8dp"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:background="@color/white"-->
-<!--        android:ems="10"-->
-<!--        android:hint="@string/search_here"-->
-<!--        android:inputType="textPersonName"-->
-<!--        android:minHeight="48dp"-->
-<!--        android:padding="8dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/weatherButton"
         android:layout_width="wrap_content"
@@ -122,6 +98,5 @@
         app:fabSize="mini"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
-    <!--    </fragment>-->
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

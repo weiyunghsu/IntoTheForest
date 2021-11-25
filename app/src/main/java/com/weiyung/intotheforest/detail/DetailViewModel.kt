@@ -44,20 +44,6 @@ class DetailViewModel(
 
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-//    val favorite: LiveData<List<Favorite>> = repository.getFavorites()
-
-//    private val _isInserted = MutableLiveData<Boolean>()
-//    val isInserted: LiveData<Boolean>
-//        get() = _isInserted
-
-//    fun hasFavoriteData() {
-//        _isInserted.value = true
-//    }
-//
-//    fun noFavoriteData() {
-//        _isInserted.value = false
-//    }
-
     fun switchState() {
         when (favoriteAdded.value) {
             true -> removeUserFromFollowers(requireNotNull(UserManager.addUserInfo().id), article)

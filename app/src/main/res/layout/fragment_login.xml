@@ -46,8 +46,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
-        <!--        android:visibility="@{viewModel.status == LoadApiStatus.LOADING || viewModel.firebaseUser == null ? View.GONE : View.VISIBLE}"-->
-
         <TextView
             android:id="@+id/getInButton"
             android:layout_width="wrap_content"

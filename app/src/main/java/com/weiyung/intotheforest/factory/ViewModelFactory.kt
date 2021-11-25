@@ -21,7 +21,7 @@ class ViewModelFactory constructor(
         with(modelClass) {
             when {
                 isAssignableFrom(MainViewModel::class.java) ->
-                    MainViewModel(repository)
+                    MainViewModel()
 
                 isAssignableFrom(HomeViewModel::class.java) ->
                     HomeViewModel(repository)
@@ -39,7 +39,7 @@ class ViewModelFactory constructor(
                     UserViewModel(repository)
 
                 isAssignableFrom(ReportViewModel::class.java) ->
-                    ReportViewModel(repository)
+                    ReportViewModel()
 
                 isAssignableFrom(AddArticleViewModel::class.java) ->
                     AddArticleViewModel(repository)

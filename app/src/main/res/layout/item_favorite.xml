@@ -106,18 +106,6 @@
             app:layout_constraintStart_toEndOf="@+id/startDate"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <ImageButton-->
-<!--            android:id="@+id/delete_button"-->
-<!--            android:layout_width="48dp"-->
-<!--            android:layout_height="48dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:layout_marginEnd="16dp"-->
-<!--            android:backgroundTint="@color/transparent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:srcCompat="@drawable/outline_delete_black_24"-->
-<!--            tools:ignore="SpeakableTextPresentCheck" />-->
-
         <ImageButton
             android:id="@+id/toDetailButton"
             android:layout_width="48dp"

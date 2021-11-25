@@ -13,19 +13,19 @@ class IntoTheForestLocalDataSource(val context: Context) : IntoTheForestDataSour
         }
     }
     override suspend fun getArticles(): Result<List<Article>> {
-        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented")
     }
 
     override fun getLiveArticles(): MutableLiveData<List<Article>> {
-        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented")
     }
 
     override suspend fun publish(article: Article): Result<Boolean> {
-        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented")
     }
 
     override suspend fun delete(article: Article): Result<Boolean> {
-        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented")
     }
 
     override suspend fun update(route: Route): Result<Boolean> {
