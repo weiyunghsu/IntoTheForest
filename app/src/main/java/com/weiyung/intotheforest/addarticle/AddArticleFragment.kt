@@ -1,20 +1,16 @@
 package com.weiyung.intotheforest.addarticle
 
-import android.Manifest
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -38,14 +34,8 @@ class AddArticleFragment : Fragment() {
     private lateinit var binding: FragmentAddarticleBinding
 
     companion object {
-        const val PICTUREFROMGALLERY = 1001
-        const val PICTUREFROMCAMERA = 1002
-        const val REQUEST_EXTERNAL_STORAGE = 1003
         const val FIREBASE_PATH_ROUTE = "routeImg"
-        const val FIREBASE_PATH_AVATAR = "avatar"
     }
-
-    val storage = Firebase.storage
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -77,22 +67,6 @@ class AddArticleFragment : Fragment() {
         return binding.root
     }
 
-    private fun permissionWritePhoto() {
-        if (ContextCompat.checkSelfPermission(
-                this.binding.root.context,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            requestPermissions(
-                arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                REQUEST_EXTERNAL_STORAGE
-            )
-        } else {
-            viewModel.canUploadImage = true
-        }
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         Log.i(TAG, "onActivityResult,resultCode : $resultCode")
@@ -117,24 +91,11 @@ class AddArticleFragment : Fragment() {
         }
     }
 
-    private fun getPathFromUri(uri: Uri): String {
-        val projection = arrayOf(MediaStore.MediaColumns.DATA)
-        val cursor = requireActivity().contentResolver.query(uri, projection, null, null, null)
-        val columnIndex: Int? = cursor?.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA) ?: null
-        cursor?.moveToFirst()
-        val result: String = columnIndex?.let { cursor?.getString(it) } ?: ""
-        cursor?.close()
-        return result
-    }
-
     fun getLocalImg() {
         ImagePicker.with(this)
-            .crop() // Crop image(Optional), Check Customization for more option
-            .compress(1024) // Final image size will be less than 1 MB(Optional)
-            .maxResultSize(
-                1080,
-                1080
-            ) // Final image resolution will be less than 1080 x 1080(Optional)
+            .crop()
+            .compress(1024)
+            .maxResultSize(1080, 1080)
             .start()
     }
 
@@ -143,11 +104,12 @@ class AddArticleFragment : Fragment() {
 
     fun firebaseUpload(uri: Uri) {
         coroutineScope.launch {
+            val storage = Firebase.storage
             val mStorageRef = FirebaseStorage.getInstance().reference
             val storageRef = storage.reference
             val imagesRef: StorageReference = storageRef.child(FIREBASE_PATH_ROUTE)
-            val path = imagesRef.path
-            val metadata = StorageMetadata.Builder()
+            imagesRef.path
+            StorageMetadata.Builder()
                 .setContentDisposition("universe")
                 .setContentType("image/jpg")
                 .build()
@@ -192,24 +154,24 @@ class AddArticleFragment : Fragment() {
         context?.let {
             DatePickerDialog(it, { _, year, month, day ->
                 run {
-                    binding.showStartDate.setText(setDateFormat(year, month, day))
+                    binding.showStartDate.text = setDateFormat(year, month, day)
                 }
             }, year, month, day).show()
-            }
         }
+    }
 
-        private fun setEndDate() {
-            context?.let {
-                DatePickerDialog(it, { _, year, month, day ->
-                    run {
-                        binding.showEndDate.setText(setDateFormat(year, month, day))
-                    }
-                }, year, month, day).show()
+    private fun setEndDate() {
+        context?.let {
+            DatePickerDialog(it, { _, year, month, day ->
+                run {
+                    binding.showEndDate.text = setDateFormat(year, month, day)
                 }
-            }
-
-            private fun setDateFormat(year: Int, month: Int, day: Int): String {
-                return "$year.${month + 1}.$day"
-            }
+            }, year, month, day).show()
         }
+    }
+
+    private fun setDateFormat(year: Int, month: Int, day: Int): String {
+        return "$year.${month + 1}.$day"
+    }
+}
         

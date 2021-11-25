@@ -146,11 +146,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             mMap.uiSettings.isMapToolbarEnabled = true
         }
 
-        val polyline1 = googleMap.addPolyline(
+        googleMap.addPolyline(
             PolylineOptions().clickable(true).color(Color.RED).addAll(viewModel.routeLine1)
         )
 
-        val polyline2 = googleMap.addPolyline(
+        googleMap.addPolyline(
             PolylineOptions().clickable(true).color(Color.BLUE).addAll(viewModel.routeLine2)
         )
 

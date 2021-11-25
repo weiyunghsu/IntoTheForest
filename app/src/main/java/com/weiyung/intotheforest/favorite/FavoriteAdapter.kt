@@ -29,7 +29,6 @@ class FavoriteAdapter(val viewModel: FavoriteViewModel) :
         override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem == newItem
         }
-//        private const val ITEM_VIEW_TYPE_ARTICLE = 0x00
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {

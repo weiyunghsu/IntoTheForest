@@ -24,7 +24,7 @@ class AddArticleViewModel(
     val _article = MutableLiveData<Article>().apply {
         value = Article(
             user = UserManager.addUserInfo(),
-            followers = listOf<String>()
+            followers = listOf()
         )
     }
     val article: LiveData<Article>
