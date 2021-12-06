@@ -1,13 +1,12 @@
 package com.weiyung.intotheforest.database.source
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.weiyung.intotheforest.database.*
 
-
-class DefaultIntoTheForestRepository (private val remoteDataSource: IntoTheForestDataSource,
-                                      private val localDataSource: IntoTheForestDataSource
-) : IntoTheForestRepository{
+class DefaultIntoTheForestRepository(
+    private val remoteDataSource: IntoTheForestDataSource,
+    private val localDataSource: IntoTheForestDataSource
+) : IntoTheForestRepository {
     override suspend fun loginMockData(id: String): Result<User> {
         return localDataSource.login(id)
     }
@@ -40,7 +39,7 @@ class DefaultIntoTheForestRepository (private val remoteDataSource: IntoTheFores
         return remoteDataSource.addUserToFollowers(userId, article)
     }
 
-    override suspend fun removeUserFromFollowers(userId: String,article: Article): Result<Boolean> {
+    override suspend fun removeUserFromFollowers(userId: String, article: Article): Result<Boolean> {
         return remoteDataSource.removeUserFromFollowers(userId, article)
     }
 

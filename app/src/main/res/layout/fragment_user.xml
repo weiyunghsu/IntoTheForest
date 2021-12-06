@@ -34,12 +34,13 @@
             android:id="@+id/user_photo"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:contentDescription="@string/user_photo"
+            android:contentDescription="@string/userPhoto"
             app:avatarUrl="@{user.picture}"
             app:layout_constraintBottom_toBottomOf="@+id/user_view"
             app:layout_constraintStart_toStartOf="@+id/bt_my_articles"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/icons_36px_profile_normal" />
+            tools:ignore="ImageContrastCheck"
+            tools:srcCompat="@drawable/outline_account_circle_black_36" />
 
         <TextView
             android:id="@+id/username"
@@ -52,7 +53,6 @@
             app:layout_constraintStart_toStartOf="@+id/bt_my_favorites"
             app:layout_constraintTop_toTopOf="@+id/user_photo"
             tools:text="王小明" />
-        <!--        android:text="@{userManager.addUserInfo().name}"-->
 
         <Button
             android:id="@+id/bt_my_articles"
@@ -60,39 +60,42 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="21dp"
             android:background="@drawable/bg_round_user_button"
-            android:text="@string/bt_my_articles"
+            android:text="@string/myArticlesButton"
             android:textAlignment="center"
             android:textColor="@color/black_3f3a3a"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/bt_my_favorites"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_view" />
+            app:layout_constraintTop_toBottomOf="@+id/user_view"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/bt_my_favorites"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_round_user_button"
-            android:text="@string/bt_my_favorites"
+            android:text="@string/myFavoritesButton"
             android:textAlignment="center"
             android:textColor="@color/black_3f3a3a"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/bt_my_photos"
             app:layout_constraintStart_toEndOf="@+id/bt_my_articles"
-            app:layout_constraintTop_toTopOf="@+id/bt_my_articles" />
+            app:layout_constraintTop_toTopOf="@+id/bt_my_articles"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/bt_my_photos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_round_user_button"
-            android:text="@string/bt_my_photos"
+            android:text="@string/myPhotosButton"
             android:textAlignment="center"
             android:textColor="@color/black_3f3a3a"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/bt_my_favorites"
-            app:layout_constraintTop_toTopOf="@+id/bt_my_articles" />
+            app:layout_constraintTop_toTopOf="@+id/bt_my_articles"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/bt_my_badges"
@@ -100,67 +103,72 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="21dp"
             android:background="@drawable/bg_round_user_button"
-            android:text="@string/bt_my_badges"
+            android:text="@string/myBadgesButton"
             android:textAlignment="center"
             android:textColor="@color/black_3f3a3a"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/bt_notifications"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bt_my_articles" />
+            app:layout_constraintTop_toBottomOf="@+id/bt_my_articles"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/bt_edit_person_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_round_user_button"
-            android:text="@string/bt_edit_person_info"
+            android:text="@string/editPersonInfo"
             android:textAlignment="center"
             android:textColor="@color/black_3f3a3a"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/bt_notifications"
-            app:layout_constraintTop_toTopOf="@+id/bt_my_badges" />
+            app:layout_constraintTop_toTopOf="@+id/bt_my_badges"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/bt_notifications"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_round_user_button"
-            android:text="@string/bt_notifications"
+            android:text="@string/NotificationsButton"
             android:textAlignment="center"
             android:textColor="@color/black_3f3a3a"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/bt_edit_person_info"
             app:layout_constraintStart_toEndOf="@+id/bt_my_badges"
-            app:layout_constraintTop_toTopOf="@+id/bt_my_badges" />
+            app:layout_constraintTop_toTopOf="@+id/bt_my_badges"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/bt_my_routes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_round_user_button"
-            android:text="@string/bt_my_routes"
+            android:text="@string/myRoutesButton"
             android:textAlignment="center"
             android:textColor="@color/black_3f3a3a"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/bt_checklist"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/bt_logout"
-            app:layout_constraintTop_toTopOf="@+id/bt_logout" />
+            app:layout_constraintTop_toTopOf="@+id/bt_logout"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/bt_checklist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_round_user_button"
-            android:text="@string/bt_checklist"
+            android:text="@string/checklistButton"
             android:textAlignment="center"
             android:textColor="@color/black_3f3a3a"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/bt_my_routes"
-            app:layout_constraintTop_toTopOf="@+id/bt_my_routes" />
+            app:layout_constraintTop_toTopOf="@+id/bt_my_routes"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/bt_logout"
@@ -168,14 +176,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="21dp"
             android:background="@drawable/bg_round_user_button"
-            android:text="@string/bt_logout"
+            android:text="@string/logoutButton"
             android:textAlignment="center"
             android:textColor="@color/black_3f3a3a"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/bt_my_routes"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bt_my_badges" />
+            app:layout_constraintTop_toBottomOf="@+id/bt_my_badges"
+            tools:ignore="TextContrastCheck" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieMountainBirds"

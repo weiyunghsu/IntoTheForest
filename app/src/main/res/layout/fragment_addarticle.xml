@@ -63,6 +63,7 @@
                     android:layout_height="48dp"
                     android:layout_marginTop="24dp"
                     android:background="@drawable/click_button"
+                    android:contentDescription="@string/chooseStartButton"
                     app:layout_constraintStart_toEndOf="@+id/addStartDate"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/outline_today_black_24"
@@ -74,6 +75,7 @@
                     android:layout_height="48dp"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/click_button"
+                    android:contentDescription="@string/chooseEndDateButton"
                     app:layout_constraintStart_toEndOf="@+id/addEndDate"
                     app:layout_constraintTop_toBottomOf="@+id/chooseStartButton"
                     app:srcCompat="@drawable/outline_event_black_24"
@@ -118,12 +120,14 @@
                     android:layout_marginEnd="16dp"
                     android:ems="10"
                     android:hint="@string/inputTitle"
+                    android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:text="@={viewModel.article.title}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chooseEndDateButton" />
+                    app:layout_constraintTop_toBottomOf="@+id/chooseEndDateButton"
+                    tools:ignore="TextContrastCheck" />
 
                 <EditText
                     android:id="@+id/inputStory"
@@ -142,7 +146,9 @@
                     android:textIsSelectable="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/inputTitle" />
+                    app:layout_constraintTop_toBottomOf="@+id/inputTitle"
+                    tools:ignore="TextContrastCheck"
+                    android:importantForAutofill="no" />
 
                 <ImageButton
                     android:id="@+id/inputPhotoButton"
@@ -173,9 +179,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/writePostLottie" />
-                <!--                android:onClick="@{() -> viewModel.addData(viewModel.article)}"-->
-                <!--                android:clickable="@{viewModel.status == LoadApiStatus.LOADING ? false : true}"-->
+                    app:layout_constraintTop_toBottomOf="@+id/writePostLottie"
+                    tools:ignore="TextContrastCheck" />
 
                 <ImageView
                     android:id="@+id/pickImg1"
@@ -183,6 +188,7 @@
                     android:layout_height="90dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
+                    android:contentDescription="@string/pickImg1"
                     app:layout_constraintStart_toEndOf="@+id/inputPhotoButton"
                     app:layout_constraintTop_toBottomOf="@+id/inputStory"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -191,6 +197,7 @@
                     android:id="@+id/pickImg2"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
+                    android:contentDescription="@string/pickImg2"
                     app:layout_constraintStart_toEndOf="@+id/pickImg1"
                     app:layout_constraintTop_toTopOf="@+id/pickImg1"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -199,6 +206,7 @@
                     android:id="@+id/pickImg3"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
+                    android:contentDescription="@string/pickImg3"
                     app:layout_constraintStart_toEndOf="@+id/pickImg2"
                     app:layout_constraintTop_toTopOf="@+id/pickImg1"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />

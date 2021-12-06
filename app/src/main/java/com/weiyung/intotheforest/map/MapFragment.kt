@@ -6,20 +6,16 @@ import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
-import android.os.UserManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.coroutineScope
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.firebase.ui.auth.AuthUI.getApplicationContext
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -27,13 +23,9 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.libraries.places.api.Places
-import com.google.firebase.firestore.core.OrderBy
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.maps.route.extensions.drawMarker
 import com.maps.route.extensions.drawRouteOnMap
 import com.maps.route.extensions.moveCameraOnMap
@@ -41,7 +33,6 @@ import com.maps.route.model.TravelMode
 import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.R
-import com.weiyung.intotheforest.database.Track
 import com.weiyung.intotheforest.databinding.FragmentMapBinding
 import com.weiyung.intotheforest.ext.getVmFactory
 import kotlinx.coroutines.CoroutineScope
@@ -53,16 +44,13 @@ enum class RouteNumber(val positionOnSpinner: Int) {
     FOUR_ANIMALS(0),
     KUAN_IN(1)
 }
-
 class MapFragment : Fragment(), OnMapReadyCallback {
     private val viewModel by viewModels<MapViewModel> {
         getVmFactory()
-//        (MapFragmentArgs.fromBundle(requireArguments()).routeKey)
     }
     private lateinit var mMap: GoogleMap
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var binding: FragmentMapBinding
-    val db = Firebase.firestore
 
     @SuppressLint("RestrictedApi")
     override fun onCreateView(
@@ -75,9 +63,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
 
-//        lifecycle.coroutineScope.launchWhenCreated {
-//            val gMap = mapFragment.getMapAsync { onMapReady(it) }
-//        }
         mapFragment.getMapAsync(this)
 
         binding.isLiveDataDesign = IntoTheForestApplication.instance.isLiveDataDesign()
@@ -92,33 +77,39 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         val viewModelJob = Job()
         val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.IO)
 
-        viewModel._routes.observe(viewLifecycleOwner, Observer {
-            Log.d(TAG, "viewModel._routes.observe, it=$it")
-            it?.let {
-                mapFragment.getMapAsync {
-                    mMap.run {
-                        Places.initialize(getApplicationContext(), R.string.google_maps_key.toString())
-                        fun drawLine() {
-                            coroutineScope.launch {
-                                Log.i(TAG, "---------Do you draw the Route0?------")
-                                drawRouteOnMap(
-                                    getString(R.string.google_maps_key),
-                                    source = viewModel.source,
-                                    destination = viewModel.destination,
-                                    context = context!!,
-                                    markers = false,
-                                    travelMode = TravelMode.WALKING,
-                                    polygonWidth = 15
-                                )
+        viewModel._routes.observe(
+            viewLifecycleOwner,
+            Observer {
+                Log.d(TAG, "viewModel._routes.observe, it=$it")
+                it?.let {
+                    mapFragment.getMapAsync {
+                        mMap.run {
+                            Places.initialize(
+                                getApplicationContext(),
+                                R.string.google_maps_key.toString()
+                            )
+                            fun drawLine() {
+                                coroutineScope.launch {
+                                    Log.i(TAG, "---------Do you draw the Route0?------")
+                                    drawRouteOnMap(
+                                        getString(R.string.google_maps_key),
+                                        source = viewModel.source,
+                                        destination = viewModel.destination,
+                                        context = context!!,
+                                        markers = false,
+                                        travelMode = TravelMode.WALKING,
+                                        polygonWidth = 15
+                                    )
+                                }
                             }
+                            drawLine()
+                            Log.i(TAG, "---------Do you draw the Route0 End ?-----")
                         }
-                        drawLine()
-                        Log.i(TAG, "---------Do you draw the Route0 End ?-----")
                     }
+                    binding.viewModel = viewModel
                 }
-                binding.viewModel = viewModel
             }
-        })
+        )
         binding.weatherButton.setOnClickListener {
             findNavController().navigate(NavigationDirections.navigateToWeatherFragment())
         }
@@ -143,25 +134,23 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             ) {
                 viewModel.isMapReady = true
                 mMap.isMyLocationEnabled = true
-
             } else {
                 requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 999)
             }
         }
         setupPermission()
-        if (viewModel.isMapReady){
+        if (viewModel.isMapReady) {
             mMap.isMyLocationEnabled = true
             mMap.uiSettings.isZoomControlsEnabled = true
             mMap.uiSettings.isCompassEnabled = true
             mMap.uiSettings.isMapToolbarEnabled = true
         }
 
-
-        val polyline1 = googleMap.addPolyline(
+        googleMap.addPolyline(
             PolylineOptions().clickable(true).color(Color.RED).addAll(viewModel.routeLine1)
         )
 
-        val polyline2 = googleMap.addPolyline(
+        googleMap.addPolyline(
             PolylineOptions().clickable(true).color(Color.BLUE).addAll(viewModel.routeLine2)
         )
 
@@ -171,12 +160,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         )
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(viewModel.appWorksSchoolPeak, 10F))
-//        mMap.animateCamera(CameraUpdateFactory.zoomTo(18F))
-//        mMap.setOnPolylineClickListener(this)
-//        mMap.setOnPolygonClickListener(this)
+
         val adapter = ArrayAdapter.createFromResource(
             this.requireContext(),
-            R.array.route_list,
+            R.array.routeList,
             android.R.layout.simple_spinner_dropdown_item
         )
         binding.spinnerRoutes.adapter = adapter
@@ -301,14 +288,3 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 }
-
-//    private fun replaceFragmentSafely(
-//        fragment: Fragment,
-//        tag: String = fragment.javaClass.name,
-//        @IdRes containerViewId: Int = R.id.map
-//    ) {
-//        fragmentManager
-//            ?.beginTransaction()
-//            ?.replace(containerViewId, fragment, tag)?.commit()
-//    }
-

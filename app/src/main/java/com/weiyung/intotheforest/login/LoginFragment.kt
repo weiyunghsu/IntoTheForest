@@ -15,19 +15,16 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.weiyung.intotheforest.NavigationDirections
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.database.User
-import com.weiyung.intotheforest.database.source.remote.IntoTheForestRemoteDataSource.getUser
 import com.weiyung.intotheforest.databinding.FragmentLoginBinding
 import com.weiyung.intotheforest.ext.getVmFactory
-import com.weiyung.intotheforest.util.UserManager
 import com.weiyung.intotheforest.util.UserManager.isLoggedIn
-
 
 class LoginFragment : Fragment() {
     private val viewModel by viewModels<LoginViewModel> { getVmFactory() }
@@ -40,9 +37,10 @@ class LoginFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -50,21 +48,24 @@ class LoginFragment : Fragment() {
             signIn()
         }
 
-        viewModel.user.observe(viewLifecycleOwner, Observer {
-            Log.i(TAG,"check enter : viewModel.user.observe")
-            Log.i(TAG,"$isLoggedIn")
-            it?.let {
-                when {
-                    isLoggedIn -> {
-                        Log.i(TAG,"check enter : isLoggedIn")
-                        findNavController().navigate(
-                            NavigationDirections.navigateToHomeFragment()
-                        )
+        viewModel.user.observe(
+            viewLifecycleOwner,
+            Observer {
+                Log.i(TAG, "check enter : viewModel.user.observe")
+                Log.i(TAG, "$isLoggedIn")
+                it?.let {
+                    when {
+                        isLoggedIn -> {
+                            Log.i(TAG, "check enter : isLoggedIn")
+                            findNavController().navigate(
+                                NavigationDirections.navigateToHomeFragment()
+                            )
+                        }
                     }
+                    viewModel.navigateComplete()
                 }
-                viewModel.navigateComplete()
             }
-        })
+        )
         binding.lottieBirds.repeatCount = -1
         binding.lottieBirds.playAnimation()
         return binding.root
@@ -72,7 +73,7 @@ class LoginFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val currentUser = auth.currentUser
+        auth.currentUser
     }
 
     private fun signIn() {
@@ -102,15 +103,14 @@ class LoginFragment : Fragment() {
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.id + "email:$email")
                 Toast.makeText(
                     requireActivity(),
-                    getString(R.string.login_success),
+                    getString(R.string.loginSuccess),
                     Toast.LENGTH_SHORT
                 ).show()
-
             } catch (e: ApiException) {
                 Log.w(TAG, "Google sign in failed", e)
                 Toast.makeText(
                     requireActivity(),
-                    getString(R.string.login_fail),
+                    getString(R.string.loginFail),
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -135,25 +135,17 @@ class LoginFragment : Fragment() {
                                     )
                                 }
                             }
-                            Log.i(TAG,"user: $user , currentUser: $currentUser")
+                            Log.i(TAG, "user: $user , currentUser: $currentUser")
                             viewModel.addUser(user)
-                            Log.i(TAG,"loginFragment addUser: ${viewModel.user.value}")
+                            Log.i(TAG, "loginFragment addUser: ${viewModel.user.value}")
                             viewModel.getUser(user)
-                            Log.i(TAG,"loginFragment getUser: ${viewModel.user.value}")
+                            Log.i(TAG, "loginFragment getUser: ${viewModel.user.value}")
                         }
-//                        isLoggedIn -> {
-//                            findNavController().navigate(
-//                                NavigationDirections.navigateToHomeFragment()
-//                            )
-//                        }
                     }
                     Log.d(TAG, "signInWithCredential:success")
-
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
-
                 }
             }
     }
-
 }

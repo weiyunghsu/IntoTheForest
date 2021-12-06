@@ -1,24 +1,18 @@
 package com.weiyung.intotheforest.addarticle
 
-import android.Manifest
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -29,38 +23,26 @@ import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.databinding.FragmentAddarticleBinding
 import com.weiyung.intotheforest.ext.getVmFactory
 import com.weiyung.intotheforest.util.UserManager
+import java.util.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.util.*
 
 class AddArticleFragment : Fragment() {
-   // lateinit var fragment: AddArticleFragment
-
-    private val viewModel by viewModels<AddArticleViewModel> {
-        getVmFactory()
-    }
+    private val viewModel by viewModels<AddArticleViewModel> { getVmFactory() }
     private lateinit var binding: FragmentAddarticleBinding
 
     companion object {
-        const val PICTUREFROMGALLERY = 1001
-        const val PICTUREFROMCAMERA = 1002
-        const val REQUEST_EXTERNAL_STORAGE = 1003
         const val FIREBASE_PATH_ROUTE = "routeImg"
-        const val FIREBASE_PATH_AVATAR = "avatar"
     }
 
-    val storage = Firebase.storage
-
-    //    private lateinit var viewModel: AddArticleViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddarticleBinding.inflate(inflater, container, false)
-//        viewModel = ViewModelProvider(this).get(AddArticleViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
@@ -71,70 +53,19 @@ class AddArticleFragment : Fragment() {
         binding.chooseEndDateButton.setOnClickListener {
             setEndDate()
         }
-     //   fragment = this
-
 
         binding.inputPhotoButton.setOnClickListener {
             getLocalImg()
-//            ImagePicker.with(this)
-//                .crop()                    //Crop image(Optional), Check Customization for more option
-//                .compress(1024)            //Final image size will be less than 1 MB(Optional)
-//                .maxResultSize(
-//                    1080,
-//                    1080
-//                )    //Final image resolution will be less than 1080 x 1080(Optional)
-//                .start()
-        //            permissionWritePhoto()
-//            if (viewModel.canUploadImage && viewModel.isUploadSuccess) {
-//                binding.inputPhotoButton.isClickable = false
-////                    findNavController().navigate(NavigationDirections.navigateToPostsuccessFragment())
-//            } else if (viewModel.canUploadImage && !viewModel.isUploadSuccess) {
-//                val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-//                startActivityForResult(gallery, PICTUREFROMGALLERY)
-//            }
         }
 
         binding.addPostButton.setOnClickListener {
             viewModel.article.value?.let { it1 -> viewModel.addData(it1) }
-            Toast.makeText(this.requireContext(), R.string.post_success, Toast.LENGTH_LONG).show()
+            Toast.makeText(this.requireContext(), R.string.postSuccess, Toast.LENGTH_LONG).show()
         }
         binding.writePostLottie.repeatCount = -1
         binding.writePostLottie.playAnimation()
         return binding.root
     }
-
-    private fun permissionWritePhoto() {
-        if (ContextCompat.checkSelfPermission(
-                this.binding.root.context,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            requestPermissions(
-                arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                REQUEST_EXTERNAL_STORAGE
-            )
-        } else {
-            viewModel.canUploadImage = true
-        }
-    }
-
-//    override fun onRequestPermissionsResult(
-//        requestCode: Int,
-//        permissions: Array<String>,
-//        grantResults: IntArray
-//    ) {
-//        when (requestCode) {
-//            REQUEST_EXTERNAL_STORAGE -> {
-//                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    viewModel.canUploadImage = true
-//                } else {
-//                    Toast.makeText(requireActivity(), R.string.nothing_happen, Toast.LENGTH_SHORT)
-//                        .show()
-//                }
-//            }
-//        }
-//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -150,25 +81,6 @@ class AddArticleFragment : Fragment() {
                         firebaseUpload(fileUri)
                     }
                 }
-
-//                val uri: Uri = data?.data!!
-//                binding.pickImg1.setImageURI(uri)
-//                Toast.makeText(requireActivity(), "setImageURI= $uri", Toast.LENGTH_SHORT).show()
-//                firebaseUpload(uri)
-//                Log.i(TAG, "uri : $uri")
-//                val imagePath = getPathFromUri(uri)
-////                val filePath: String = ImagePicker.getFilePath(data) ?: ""
-//                if (imagePath.isNotEmpty()) {
-//                    Log.i(TAG, "onActivityResult if imagePath.isNotEmpty()")
-//                    Toast.makeText(requireActivity(), imagePath, Toast.LENGTH_SHORT).show()
-//
-              //     getLocalImg()
-//                    Glide.with(requireActivity()).load(imagePath).into(binding.pickImg1)
-//
-//                    firebaseUpload(uri)
-//                } else {
-//                    Toast.makeText(requireActivity(), R.string.load_img_fail1, Toast.LENGTH_SHORT).show()
-//                }
             }
             ImagePicker.RESULT_ERROR -> Toast.makeText(
                 requireContext(),
@@ -179,26 +91,12 @@ class AddArticleFragment : Fragment() {
         }
     }
 
-    private fun getPathFromUri(uri: Uri): String {
-        val projection = arrayOf(MediaStore.MediaColumns.DATA)
-        val cursor = requireActivity().contentResolver.query(uri, projection, null, null, null)
-        val columnIndex: Int? = cursor?.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA) ?: null
-        cursor?.moveToFirst()
-        val result: String = columnIndex?.let { cursor?.getString(it) } ?: ""
-        cursor?.close()
-        return result
-    }
-
     fun getLocalImg() {
-             ImagePicker.with(this)
-                .crop()                    //Crop image(Optional), Check Customization for more option
-                .compress(1024)            //Final image size will be less than 1 MB(Optional)
-                .maxResultSize(
-                    1080,
-                    1080
-                )    //Final image resolution will be less than 1080 x 1080(Optional)
-                .start()
-
+        ImagePicker.with(this)
+            .crop()
+            .compress(1024)
+            .maxResultSize(1080, 1080)
+            .start()
     }
 
     private var viewModelJob = Job()
@@ -206,22 +104,25 @@ class AddArticleFragment : Fragment() {
 
     fun firebaseUpload(uri: Uri) {
         coroutineScope.launch {
+            val storage = Firebase.storage
             val mStorageRef = FirebaseStorage.getInstance().reference
             val storageRef = storage.reference
             val imagesRef: StorageReference = storageRef.child(FIREBASE_PATH_ROUTE)
-            val path = imagesRef.path
-            val metadata = StorageMetadata.Builder()
+            imagesRef.path
+            StorageMetadata.Builder()
                 .setContentDisposition("universe")
                 .setContentType("image/jpg")
                 .build()
             val randomNumber = (0..999).random()
             val routesRef =
-                mStorageRef.child("$FIREBASE_PATH_ROUTE/${UserManager.addUserInfo().id}_$randomNumber.jpg")
+                mStorageRef.child(
+                    "$FIREBASE_PATH_ROUTE/${UserManager.addUserInfo().id}_$randomNumber.jpg"
+                )
             val uploadTask = routesRef.putFile(uri)
             uploadTask.addOnFailureListener {
                 Toast.makeText(
                     requireContext(),
-                    R.string.load_img_fail,
+                    R.string.loadImgFail,
                     Toast.LENGTH_SHORT
                 ).show()
                 Log.i(TAG, "addOnFailureListener: $it")
@@ -235,20 +136,12 @@ class AddArticleFragment : Fragment() {
                 }
                 Toast.makeText(
                     requireContext(),
-                    R.string.upload_success,
+                    R.string.uploadSuccess,
                     Toast.LENGTH_SHORT
                 ).show()
                 viewModel.isUploadSuccess = true
                 Log.i(TAG, "addOnSuccessListener: $it")
             }
-//                .addOnProgressListener { taskSnapshot ->
-//                    val progress =
-//                        (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount).toInt()
-//                    binding.progressBar2.progress = progress
-//                    if (progress >= 100) {
-//                        binding.progressBar2.visibility = View.GONE
-//                    }
-//                }
         }
     }
 
@@ -261,7 +154,7 @@ class AddArticleFragment : Fragment() {
         context?.let {
             DatePickerDialog(it, { _, year, month, day ->
                 run {
-                    binding.showStartDate.setText(setDateFormat(year, month, day))
+                    binding.showStartDate.text = setDateFormat(year, month, day)
                 }
             }, year, month, day).show()
         }
@@ -271,7 +164,7 @@ class AddArticleFragment : Fragment() {
         context?.let {
             DatePickerDialog(it, { _, year, month, day ->
                 run {
-                    binding.showEndDate.setText(setDateFormat(year, month, day))
+                    binding.showEndDate.text = setDateFormat(year, month, day)
                 }
             }, year, month, day).show()
         }
@@ -281,3 +174,4 @@ class AddArticleFragment : Fragment() {
         return "$year.${month + 1}.$day"
     }
 }
+        

@@ -1,5 +1,6 @@
 package com.weiyung.intotheforest.weather
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +15,12 @@ class WeatherFragment : Fragment() {
     private lateinit var binding: FragmentWeatherBinding
     private lateinit var viewModel: WeatherViewModel
     private val webView: WebView? = null
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
         binding = FragmentWeatherBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
@@ -35,13 +37,4 @@ class WeatherFragment : Fragment() {
 
         return binding.root
     }
-//    fun onBackPressed() {
-//        if (webView != null) {
-//            if (webView.isFocused && webView.canGoBack()) {
-//                webView.goBack()
-//            } else {
-//                super.onBackPressed()
-//            }
-//        }
-//    }
 }

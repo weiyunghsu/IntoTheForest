@@ -14,19 +14,21 @@
         android:fontFamily="@font/noto_sans"
         android:gravity="bottom|center"
         android:paddingBottom="16dp"
-        android:text="@string/upload_success"
+        android:text="@string/uploadSuccess"
         android:textColor="@color/black_3f3a3a"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <ImageView
         android:id="@+id/add_success_icon"
         android:layout_width="44dp"
         android:layout_height="44dp"
         android:background="@color/transparent"
+        android:contentDescription="@string/addSuccessIcon"
         app:layout_constraintBottom_toBottomOf="@+id/success_text"
         app:layout_constraintEnd_toEndOf="@+id/success_text"
         app:layout_constraintStart_toStartOf="@+id/success_text"

@@ -1,7 +1,6 @@
 package com.weiyung.intotheforest.database
 
 import androidx.lifecycle.MutableLiveData
-import com.bumptech.glide.load.engine.Engine
 import com.weiyung.intotheforest.network.LoadApiStatus
 import com.weiyung.intotheforest.util.Util
 
@@ -20,25 +19,28 @@ sealed class Result<out R> {
             Loading -> "Loading"
         }
     }
-    fun handleResultWith(error: MutableLiveData<String>, status: MutableLiveData<LoadApiStatus>): R?{
-        return when(this){
-            is Success->{
+    fun handleResultWith(
+        error: MutableLiveData<String>,
+        status: MutableLiveData<LoadApiStatus>
+    ): R? {
+        return when (this) {
+            is Success -> {
                 error.value = null
                 status.value = LoadApiStatus.DONE
                 this.data
             }
-            is Fail ->{
+            is Fail -> {
                 error.value = this.error
                 status.value = LoadApiStatus.ERROR
                 null
             }
-            is Error ->{
+            is Error -> {
                 error.value = this.exception.toString()
                 status.value = LoadApiStatus.ERROR
                 null
             }
-            else ->{
-                error.value = Util.getString(com.weiyung.intotheforest.R.string.nothing_happen)
+            else -> {
+                error.value = Util.getString(com.weiyung.intotheforest.R.string.nothingHappen)
                 status.value = LoadApiStatus.ERROR
                 null
             }
@@ -47,4 +49,3 @@ sealed class Result<out R> {
 }
 val Result<*>.succeeded
     get() = this is Result.Success && data != null
-

@@ -43,7 +43,7 @@
                     android:id="@+id/detail_main_image"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
-                    android:contentDescription="@string/detail_main_image"
+                    android:contentDescription="@string/detailMainImage"
                     android:scaleType="centerCrop"
                     app:imageUrl="@{article.mainImage}"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +59,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/icons_44px_back01"
-                    android:contentDescription="@string/back_button"
+                    android:contentDescription="@string/backButton"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,ImageContrastCheck"
@@ -128,7 +128,7 @@
                     android:layout_height="36dp"
                     android:layout_marginEnd="16dp"
                     android:background="@color/transparent"
-                    android:contentDescription="@string/detail_favorite_button"
+                    android:contentDescription="@string/detailFavoriteButton"
                     android:onClick="@{() -> viewModel.switchState()}"
                     android:padding="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/detail_share_button"
@@ -138,9 +138,6 @@
                     app:switch="@{viewModel.favoriteAdded}"
                     app:tint="@color/favorite_item_selected"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-                <!--                    app:srcCompat="@drawable/favorite_item_selected"-->
-                <!--                android:onClick="@{() -> viewModel.insertToFavorite()}"-->
-                <!--                android:background="@drawable/favorite_item_selector"-->
 
                 <ImageButton
                     android:id="@+id/detail_share_button"
@@ -149,7 +146,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/click_button"
-                    android:contentDescription="@string/detail_share_button"
+                    android:contentDescription="@string/detailShareButton"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/detail_main_image"
                     app:srcCompat="@drawable/outline_share_black_24"
@@ -189,33 +186,6 @@
                     tools:ignore="SpeakableTextPresentCheck"
                     tools:listitem="@layout/item_detail_gallery" />
 
-                <!--                <com.google.android.gms.maps.MapView-->
-                <!--                    android:id="@+id/mapView"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="200dp"-->
-                <!--                    android:layout_marginStart="16dp"-->
-                <!--                    android:layout_marginTop="16dp"-->
-                <!--                    android:layout_marginEnd="16dp"-->
-                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                    app:layout_constraintStart_toStartOf="parent"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@+id/go_to_map_button"-->
-                <!--                    tools:ignore="SpeakableTextPresentCheck" />-->
-                <!--                android:name="com.google.android.gms.maps.mapView"-->
-
-                <!--                <androidx.constraintlayout.utils.widget.MockView-->
-                <!--                    android:id="@+id/weather_info"-->
-                <!--                    android:layout_width="0dp"-->
-                <!--                    android:layout_height="200dp"-->
-                <!--                    android:layout_marginStart="16dp"-->
-                <!--                    android:layout_marginTop="16dp"-->
-                <!--                    android:layout_marginEnd="16dp"-->
-                <!--                    android:layout_marginBottom="16dp"-->
-                <!--                    android:paddingBottom="16dp"-->
-                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                    app:layout_constraintStart_toStartOf="parent"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@+id/detail_weather" />-->
-
                 <Button
                     android:id="@+id/go_to_map_button"
                     android:layout_width="0dp"
@@ -225,7 +195,7 @@
                     android:background="@drawable/bg_round_button"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
-                    android:text="@string/go_to_map_button"
+                    android:text="@string/goToMapButton"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toStartOf="@+id/go_to_weather_button"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -241,7 +211,7 @@
                     android:background="@drawable/bg_round_button"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
-                    android:text="@string/go_to_weather_button"
+                    android:text="@string/goToWeatherButton"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"

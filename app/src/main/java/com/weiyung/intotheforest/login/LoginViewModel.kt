@@ -15,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val repository: IntoTheForestRepository) : ViewModel(){
+class LoginViewModel(private val repository: IntoTheForestRepository) : ViewModel() {
 
     private val _status = MutableLiveData<LoadApiStatus>()
     val status: LiveData<LoadApiStatus>
@@ -40,7 +40,6 @@ class LoginViewModel(private val repository: IntoTheForestRepository) : ViewMode
         super.onCleared()
         viewModelJob.cancel()
     }
-
     fun navigateComplete() {
         _user.value = null
     }
@@ -50,16 +49,15 @@ class LoginViewModel(private val repository: IntoTheForestRepository) : ViewMode
             _status.value = LoadApiStatus.LOADING
 
             val signedIn = user?.let { repository.signUpUser(it).handleResultWith(_error, _status) }
-            Log.i(TAG,"$signedIn")
-            if (signedIn == true){
-                _user.value = user!!
+            Log.i(TAG, "$signedIn")
+            if (signedIn == true) {
+                _user.value = user
                 UserManager.getUserInfo(user)
 
-                Log.i(TAG,"UserManager.user.value in addUser: ${UserManager.addUserInfo()}")
+                Log.i(TAG, "UserManager.user.value in addUser: ${UserManager.addUserInfo()}")
             } else {
                 _user.value = null
             }
-//            _user.value = if (signedIn == true) user else null
         }
     }
 
@@ -68,8 +66,7 @@ class LoginViewModel(private val repository: IntoTheForestRepository) : ViewMode
             _status.value = LoadApiStatus.LOADING
             val result = repository.getUser(userId)
             _user.value = result.handleResultWith(_error, _status)
-            Log.i(TAG,"_user.value in getUser: ${_user.value}")
+            Log.i(TAG, "_user.value in getUser: ${_user.value}")
         }
     }
-
 }

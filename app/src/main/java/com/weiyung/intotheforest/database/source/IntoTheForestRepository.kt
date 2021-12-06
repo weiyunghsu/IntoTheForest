@@ -1,6 +1,5 @@
 package com.weiyung.intotheforest.database.source
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.weiyung.intotheforest.database.*
 
@@ -15,7 +14,7 @@ interface IntoTheForestRepository {
 
     suspend fun delete(article: Article): Result<Boolean>
 
-    suspend fun update(route: Route) : Result<Boolean>
+    suspend fun update(route: Route): Result<Boolean>
 
     suspend fun getRoutes(): Result<List<Route>>
 
@@ -32,5 +31,4 @@ interface IntoTheForestRepository {
     suspend fun addUserToFollowers(userId: String, article: Article): Result<Boolean>
 
     suspend fun removeUserFromFollowers(userId: String, article: Article): Result<Boolean>
-
 }

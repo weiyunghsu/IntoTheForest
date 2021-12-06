@@ -17,14 +17,12 @@ import com.weiyung.intotheforest.util.UserManager
 class FavoriteFragment : Fragment() {
     private val viewModel by viewModels<FavoriteViewModel> { getVmFactory() }
     private lateinit var binding: FragmentFavoriteBinding
-//    private lateinit var viewModel: FavoriteViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-//        viewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
+    ): View {
         binding = FragmentFavoriteBinding.inflate(inflater, container, false)
 
         binding.viewModel = viewModel
@@ -33,7 +31,11 @@ class FavoriteFragment : Fragment() {
 
         binding.recyclerFavorite.adapter = FavoriteAdapter(viewModel)
         binding.recyclerFavorite.layoutManager = LinearLayoutManager(context)
-        binding.recyclerFavorite.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        binding.recyclerFavorite.addItemDecoration(
+            DividerItemDecoration(
+                context, LinearLayoutManager.VERTICAL
+            )
+        )
 
         binding.layoutSwipeRefreshFavorite.setOnRefreshListener {
             binding.recyclerFavorite.adapter?.notifyDataSetChanged()
@@ -44,7 +46,8 @@ class FavoriteFragment : Fragment() {
             viewLifecycleOwner,
             Observer {
                 it?.let {
-                    findNavController().navigate(FavoriteFragmentDirections.navigateToDetailFragment(it))
+                    findNavController()
+                        .navigate(FavoriteFragmentDirections.navigateToDetailFragment(it))
                     viewModel.onDetailNavigated()
                 }
             }
@@ -55,11 +58,6 @@ class FavoriteFragment : Fragment() {
                 binding.viewModel = viewModel
             }
         }
-
-//        viewModel.favorite.observe(viewLifecycleOwner, Observer {
-//            Log.i("i-observe","$it")
-//            viewModel.transform()
-//        })
 
         return binding.root
     }

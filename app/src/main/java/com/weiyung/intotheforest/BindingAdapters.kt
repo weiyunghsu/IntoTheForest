@@ -79,7 +79,7 @@ fun bindRecyclerView(recyclerView: RecyclerView, homeItems: List<Article>?) {
             when (this) {
                 is HomeAdapter -> submitList(it)
                 is FavoriteAdapter -> {
-                    Log.i("BindingAdapter", "lsit:${homeItems}")
+                    Log.i("BindingAdapter", "lsit:$homeItems")
 
                     submitList(it)
                 }
@@ -120,6 +120,3 @@ fun switchDrawable(imageView: ImageView, added: Boolean) {
         false -> imageView.setImageResource(R.drawable.outline_favorite_border_black_24)
     }
 }
-
-
-

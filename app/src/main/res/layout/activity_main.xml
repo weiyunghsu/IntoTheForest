@@ -24,10 +24,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-<!--        app:navigationIcon="@drawable/icons_24px_drawer"-->
 
         <TextView
-            android:id="@+id/text_toolbar_title"
+            android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -40,15 +39,6 @@
             android:visibility="visible"
             tools:text="走入山林"
             tools:visibility="visible" />
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/image_toolbar_logo"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_gravity="center"-->
-        <!--            android:background="@drawable/logo_stylish_s"-->
-        <!--            android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.HOME ? View.VISIBLE : View.GONE}"-->
-        <!--            tools:visibility="gone"/>-->
 
     </androidx.appcompat.widget.Toolbar>
 

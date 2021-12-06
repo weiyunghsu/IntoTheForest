@@ -8,8 +8,8 @@ import androidx.lifecycle.ViewModel
 import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.database.Article
-import com.weiyung.intotheforest.database.User
 import com.weiyung.intotheforest.database.Result
+import com.weiyung.intotheforest.database.User
 import com.weiyung.intotheforest.database.source.IntoTheForestRepository
 import com.weiyung.intotheforest.network.LoadApiStatus
 import kotlinx.coroutines.CoroutineScope
@@ -17,7 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class HomeViewModel (private val repository: IntoTheForestRepository): ViewModel() {
+class HomeViewModel(private val repository: IntoTheForestRepository) : ViewModel() {
     private val _user = MutableLiveData<User>()
     val user: LiveData<User>
         get() = _user
@@ -61,7 +61,7 @@ class HomeViewModel (private val repository: IntoTheForestRepository): ViewModel
 
     init {
         Log.i(TAG, "------------------------------------")
-        Log.i(TAG, "[${this::class.simpleName}]${this}")
+        Log.i(TAG, "[${this::class.simpleName}]$this")
         Log.i(TAG, "------------------------------------")
 
         if (IntoTheForestApplication.instance.isLiveDataDesign()) {
@@ -93,7 +93,7 @@ class HomeViewModel (private val repository: IntoTheForestRepository): ViewModel
                 }
                 else -> {
                     _error.value =
-                        IntoTheForestApplication.instance.getString(R.string.nothing_happen)
+                        IntoTheForestApplication.instance.getString(R.string.nothingHappen)
                     _status.value = LoadApiStatus.ERROR
                     null
                 }

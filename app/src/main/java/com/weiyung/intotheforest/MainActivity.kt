@@ -1,12 +1,10 @@
 package com.weiyung.intotheforest
 
 import android.content.ContentValues.TAG
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.ViewGroup
-import android.widget.Button
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
@@ -16,29 +14,28 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.weiyung.intotheforest.database.User
 import com.weiyung.intotheforest.databinding.ActivityMainBinding
 import com.weiyung.intotheforest.ext.getVmFactory
 import com.weiyung.intotheforest.util.CurrentFragmentType
-import com.weiyung.intotheforest.util.UserManager
 import com.weiyung.intotheforest.util.UserManager.isLoggedIn
 import io.grpc.InternalChannelz.id
 
 class MainActivity : AppCompatActivity() {
     val viewModel by viewModels<MainViewModel> { getVmFactory() }
 
-    //    private lateinit var viewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
 
     private val onNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
-                    findNavController(R.id.myNavHostFragment).navigate(NavigationDirections.navigateToHomeFragment())
+                    findNavController(R.id.myNavHostFragment)
+                        .navigate(NavigationDirections.navigateToHomeFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_favorite -> {
-                    findNavController(R.id.myNavHostFragment).navigate(NavigationDirections.navigateToFavoriteFragment())
+                    findNavController(R.id.myNavHostFragment)
+                        .navigate(NavigationDirections.navigateToFavoriteFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_addarticle -> {
@@ -48,11 +45,13 @@ class MainActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_map -> {
-                    findNavController(R.id.myNavHostFragment).navigate(NavigationDirections.navigateToMapFragment())
+                    findNavController(R.id.myNavHostFragment)
+                        .navigate(NavigationDirections.navigateToMapFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_user -> {
-                    findNavController(R.id.myNavHostFragment).navigate(NavigationDirections.navigateToUserFragment())
+                    findNavController(R.id.myNavHostFragment)
+                        .navigate(NavigationDirections.navigateToUserFragment())
                     return@OnNavigationItemSelectedListener true
                 }
             }
@@ -62,7 +61,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-//        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
@@ -74,18 +72,9 @@ class MainActivity : AppCompatActivity() {
                         (it != CurrentFragmentType.LOGIN && !isLoggedIn)
                         -> {
                             Log.i(TAG, "[1 ${viewModel.currentFragmentType.value}]")
-                            findNavController(R.id.myNavHostFragment).navigate(NavigationDirections.navigateToLoginFragment())
+                            findNavController(R.id.myNavHostFragment)
+                                .navigate(NavigationDirections.navigateToLoginFragment())
                         }
-//                        (isLoggedIn)
-//                        -> {
-//                            Log.i(TAG, "[2 ${viewModel.currentFragmentType.value}]")
-//                            findNavController(R.id.myNavHostFragment).navigate(NavigationDirections.navigateToHomeFragment())
-//                        }
-//                        else
-//                        -> {
-//                            Log.i(TAG, "[2 ${viewModel.currentFragmentType.value}]")
-//                            findNavController(R.id.myNavHostFragment).navigate(NavigationDirections.navigateToHomeFragment())
-//                        }
                     }
                 }
                 Log.i(TAG, "[3 ${viewModel.currentFragmentType.value}]")
@@ -98,20 +87,17 @@ class MainActivity : AppCompatActivity() {
         setupBottomNav()
 
         setupNavController()
-
     }
 
     private fun setupBottomNav() {
         binding.bottomNavView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         val menuView = binding.bottomNavView.getChildAt(0) as BottomNavigationMenuView
         val itemView = menuView.getChildAt(2) as BottomNavigationItemView
-//        val bindingBadge = BadgeBottomBinding.inflate(LayoutInflater.from(this), itemView, true)
-//        bindingBadge.lifecycleOwner = this
-//        bindingBadge.viewModel = viewModel
     }
 
     private fun setupNavController() {
-        findNavController(R.id.myNavHostFragment).addOnDestinationChangedListener { navController: NavController, _: NavDestination, _: Bundle? ->
+        findNavController(R.id.myNavHostFragment).addOnDestinationChangedListener {
+            navController: NavController, _: NavDestination, _: Bundle? ->
             viewModel.currentFragmentType.value = when (navController.currentDestination?.id) {
                 R.id.homeFragment -> {
                     binding.bottomNavView.menu.getItem(BOTTOM_HOME_POS).isChecked = true
@@ -137,6 +123,4 @@ class MainActivity : AppCompatActivity() {
         private const val BOTTOM_HOME_POS = 0
         private const val BOTTOM_USER_POS = 4
     }
-
-
 }

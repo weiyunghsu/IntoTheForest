@@ -5,23 +5,16 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.weiyung.intotheforest.IntoTheForestApplication
-import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.database.Article
-import com.weiyung.intotheforest.database.Result
 import com.weiyung.intotheforest.database.source.IntoTheForestRepository
 import com.weiyung.intotheforest.network.LoadApiStatus
 import com.weiyung.intotheforest.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 
-class FavoriteViewModel(val repository: IntoTheForestRepository) : ViewModel(){
+class FavoriteViewModel(val repository: IntoTheForestRepository) : ViewModel() {
 
-//    private val _favorite = MutableLiveData<Favorite>()
-//    val favorite: LiveData<Favorite>
-//        get() = _favorite
     private var _articleAllList = MutableLiveData<List<Article>>()
     val articleAllList: LiveData<List<Article>>
         get() = _articleAllList
@@ -67,43 +60,10 @@ class FavoriteViewModel(val repository: IntoTheForestRepository) : ViewModel(){
         _navigateToDetail.value = article
     }
 
-//    val favorite: MutableLiveData<List<Article>> = repository.getFavorites()
-
-//    private val _favoriteList = MutableLiveData<List<Article>>()
-//    val favoriteList: LiveData<List<Article>>
-//        get() = _favoriteList
-
-//    fun transform() {
-//        val followerList = mutableListOf<Article>()
-//        followerList.add(
-//                Favorite(
-//                    followers =
-//                )
-//            )
-//            Log.i("i-after","$favoriteList")
-//        }
-//        _favoriteList.value = favoriteList
-//    fun removeFavorite(favorite: Favorite) {
-//        coroutineScope.launch {
-//            repository?.removeArticleInFavorite(favorite.id.toLong())
-//        }
-//    }
-
     private fun getFavorites(userId: String) {
-//        coroutineScope.launch {
-//            _articleAllList = repository.getFavorites(userId)
-            _articleList = repository.getFavorites(userId)
-            _status.value = LoadApiStatus.DONE
-            Log.i(TAG,"articleAllList: ${articleAllList.value}")
-            Log.i(TAG,"articleList: ${articleList.value}")
-//            _status.value = LoadApiStatus.LOADING
-//            repository.getFavorites(userId).apply{
-//                _articleAllList.value = handleResultWith(_error, _status)
-//                _articleList.value = articleAllList.value
-//            }
-//        }
+        _articleList = repository.getFavorites(userId)
+        _status.value = LoadApiStatus.DONE
+        Log.i(TAG, "articleAllList: ${articleAllList.value}")
+        Log.i(TAG, "articleList: ${articleList.value}")
     }
 }
-
-
-

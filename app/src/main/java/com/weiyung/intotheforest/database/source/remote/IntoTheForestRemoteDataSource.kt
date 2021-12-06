@@ -2,7 +2,6 @@ package com.weiyung.intotheforest.database.source.remote
 
 import android.content.ContentValues.TAG
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
@@ -13,13 +12,12 @@ import com.weiyung.intotheforest.IntoTheForestApplication
 import com.weiyung.intotheforest.R
 import com.weiyung.intotheforest.database.*
 import com.weiyung.intotheforest.database.source.IntoTheForestDataSource
-import com.weiyung.intotheforest.util.UserManager
 import com.weiyung.intotheforest.util.Util
 import java.util.*
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
+object IntoTheForestRemoteDataSource : IntoTheForestDataSource {
     private const val PATH_ARTICLES = "articles"
     private const val KEY_CREATED_TIME = "createdTime"
     private const val KEY_ID = "id"
@@ -44,7 +42,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                 if (task.isSuccessful) {
                     val list = mutableListOf<Article>()
                     for (document in task.result!!) {
-                        Log.d(TAG,document.id + " => " + document.data)
+                        Log.d(TAG, document.id + " => " + document.data)
 
                         val article = document.toObject(Article::class.java)
                         list.add(article)
@@ -53,13 +51,17 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                 } else {
                     task.exception?.let {
 
-                        Log.w(TAG,"[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        Log.w(TAG, "[${this::class.simpleName}] Error getting documents. ${it.message}")
                         continuation.resume(Result.Error(it))
                         return@addOnCompleteListener
                     }
-                    continuation.resume(Result.Fail(
-                        IntoTheForestApplication.instance.getString(
-                        R.string.nothing_happen)))
+                    continuation.resume(
+                        Result.Fail(
+                            IntoTheForestApplication.instance.getString(
+                                R.string.nothingHappen
+                            )
+                        )
+                    )
                 }
             }
     }
@@ -70,13 +72,13 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
             .collection(PATH_ARTICLES)
             .orderBy(KEY_END_DATE, Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, exception ->
-                Log.i(TAG,"addSnapshotListener detect")
+                Log.i(TAG, "addSnapshotListener detect")
                 exception?.let {
-                    Log.w(TAG,"[${this::class.simpleName}] Error getting documents. ${it.message}")
+                    Log.w(TAG, "[${this::class.simpleName}] Error getting documents. ${it.message}")
                 }
                 val list = mutableListOf<Article>()
                 for (document in snapshot!!) {
-                    Log.d(TAG,document.id + " => " + document.data)
+                    Log.d(TAG, document.id + " => " + document.data)
 
                     val article = document.toObject(Article::class.java)
                     list.add(article)
@@ -86,38 +88,35 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
         return liveData
     }
 
-    override suspend fun publish(article: Article): Result<Boolean>  = suspendCoroutine { continuation ->
+    override suspend fun publish(article: Article): Result<Boolean> = suspendCoroutine { continuation ->
         val articles = FirebaseFirestore.getInstance().collection(PATH_ARTICLES)
         val document = articles.document()
 
         article.id = document.id
 //        article.createdTime = Calendar.getInstance().timeInMillis
-        Log.i(TAG,"here is fun publish article")
+        Log.i(TAG, "here is fun publish article")
         document
             .set(article)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Log.i(TAG,"Publish: $article")
+                    Log.i(TAG, "Publish: $article")
 
                     continuation.resume(Result.Success(true))
                 } else {
                     task.exception?.let {
 
-                        Log.w(TAG,"[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        Log.w(TAG, "[${this::class.simpleName}] Error getting documents. ${it.message}")
                         continuation.resume(Result.Error(it))
                         return@addOnCompleteListener
                     }
-                    continuation.resume(Result.Fail(IntoTheForestApplication.instance.getString(R.string.nothing_happen)))
+                    continuation.resume(Result.Fail(IntoTheForestApplication.instance.getString(R.string.nothingHappen)))
                 }
             }
     }
 
-    override suspend fun delete(article: Article): Result<Boolean>  = suspendCoroutine { continuation ->
-
+    override suspend fun delete(article: Article): Result<Boolean> = suspendCoroutine { continuation ->
         when {
             article.user?.id == "9527"
-//                    && article.tag.toLowerCase(Locale.TAIWAN) != "test"
-//                    && article.tag.trim().isNotEmpty()
             -> {
                 continuation.resume(Result.Fail("nothing happen ${article.user?.name}"))
             }
@@ -127,11 +126,11 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                     .document(article.id)
                     .delete()
                     .addOnSuccessListener {
-                        Log.i(TAG,"Delete: $article")
+                        Log.i(TAG, "Delete: $article")
 
                         continuation.resume(Result.Success(true))
                     }.addOnFailureListener {
-                        Log.w(TAG,"[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        Log.w(TAG, "[${this::class.simpleName}] Error getting documents. ${it.message}")
                         continuation.resume(Result.Error(it))
                     }
             }
@@ -151,7 +150,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                 if (task.isSuccessful) {
                     val list = mutableListOf<Route>()
                     for (document in task.result!!) {
-                        Log.d(TAG,document.id + " => " + document.data)
+                        Log.d(TAG, document.id + " => " + document.data)
 
                         val route = document.toObject(Route::class.java)
                         list.add(route)
@@ -160,13 +159,17 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                 } else {
                     task.exception?.let {
 
-                        Log.w(TAG,"[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        Log.w(TAG, "[${this::class.simpleName}] Error getting documents. ${it.message}")
                         continuation.resume(Result.Error(it))
                         return@addOnCompleteListener
                     }
-                    continuation.resume(Result.Fail(
-                        IntoTheForestApplication.instance.getString(
-                            R.string.nothing_happen)))
+                    continuation.resume(
+                        Result.Fail(
+                            IntoTheForestApplication.instance.getString(
+                                R.string.nothingHappen
+                            )
+                        )
+                    )
                 }
             }
     }
@@ -177,13 +180,13 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
             .collection(PATH_ROUTES)
             .orderBy(KEY_ROUTE_ID, Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, exception ->
-                Log.i(TAG,"addSnapshotListener detect")
+                Log.i(TAG, "addSnapshotListener detect")
                 exception?.let {
-                    Log.w(TAG,"[${this::class.simpleName}] Error getting documents. ${it.message}")
+                    Log.w(TAG, "[${this::class.simpleName}] Error getting documents. ${it.message}")
                 }
                 val list = mutableListOf<Route>()
                 for (document in snapshot!!) {
-                    Log.d(TAG,document.id + " => " + document.data)
+                    Log.d(TAG, document.id + " => " + document.data)
 
                     val route = document.toObject(Route::class.java)
                     list.add(route)
@@ -196,7 +199,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
     override suspend fun getUser(userId: User?): Result<User?> {
         return User().getResultFrom(
             FirebaseFirestore.getInstance()
-            .collection(PATH_USER).whereEqualTo(KEY_ID, userId).get()
+                .collection(PATH_USER).whereEqualTo(KEY_ID, userId).get()
         )
     }
 
@@ -214,9 +217,8 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
         suspendCoroutine { continuation ->
             source.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-
-                    when(val result = task.result){
-                        is QuerySnapshot ->{
+                    when (val result = task.result) {
+                        is QuerySnapshot -> {
                             if (result.isEmpty) {
                                 continuation.resume(Result.Success(null))
                             } else {
@@ -225,18 +227,17 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                                 )
                             }
                         }
-                        is DocumentSnapshot ->{
+                        is DocumentSnapshot -> {
                             continuation.resume(Result.Success(result.toObject(this::class.java)))
                         }
                     }
-
                 } else {
                     when (val exception = task.exception) {
                         null -> continuation.resume(
-                            Result.Fail(Util.getString(R.string.nothing_happen))
+                            Result.Fail(Util.getString(R.string.nothingHappen))
                         )
                         else -> {
-                            Log.d(TAG,"[${this::class.simpleName}] Error getting documents. ${exception.message}")
+                            Log.d(TAG, "[${this::class.simpleName}] Error getting documents. ${exception.message}")
                             continuation.resume(Result.Error(exception))
                         }
                     }
@@ -250,55 +251,30 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
                     continuation.resume(Result.Success(ifSuccess))
                 } else {
                     when (val exception = task.exception) {
-                        null -> continuation.resume(Result.Fail(Util.getString(R.string.nothing_happen)))
+                        null -> continuation.resume(Result.Fail(Util.getString(R.string.nothingHappen)))
                         else -> {
-                            Log.d(TAG,"[${this::class.simpleName}] Error getting documents. ${exception.message}")
+                            Log.d(TAG, "[${this::class.simpleName}] Error getting documents. ${exception.message}")
                             continuation.resume(Result.Error(exception))
                         }
                     }
                 }
             }
         }
-//    override suspend fun publishFavorite(article: Article): Result<Boolean>  = suspendCoroutine { continuation ->
-//        val favorites = FirebaseFirestore.getInstance().collection(PATH_FAVORITES)
-//        val document = favorites.document()
-//
-//        favorite.id = document.id
-////        article.createdTime = Calendar.getInstance().timeInMillis
-//        Log.i(TAG,"here is fun publish favorite")
-//        document
-//            .set(favorite)
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    Log.i(TAG,"Publish: $favorite")
-//
-//                    continuation.resume(Result.Success(true))
-//                } else {
-//                    task.exception?.let {
-//
-//                        Log.w(TAG,"[${this::class.simpleName}] Error getting documents. ${it.message}")
-//                        continuation.resume(Result.Error(it))
-//                        return@addOnCompleteListener
-//                    }
-//                    continuation.resume(Result.Fail(IntoTheForestApplication.instance.getString(R.string.nothing_happen)))
-//                }
-//            }
-//    }
 
     override fun getFavorites(userId: String): MutableLiveData<List<Article>> {
         val liveData = MutableLiveData<List<Article>>()
         FirebaseFirestore.getInstance()
             .collection(PATH_ARTICLES)
             .orderBy(KEY_END_DATE, Query.Direction.DESCENDING)
-            .whereArrayContainsAny("followers",listOf(userId))
+            .whereArrayContainsAny("followers", listOf(userId))
             .addSnapshotListener { snapshot, exception ->
-                Log.i(TAG,"addSnapshotListener detect")
+                Log.i(TAG, "addSnapshotListener detect")
                 exception?.let {
-                    Log.w(TAG,"[${this::class.simpleName}] Error getting documents. ${it.message}")
+                    Log.w(TAG, "[${this::class.simpleName}] Error getting documents. ${it.message}")
                 }
                 val list = mutableListOf<Article>()
                 for (document in snapshot!!) {
-                    Log.d(TAG,document.id + " => " + document.data)
+                    Log.d(TAG, document.id + " => " + document.data)
 
                     val article = document.toObject(Article::class.java)
                     list.add(article)
@@ -316,7 +292,7 @@ object IntoTheForestRemoteDataSource : IntoTheForestDataSource{
             .missionSuccessReturn(true)
     }
 
-    override suspend fun removeUserFromFollowers(userId: String,article: Article): Result<Boolean> {
+    override suspend fun removeUserFromFollowers(userId: String, article: Article): Result<Boolean> {
         val list = article.followers as MutableList<String>
         list.remove(userId)
         return FirebaseFirestore.getInstance()
