@@ -5,28 +5,26 @@ TAG
 ## Flows
 
 ## Framework & Tools
-Android
-Kotlin
-Activity
-MVVM
-Coroutines
-
-JetPack
-Lifecycle
-Navigation
-Data binding
-
-Networking
-Google Map SDK
-Firebase & Firestore
-Glide
-
-Tools
-Git & GitHub
+- Android
+  - Android
+  - Kotlin
+  - Activity
+  - MVVM
+  - Coroutines
+- JetPack
+  - Lifecycle
+  - Navigation
+  - Data binding
+- Networking
+  - Google Map SDK
+  - Firebase & Firestore
+  - Glide
+- Tools
+  - Git & GitHub
 
 ## IDE
-Android Studio - Arctic Fox | 2020.3.1
-Android SDK - 26+
+- Android Studio - Arctic Fox | 2020.3.1
+- Android SDK - 26+
 ## Latest Version
 1.5
 ## Contact
